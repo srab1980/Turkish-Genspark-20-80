@@ -353,7 +353,6 @@ ReviewSession.prototype = {
                         <div class="review-difficulty">
                             صعوبة: <span class="difficulty-badge ${wordData.difficulty}">${this.getDifficultyLabel(this.words[this.currentIndex].difficulty)}</span>
                         </div>
-                        <div class="flashcard-hint">قيّم مدى سهولة تذكر هذه الكلمة</div>
                     </div>
                 </div>
             </div>
@@ -374,11 +373,41 @@ ReviewSession.prototype = {
     },
     
     bindReviewEvents: function() {
-        // Flashcard flip
+        // Flashcard flip with audio
         const flashcard = document.getElementById('review-flashcard');
         if (flashcard) {
             flashcard.addEventListener('click', () => {
+                const wasFlipped = flashcard.classList.contains('flipped');
                 flashcard.classList.toggle('flipped');
+                const isNowFlipped = flashcard.classList.contains('flipped');
+                
+                // Play audio based on the new state
+                const currentWordData = this.getCurrentWordData();
+                if (window.turkishTTS && currentWordData) {
+                    setTimeout(() => {
+                        if (isNowFlipped && !wasFlipped) {
+                            // Just flipped to back - play word + example
+                            console.log('Review: Playing audio for flipped card (back side)');
+                            window.speakTurkishWord(currentWordData.turkish).then(() => {
+                                if (currentWordData.example) {
+                                    setTimeout(() => {
+                                        window.speakTurkishSentence(currentWordData.example).catch(err => {
+                                            console.log('Review: Example pronunciation failed:', err);
+                                        });
+                                    }, 300);
+                                }
+                            }).catch(err => {
+                                console.log('Review: Word pronunciation failed:', err);
+                            });
+                        } else if (!isNowFlipped && wasFlipped) {
+                            // Just flipped back to front - play word only
+                            console.log('Review: Playing audio for front side');
+                            window.speakTurkishWord(currentWordData.turkish).catch(err => {
+                                console.log('Review: Word pronunciation failed:', err);
+                            });
+                        }
+                    }, 200); // Small delay to allow flip animation to start
+                }
             });
         }
         

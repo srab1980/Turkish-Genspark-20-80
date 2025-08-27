@@ -61,23 +61,13 @@ LearningSession.prototype = {
         // Set up event delegation for all interactions
         this.setupEventDelegation();
         
-        // Auto-pronounce Turkish word and example sentence when flashcard is shown
+        // Auto-pronounce only Turkish word when flashcard first appears (front side)
         if (this.mode === 'flashcard' && window.turkishTTS && window.turkishTTS.settings.autoPlay) {
             const currentWord = this.words[this.currentIndex];
             if (currentWord && currentWord.turkish) {
                 setTimeout(() => {
-                    console.log('Auto-pronouncing word:', currentWord.turkish);
-                    window.speakTurkishWord(currentWord.turkish).then(() => {
-                        // After word pronunciation, play example sentence if available
-                        if (currentWord.example) {
-                            setTimeout(() => {
-                                console.log('Auto-pronouncing example:', currentWord.example);
-                                window.speakTurkishSentence(currentWord.example).catch(err => {
-                                    console.log('Auto-pronunciation of example failed:', err);
-                                });
-                            }, 500); // Small delay between word and example
-                        }
-                    }).catch(err => {
+                    console.log('Auto-pronouncing word on card appearance:', currentWord.turkish);
+                    window.speakTurkishWord(currentWord.turkish).catch(err => {
                         console.log('Auto-pronunciation failed:', err);
                     });
                 }, 800); // Delay to allow card animation to complete
@@ -134,7 +124,6 @@ LearningSession.prototype = {
                             </div>
                         </div>
                         ` : ''}
-                        <div class="flashcard-hint">اضغط للعودة</div>
                     </div>
                 </div>
             </div>
@@ -264,13 +253,41 @@ LearningSession.prototype = {
                     
                     // Toggle flip state
                     flashcard.classList.toggle('flipped');
+                    const newState = flashcard.classList.contains('flipped') ? 'flipped' : 'front';
+                    
+                    // Play audio based on the new state
+                    const currentWord = this.words[this.currentIndex];
+                    if (window.turkishTTS && currentWord) {
+                        setTimeout(() => {
+                            if (newState === 'flipped') {
+                                // Just flipped to back - play word + example
+                                console.log('Playing audio for flipped card (back side)');
+                                window.speakTurkishWord(currentWord.turkish).then(() => {
+                                    if (currentWord.example) {
+                                        setTimeout(() => {
+                                            window.speakTurkishSentence(currentWord.example).catch(err => {
+                                                console.log('Example pronunciation failed:', err);
+                                            });
+                                        }, 300);
+                                    }
+                                }).catch(err => {
+                                    console.log('Word pronunciation failed:', err);
+                                });
+                            } else {
+                                // Just flipped back to front - play word only
+                                console.log('Playing audio for front side');
+                                window.speakTurkishWord(currentWord.turkish).catch(err => {
+                                    console.log('Word pronunciation failed:', err);
+                                });
+                            }
+                        }, 200); // Small delay to allow flip animation to start
+                    }
                     
                     // Remove transitioning class after animation completes
                     setTimeout(() => {
                         flashcard.classList.remove('transitioning');
                     }, 600); // Match CSS transition duration
                     
-                    const newState = flashcard.classList.contains('flipped') ? 'flipped' : 'front';
                     console.log(`Card ${cardIndex}: New state: ${newState}`);
                     return;
                 }
