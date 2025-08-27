@@ -258,6 +258,154 @@ app.post('/api/user/progress', async (c) => {
   });
 });
 
+// 📚 Enhanced Content & Learning API Endpoints
+
+// Get phrases by category
+app.get('/api/phrases/:category', (c) => {
+  const category = c.req.param('category');
+  const phrases = {
+    daily: {
+      title: "Daily Phrases",
+      titleArabic: "العبارات اليومية",
+      difficulty: "beginner",
+      phrases: [
+        {
+          id: 1, turkish: "Nasıl gidiyor?", arabic: "كيف تسير الأمور؟", 
+          english: "How's it going?", pronunciation: "na-sıl gi-di-yor",
+          usage: "Casual greeting between friends",
+          culturalNote: "More casual than 'Nasılsınız?' - shows familiarity",
+          examples: [
+            { sentence: "Selam! Nasıl gidiyor işler?", arabic: "مرحباً! كيف تسير الأعمال؟" },
+            { sentence: "Nasıl gidiyor okul?", arabic: "كيف تسير المدرسة؟" }
+          ]
+        },
+        {
+          id: 2, turkish: "Çok güzel!", arabic: "جميل جداً!", 
+          english: "Very beautiful/nice!", pronunciation: "chok gü-zel",
+          usage: "Expressing admiration or approval",
+          culturalNote: "Universal positive expression, very commonly used",
+          examples: [
+            { sentence: "Bu manzara çok güzel!", arabic: "هذا المنظر جميل جداً!" },
+            { sentence: "Yemeğin çok güzel!", arabic: "الطعام لذيذ جداً!" }
+          ]
+        }
+      ]
+    },
+    restaurant: {
+      title: "Restaurant Phrases",
+      titleArabic: "عبارات المطعم",
+      difficulty: "intermediate",
+      phrases: [
+        {
+          id: 10, turkish: "Hesap, lütfen", arabic: "الحساب، من فضلك", 
+          english: "The bill, please", pronunciation: "he-sap lüt-fen",
+          usage: "Requesting the check at restaurants",
+          culturalNote: "Polite way to ask for bill. Tipping 10-15% is customary",
+          examples: [
+            { sentence: "Afedersiniz, hesap lütfen.", arabic: "عذراً، الحساب من فضلك." },
+            { sentence: "Hesabı ayırabilir misiniz?", arabic: "هل يمكنكم تقسيم الحساب؟" }
+          ]
+        }
+      ]
+    }
+  };
+  
+  const categoryPhrases = phrases[category];
+  if (!categoryPhrases) {
+    return c.json({ error: "Category not found" }, 404);
+  }
+  
+  return c.json(categoryPhrases);
+});
+
+// Get all phrase categories
+app.get('/api/phrases', (c) => {
+  const categories = [
+    { id: 'daily', name: 'Daily Phrases', nameArabic: 'العبارات اليومية', difficulty: 'beginner', count: 2 },
+    { id: 'restaurant', name: 'Restaurant Phrases', nameArabic: 'عبارات المطعم', difficulty: 'intermediate', count: 1 },
+    { id: 'shopping', name: 'Shopping Phrases', nameArabic: 'عبارات التسوق', difficulty: 'intermediate', count: 1 },
+    { id: 'advanced', name: 'Advanced Expressions', nameArabic: 'التعبيرات المتقدمة', difficulty: 'advanced', count: 1 }
+  ];
+  
+  return c.json({ categories });
+});
+
+// Get enhanced word with cultural context and examples
+app.get('/api/enhanced-word/:id', (c) => {
+  const wordId = parseInt(c.req.param('id'));
+  
+  // Enhanced vocabulary with additional features
+  const enhancedWords = {
+    1: {
+      id: 1, turkish: "Merhaba", arabic: "مرحبا", english: "Hello", 
+      pronunciation: "mer-ha-BA", difficulty: "beginner",
+      examples: [
+        { sentence: "Merhaba, nasılsınız?", arabic: "مرحبا، كيف حالك؟", context: "formal" },
+        { sentence: "Merhaba arkadaşlar!", arabic: "مرحبا أيها الأصدقاء!", context: "informal" },
+        { sentence: "Merhaba, benim adım Ali.", arabic: "مرحبا، اسمي علي.", context: "introduction" }
+      ],
+      culturalNote: "Used at any time of day. More casual than 'Selam'.",
+      regionalVariations: [
+        { region: "Istanbul", variant: "Merhaba", usage: "Standard" },
+        { region: "Ankara", variant: "Selam", usage: "More common in capital" },
+        { region: "Izmir", variant: "Merhaba canım", usage: "Warmer, friendly" }
+      ],
+      icon: "fas fa-hand-wave", emoji: "👋"
+    }
+  };
+  
+  const word = enhancedWords[wordId];
+  if (!word) {
+    return c.json({ error: "Word not found" }, 404);
+  }
+  
+  return c.json(word);
+});
+
+// Get content statistics
+app.get('/api/content-stats', (c) => {
+  const stats = {
+    totalWords: 48,
+    totalPhrases: 5,
+    byDifficulty: {
+      beginner: 30,
+      intermediate: 15,
+      advanced: 8
+    },
+    categories: {
+      words: 8,
+      phrases: 4
+    },
+    features: {
+      culturalNotes: 48,
+      regionalVariations: 25,
+      multipleExamples: 48
+    }
+  };
+  
+  return c.json(stats);
+});
+
+// Filter content by difficulty
+app.get('/api/content/difficulty/:level', (c) => {
+  const level = c.req.param('level');
+  
+  // This would filter vocabulary based on difficulty level
+  const filteredCategories = Object.keys(vocabulary).map(key => ({
+    id: key,
+    name: key.charAt(0).toUpperCase() + key.slice(1),
+    wordCount: vocabulary[key].length, // In real app, filter by difficulty
+    difficulty: level,
+    icon: getCategoryIcon(key)
+  }));
+  
+  return c.json({ 
+    categories: filteredCategories,
+    difficulty: level,
+    total: filteredCategories.reduce((sum, cat) => sum + cat.wordCount, 0)
+  });
+});
+
 function getCategoryIcon(category: string): string {
   const icons = {
     greetings: "👋",
@@ -295,6 +443,7 @@ app.get('/', (c) => {
         <!-- Custom Styles -->
         <link href="/static/styles-modern.css" rel="stylesheet">
         <link href="/static/visual-ux-enhancements.css" rel="stylesheet">
+        <link href="/static/enhanced-content-styles.css" rel="stylesheet">
         
         <!-- PWA Meta Tags -->
         <meta name="theme-color" content="#2563EB">
@@ -832,6 +981,7 @@ app.get('/', (c) => {
         <script src="/static/analytics-dashboard.js"></script>
         <script src="/static/gamification-system.js"></script>
         <script src="/static/visual-ux-system.js"></script>
+        <script src="/static/enhanced-content-system.js"></script>
         <script src="/static/app-modern.js"></script>
     </body>
     </html>

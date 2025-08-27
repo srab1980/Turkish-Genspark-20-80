@@ -900,6 +900,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
                 
+                // 📚 Enhance with Enhanced Content System features
+                if (window.enhancedContentSystem) {
+                    const enhancedWord = window.enhancedContentSystem.findEnhancedWord(word.id);
+                    if (enhancedWord) {
+                        window.enhancedContentSystem.enhanceFlashcardWithExtendedContent(card, enhancedWord);
+                    }
+                }
+                
                 // Add swipe indicators
                 if (window.refreshVisualUX) {
                     setTimeout(() => window.refreshVisualUX(), 100);
