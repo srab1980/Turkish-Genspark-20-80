@@ -717,7 +717,8 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem;
+  overflow: hidden;
 }
 
 .flashcard-back {
@@ -755,22 +756,25 @@ body {
 
 .flashcard-hint {
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--gray-400);
   opacity: 0.8;
+  z-index: 1;
 }
 
 /* Example sentence styles */
 .flashcard-examples {
-  margin: 1rem 0 0.5rem 0;
+  margin: 0.75rem 0 1rem 0;
   padding: 0.75rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .example-divider {
@@ -813,21 +817,25 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin: 0.75rem 0;
+  z-index: 10;
+  position: relative;
 }
 
 .tts-btn {
   background: rgba(59, 130, 246, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
   color: #3b82f6;
+  flex-shrink: 0;
+  position: relative;
 }
 
 .tts-btn:hover {

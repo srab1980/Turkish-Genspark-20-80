@@ -61,13 +61,23 @@ LearningSession.prototype = {
         // Set up event delegation for all interactions
         this.setupEventDelegation();
         
-        // Auto-pronounce Turkish word when flashcard is shown (with delay for DOM rendering)
+        // Auto-pronounce Turkish word and example sentence when flashcard is shown
         if (this.mode === 'flashcard' && window.turkishTTS && window.turkishTTS.settings.autoPlay) {
             const currentWord = this.words[this.currentIndex];
             if (currentWord && currentWord.turkish) {
                 setTimeout(() => {
                     console.log('Auto-pronouncing word:', currentWord.turkish);
-                    window.speakTurkishWord(currentWord.turkish).catch(err => {
+                    window.speakTurkishWord(currentWord.turkish).then(() => {
+                        // After word pronunciation, play example sentence if available
+                        if (currentWord.example) {
+                            setTimeout(() => {
+                                console.log('Auto-pronouncing example:', currentWord.example);
+                                window.speakTurkishSentence(currentWord.example).catch(err => {
+                                    console.log('Auto-pronunciation of example failed:', err);
+                                });
+                            }, 500); // Small delay between word and example
+                        }
+                    }).catch(err => {
                         console.log('Auto-pronunciation failed:', err);
                     });
                 }, 800); // Delay to allow card animation to complete
@@ -99,12 +109,6 @@ LearningSession.prototype = {
                             <button class="tts-btn tts-word-btn" onclick="window.speakTurkishWord('${currentWord.turkish.replace(/'/g, '\\\'')}')" title="استمع للكلمة">
                                 <i class="fas fa-volume-up"></i>
                             </button>
-                            <div class="tts-indicator">
-                                <div class="tts-wave"></div>
-                                <div class="tts-wave"></div>
-                                <div class="tts-wave"></div>
-                                <div class="tts-wave"></div>
-                            </div>
                         </div>
                         <div class="flashcard-hint">اضغط لرؤية الترجمة</div>
                     </div>
@@ -123,7 +127,7 @@ LearningSession.prototype = {
                             </div>
                             <div class="flashcard-example-turkish">${currentWord.example}</div>
                             <div class="flashcard-example-arabic">${currentWord.exampleArabic}</div>
-                            <div class="tts-controls" style="justify-content: center; margin-top: 0.75rem;">
+                            <div class="tts-controls" style="justify-content: center; margin: 0.5rem 0 0.25rem 0;">
                                 <button class="tts-btn tts-sentence-btn" onclick="window.speakTurkishSentence('${currentWord.example.replace(/'/g, '\\\'')}')" title="استمع للمثال">
                                     <i class="fas fa-play"></i>
                                 </button>

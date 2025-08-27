@@ -134,7 +134,7 @@ class TurkishTTSService {
     // Speak Turkish sentence (example usage)
     speakSentence(sentence, options = {}) {
         const ttsOptions = {
-            rate: 0.8, // Normal speed for sentences
+            rate: 0.7, // Slightly slower for example sentences to aid comprehension
             ...options,
             onStart: () => {
                 this.showAudioFeedback('sentence', true);

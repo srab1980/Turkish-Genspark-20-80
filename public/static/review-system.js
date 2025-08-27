@@ -343,7 +343,7 @@ ReviewSession.prototype = {
                             </div>
                             <div class="flashcard-example-turkish">${wordData.example}</div>
                             <div class="flashcard-example-arabic">${wordData.exampleArabic}</div>
-                            <div class="tts-controls" style="justify-content: center; margin-top: 0.75rem;">
+                            <div class="tts-controls" style="justify-content: center; margin: 0.5rem 0 0.25rem 0;">
                                 <button class="tts-btn tts-sentence-btn" onclick="window.speakTurkishSentence('${wordData.example.replace(/'/g, '\\\'')}')" title="استمع للمثال">
                                     <i class="fas fa-play"></i>
                                 </button>
