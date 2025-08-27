@@ -720,15 +720,23 @@ body {
   60% { transform: translateY(-5px); }
 }
 
-/* Enhanced Card Styles */
-.flashcard {
-  width: var(--card-size-medium);
-  height: calc(var(--card-size-medium) * 0.7);
-  perspective: 600px;
+/* Enhanced Card Styles with Proper Sizing */
+.flashcard-container {
+  perspective: 1000px;
+  max-width: var(--card-size-medium);
+  margin: 0 auto;
   cursor: pointer;
   transition: all var(--animation-normal) var(--smooth);
-  animation: fadeInUp var(--animation-slow) var(--bounce);
+}
+
+.flashcard {
   position: relative;
+  width: 100%;
+  height: calc(var(--card-size-medium) * 0.65);
+  transform-style: preserve-3d;
+  transition: transform 0.6s, all var(--animation-normal) var(--smooth);
+  animation: fadeInUp var(--animation-slow) var(--bounce);
+  margin: 1rem auto;
 }
 
 .flashcard:hover {
@@ -995,10 +1003,106 @@ body {
 .font-large { font-size: var(--font-size-large) !important; }
 .font-extra-large { font-size: var(--font-size-extra-large) !important; }
 
-/* Responsive Card Sizes */
-.card-small .flashcard { width: var(--card-size-small); height: calc(var(--card-size-small) * 0.7); }
-.card-medium .flashcard { width: var(--card-size-medium); height: calc(var(--card-size-medium) * 0.7); }
-.card-large .flashcard { width: var(--card-size-large); height: calc(var(--card-size-large) * 0.7); }
+/* Responsive Card Sizes with Complete Scaling */
+
+/* Small Card Size */
+body.card-small .flashcard-container {
+  max-width: var(--card-size-small);
+}
+
+body.card-small .flashcard {
+  height: calc(var(--card-size-small) * 0.65);
+}
+
+body.card-small .flashcard-turkish {
+  font-size: 1.5rem !important;
+}
+
+body.card-small .flashcard-arabic {
+  font-size: 1.3rem !important;
+}
+
+body.card-small .flashcard-english {
+  font-size: 1rem !important;
+}
+
+body.card-small .flashcard-pronunciation {
+  font-size: 0.875rem !important;
+}
+
+body.card-small .example-turkish {
+  font-size: 0.875rem !important;
+}
+
+body.card-small .example-arabic {
+  font-size: 0.875rem !important;
+}
+
+/* Medium Card Size (Default) */
+body.card-medium .flashcard-container {
+  max-width: var(--card-size-medium);
+}
+
+body.card-medium .flashcard {
+  height: calc(var(--card-size-medium) * 0.65);
+}
+
+body.card-medium .flashcard-turkish {
+  font-size: 2rem !important;
+}
+
+body.card-medium .flashcard-arabic {
+  font-size: 1.8rem !important;
+}
+
+body.card-medium .flashcard-english {
+  font-size: 1.2rem !important;
+}
+
+body.card-medium .flashcard-pronunciation {
+  font-size: 1rem !important;
+}
+
+/* Large Card Size */
+body.card-large .flashcard-container {
+  max-width: var(--card-size-large);
+}
+
+body.card-large .flashcard {
+  height: calc(var(--card-size-large) * 0.65);
+}
+
+body.card-large .flashcard-turkish {
+  font-size: 2.5rem !important;
+}
+
+body.card-large .flashcard-arabic {
+  font-size: 2.2rem !important;
+}
+
+body.card-large .flashcard-english {
+  font-size: 1.5rem !important;
+}
+
+body.card-large .flashcard-pronunciation {
+  font-size: 1.25rem !important;
+}
+
+body.card-large .example-turkish {
+  font-size: 1.125rem !important;
+}
+
+body.card-large .example-arabic {
+  font-size: 1.125rem !important;
+}
+
+body.card-large .cultural-note {
+  font-size: 1rem !important;
+}
+
+body.card-large .regional-variations {
+  font-size: 1rem !important;
+}
 
 /* Success/Error Animations */
 .success-animation {
@@ -1053,7 +1157,7 @@ body {
   100% { transform: translateX(100%); }
 }
 
-/* Mobile Optimizations */
+/* Mobile Optimizations with Proper Card Sizing */
 @media (max-width: 768px) {
   .theme-toggle,
   .customization-toggle {
@@ -1071,9 +1175,38 @@ body {
     transform: translateX(-100vw);
   }
   
+  /* Mobile Card Sizing */
+  .flashcard-container {
+    max-width: min(var(--card-size-medium), 90vw) !important;
+  }
+  
   .flashcard {
-    width: min(var(--card-size-medium), 90vw);
-    height: calc(min(var(--card-size-medium), 90vw) * 0.7);
+    height: calc(min(var(--card-size-medium), 90vw) * 0.6) !important;
+  }
+  
+  body.card-small .flashcard-container {
+    max-width: min(var(--card-size-small), 90vw) !important;
+  }
+  
+  body.card-small .flashcard {
+    height: calc(min(var(--card-size-small), 90vw) * 0.6) !important;
+  }
+  
+  body.card-large .flashcard-container {
+    max-width: min(var(--card-size-large), 90vw) !important;
+  }
+  
+  body.card-large .flashcard {
+    height: calc(min(var(--card-size-large), 90vw) * 0.6) !important;
+  }
+  
+  /* Adjust font sizes for mobile */
+  body.card-large .flashcard-turkish {
+    font-size: 2rem !important;
+  }
+  
+  body.card-large .flashcard-arabic {
+    font-size: 1.8rem !important;
   }
 }
 
@@ -1126,4 +1259,62 @@ body {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(-10px);
+}
+/* Card Size Scaling for Enhanced Content Components */
+
+/* Small size scaling for enhanced content */
+body.card-small .cultural-note,
+body.card-small .multiple-examples,
+body.card-small .regional-variations {
+  padding: 1rem !important;
+  font-size: 0.85rem !important;
+}
+
+body.card-small .cultural-note h4,
+body.card-small .multiple-examples h4,
+body.card-small .regional-variations h4 {
+  font-size: 0.9rem !important;
+}
+
+/* Large size scaling for enhanced content */
+body.card-large .cultural-note,
+body.card-large .multiple-examples,
+body.card-large .regional-variations {
+  padding: 2rem !important;
+  font-size: 1.1rem !important;
+}
+
+body.card-large .cultural-note h4,
+body.card-large .multiple-examples h4,
+body.card-large .regional-variations h4 {
+  font-size: 1.2rem !important;
+}
+
+/* Phrase flashcard scaling */
+body.card-small .phrase-flashcard {
+  max-width: var(--card-size-small) !important;
+  min-height: calc(var(--card-size-small) * 0.65) !important;
+  padding: 1.5rem !important;
+}
+
+body.card-small .phrase-turkish {
+  font-size: 1.5rem !important;
+}
+
+body.card-small .phrase-arabic {
+  font-size: 1.3rem !important;
+}
+
+body.card-large .phrase-flashcard {
+  max-width: var(--card-size-large) !important;
+  min-height: calc(var(--card-size-large) * 0.65) !important;
+  padding: 2.5rem !important;
+}
+
+body.card-large .phrase-turkish {
+  font-size: 2.5rem !important;
+}
+
+body.card-large .phrase-arabic {
+  font-size: 2rem !important;
 }

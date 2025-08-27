@@ -412,6 +412,12 @@ class VisualUXSystem {
   applyCardSize() {
     document.body.className = document.body.className.replace(/card-\w+/g, '');
     document.body.classList.add(`card-${this.settings.cardSize}`);
+    
+    // Show notification when card size changes
+    const sizeNames = { small: 'Small', medium: 'Medium', large: 'Large' };
+    if (this.settings.cardSize !== 'medium') { // Don't show for initial medium size
+      this.showNotification(`📏 Card size: ${sizeNames[this.settings.cardSize]}`);
+    }
   }
 
   applyAnimationSettings() {
