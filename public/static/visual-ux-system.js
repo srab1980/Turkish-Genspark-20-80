@@ -69,9 +69,14 @@ class VisualUXSystem {
     const panel = document.createElement('div');
     panel.className = 'customization-panel';
     panel.innerHTML = `
-      <h3 style="color: var(--text-primary); margin-bottom: 2rem; text-align: center;">
-        <i class="fas fa-palette"></i> Customize Interface
-      </h3>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h3 style="color: var(--text-primary); margin: 0; flex: 1; text-align: center;">
+          <i class="fas fa-palette"></i> Customize Interface
+        </h3>
+        <button id="close-panel" style="background: var(--glass-bg-light); border: 1px solid var(--glass-border-light); border-radius: 50%; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary); font-size: 0.875rem;">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
       
       <div class="setting-group" style="margin-bottom: 1.5rem;">
         <label style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; display: block;">
@@ -175,6 +180,31 @@ class VisualUXSystem {
     // Reset button
     document.getElementById('reset-settings').addEventListener('click', () => {
       this.resetToDefaults();
+    });
+    
+    // Close panel button
+    document.getElementById('close-panel').addEventListener('click', () => {
+      this.toggleCustomizationPanel();
+    });
+    
+    // Close panel on outside click
+    document.addEventListener('click', (e) => {
+      const panel = document.querySelector('.customization-panel');
+      const toggle = document.querySelector('.customization-toggle');
+      if (panel && panel.classList.contains('open') && 
+          !panel.contains(e.target) && !toggle.contains(e.target)) {
+        this.toggleCustomizationPanel();
+      }
+    });
+    
+    // Close panel on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const panel = document.querySelector('.customization-panel');
+        if (panel && panel.classList.contains('open')) {
+          this.toggleCustomizationPanel();
+        }
+      }
     });
   }
 
