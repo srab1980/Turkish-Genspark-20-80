@@ -528,6 +528,9 @@ LearningSession.prototype = {
         const newXP = currentXP + xpGained;
         localStorage.setItem('userXP', newXP.toString());
         
+        // Track learning session for analytics
+        this.trackLearningSession();
+        
         // Update UI
         const xpElement = document.getElementById('user-xp');
         if (xpElement) {
@@ -538,6 +541,59 @@ LearningSession.prototype = {
         window.dispatchEvent(new CustomEvent('progressUpdated', { 
             detail: progress 
         }));
+    },
+    
+    // Track learning session for analytics
+    trackLearningSession: function() {
+        const today = new Date().toISOString().split('T')[0];
+        
+        // Update daily learning history
+        const learningHistory = JSON.parse(localStorage.getItem('learningHistory') || '{}');
+        learningHistory[today] = (learningHistory[today] || 0) + this.words.length;
+        localStorage.setItem('learningHistory', JSON.stringify(learningHistory));
+        
+        // Update session statistics
+        const totalSessions = parseInt(localStorage.getItem('totalSessions') || '0') + 1;
+        const totalAnswers = parseInt(localStorage.getItem('totalAnswers') || '0') + this.words.length;
+        const correctAnswers = parseInt(localStorage.getItem('correctAnswers') || '0') + this.correctAnswers;
+        
+        localStorage.setItem('totalSessions', totalSessions.toString());
+        localStorage.setItem('totalAnswers', totalAnswers.toString());
+        localStorage.setItem('correctAnswers', correctAnswers.toString());
+        
+        // Update current streak
+        const lastStudyDate = localStorage.getItem('lastStudyDate');
+        const currentStreak = parseInt(localStorage.getItem('currentStreak') || '0');
+        const bestStreak = parseInt(localStorage.getItem('bestStreak') || '0');
+        
+        if (lastStudyDate === today) {
+            // Already studied today, no streak change
+        } else {
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayStr = yesterday.toISOString().split('T')[0];
+            
+            if (lastStudyDate === yesterdayStr) {
+                // Continuing streak
+                const newStreak = currentStreak + 1;
+                localStorage.setItem('currentStreak', newStreak.toString());
+                if (newStreak > bestStreak) {
+                    localStorage.setItem('bestStreak', newStreak.toString());
+                }
+            } else {
+                // Starting new streak
+                localStorage.setItem('currentStreak', '1');
+            }
+        }
+        
+        localStorage.setItem('lastStudyDate', today);
+        
+        // Update session timing using existing startTime
+        const sessionDuration = Math.round((Date.now() - this.startTime) / 1000);
+        const totalTime = parseInt(localStorage.getItem('totalTime') || '0') + sessionDuration;
+        localStorage.setItem('totalTime', totalTime.toString());
+        
+        console.log('Analytics data updated for learning session');
     },
     
     completeSession: function() {

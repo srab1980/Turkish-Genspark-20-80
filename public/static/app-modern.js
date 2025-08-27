@@ -335,6 +335,12 @@ const TurkishLearningApp = {
         // Section-specific initialization
         if (sectionName === 'profile') {
             this.updateProfileSection();
+            // Update analytics dashboard when profile is opened
+            setTimeout(() => {
+                if (window.updateAnalytics) {
+                    window.updateAnalytics();
+                }
+            }, 300); // Small delay to ensure DOM is ready
         }
         
         console.log(`Switched to section: ${sectionName}`);

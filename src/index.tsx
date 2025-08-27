@@ -289,6 +289,8 @@ app.get('/', (c) => {
         <!-- External Libraries -->
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
         
         <!-- Custom Styles -->
         <link href="/static/styles-modern.css" rel="stylesheet">
@@ -692,6 +694,75 @@ app.get('/', (c) => {
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Advanced Analytics Dashboard -->
+                    <div class="analytics-dashboard">
+                        <h3 class="analytics-title">لوحة التحليلات المتقدمة</h3>
+                        
+                        <!-- Learning Heatmap -->
+                        <div class="analytics-section">
+                            <div class="analytics-card">
+                                <h4 class="analytics-card-title">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    خريطة النشاط اليومي
+                                </h4>
+                                <p class="analytics-card-subtitle">تصور نشاط التعلم اليومي على مدار السنة</p>
+                                <div class="heatmap-container" id="learning-heatmap">
+                                    <!-- Heatmap will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Performance Trends & Category Radar -->
+                        <div class="analytics-grid">
+                            <div class="analytics-card">
+                                <h4 class="analytics-card-title">
+                                    <i class="fas fa-chart-line"></i>
+                                    اتجاهات الأداء
+                                </h4>
+                                <p class="analytics-card-subtitle">تطور معدل الدقة عبر الزمن</p>
+                                <div class="chart-container">
+                                    <canvas id="performance-trend-chart"></canvas>
+                                </div>
+                            </div>
+                            
+                            <div class="analytics-card">
+                                <h4 class="analytics-card-title">
+                                    <i class="fas fa-spider"></i>
+                                    إتقان الفئات
+                                </h4>
+                                <p class="analytics-card-subtitle">مستوى الإتقان في جميع فئات المفردات</p>
+                                <div class="chart-container">
+                                    <canvas id="category-radar-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Learning Velocity & Recommendations -->
+                        <div class="analytics-grid">
+                            <div class="analytics-card">
+                                <h4 class="analytics-card-title">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    سرعة التعلم
+                                </h4>
+                                <p class="analytics-card-subtitle">عدد الكلمات المُتعلمة في كل جلسة</p>
+                                <div class="chart-container">
+                                    <canvas id="learning-velocity-chart"></canvas>
+                                </div>
+                            </div>
+                            
+                            <div class="analytics-card">
+                                <h4 class="analytics-card-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    توصيات ذكية
+                                </h4>
+                                <p class="analytics-card-subtitle">اقتراحات مخصصة لتحسين التعلم</p>
+                                <div class="recommendations-container" id="ai-recommendations">
+                                    <!-- AI recommendations will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -701,6 +772,7 @@ app.get('/', (c) => {
         <script src="/static/tts-service.js"></script>
         <script src="/static/review-system.js"></script>
         <script src="/static/learning-system.js"></script>
+        <script src="/static/analytics-dashboard.js"></script>
         <script src="/static/app-modern.js"></script>
     </body>
     </html>
