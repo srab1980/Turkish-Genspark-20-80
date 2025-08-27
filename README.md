@@ -18,11 +18,13 @@
 - ✅ **Dual Icon System**: Both scalable FontAwesome icons and colorful emojis for enhanced visual appeal
 
 ### 🔊 **NEW: Turkish Text-to-Speech (TTS) System**
-- ✅ **Automatic Pronunciation**: Words are automatically pronounced when flashcards appear
+- ✅ **Automatic Pronunciation**: Words AND example sentences are automatically pronounced when flashcards appear
+- ✅ **Sequential Audio**: Word pronunciation followed by example sentence with intelligent timing
 - ✅ **Interactive Audio Controls**: Click-to-play buttons for both words and example sentences
-- ✅ **Visual Audio Feedback**: Animated sound waves and button states during playback
+- ✅ **Visual Audio Feedback**: Properly positioned buttons with states during playback
 - ✅ **Multi-Language Support**: Optimized for Turkish pronunciation with fallback to available voices
 - ✅ **Customizable Settings**: Auto-play toggle and adjustable speech rate/pitch/volume
+- ✅ **Enhanced UI**: Fixed audio button positioning to prevent text overlap
 
 ## Current Features ✅
 
@@ -116,8 +118,10 @@ Back: 🤝 مرحبا | Hello
 
 ### 🔊 Audio Features Usage
 - **Word Pronunciation**: Automatic playback when flashcard appears + manual button
-- **Example Sentences**: Optional click-to-play for contextual usage
-- **Visual Feedback**: Animated sound waves and button states during audio
+- **Example Sentences**: **NEW: Automatic sequential playback** + manual click-to-play for contextual usage
+- **Sequential Learning**: Word → Example sentence with optimized timing and pacing
+- **Visual Feedback**: Properly positioned audio controls with state feedback during playback
+- **Improved UX**: Fixed button positioning to prevent text overlap and enhance readability
 - **Browser Compatibility**: Works with modern browsers supporting Web Speech API
 
 ## Development Setup
