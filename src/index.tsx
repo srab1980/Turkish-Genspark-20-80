@@ -348,6 +348,49 @@ app.get('/', (c) => {
                         <i class="fas fa-chart-line"></i>
                         التقدم
                     </button>
+                    
+                    <!-- Quick Category Access -->
+                    <div class="nav-dropdown">
+                        <button class="nav-link nav-dropdown-btn">
+                            <i class="fas fa-books"></i>
+                            الفئات
+                            <i class="fas fa-chevron-down nav-dropdown-arrow"></i>
+                        </button>
+                        <div class="nav-dropdown-menu">
+                            <button class="nav-dropdown-item" onclick="window.startQuickLearn('greetings')">
+                                <i class="fas fa-hand-wave"></i>
+                                👋 التحيات
+                            </button>
+                            <button class="nav-dropdown-item" onclick="window.startQuickLearn('travel')">
+                                <i class="fas fa-plane"></i>
+                                ✈️ السفر
+                            </button>
+                            <button class="nav-dropdown-item" onclick="window.startQuickLearn('food')">
+                                <i class="fas fa-utensils"></i>
+                                🍽️ الطعام
+                            </button>
+                            <button class="nav-dropdown-item" onclick="window.startQuickLearn('shopping')">
+                                <i class="fas fa-shopping-cart"></i>
+                                🛒 التسوق
+                            </button>
+                            <button class="nav-dropdown-item" onclick="window.startQuickLearn('directions')">
+                                <i class="fas fa-compass"></i>
+                                🧭 الاتجاهات
+                            </button>
+                            <button class="nav-dropdown-item" onclick="window.startQuickLearn('emergency')">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                🚨 الطوارئ
+                            </button>
+                            <button class="nav-dropdown-item" onclick="window.startQuickLearn('time')">
+                                <i class="fas fa-clock"></i>
+                                ⏰ الوقت
+                            </button>
+                            <button class="nav-dropdown-item" onclick="window.startQuickLearn('numbers')">
+                                <i class="fas fa-hashtag"></i>
+                                🔢 الأرقام
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 
                 <button class="mobile-menu-btn md:hidden">
@@ -372,6 +415,35 @@ app.get('/', (c) => {
                 <button class="mobile-nav-link" data-section="progress">
                     <i class="fas fa-chart-line"></i>
                     <span>التقدم</span>
+                </button>
+                
+                <!-- Mobile Category Quick Access -->
+                <div class="mobile-category-divider">
+                    <span>تعلم سريع</span>
+                </div>
+                <button class="mobile-nav-link mobile-category-link" onclick="window.startQuickLearn('greetings')">
+                    <span>👋 التحيات</span>
+                </button>
+                <button class="mobile-nav-link mobile-category-link" onclick="window.startQuickLearn('travel')">
+                    <span>✈️ السفر</span>
+                </button>
+                <button class="mobile-nav-link mobile-category-link" onclick="window.startQuickLearn('food')">
+                    <span>🍽️ الطعام</span>
+                </button>
+                <button class="mobile-nav-link mobile-category-link" onclick="window.startQuickLearn('shopping')">
+                    <span>🛒 التسوق</span>
+                </button>
+                <button class="mobile-nav-link mobile-category-link" onclick="window.startQuickLearn('directions')">
+                    <span>🧭 الاتجاهات</span>
+                </button>
+                <button class="mobile-nav-link mobile-category-link" onclick="window.startQuickLearn('emergency')">
+                    <span>🚨 الطوارئ</span>
+                </button>
+                <button class="mobile-nav-link mobile-category-link" onclick="window.startQuickLearn('time')">
+                    <span>⏰ الوقت</span>
+                </button>
+                <button class="mobile-nav-link mobile-category-link" onclick="window.startQuickLearn('numbers')">
+                    <span>🔢 الأرقام</span>
                 </button>
             </div>
         </nav>
@@ -400,9 +472,6 @@ app.get('/', (c) => {
                             <button class="btn-start-learning" onclick="window.showSection('learn')">
                                 ابدأ التعلم
                             </button>
-                            <select class="language-selector" style="margin-right: 1rem;">
-                                <option>التركية للعرب</option>
-                            </select>
                         </div>
                         
                         <div class="user-stats">

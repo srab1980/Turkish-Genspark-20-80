@@ -613,6 +613,42 @@ window.showSection = function(sectionName) {
     TurkishLearningApp.showSection(sectionName);
 };
 
+// Quick learn function for direct category access from navigation
+window.startQuickLearn = function(categoryId) {
+    console.log(`Quick learn requested for category: ${categoryId}`);
+    
+    // Force navigation to learn section first
+    TurkishLearningApp.showSection('learn');
+    
+    // Wait a moment for section to load, then start learning
+    setTimeout(() => {
+        // Set the category in the dropdown
+        const categorySelect = document.getElementById('category-select');
+        if (categorySelect) {
+            categorySelect.value = categoryId;
+            
+            // Enable the start button
+            const startBtn = document.getElementById('start-learning');
+            if (startBtn) {
+                startBtn.disabled = false;
+            }
+            
+            // Auto-start the learning session
+            TurkishLearningApp.startLearning();
+            
+            // Close mobile menu if open
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                const mobileMenuBtn = document.querySelector('.mobile-menu-btn i');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.className = 'fas fa-bars';
+                }
+            }
+        }
+    }, 300);
+};
+
 // Emergency navigation function - can be called anytime
 window.forceNavigateTo = function(sectionName) {
     console.log(`Force navigation to: ${sectionName}`);
