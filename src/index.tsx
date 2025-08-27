@@ -294,6 +294,7 @@ app.get('/', (c) => {
         
         <!-- Custom Styles -->
         <link href="/static/styles-modern.css" rel="stylesheet">
+        <link href="/static/visual-ux-enhancements.css" rel="stylesheet">
         
         <!-- PWA Meta Tags -->
         <meta name="theme-color" content="#2563EB">
@@ -830,6 +831,7 @@ app.get('/', (c) => {
         <script src="/static/learning-system.js"></script>
         <script src="/static/analytics-dashboard.js"></script>
         <script src="/static/gamification-system.js"></script>
+        <script src="/static/visual-ux-system.js"></script>
         <script src="/static/app-modern.js"></script>
     </body>
     </html>

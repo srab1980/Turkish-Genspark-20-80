@@ -503,7 +503,24 @@ LearningSession.prototype = {
         const progressFill = document.querySelector('.session-progress-fill');
         if (progressFill) {
             const progress = (this.currentIndex / this.words.length) * 100;
+            
+            // Enhanced animation with Visual UX system
+            if (window.visualUXSystem && window.visualUXSystem.settings.animationsEnabled) {
+                progressFill.style.transition = 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            }
+            
             progressFill.style.width = `${progress}%`;
+            
+            // Add pulse effect when progress updates
+            if (window.visualUXSystem && progress > 0) {
+                const progressBar = progressFill.parentElement;
+                if (progressBar) {
+                    progressBar.style.animation = 'pulse 0.3s ease';
+                    setTimeout(() => {
+                        progressBar.style.animation = '';
+                    }, 300);
+                }
+            }
         }
     },
     

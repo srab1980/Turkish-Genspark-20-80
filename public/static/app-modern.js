@@ -868,4 +868,87 @@ window.toggleTTSAutoPlay = function() {
 // Make app globally available for debugging
 window.TurkishLearningApp = TurkishLearningApp;
 
+// 🎨 Integrate with Visual UX System
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait for Visual UX system to initialize
+    setTimeout(() => {
+        if (window.refreshVisualUX) {
+            window.refreshVisualUX();
+        }
+        
+        // Enhance flashcards with new animations when they are created
+        const originalCreateFlashcard = TurkishLearningApp.createFlashcardElement;
+        if (originalCreateFlashcard) {
+            TurkishLearningApp.createFlashcardElement = function(word) {
+                const card = originalCreateFlashcard.call(this, word);
+                
+                // Add enhanced flip functionality
+                if (window.visualUXSystem && window.visualUXSystem.settings.animationsEnabled) {
+                    const cardInner = card.querySelector('.card-inner');
+                    if (cardInner) {
+                        // Remove old click listener and add new enhanced one
+                        card.removeEventListener('click', this.originalFlipHandler);
+                        card.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            if (window.visualUXSystem) {
+                                window.visualUXSystem.flipCard(card);
+                            } else {
+                                // Fallback to original behavior
+                                card.classList.toggle('is-flipped');
+                            }
+                        });
+                    }
+                }
+                
+                // Add swipe indicators
+                if (window.refreshVisualUX) {
+                    setTimeout(() => window.refreshVisualUX(), 100);
+                }
+                
+                return card;
+            };
+        }
+        
+        // Enhance category selection with loading skeletons
+        const originalSelectCategory = TurkishLearningApp.selectCategoryAndLearn;
+        if (originalSelectCategory) {
+            TurkishLearningApp.selectCategoryAndLearn = function(categoryId) {
+                // Show loading skeleton
+                if (window.visualUXSystem) {
+                    window.visualUXSystem.showLoadingSkeleton('flashcard-container', 'card');
+                }
+                
+                // Call original function
+                const result = originalSelectCategory.call(this, categoryId);
+                
+                // Hide loading skeleton after content loads
+                setTimeout(() => {
+                    if (window.visualUXSystem) {
+                        window.visualUXSystem.hideLoadingSkeleton('flashcard-container');
+                    }
+                }, 1000);
+                
+                return result;
+            };
+        }
+        
+        // Enhance progress updates with animations
+        const originalUpdateProgress = TurkishLearningApp.updateUserProgress;
+        if (originalUpdateProgress) {
+            TurkishLearningApp.updateUserProgress = function(progress) {
+                const result = originalUpdateProgress.call(this, progress);
+                
+                // Trigger visual feedback
+                if (window.visualUXSystem && progress.xp_earned > 0) {
+                    const message = `+${progress.xp_earned} XP earned! 🎉`;
+                    window.visualUXSystem.showNotification(message, 'success');
+                }
+                
+                return result;
+            };
+        }
+        
+    }, 500);
+});
+
 console.log('Turkish Learning App script loaded successfully!');
