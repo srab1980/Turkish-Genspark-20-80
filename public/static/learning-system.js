@@ -260,22 +260,21 @@ LearningSession.prototype = {
                     if (window.turkishTTS && currentWord) {
                         setTimeout(() => {
                             if (newState === 'flipped') {
-                                // Just flipped to back - play word + example
-                                console.log('Playing audio for flipped card (back side)');
-                                window.speakTurkishWord(currentWord.turkish).then(() => {
-                                    if (currentWord.example) {
-                                        setTimeout(() => {
-                                            window.speakTurkishSentence(currentWord.example).catch(err => {
-                                                console.log('Example pronunciation failed:', err);
-                                            });
-                                        }, 300);
-                                    }
-                                }).catch(err => {
-                                    console.log('Word pronunciation failed:', err);
-                                });
+                                // Just flipped to back - play example sentence only
+                                console.log('Playing sentence audio for flipped card (back side)');
+                                if (currentWord.example) {
+                                    window.speakTurkishSentence(currentWord.example).catch(err => {
+                                        console.log('Example pronunciation failed:', err);
+                                    });
+                                } else {
+                                    // Fallback to word if no example
+                                    window.speakTurkishWord(currentWord.turkish).catch(err => {
+                                        console.log('Word pronunciation failed:', err);
+                                    });
+                                }
                             } else {
                                 // Just flipped back to front - play word only
-                                console.log('Playing audio for front side');
+                                console.log('Playing word audio for front side');
                                 window.speakTurkishWord(currentWord.turkish).catch(err => {
                                     console.log('Word pronunciation failed:', err);
                                 });
