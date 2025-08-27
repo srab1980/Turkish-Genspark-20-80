@@ -377,6 +377,17 @@ app.get('/', (c) => {
         </nav>
 
         <!-- Main Content -->
+        <!-- Navigation Debug Panel (Hidden by default) -->
+        <div id="nav-debug" style="position: fixed; top: 80px; left: 10px; z-index: 1000; background: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 8px; font-size: 12px; display: none;">
+            <div style="margin-bottom: 8px; font-weight: bold;">Navigation Debug</div>
+            <button onclick="window.forceNavigateTo('dashboard')" style="margin: 2px; padding: 4px 8px; font-size: 11px;">Home</button>
+            <button onclick="window.forceNavigateTo('learn')" style="margin: 2px; padding: 4px 8px; font-size: 11px;">Learn</button>
+            <button onclick="window.forceNavigateTo('review')" style="margin: 2px; padding: 4px 8px; font-size: 11px;">Review</button>
+            <button onclick="window.forceNavigateTo('progress')" style="margin: 2px; padding: 4px 8px; font-size: 11px;">Progress</button>
+            <br>
+            <button onclick="document.getElementById('nav-debug').style.display='none'" style="margin-top: 5px; padding: 2px 6px; font-size: 10px;">Hide</button>
+        </div>
+
         <main class="main-container">
             <!-- Dashboard Section -->
             <section id="dashboard-section" class="content-section active">

@@ -18,16 +18,13 @@ const TurkishLearningApp = {
     
     // Setup all event listeners
     setupEventListeners() {
-        // Navigation events
-        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const section = link.getAttribute('data-section');
-                if (section) {
-                    this.showSection(section);
-                }
-            });
-        });
+        // Navigation events - Force refresh navigation bindings
+        this.bindNavigationEvents();
+        
+        // Re-bind navigation events periodically to handle dynamic content
+        setInterval(() => {
+            this.bindNavigationEvents();
+        }, 2000);
         
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -83,6 +80,49 @@ const TurkishLearningApp = {
         });
         
         console.log('Event listeners setup complete');
+    },
+    
+    // Dedicated navigation binding function
+    bindNavigationEvents() {
+        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+            // Remove existing listener if any
+            link.removeEventListener('click', this.navigationHandler);
+            
+            // Add fresh listener
+            link.addEventListener('click', this.navigationHandler.bind(this));
+        });
+    },
+    
+    // Navigation click handler
+    navigationHandler(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const section = e.currentTarget.getAttribute('data-section');
+        console.log('Navigation clicked:', section);
+        
+        if (section) {
+            // Force hide any active learning/review sessions
+            const learningContent = document.getElementById('learning-content');
+            const reviewContent = document.getElementById('review-content');
+            
+            if (learningContent) {
+                learningContent.classList.add('hidden');
+            }
+            if (reviewContent) {
+                reviewContent.classList.add('hidden');
+            }
+            
+            // Clear any active sessions
+            if (window.currentLearningSession) {
+                window.currentLearningSession = null;
+            }
+            if (window.currentReviewSession) {
+                window.currentReviewSession = null;
+            }
+            
+            this.showSection(section);
+        }
     },
     
     // Load data from API
@@ -235,6 +275,27 @@ const TurkishLearningApp = {
     
     // Show specific section
     showSection(sectionName) {
+        console.log(`Switching to section: ${sectionName}`);
+        
+        // Force hide all learning/review sessions first
+        const learningContent = document.getElementById('learning-content');
+        const reviewContent = document.getElementById('review-content');
+        
+        if (learningContent) {
+            learningContent.classList.add('hidden');
+        }
+        if (reviewContent) {
+            reviewContent.classList.add('hidden');
+        }
+        
+        // Clear any active sessions
+        if (window.currentLearningSession) {
+            window.currentLearningSession = null;
+        }
+        if (window.currentReviewSession) {
+            window.currentReviewSession = null;
+        }
+        
         // Hide all sections
         document.querySelectorAll('.content-section').forEach(section => {
             section.classList.remove('active');
@@ -244,6 +305,9 @@ const TurkishLearningApp = {
         const targetSection = document.getElementById(`${sectionName}-section`);
         if (targetSection) {
             targetSection.classList.add('active');
+            console.log(`Successfully activated section: ${sectionName}`);
+        } else {
+            console.error(`Section not found: ${sectionName}-section`);
         }
         
         // Update navigation
@@ -545,8 +609,59 @@ if (!document.querySelector('#progress-section-styles')) {
 
 // Make showSection globally available for other modules
 window.showSection = function(sectionName) {
+    console.log(`Global showSection called for: ${sectionName}`);
     TurkishLearningApp.showSection(sectionName);
 };
+
+// Emergency navigation function - can be called anytime
+window.forceNavigateTo = function(sectionName) {
+    console.log(`Force navigation to: ${sectionName}`);
+    
+    // Force clear all session states
+    const allSessions = document.querySelectorAll('.learning-session, .review-session');
+    allSessions.forEach(session => session.classList.add('hidden'));
+    
+    // Force clear content areas
+    const learningContent = document.getElementById('learning-content');
+    const reviewContent = document.getElementById('review-content');
+    
+    if (learningContent) learningContent.classList.add('hidden');
+    if (reviewContent) reviewContent.classList.add('hidden');
+    
+    // Clear session variables
+    window.currentLearningSession = null;
+    window.currentReviewSession = null;
+    
+    // Force navigation
+    TurkishLearningApp.showSection(sectionName);
+};
+
+// Add keyboard shortcuts for navigation
+document.addEventListener('keydown', (e) => {
+    // Only trigger shortcuts if not in an input field
+    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        if (e.ctrlKey && e.key === 'h') {
+            e.preventDefault();
+            window.forceNavigateTo('dashboard');
+        } else if (e.ctrlKey && e.key === 'l') {
+            e.preventDefault();
+            window.forceNavigateTo('learn');
+        } else if (e.ctrlKey && e.key === 'r') {
+            e.preventDefault();
+            window.forceNavigateTo('review');
+        } else if (e.ctrlKey && e.key === 'p') {
+            e.preventDefault();
+            window.forceNavigateTo('progress');
+        } else if (e.ctrlKey && e.key === 'd') {
+            // Show navigation debug panel
+            e.preventDefault();
+            const debugPanel = document.getElementById('nav-debug');
+            if (debugPanel) {
+                debugPanel.style.display = debugPanel.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+    }
+});
 
 // Make startReview globally available
 window.startReview = function(type = 'all') {

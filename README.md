@@ -126,6 +126,13 @@ Back: 🤝 مرحبا | Hello
 - **Interactive Feedback**: Hover animations, playing states, and responsive visual cues
 - **Browser Compatibility**: Works with modern browsers supporting Web Speech API
 
+### 🧭 Navigation Features
+- **Always Available**: Navigation works from any screen - learning sessions, review mode, or progress tracking
+- **Emergency Navigation**: Press `Ctrl+D` to open debug navigation panel if normal nav fails
+- **Keyboard Shortcuts**: Quick navigation via `Ctrl+H` (Home), `Ctrl+L` (Learn), `Ctrl+R` (Review), `Ctrl+P` (Progress)
+- **Session Management**: Automatically clears learning/review sessions when navigating between sections
+- **Mobile Responsive**: Full navigation support on mobile devices with hamburger menu
+
 ## Development Setup
 
 ### Local Development
@@ -155,6 +162,7 @@ npm run cf-typegen
 5. **Enhanced UX**: Visual/audio feedback, example separators, and styled displays
 6. **Improved accessibility**: Clear Arabic RTL formatting and audio controls
 7. **Consistent Audio UI**: Bottom-right positioned TTS controls with glass morphism styling
+8. **Enhanced Navigation**: Robust navigation system with emergency navigation and debugging features
 
 ### Code Quality & Architecture
 - **Event delegation pattern**: Robust handling of dynamic DOM elements
