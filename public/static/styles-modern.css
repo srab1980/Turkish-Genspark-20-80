@@ -2013,3 +2013,483 @@ body {
     height: 10px;
   }
 }
+
+/* Enhanced Gamification System */
+.gamification-section {
+  margin-top: 2rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.gamification-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--rosetta-blue), var(--accent-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Daily Challenges */
+.challenges-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.challenges-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.challenges-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-orange), var(--primary-yellow), var(--primary-green));
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+.challenges-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.challenges-card-title i {
+  color: var(--accent-orange);
+  font-size: 1.1rem;
+}
+
+.streak-multiplier {
+  background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  animation: pulse 2s infinite;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.daily-challenge {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--accent-orange);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.daily-challenge:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateX(-3px);
+}
+
+.daily-challenge.completed {
+  border-left-color: var(--primary-green);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.daily-challenge:last-child {
+  margin-bottom: 0;
+}
+
+.challenge-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.challenge-progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.challenge-progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.challenge-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-orange), var(--primary-yellow));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.challenge-progress-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.challenge-reward {
+  font-size: 0.85rem;
+  color: var(--accent-orange);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.challenge-status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.challenge-status.completed {
+  background: var(--primary-green);
+  color: white;
+}
+
+.challenge-status.pending {
+  background: var(--gray-300);
+  color: var(--gray-600);
+}
+
+/* Weekly Leaderboard */
+.weekly-leaderboard {
+  margin-top: 1rem;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.leaderboard-item:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.leaderboard-item.self {
+  background: rgba(74, 144, 226, 0.2);
+  border: 2px solid rgba(74, 144, 226, 0.3);
+  font-weight: 600;
+}
+
+.leaderboard-item:last-child {
+  margin-bottom: 0;
+}
+
+.rank {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  min-width: 3rem;
+  text-align: center;
+}
+
+.player-info {
+  flex: 1;
+}
+
+.player-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+.player-score {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+}
+
+.player-badge {
+  font-size: 1.5rem;
+}
+
+/* Achievement Chains */
+.achievement-chains {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--glass-shadow);
+}
+
+.achievement-chains-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.achievement-chains-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.achievement-chain {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.achievement-chain:hover {
+  border-color: var(--rosetta-blue);
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.chain-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.chain-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chain-step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border: 2px solid var(--gray-300);
+  background: var(--gray-100);
+  color: var(--gray-500);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.chain-step.completed {
+  background: var(--primary-green);
+  border-color: var(--primary-green);
+  color: white;
+}
+
+.chain-step.current {
+  background: var(--accent-orange);
+  border-color: var(--accent-orange);
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+.chain-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--gray-300);
+  position: relative;
+}
+
+.chain-connector.completed {
+  background: var(--primary-green);
+}
+
+.chain-description {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  line-height: 1.4;
+}
+
+/* Unlockable Themes */
+.themes-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--glass-shadow);
+}
+
+.themes-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.theme-card {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.theme-card.unlocked {
+  border-color: var(--primary-green);
+}
+
+.theme-card.active {
+  border-color: var(--rosetta-blue);
+  background: rgba(74, 144, 226, 0.1);
+}
+
+.theme-card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.theme-preview {
+  width: 100%;
+  height: 80px;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  position: relative;
+}
+
+.theme-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+}
+
+.theme-requirement {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-bottom: 1rem;
+}
+
+.theme-unlock-status {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+}
+
+.theme-unlock-status.unlocked {
+  background: var(--primary-green);
+  color: white;
+}
+
+.theme-unlock-status.locked {
+  background: var(--gray-400);
+  color: white;
+}
+
+/* Theme Previews */
+.theme-preview.default {
+  background: linear-gradient(135deg, var(--rosetta-blue), var(--rosetta-blue-light));
+  color: white;
+}
+
+.theme-preview.golden {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: white;
+}
+
+.theme-preview.emerald {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: white;
+}
+
+.theme-preview.sunset {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: white;
+}
+
+.theme-preview.royal {
+  background: linear-gradient(135deg, #9C27B0, #673AB7);
+  color: white;
+}
+
+/* Responsive Gamification */
+@media (max-width: 768px) {
+  .challenges-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievement-chains-grid {
+    gap: 1rem;
+  }
+  
+  .chain-progress {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .themes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .leaderboard-item {
+    padding: 0.75rem;
+  }
+}

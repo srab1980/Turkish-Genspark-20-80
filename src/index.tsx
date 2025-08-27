@@ -625,29 +625,85 @@ app.get('/', (c) => {
                         </div>
                     </div>
                     
-                    <!-- Achievements & Badges -->
-                    <div class="achievements-section">
-                        <h3 class="achievements-title">الإنجازات والأوسمة</h3>
-                        <div class="achievements-grid" id="achievements-grid">
-                            <div class="achievement-badge locked" data-achievement="first-word">
-                                <div class="badge-icon">🎯</div>
-                                <div class="badge-name">أول كلمة</div>
-                                <div class="badge-description">تعلم أول كلمة تركية</div>
+                    <!-- Enhanced Gamification System -->
+                    <div class="gamification-section">
+                        <h3 class="gamification-title">🎮 نظام المكافآت والتحديات</h3>
+                        
+                        <!-- Daily Challenges -->
+                        <div class="challenges-container">
+                            <div class="challenges-card">
+                                <h4 class="challenges-card-title">
+                                    <i class="fas fa-calendar-day"></i>
+                                    التحديات اليومية
+                                    <span class="streak-multiplier" id="streak-multiplier" style="display: none;">2x نقاط!</span>
+                                </h4>
+                                <div class="daily-challenges" id="daily-challenges">
+                                    <!-- Daily challenges will be generated here -->
+                                </div>
                             </div>
-                            <div class="achievement-badge locked" data-achievement="streak-7">
-                                <div class="badge-icon">🔥</div>
-                                <div class="badge-name">أسبوع كامل</div>
-                                <div class="badge-description">7 أيام متتالية من التعلم</div>
+                            
+                            <!-- Weekly Competition -->
+                            <div class="challenges-card">
+                                <h4 class="challenges-card-title">
+                                    <i class="fas fa-trophy"></i>
+                                    المنافسة الأسبوعية
+                                </h4>
+                                <div class="weekly-leaderboard" id="weekly-leaderboard">
+                                    <div class="leaderboard-item self">
+                                        <div class="rank">#<span id="user-rank">--</span></div>
+                                        <div class="player-info">
+                                            <div class="player-name">أنت</div>
+                                            <div class="player-score"><span id="user-weekly-score">0</span> نقطة</div>
+                                        </div>
+                                        <div class="player-badge">🎯</div>
+                                    </div>
+                                    <div class="leaderboard-others" id="leaderboard-others">
+                                        <!-- Other players will be generated here -->
+                                    </div>
+                                </div>
                             </div>
-                            <div class="achievement-badge locked" data-achievement="category-complete">
-                                <div class="badge-icon">⭐</div>
-                                <div class="badge-name">إكمال فئة</div>
-                                <div class="badge-description">إكمال فئة كاملة من المفردات</div>
+                        </div>
+                        
+                        <!-- Achievement Chains -->
+                        <div class="achievement-chains">
+                            <h4 class="achievement-chains-title">سلاسل الإنجازات</h4>
+                            <div class="achievement-chains-grid" id="achievement-chains">
+                                <!-- Achievement chains will be generated here -->
                             </div>
-                            <div class="achievement-badge locked" data-achievement="review-master">
-                                <div class="badge-icon">🏆</div>
-                                <div class="badge-name">خبير المراجعة</div>
-                                <div class="badge-description">مراجعة 50 كلمة بنجاح</div>
+                        </div>
+                        
+                        <!-- Unlockable Themes -->
+                        <div class="themes-section">
+                            <h4 class="themes-title">الثيمات المتاحة</h4>
+                            <div class="themes-grid" id="unlockable-themes">
+                                <!-- Unlockable themes will be generated here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Classic Achievements & Badges -->
+                        <div class="achievements-section">
+                            <h4 class="achievements-title">الإنجازات الأساسية</h4>
+                            <div class="achievements-grid" id="achievements-grid">
+                                <div class="achievement-badge locked" data-achievement="first-word">
+                                    <div class="badge-icon">🎯</div>
+                                    <div class="badge-name">أول كلمة</div>
+                                    <div class="badge-description">تعلم أول كلمة تركية</div>
+                                </div>
+                                <div class="achievement-badge locked" data-achievement="streak-7">
+                                    <div class="badge-icon">🔥</div>
+                                    <div class="badge-name">أسبوع كامل</div>
+                                    <div class="badge-description">7 أيام متتالية من التعلم</div>
+                                </div>
+                                <div class="achievement-badge locked" data-achievement="category-complete">
+                                    <div class="badge-icon">⭐</div>
+                                    <div class="badge-name">إكمال فئة</div>
+                                    <div class="badge-description">إكمال فئة كاملة من المفردات</div>
+                                </div>
+                                <div class="achievement-badge locked" data-achievement="review-master">
+                                    <div class="badge-icon">🏆</div>
+                                    <div class="badge-name">خبير المراجعة</div>
+                                    <div class="badge-description">مراجعة 50 كلمة بنجاح</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -773,6 +829,7 @@ app.get('/', (c) => {
         <script src="/static/review-system.js"></script>
         <script src="/static/learning-system.js"></script>
         <script src="/static/analytics-dashboard.js"></script>
+        <script src="/static/gamification-system.js"></script>
         <script src="/static/app-modern.js"></script>
     </body>
     </html>
