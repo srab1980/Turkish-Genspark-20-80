@@ -304,12 +304,24 @@ ReviewSession.prototype = {
         // Check if example sentences are available
         const hasExample = wordData.example && wordData.exampleArabic;
         
+        // Get icon (FontAwesome or emoji)
+        const icon = wordData.icon || 'fas fa-language';
+        const emoji = wordData.emoji || '📚';
+        
         return `
             <div class="flashcard-container" id="review-flashcard-container">
                 <div class="flashcard" id="review-flashcard">
                     <div class="flashcard-front">
+                        <div class="flashcard-icon-container">
+                            <div class="word-icon emoji">${emoji}</div>
+                        </div>
                         <div class="flashcard-turkish">${wordData.turkish}</div>
                         <div class="flashcard-pronunciation">[${wordData.pronunciation}]</div>
+                        <div class="tts-controls">
+                            <button class="tts-btn tts-word-btn" onclick="window.speakTurkishWord('${wordData.turkish.replace(/'/g, '\\\'')}')" title="استمع للكلمة">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
                         <div class="review-stats">
                             <small>مراجعات: ${this.words[this.currentIndex].totalReviews}</small>
                             <small>نسبة النجاح: ${this.getAccuracy(this.words[this.currentIndex])}%</small>
@@ -317,6 +329,9 @@ ReviewSession.prototype = {
                         <div class="flashcard-hint">اضغط لرؤية الترجمة</div>
                     </div>
                     <div class="flashcard-back">
+                        <div class="flashcard-icon-container">
+                            <i class="${icon} word-icon"></i>
+                        </div>
                         <div class="flashcard-arabic">${wordData.arabic}</div>
                         <div class="flashcard-english">${wordData.english}</div>
                         ${hasExample ? `
@@ -328,6 +343,11 @@ ReviewSession.prototype = {
                             </div>
                             <div class="flashcard-example-turkish">${wordData.example}</div>
                             <div class="flashcard-example-arabic">${wordData.exampleArabic}</div>
+                            <div class="tts-controls" style="justify-content: center; margin-top: 0.75rem;">
+                                <button class="tts-btn tts-sentence-btn" onclick="window.speakTurkishSentence('${wordData.example.replace(/'/g, '\\\'')}')" title="استمع للمثال">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
                         </div>
                         ` : ''}
                         <div class="review-difficulty">

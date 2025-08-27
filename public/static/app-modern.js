@@ -585,6 +585,46 @@ document.addEventListener('DOMContentLoaded', () => {
     TurkishLearningApp.init();
 });
 
+// Global function to update TTS status
+window.updateTTSStatus = function(isAvailable) {
+    const ttsButtons = document.querySelectorAll('.tts-btn');
+    ttsButtons.forEach(btn => {
+        if (isAvailable) {
+            btn.classList.remove('disabled');
+            btn.removeAttribute('disabled');
+        } else {
+            btn.classList.add('disabled');
+            btn.setAttribute('disabled', 'true');
+        }
+    });
+    
+    console.log('TTS Status updated:', isAvailable ? 'Available' : 'Not Available');
+};
+
+// Add TTS settings toggle (can be expanded later)
+window.toggleTTSAutoPlay = function() {
+    if (window.turkishTTS) {
+        const newAutoPlay = !window.turkishTTS.settings.autoPlay;
+        window.turkishTTS.updateSettings({ autoPlay: newAutoPlay });
+        
+        // Update UI feedback
+        const statusText = newAutoPlay ? 'تشغيل تلقائي مفعّل' : 'تشغيل تلقائي معطّل';
+        console.log('TTS AutoPlay:', statusText);
+        
+        // Show brief notification
+        const notification = document.createElement('div');
+        notification.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded-lg z-50';
+        notification.textContent = statusText;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 2000);
+    }
+};
+
 // Make app globally available for debugging
 window.TurkishLearningApp = TurkishLearningApp;
 

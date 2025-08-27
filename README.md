@@ -6,9 +6,23 @@
 - **Features**: Gamified learning, XP/achievements, spaced repetition, dual review systems, progressive milestone tracking
 
 ## URLs
-- **Local Development**: https://3000-i5yao6ez7ixiwe5pqec63.e2b.dev
+- **Live Demo**: https://3000-i9dw9ya4a039p35igzglz.e2b.dev
 - **API Base**: `/api/`
 - **GitHub Repository**: https://github.com/srab1980/Turkish-Genspark-20-80
+
+## 🎉 Latest Enhancements - Visual & Audio Features
+
+### 🎨 **NEW: Visual Learning Enhancement**
+- ✅ **Contextual Icons**: Every word now features meaningful FontAwesome icons and emojis
+- ✅ **Visual Mnemonics**: Icons help reinforce word meanings and improve memory retention
+- ✅ **Dual Icon System**: Both scalable FontAwesome icons and colorful emojis for enhanced visual appeal
+
+### 🔊 **NEW: Turkish Text-to-Speech (TTS) System**
+- ✅ **Automatic Pronunciation**: Words are automatically pronounced when flashcards appear
+- ✅ **Interactive Audio Controls**: Click-to-play buttons for both words and example sentences
+- ✅ **Visual Audio Feedback**: Animated sound waves and button states during playback
+- ✅ **Multi-Language Support**: Optimized for Turkish pronunciation with fallback to available voices
+- ✅ **Customizable Settings**: Auto-play toggle and adjustable speech rate/pitch/volume
 
 ## Current Features ✅
 
@@ -22,16 +36,16 @@
 
 ### Content & Data Architecture
 - **48 Turkish words** across 8 travel-focused vocabulary categories:
-  - التحيات (Greetings) - 6 words with examples
-  - السفر (Travel) - 6 words with examples  
-  - الطعام (Food) - 6 words with examples
-  - التسوق (Shopping) - 6 words with examples
-  - الاتجاهات (Directions) - 6 words with examples
-  - الطوارئ (Emergency) - 6 words with examples
-  - الوقت (Time) - 6 words with examples
-  - الأرقام (Numbers) - 6 words with examples
+  - 👋 التحيات (Greetings) - 6 words with examples & icons
+  - ✈️ السفر (Travel) - 6 words with examples & icons
+  - 🍽️ الطعام (Food) - 6 words with examples & icons
+  - 🛒 التسوق (Shopping) - 6 words with examples & icons
+  - 🧭 الاتجاهات (Directions) - 6 words with examples & icons
+  - 🚨 الطوارئ (Emergency) - 6 words with examples & icons
+  - ⏰ الوقت (Time) - 6 words with examples & icons
+  - 🔢 الأرقام (Numbers) - 6 words with examples & icons
 - **Data Storage**: LocalStorage-based progress tracking and review data persistence
-- **Example Format**: Each word includes Turkish example sentence with Arabic translation
+- **Enhanced Data Format**: Each word includes Turkish/Arabic/English text, pronunciation, contextual examples, FontAwesome icons, and colorful emojis
 
 ### Advanced Features
 - ✅ **Spaced repetition algorithm**: Modified SM-2 with dynamic intervals [1, 3, 7, 14, 30, 60, 120 days]
@@ -42,27 +56,32 @@
 
 ## Enhanced Flashcard Display
 
-### New Example Sentence Feature
-Each flashcard back now displays:
-1. **Word translation** (Arabic + English)
-2. **Contextual example** with visual separator
-3. **Turkish example sentence** in italics
-4. **Arabic translation** of example in green text
-5. **Usage guidance** for practical application
+### 🎨 Visual & Audio Learning Experience
+**Front of Card:**
+- 🎭 **Large emoji icon** representing the word meaning
+- 🔤 **Turkish word** in prominent display
+- 📝 **Pronunciation guide** in brackets
+- 🔊 **Audio controls** with auto-pronunciation
+- 🎨 **Visual sound waves** during playback
 
-Example display format:
+**Back of Card:**
+- ⚡ **FontAwesome icon** with visual effects
+- 🌍 **Arabic translation** (primary)
+- 🔤 **English translation** (secondary)
+- 💬 **Example section** with visual separator
+- 📖 **Turkish example sentence** with pronunciation button
+- 🌍 **Arabic translation** of example
+- 🎯 **Interactive TTS controls** for enhanced learning
+
+### Enhanced Example Display Format:
 ```
-Turkish Word: "Merhaba"
-[mer-ha-BA]
-
+Front: 👋 "Merhaba" [mer-ha-BA] 🔊
 → (flip) →
-
-مرحبا
-Hello
+Back: 🤝 مرحبا | Hello
 
 💬 مثال 💬
-Merhaba, nasılsınız?
-مرحبا، كيف حالك؟
+"Merhaba, nasılsınız?" 🔊
+"مرحبا، كيف حالك؟"
 ```
 
 ## Technical Architecture
@@ -82,11 +101,24 @@ Merhaba, nasılsınız?
 - `POST /api/user/progress` - Update user progress
 
 ## User Guide
+
+### 🎓 Enhanced Learning Experience
 1. **Start Learning**: Select category → Choose flashcard/quiz mode → Begin session
-2. **Flashcard Interaction**: Click to flip cards and see translations + examples
-3. **Difficulty Assessment**: Rate each word (صعب/متوسط/سهل) for spaced repetition
-4. **Review System**: Return later for scheduled reviews of challenging words
-5. **Progress Tracking**: Monitor XP, word count, and category completion
+2. **Visual Learning**: Observe meaningful icons and emojis that represent word meanings
+3. **Audio Learning**: 
+   - 🔊 **Auto-pronunciation**: Words play automatically when cards appear
+   - 🎵 **Manual playback**: Click audio buttons to replay words or examples
+   - 🎛️ **TTS Controls**: Interactive buttons with visual feedback during playback
+4. **Flashcard Interaction**: Click to flip cards and see translations + examples
+5. **Difficulty Assessment**: Rate each word (صعب/متوسط/سهل) for spaced repetition
+6. **Review System**: Return later for scheduled reviews of challenging words
+7. **Progress Tracking**: Monitor XP, word count, and category completion
+
+### 🔊 Audio Features Usage
+- **Word Pronunciation**: Automatic playback when flashcard appears + manual button
+- **Example Sentences**: Optional click-to-play for contextual usage
+- **Visual Feedback**: Animated sound waves and button states during audio
+- **Browser Compatibility**: Works with modern browsers supporting Web Speech API
 
 ## Development Setup
 
@@ -112,26 +144,43 @@ npm run cf-typegen
 ### Problem Resolution ✅
 1. **Fixed alternating flip issue**: Enhanced event delegation with transition protection
 2. **Added comprehensive examples**: 48 complete word entries with contextual usage
-3. **Improved UX**: Visual example separators and styled example displays
-4. **Enhanced accessibility**: Clear Arabic RTL formatting for examples
+3. **Implemented visual learning**: Contextual icons and emojis for all vocabulary words
+4. **Built TTS system**: Complete Turkish text-to-speech with Web Speech API
+5. **Enhanced UX**: Visual/audio feedback, example separators, and styled displays
+6. **Improved accessibility**: Clear Arabic RTL formatting and audio controls
 
-### Code Quality
+### Code Quality & Architecture
 - **Event delegation pattern**: Robust handling of dynamic DOM elements
-- **State management**: Clean flashcard state transitions
-- **CSS animations**: Smooth 3D flip effects with transition guards
-- **Error handling**: Graceful fallbacks for missing data
+- **TTS Service Architecture**: Modular, reusable Turkish speech synthesis system
+- **State management**: Clean flashcard state transitions with audio coordination
+- **CSS animations**: Smooth 3D flip effects with transition guards and audio indicators
+- **Error handling**: Graceful fallbacks for TTS unavailability and missing data
+- **Performance optimization**: Efficient icon rendering and audio resource management
 
 ## Next Development Steps
-1. **User authentication**: Add persistent user accounts
-2. **Audio pronunciation**: Integrate speech synthesis for Turkish words
+1. **User authentication**: Add persistent user accounts and cloud sync
+2. **Enhanced TTS**: Native Turkish voice selection and advanced phonetics
 3. **Achievement system**: Expand gamification with badges and milestones  
-4. **Offline support**: PWA features for offline learning
-5. **Advanced statistics**: Detailed learning analytics and insights
+4. **Offline support**: PWA features for offline learning with cached audio
+5. **Advanced statistics**: Detailed learning analytics and pronunciation accuracy
+6. **Visual enhancements**: Custom SVG illustrations and animated icons
+7. **Audio recording**: Voice comparison and pronunciation feedback
 
 ## Deployment
-- **Status**: ✅ Active Development
+- **Status**: ✅ **Enhanced with Visual & Audio Features**
 - **Platform**: Cloudflare Pages ready
 - **Environment**: Sandbox development server active
+- **Latest Version**: 2.0 - Visual Learning & TTS Integration
 - **Last Updated**: 2025-08-27
 
-The application successfully combines modern web technologies with pedagogical best practices to create an engaging Turkish learning experience for Arabic speakers, with particular emphasis on travel-related vocabulary and cultural context.
+## 🚀 Enhancement Summary
+
+The application now provides a **multi-sensory learning experience** combining:
+- 👀 **Visual learning** through contextual icons and emojis
+- 👂 **Auditory learning** through Turkish text-to-speech
+- ✋ **Interactive learning** through enhanced flashcard controls
+- 🧠 **Memory reinforcement** through visual mnemonics and audio repetition
+
+This creates an immersive, engaging Turkish learning experience for Arabic speakers, with particular emphasis on travel-related vocabulary, cultural context, and effective language acquisition through multiple learning modalities.
+
+**Perfect for travel preparation** - learners can now see, hear, and practice Turkish words with proper pronunciation and visual context before their journey to Turkey! 🇹🇷✈️
