@@ -331,7 +331,7 @@ app.get('/', (c) => {
                     <span class="nav-title">تعلم التركية</span>
                 </div>
                 
-                <div class="nav-links hidden md:flex">
+                <div class="nav-links flex">
                     <button class="nav-link active" data-section="dashboard">
                         <i class="fas fa-home"></i>
                         الرئيسية
@@ -387,7 +387,7 @@ app.get('/', (c) => {
                     </button>
                 </div>
                 
-                <button class="mobile-menu-btn md:hidden">
+                <button class="mobile-menu-btn hidden">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>

@@ -241,6 +241,8 @@ body {
 .nav-links {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-link {
@@ -248,7 +250,8 @@ body {
   border-radius: var(--border-radius);
   background: transparent;
   border: none;
-  color: var(--gray-700);
+  color: var(--gray-800);
+  font-weight: 500;
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
@@ -428,8 +431,12 @@ body {
 }
 
 @media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+  
   .mobile-menu-btn {
-    display: block;
+    display: block !important;
   }
 }
 
