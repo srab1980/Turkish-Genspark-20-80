@@ -333,8 +333,8 @@ const TurkishLearningApp = {
         this.currentSection = sectionName;
         
         // Section-specific initialization
-        if (sectionName === 'progress') {
-            this.updateProgressSection();
+        if (sectionName === 'profile') {
+            this.updateProfileSection();
         }
         
         console.log(`Switched to section: ${sectionName}`);
@@ -470,19 +470,79 @@ const TurkishLearningApp = {
     updateCategoryProgress() {
         this.populateCategories();
         
-        // Update progress section if visible
-        if (this.currentSection === 'progress') {
-            this.updateProgressSection();
+        // Update profile section if visible
+        if (this.currentSection === 'profile') {
+            this.updateProfileSection();
         }
     },
     
-    // Update progress section
-    updateProgressSection() {
+    // Update profile section
+    updateProfileSection() {
+        // Update profile stats
+        this.updateProfileStats();
+        this.updateAchievements();
+        this.updateCategoryProgressInProfile();
+        this.updateLearningStats();
+    },
+    
+    // Update profile statistics display
+    updateProfileStats() {
+        const totalXP = parseInt(localStorage.getItem('userXP') || '0');
+        const totalWordsLearned = this.getTotalWordsLearned();
+        const currentStreak = this.getCurrentStreak();
+        
+        // Update profile displays
+        const profileXP = document.getElementById('profile-xp-display');
+        const profileWords = document.getElementById('profile-words-display');
+        const profileStreak = document.getElementById('profile-streak-display');
+        const profileLevel = document.getElementById('profile-level');
+        
+        if (profileXP) profileXP.textContent = totalXP;
+        if (profileWords) profileWords.textContent = totalWordsLearned;
+        if (profileStreak) profileStreak.textContent = currentStreak;
+        
+        // Calculate level based on XP
+        const level = Math.floor(totalXP / 100) + 1;
+        if (profileLevel) profileLevel.textContent = `المستوى ${level}`;
+    },
+    
+    // Update achievements based on progress
+    updateAchievements() {
+        const totalWordsLearned = this.getTotalWordsLearned();
+        const currentStreak = this.getCurrentStreak();
+        const totalXP = parseInt(localStorage.getItem('userXP') || '0');
+        
+        // Check and unlock achievements
+        this.checkAchievement('first-word', totalWordsLearned >= 1);
+        this.checkAchievement('streak-7', currentStreak >= 7);
+        this.checkAchievement('category-complete', this.hasCompletedCategory());
+        this.checkAchievement('review-master', totalXP >= 500); // 50 reviews * 10 XP
+    },
+    
+    // Check and unlock specific achievement
+    checkAchievement(achievementId, condition) {
+        const badge = document.querySelector(`[data-achievement="${achievementId}"]`);
+        if (!badge) return;
+        
+        if (condition) {
+            badge.classList.remove('locked');
+            badge.classList.add('unlocked');
+        }
+    },
+    
+    // Check if user has completed any category
+    hasCompletedCategory() {
+        return this.categories.some(category => {
+            return this.getCategoryProgress(category.id) >= 100;
+        });
+    },
+    
+    // Update category progress in profile
+    updateCategoryProgressInProfile() {
         const categoryProgressContainer = document.getElementById('category-progress');
         if (!categoryProgressContainer) return;
         
         const progressHTML = `
-            <h3 class="text-xl font-semibold mb-4 text-gray-800">تقدم الفئات</h3>
             <div class="category-progress-grid">
                 ${this.categories.map(category => {
                     const progress = this.getCategoryProgress(category.id);
@@ -508,6 +568,29 @@ const TurkishLearningApp = {
         `;
         
         categoryProgressContainer.innerHTML = progressHTML;
+    },
+    
+    // Update learning statistics
+    updateLearningStats() {
+        const totalSessions = parseInt(localStorage.getItem('totalSessions') || '0');
+        const totalTime = parseInt(localStorage.getItem('totalTime') || '0');
+        const totalAnswers = parseInt(localStorage.getItem('totalAnswers') || '0');
+        const correctAnswers = parseInt(localStorage.getItem('correctAnswers') || '0');
+        const bestStreak = parseInt(localStorage.getItem('bestStreak') || '0');
+        
+        // Update stats display
+        const sessionsEl = document.getElementById('total-sessions');
+        const timeEl = document.getElementById('total-time');
+        const accuracyEl = document.getElementById('accuracy-rate');
+        const bestStreakEl = document.getElementById('best-streak');
+        
+        if (sessionsEl) sessionsEl.textContent = totalSessions;
+        if (timeEl) timeEl.textContent = `${Math.floor(totalTime / 60)}د`;
+        if (accuracyEl) {
+            const accuracy = totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) : 0;
+            accuracyEl.textContent = `${accuracy}%`;
+        }
+        if (bestStreakEl) bestStreakEl.textContent = bestStreak;
     },
     
     // Hide loading screen

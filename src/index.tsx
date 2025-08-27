@@ -336,61 +336,55 @@ app.get('/', (c) => {
                         <i class="fas fa-home"></i>
                         الرئيسية
                     </button>
-                    <button class="nav-link" data-section="learn">
-                        <i class="fas fa-graduation-cap"></i>
-                        تعلم
-                    </button>
-                    <button class="nav-link" data-section="review">
-                        <i class="fas fa-repeat"></i>
-                        مراجعة
-                    </button>
-                    <button class="nav-link" data-section="progress">
-                        <i class="fas fa-chart-line"></i>
-                        التقدم
-                    </button>
                     
-                    <!-- Quick Category Access -->
+                    <!-- Learning Dropdown Menu -->
                     <div class="nav-dropdown">
                         <button class="nav-link nav-dropdown-btn">
-                            <i class="fas fa-books"></i>
-                            الفئات
+                            <i class="fas fa-graduation-cap"></i>
+                            تعلم
                             <i class="fas fa-chevron-down nav-dropdown-arrow"></i>
                         </button>
                         <div class="nav-dropdown-menu">
+                            <button class="nav-dropdown-item" onclick="window.showSection('learn')">
+                                <i class="fas fa-play-circle"></i>
+                                بدء التعلم
+                            </button>
+                            <div class="nav-dropdown-divider"></div>
                             <button class="nav-dropdown-item" onclick="window.startQuickLearn('greetings')">
-                                <i class="fas fa-hand-wave"></i>
                                 👋 التحيات
                             </button>
                             <button class="nav-dropdown-item" onclick="window.startQuickLearn('travel')">
-                                <i class="fas fa-plane"></i>
                                 ✈️ السفر
                             </button>
                             <button class="nav-dropdown-item" onclick="window.startQuickLearn('food')">
-                                <i class="fas fa-utensils"></i>
                                 🍽️ الطعام
                             </button>
                             <button class="nav-dropdown-item" onclick="window.startQuickLearn('shopping')">
-                                <i class="fas fa-shopping-cart"></i>
                                 🛒 التسوق
                             </button>
                             <button class="nav-dropdown-item" onclick="window.startQuickLearn('directions')">
-                                <i class="fas fa-compass"></i>
                                 🧭 الاتجاهات
                             </button>
                             <button class="nav-dropdown-item" onclick="window.startQuickLearn('emergency')">
-                                <i class="fas fa-exclamation-triangle"></i>
                                 🚨 الطوارئ
                             </button>
                             <button class="nav-dropdown-item" onclick="window.startQuickLearn('time')">
-                                <i class="fas fa-clock"></i>
                                 ⏰ الوقت
                             </button>
                             <button class="nav-dropdown-item" onclick="window.startQuickLearn('numbers')">
-                                <i class="fas fa-hashtag"></i>
                                 🔢 الأرقام
                             </button>
                         </div>
                     </div>
+                    
+                    <button class="nav-link" data-section="review">
+                        <i class="fas fa-repeat"></i>
+                        مراجعة
+                    </button>
+                    <button class="nav-link" data-section="profile">
+                        <i class="fas fa-user-circle"></i>
+                        الملف الشخصي
+                    </button>
                 </div>
                 
                 <button class="mobile-menu-btn md:hidden">
@@ -412,14 +406,14 @@ app.get('/', (c) => {
                     <i class="fas fa-repeat"></i>
                     <span>مراجعة</span>
                 </button>
-                <button class="mobile-nav-link" data-section="progress">
-                    <i class="fas fa-chart-line"></i>
-                    <span>التقدم</span>
+                <button class="mobile-nav-link" data-section="profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>الملف الشخصي</span>
                 </button>
                 
                 <!-- Mobile Category Quick Access -->
                 <div class="mobile-category-divider">
-                    <span>تعلم سريع</span>
+                    <span>الفئات السريعة</span>
                 </div>
                 <button class="mobile-nav-link mobile-category-link" onclick="window.startQuickLearn('greetings')">
                     <span>👋 التحيات</span>
@@ -569,14 +563,45 @@ app.get('/', (c) => {
                 </div>
             </section>
 
-            <!-- Progress Section -->
-            <section id="progress-section" class="content-section">
+            <!-- Profile Section -->
+            <section id="profile-section" class="content-section">
                 <div class="section-header">
-                    <h2 class="section-title">تتبع التقدم</h2>
-                    <p class="section-subtitle">راقب تطورك في تعلم اللغة التركية</p>
+                    <h2 class="section-title">الملف الشخصي</h2>
+                    <p class="section-subtitle">تتبع تقدمك وإنجازاتك في تعلم اللغة التركية</p>
                 </div>
                 
-                <div class="progress-dashboard">
+                <div class="profile-dashboard">
+                    <!-- User Profile Card -->
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <div class="avatar-circle">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="profile-level">
+                                <span id="profile-level">المستوى 1</span>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-name">متعلم التركية</h3>
+                            <p class="profile-title">مبتدئ</p>
+                            <div class="profile-stats-mini">
+                                <div class="stat-mini">
+                                    <span id="profile-xp-display">0</span>
+                                    <label>نقطة خبرة</label>
+                                </div>
+                                <div class="stat-mini">
+                                    <span id="profile-words-display">0</span>
+                                    <label>كلمة مُتعلمة</label>
+                                </div>
+                                <div class="stat-mini">
+                                    <span id="profile-streak-display">0</span>
+                                    <label>يوم متتالي</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Overview -->
                     <div class="progress-overview">
                         <div class="progress-card">
                             <h3 class="progress-card-title">إجمالي التقدم</h3>
@@ -598,8 +623,74 @@ app.get('/', (c) => {
                         </div>
                     </div>
                     
-                    <div class="category-progress" id="category-progress">
-                        <!-- Category progress will be loaded here -->
+                    <!-- Achievements & Badges -->
+                    <div class="achievements-section">
+                        <h3 class="achievements-title">الإنجازات والأوسمة</h3>
+                        <div class="achievements-grid" id="achievements-grid">
+                            <div class="achievement-badge locked" data-achievement="first-word">
+                                <div class="badge-icon">🎯</div>
+                                <div class="badge-name">أول كلمة</div>
+                                <div class="badge-description">تعلم أول كلمة تركية</div>
+                            </div>
+                            <div class="achievement-badge locked" data-achievement="streak-7">
+                                <div class="badge-icon">🔥</div>
+                                <div class="badge-name">أسبوع كامل</div>
+                                <div class="badge-description">7 أيام متتالية من التعلم</div>
+                            </div>
+                            <div class="achievement-badge locked" data-achievement="category-complete">
+                                <div class="badge-icon">⭐</div>
+                                <div class="badge-name">إكمال فئة</div>
+                                <div class="badge-description">إكمال فئة كاملة من المفردات</div>
+                            </div>
+                            <div class="achievement-badge locked" data-achievement="review-master">
+                                <div class="badge-icon">🏆</div>
+                                <div class="badge-name">خبير المراجعة</div>
+                                <div class="badge-description">مراجعة 50 كلمة بنجاح</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Category Progress -->
+                    <div class="category-progress-section">
+                        <h3 class="category-progress-title">تقدم الفئات</h3>
+                        <div class="category-progress" id="category-progress">
+                            <!-- Category progress will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Learning Statistics -->
+                    <div class="learning-stats">
+                        <h3 class="stats-title">إحصائيات التعلم</h3>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">📊</div>
+                                <div class="stat-content">
+                                    <div class="stat-number" id="total-sessions">0</div>
+                                    <div class="stat-label">جلسات تعلم</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">⏱️</div>
+                                <div class="stat-content">
+                                    <div class="stat-number" id="total-time">0د</div>
+                                    <div class="stat-label">وقت التعلم</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">✅</div>
+                                <div class="stat-content">
+                                    <div class="stat-number" id="accuracy-rate">0%</div>
+                                    <div class="stat-label">معدل الدقة</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🎯</div>
+                                <div class="stat-content">
+                                    <div class="stat-number" id="best-streak">0</div>
+                                    <div class="stat-label">أفضل سلسلة</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

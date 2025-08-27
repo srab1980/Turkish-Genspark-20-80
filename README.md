@@ -95,6 +95,12 @@ Back: 🤝 مرحبا | Hello
 - **Icons**: FontAwesome 6.4.0
 - **Responsive**: Mobile-first design with Arabic RTL support
 
+## Navigation Structure
+- **الرئيسية** (Home): Dashboard with category overview and user statistics
+- **تعلم** (Learn): Learning section with dropdown for category selection and direct learning access
+- **مراجعة** (Review): Review system for spaced repetition and word reinforcement
+- **الملف الشخصي** (Profile): User profile with achievements, progress tracking, and detailed statistics
+
 ## API Endpoints
 - `GET /api/categories` - List all vocabulary categories with word counts
 - `GET /api/words/:category` - Get words for specific category (now includes examples)
@@ -126,15 +132,16 @@ Back: 🤝 مرحبا | Hello
 - **Interactive Feedback**: Hover animations, playing states, and responsive visual cues
 - **Browser Compatibility**: Works with modern browsers supporting Web Speech API
 
-### 🧭 Enhanced Navigation Features
-- **Always Available**: Navigation works from any screen - learning sessions, review mode, or progress tracking
-- **Quick Category Access**: Dropdown menu in navigation bar for instant access to any vocabulary category
-- **Direct Learning**: Click any category in navigation → automatically starts learning session
-- **Mobile Quick Menu**: Comprehensive mobile menu with all categories for one-tap access
+### 🧭 Native Navigation System
+- **Clean Structure**: الرئيسية - تعلم - مراجعة - الملف الشخصي (Home - Learn - Review - Profile)
+- **Learning Dropdown**: Hover over "تعلم" for instant category access with "بدء التعلم" option
+- **Smart Learning Menu**: Direct category selection → automatic learning session start
+- **Profile Section**: Comprehensive user profile with progress tracking, achievements, and statistics
+- **Mobile Optimized**: Full navigation functionality on mobile devices with category quick access
+- **Always Available**: Navigation works from any screen - learning sessions, review mode, or profile
 - **Emergency Navigation**: Press `Ctrl+D` to open debug navigation panel if normal nav fails
-- **Keyboard Shortcuts**: Quick navigation via `Ctrl+H` (Home), `Ctrl+L` (Learn), `Ctrl+R` (Review), `Ctrl+P` (Progress)
+- **Keyboard Shortcuts**: Quick navigation via `Ctrl+H` (Home), `Ctrl+L` (Learn), `Ctrl+R` (Review), `Ctrl+P` (Profile)
 - **Session Management**: Automatically clears learning/review sessions when navigating between sections
-- **Clean Interface**: Removed unnecessary language selector for streamlined experience
 
 ## Development Setup
 
@@ -167,6 +174,7 @@ npm run cf-typegen
 7. **Consistent Audio UI**: Bottom-right positioned TTS controls with glass morphism styling
 8. **Enhanced Navigation**: Robust navigation system with emergency navigation and debugging features
 9. **Quick Category Access**: Navigation dropdown menu for instant vocabulary category selection
+10. **Profile Section**: Comprehensive user profile with achievements, progress tracking, and learning statistics
 
 ### Code Quality & Architecture
 - **Event delegation pattern**: Robust handling of dynamic DOM elements
