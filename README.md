@@ -8,7 +8,7 @@
 ## URLs
 - **Local Development**: https://3000-i5yao6ez7ixiwe5pqec63.e2b.dev
 - **API Base**: `/api/`
-- **GitHub**: Repository integration ready
+- **GitHub Repository**: https://github.com/srab1980/Turkish-Genspark-20-80
 
 ## Current Features ✅
 
