@@ -10,7 +10,7 @@ app.use('/api/*', cors())
 // Serve static files from public directory
 app.use('/static/*', serveStatic({ root: './public' }))
 
-// Turkish vocabulary data - 48 words across 8 travel-focused categories
+// Enhanced Turkish learning data - Extended vocabulary with conversation practice
 const vocabulary = {
   greetings: [
     { id: 1, turkish: "Merhaba", arabic: "مرحبا", english: "Hello", pronunciation: "mer-ha-BA", 
@@ -330,6 +330,156 @@ app.get('/api/phrases', (c) => {
   return c.json({ categories });
 });
 
+// Get conversation practice dialogues
+app.get('/api/conversations/:type', (c) => {
+  const type = c.req.param('type');
+  
+  const conversations = {
+    hotel: {
+      title: "Hotel Check-in",
+      titleArabic: "تسجيل الدخول في الفندق",
+      difficulty: "intermediate",
+      participants: ["Guest", "Receptionist"],
+      dialogue: [
+        {
+          speaker: "Guest",
+          turkish: "Merhaba, rezervasyonum var.",
+          arabic: "مرحباً، لدي حجز.",
+          english: "Hello, I have a reservation.",
+          pronunciation: "mer-ha-BA, re-zer-vas-yo-NUM var"
+        },
+        {
+          speaker: "Receptionist", 
+          turkish: "Tabii efendim, adınız nedir?",
+          arabic: "بالطبع سيدي، ما اسمك؟",
+          english: "Of course sir, what is your name?",
+          pronunciation: "ta-BII e-fen-DIM, a-dı-NıZ ne-DIR"
+        },
+        {
+          speaker: "Guest",
+          turkish: "Benim adım Ahmed Hassan.",
+          arabic: "اسمي أحمد حسن.",
+          english: "My name is Ahmed Hassan.",
+          pronunciation: "be-NIM a-DıM ah-MED has-SAN"
+        }
+      ],
+      keyPhrases: [
+        { turkish: "Rezervasyonum var", arabic: "لدي حجز", english: "I have a reservation" },
+        { turkish: "Adınız nedir?", arabic: "ما اسمك؟", english: "What is your name?" },
+        { turkish: "Oda anahtarı", arabic: "مفتاح الغرفة", english: "Room key" }
+      ]
+    },
+    restaurant: {
+      title: "Ordering Food",
+      titleArabic: "طلب الطعام", 
+      difficulty: "beginner",
+      participants: ["Customer", "Waiter"],
+      dialogue: [
+        {
+          speaker: "Waiter",
+          turkish: "Hoş geldiniz! Ne istiyorsunuz?",
+          arabic: "أهلاً وسهلاً! ماذا تريدون؟",
+          english: "Welcome! What would you like?",
+          pronunciation: "HOSH gel-di-NIZ! ne is-ti-yor-su-NUZ"
+        },
+        {
+          speaker: "Customer",
+          turkish: "Menüyü görebilir miyim?",
+          arabic: "هل يمكنني رؤية القائمة؟",
+          english: "Can I see the menu?",
+          pronunciation: "me-NÜ-yü gö-re-bi-LIR mi-YIM"
+        }
+      ]
+    },
+    taxi: {
+      title: "Taking a Taxi",
+      titleArabic: "ركوب التاكسي",
+      difficulty: "beginner", 
+      participants: ["Passenger", "Driver"],
+      dialogue: [
+        {
+          speaker: "Passenger",
+          turkish: "Havaalanına gitmek istiyorum.",
+          arabic: "أريد الذهاب إلى المطار.",
+          english: "I want to go to the airport.",
+          pronunciation: "ha-va-a-la-Nı-NA git-MEK is-ti-yo-RUM"
+        },
+        {
+          speaker: "Driver",
+          turkish: "Tabii, ne kadar sürer?",
+          arabic: "بالطبع، كم يستغرق؟",
+          english: "Sure, how long does it take?",
+          pronunciation: "ta-BII, ne ka-DAR sü-RER"
+        }
+      ]
+    }
+  };
+  
+  const conversation = conversations[type];
+  if (!conversation) {
+    return c.json({ error: "Conversation type not found" }, 404);
+  }
+  
+  return c.json(conversation);
+});
+
+// Get all conversation types
+app.get('/api/conversations', (c) => {
+  const types = [
+    { id: 'hotel', name: 'Hotel Check-in', nameArabic: 'تسجيل الدخول في الفندق', difficulty: 'intermediate' },
+    { id: 'restaurant', name: 'Ordering Food', nameArabic: 'طلب الطعام', difficulty: 'beginner' },
+    { id: 'taxi', name: 'Taking a Taxi', nameArabic: 'ركوب التاكسي', difficulty: 'beginner' },
+    { id: 'shopping', name: 'Shopping', nameArabic: 'التسوق', difficulty: 'intermediate' },
+    { id: 'directions', name: 'Asking for Directions', nameArabic: 'السؤال عن الاتجاهات', difficulty: 'intermediate' }
+  ];
+  
+  return c.json({ conversations: types });
+});
+
+// Daily Turkish tip endpoint
+app.get('/api/daily-tip', (c) => {
+  const tips = [
+    {
+      id: 1,
+      category: "pronunciation",
+      turkish: "Türkçede 'ğ' harfi sessizdir ve öncesindeki sesliyi uzatır.",
+      arabic: "في التركية، حرف 'ğ' صامت ويطيل الحرف المتحرك الذي يسبقه.",
+      english: "In Turkish, the letter 'ğ' is silent and lengthens the preceding vowel.",
+      example: "dağ (mountain) - pronounced like 'da:'"
+    },
+    {
+      id: 2,
+      category: "grammar",
+      turkish: "Türkçede fiiller cümlenin sonunda gelir.",
+      arabic: "في التركية، الأفعال تأتي في نهاية الجملة.",
+      english: "In Turkish, verbs come at the end of the sentence.",
+      example: "Ben okula gidiyorum (I am going to school)"
+    },
+    {
+      id: 3,
+      category: "culture",
+      turkish: "Türkiye'de çay kültürü çok önemlidir. Misafirlere her zaman çay ikram edilir.",
+      arabic: "في تركيا، ثقافة الشاي مهمة جداً. يُقدم الشاي دائماً للضيوف.",
+      english: "In Turkey, tea culture is very important. Tea is always offered to guests.",
+      example: "Çay içer misiniz? (Would you like some tea?)"
+    },
+    {
+      id: 4,
+      category: "vocabulary",
+      turkish: "Birçok Türkçe kelime Arapça kökenlidir.",
+      arabic: "العديد من الكلمات التركية لها أصول عربية.",
+      english: "Many Turkish words have Arabic origins.",
+      example: "kitap (book) from Arabic 'kitāb'"
+    }
+  ];
+  
+  const today = new Date();
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+  const tipIndex = dayOfYear % tips.length;
+  
+  return c.json({ tip: tips[tipIndex], date: today.toISOString().split('T')[0] });
+});
+
 // Get enhanced word with cultural context and examples
 app.get('/api/enhanced-word/:id', (c) => {
   const wordId = parseInt(c.req.param('id'));
@@ -444,6 +594,9 @@ app.get('/', (c) => {
         <link href="/static/styles-modern.css" rel="stylesheet">
         <link href="/static/visual-ux-enhancements.css" rel="stylesheet">
         <link href="/static/enhanced-content-styles.css" rel="stylesheet">
+        <link href="/static/flashcard-mode.css" rel="stylesheet">
+        <link href="/static/quiz-mode.css" rel="stylesheet">
+        <link href="/static/enhanced-learning-interface.css" rel="stylesheet">
         
         <!-- PWA Meta Tags -->
         <meta name="theme-color" content="#2563EB">
@@ -533,6 +686,10 @@ app.get('/', (c) => {
                         <i class="fas fa-repeat"></i>
                         مراجعة
                     </button>
+                    <button class="nav-link" data-section="conversation">
+                        <i class="fas fa-comments"></i>
+                        محادثة
+                    </button>
                     <button class="nav-link" data-section="profile">
                         <i class="fas fa-user-circle"></i>
                         الملف الشخصي
@@ -557,6 +714,10 @@ app.get('/', (c) => {
                 <button class="mobile-nav-link" data-section="review">
                     <i class="fas fa-repeat"></i>
                     <span>مراجعة</span>
+                </button>
+                <button class="mobile-nav-link" data-section="conversation">
+                    <i class="fas fa-comments"></i>
+                    <span>محادثة</span>
                 </button>
                 <button class="mobile-nav-link" data-section="profile">
                     <i class="fas fa-user-circle"></i>
@@ -665,14 +826,44 @@ app.get('/', (c) => {
                 
                 <div id="learning-interface">
                     <div class="learning-controls">
-                        <select id="category-select" class="control-select">
-                            <option value="">اختر فئة...</option>
-                        </select>
-                        <select id="learning-mode" class="control-select">
-                            <option value="flashcard">بطاقات تعليمية</option>
-                            <option value="quiz">اختبار</option>
-                        </select>
-                        <button id="start-learning" class="btn-primary" disabled>ابدأ التعلم</button>
+                        <div class="controls-header">
+                            <h3>إعدادات التعلم</h3>
+                            <p class="controls-subtitle">اختر فئة ونمط التعلم المفضل لديك</p>
+                        </div>
+                        
+                        <div class="controls-grid">
+                            <div class="control-group">
+                                <label for="category-select" class="control-label">
+                                    <i class="fas fa-folder-open"></i>
+                                    الفئة
+                                </label>
+                                <select id="category-select" class="control-select">
+                                    <option value="">اختر فئة للتعلم...</option>
+                                </select>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label for="learning-mode" class="control-label">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    نمط التعلم
+                                </label>
+                                <select id="learning-mode" class="control-select">
+                                    <option value="flashcard">📱 بطاقات تعليمية - تعلم الكلمات التفاعلية مع الأصوات والأمثلة</option>
+                                    <option value="quiz">🎯 اختبار تفاعلي - اختبر معرفتك بالكلمات مع خيارات متعددة</option>
+                                </select>
+                                <div class="mode-info-tooltip">
+                                    اختر نمط التعلم المناسب لك - البطاقات للتعلم أو الاختبار لقياس التقدم
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="start-button-container">
+                            <button id="start-learning" class="btn-primary btn-enhanced" disabled>
+                                <i class="fas fa-play"></i>
+                                ابدأ جلسة التعلم
+                            </button>
+                            <p class="start-help-text">اختر فئة ونمط التعلم لبدء الجلسة</p>
+                        </div>
                     </div>
                     
                     <div id="learning-content" class="learning-session hidden">
@@ -711,6 +902,78 @@ app.get('/', (c) => {
                     
                     <div id="review-content" class="review-session hidden">
                         <!-- Review content will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conversation Practice Section -->
+            <section id="conversation-section" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">ممارسة المحادثة</h2>
+                    <p class="section-subtitle">تعلم المحادثات التركية الشائعة في المواقف اليومية</p>
+                    
+                    <!-- Daily Turkish Tip -->
+                    <div class="daily-tip-card" id="daily-tip-card">
+                        <div class="daily-tip-header">
+                            <i class="fas fa-lightbulb"></i>
+                            <span class="daily-tip-title">نصيحة اليوم</span>
+                            <span class="daily-tip-date" id="daily-tip-date"></span>
+                        </div>
+                        <div class="daily-tip-content" id="daily-tip-content">
+                            <!-- Daily tip will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="conversation-interface">
+                    <!-- Conversation Selection -->
+                    <div class="conversation-selection">
+                        <h3 class="conversation-selection-title">اختر موقف المحادثة</h3>
+                        <div class="conversation-grid" id="conversation-types">
+                            <!-- Conversation types will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Active Conversation -->
+                    <div id="conversation-practice" class="conversation-practice hidden">
+                        <div class="conversation-header">
+                            <div class="conversation-info">
+                                <h3 class="conversation-title" id="conversation-title"></h3>
+                                <div class="conversation-meta">
+                                    <span class="difficulty-badge" id="conversation-difficulty"></span>
+                                    <span class="participants-info" id="conversation-participants"></span>
+                                </div>
+                            </div>
+                            <button class="btn-back" onclick="window.showConversationSelection()">
+                                <i class="fas fa-arrow-right"></i>
+                                عودة
+                            </button>
+                        </div>
+                        
+                        <!-- Dialogue Display -->
+                        <div class="dialogue-container" id="dialogue-container">
+                            <!-- Dialogue will be displayed here -->
+                        </div>
+                        
+                        <!-- Key Phrases -->
+                        <div class="key-phrases-section" id="key-phrases-section">
+                            <h4 class="key-phrases-title">العبارات المهمة</h4>
+                            <div class="key-phrases-grid" id="key-phrases-grid">
+                                <!-- Key phrases will be displayed here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Practice Controls -->
+                        <div class="practice-controls">
+                            <button class="btn-practice" id="btn-practice-dialogue">
+                                <i class="fas fa-microphone"></i>
+                                تدرب على المحادثة
+                            </button>
+                            <button class="btn-practice" id="btn-listen-dialogue">
+                                <i class="fas fa-volume-up"></i>
+                                استمع للمحادثة كاملة
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -977,12 +1240,33 @@ app.get('/', (c) => {
         <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
         <script src="/static/tts-service.js"></script>
         <script src="/static/review-system.js"></script>
+        <!-- Legacy Learning Systems (for compatibility) -->
         <script src="/static/learning-system.js"></script>
+        <script src="/static/conversation-system.js"></script>
         <script src="/static/analytics-dashboard.js"></script>
         <script src="/static/gamification-system.js"></script>
         <script src="/static/visual-ux-system.js"></script>
         <script src="/static/enhanced-content-system.js"></script>
+        
+        <!-- New Modular Learning System -->
+        <script src="/static/word-svg-icons.js"></script>
+        <script src="/static/learning-mode-base.js"></script>
+        <script src="/static/learning-mode-manager.js"></script>
+        
+        <!-- Learning Mode Containers -->
+        <script src="/static/modes/flashcard-mode.js"></script>
+        <script src="/static/modes/quiz-mode.js"></script>
+        <script src="/static/modes/review-mode.js"></script>
+        <script src="/static/modes/conversation-mode.js"></script>
+        <script src="/static/modes/phrase-mode.js"></script>
+        
+        <!-- Integration Layer -->
+        <script src="/static/modular-integration.js"></script>
+        
+        <!-- Main App (must be last) -->
         <script src="/static/app-modern.js"></script>
+        
+
     </body>
     </html>
   `)

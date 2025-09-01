@@ -27,9 +27,9 @@
   --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   
   /* Card Sizes */
-  --card-size-small: 280px;
-  --card-size-medium: 320px;
-  --card-size-large: 380px;
+  --card-size-small: 450px;
+  --card-size-medium: 550px;
+  --card-size-large: 550px;
   
   /* Font Sizes */
   --font-size-small: 0.875rem;
@@ -732,7 +732,7 @@ body {
 .flashcard {
   position: relative;
   width: 100%;
-  height: calc(var(--card-size-medium) * 0.65);
+  height: calc(var(--card-size-medium) * 0.85);
   transform-style: preserve-3d;
   transition: transform 0.6s, all var(--animation-normal) var(--smooth);
   animation: fadeInUp var(--animation-slow) var(--bounce);
@@ -1011,7 +1011,7 @@ body.card-small .flashcard-container {
 }
 
 body.card-small .flashcard {
-  height: calc(var(--card-size-small) * 0.65);
+  height: calc(var(--card-size-small) * 0.85);
 }
 
 body.card-small .flashcard-turkish {
@@ -1069,7 +1069,7 @@ body.card-large .flashcard-container {
 }
 
 body.card-large .flashcard {
-  height: calc(var(--card-size-large) * 0.65);
+  height: calc(var(--card-size-large) * 0.85);
 }
 
 body.card-large .flashcard-turkish {
@@ -1181,7 +1181,7 @@ body.card-large .regional-variations {
   }
   
   .flashcard {
-    height: calc(min(var(--card-size-medium), 90vw) * 0.6) !important;
+    height: 500px !important;
   }
   
   body.card-small .flashcard-container {
@@ -1189,7 +1189,7 @@ body.card-large .regional-variations {
   }
   
   body.card-small .flashcard {
-    height: calc(min(var(--card-size-small), 90vw) * 0.6) !important;
+    height: 500px !important;
   }
   
   body.card-large .flashcard-container {
@@ -1197,7 +1197,7 @@ body.card-large .regional-variations {
   }
   
   body.card-large .flashcard {
-    height: calc(min(var(--card-size-large), 90vw) * 0.6) !important;
+    height: 500px !important;
   }
   
   /* Adjust font sizes for mobile */
@@ -1293,7 +1293,7 @@ body.card-large .regional-variations h4 {
 /* Phrase flashcard scaling */
 body.card-small .phrase-flashcard {
   max-width: var(--card-size-small) !important;
-  min-height: calc(var(--card-size-small) * 0.65) !important;
+  min-height: calc(var(--card-size-small) * 0.85) !important;
   padding: 1.5rem !important;
 }
 
@@ -1307,7 +1307,7 @@ body.card-small .phrase-arabic {
 
 body.card-large .phrase-flashcard {
   max-width: var(--card-size-large) !important;
-  min-height: calc(var(--card-size-large) * 0.65) !important;
+  min-height: calc(var(--card-size-large) * 0.85) !important;
   padding: 2.5rem !important;
 }
 

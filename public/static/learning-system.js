@@ -40,10 +40,6 @@ LearningSession.prototype = {
         
         container.innerHTML = `
             <div class="session-progress">
-                <div class="session-info">
-                    <span>الكلمة ${this.currentIndex + 1} من ${this.words.length}</span>
-                    <span>الفئة: ${this.getCategoryName()}</span>
-                </div>
                 <div class="session-progress-bar">
                     <div class="session-progress-fill" style="width: ${(this.currentIndex / this.words.length) * 100}%"></div>
                 </div>
@@ -100,30 +96,40 @@ LearningSession.prototype = {
                                 <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
-                        <div class="flashcard-hint">اضغط لرؤية الترجمة</div>
+                        <div class="flashcard-hint">اضغط لرؤية الترجمة والأمثلة</div>
                     </div>
                     <div class="flashcard-back">
-                        <div class="flashcard-icon-container">
-                            <i class="${icon} word-icon"></i>
+                        <div class="flashcard-back-header">
+                            <div class="flashcard-icon-container-small">
+                                ${currentWord.icon ? 
+                                    `<i class="word-meaning-icon ${currentWord.icon}"></i>` : 
+                                    `<div class="word-icon emoji">${emoji}</div>`
+                                }
+                            </div>
+                            <div class="flashcard-arabic-main">${currentWord.arabic}</div>
                         </div>
-                        <div class="flashcard-arabic">${currentWord.arabic}</div>
-                        <div class="flashcard-english">${currentWord.english}</div>
+                        
                         ${hasExample ? `
-                        <div class="flashcard-examples">
-                            <div class="example-divider">
-                                <i class="fas fa-quote-left"></i>
-                                <span>مثال</span>
-                                <i class="fas fa-quote-right"></i>
+                            <div class="flashcard-example-elevated">
+                                <div class="turkish-example-elevated">
+                                    <div class="example-text-elevated">${currentWord.example}</div>
+                                    <button class="tts-btn tts-example-elevated" onclick="window.speakTurkishSentence('${currentWord.example.replace(/'/g, '\\\'')}')" title="استمع للمثال">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="arabic-translation-elevated">
+                                    <div class="example-arabic-elevated">${currentWord.exampleArabic}</div>
+                                </div>
                             </div>
-                            <div class="flashcard-example-turkish">${currentWord.example}</div>
-                            <div class="flashcard-example-arabic">${currentWord.exampleArabic}</div>
-                            <div class="tts-controls" style="justify-content: center; margin: 0.5rem 0 0.25rem 0;">
-                                <button class="tts-btn tts-sentence-btn" onclick="window.speakTurkishSentence('${currentWord.example.replace(/'/g, '\\\'')}')" title="استمع للمثال">
-                                    <i class="fas fa-play"></i>
-                                </button>
+                        ` : `
+                            <div class="no-example-message-elevated">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="no-example-text">لا يوجد مثال متاح</span>
                             </div>
-                        </div>
-                        ` : ''}
+                        `}
+                        
+                        <div class="flashcard-hint">اضغط للعودة للجهة الأمامية</div>
                     </div>
                 </div>
             </div>

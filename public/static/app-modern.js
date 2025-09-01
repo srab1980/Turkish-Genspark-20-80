@@ -350,9 +350,13 @@ const TurkishLearningApp = {
     startLearning() {
         const categorySelect = document.getElementById('category-select');
         const modeSelect = document.getElementById('learning-mode');
+        const startBtn = document.getElementById('start-learning');
+        const learningContent = document.getElementById('learning-content');
         
         if (!categorySelect.value) {
-            this.showError('يرجى اختيار فئة للتعلم');
+            this.showError('يرجى اختيار فئة للتعلم أولاً');
+            categorySelect.classList.add('error');
+            setTimeout(() => categorySelect.classList.remove('error'), 2000);
             return;
         }
         
@@ -365,6 +369,17 @@ const TurkishLearningApp = {
             return;
         }
         
+        // Show loading state
+        startBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحضير...';
+        startBtn.disabled = true;
+        
+        // Add success animation to controls
+        const controlsGrid = document.querySelector('.controls-grid');
+        if (controlsGrid) {
+            controlsGrid.classList.add('success');
+            setTimeout(() => controlsGrid.classList.remove('success'), 600);
+        }
+        
         // Prepare data for learning session
         const learningData = {
             category: categoryId,
@@ -373,12 +388,46 @@ const TurkishLearningApp = {
         
         // Start learning session
         if (window.startLearningSession) {
-            window.startLearningSession(learningData, mode);
+            try {
+                const result = window.startLearningSession(learningData, mode);
+                
+                // Show success feedback
+                if (learningContent) {
+                    learningContent.classList.add('active');
+                    learningContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                
+                // Show success message
+                const modeNames = {
+                    flashcard: 'البطاقات التعليمية',
+                    quiz: 'الاختبار التفاعلي'
+                };
+                
+                this.showSuccess(`تم بدء ${modeNames[mode] || mode} بنجاح! 🎉`);
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    startBtn.innerHTML = '<i class="fas fa-play"></i> ابدأ جلسة التعلم';
+                    startBtn.disabled = !categorySelect.value;
+                }, 2000);
+                
+                console.log(`✅ Learning session started: ${categoryId}, mode: ${mode}`);
+                
+            } catch (error) {
+                console.error('Failed to start learning session:', error);
+                this.showError('حدث خطأ في بدء جلسة التعلم');
+                
+                // Reset button
+                startBtn.innerHTML = '<i class="fas fa-play"></i> ابدأ جلسة التعلم';
+                startBtn.disabled = false;
+            }
         } else {
             this.showError('نظام التعلم غير متوفر حالياً');
+            
+            // Reset button
+            startBtn.innerHTML = '<i class="fas fa-play"></i> ابدأ جلسة التعلم';
+            startBtn.disabled = false;
         }
-        
-        console.log(`Starting learning session: ${categoryId}, mode: ${mode}`);
     },
     
     // Select category and start learning directly
@@ -612,7 +661,7 @@ const TurkishLearningApp = {
     // Show error message
     showError(message) {
         const errorDiv = document.createElement('div');
-        errorDiv.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50';
+        errorDiv.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50 transition-all duration-300';
         errorDiv.textContent = message;
         
         document.body.appendChild(errorDiv);
@@ -622,6 +671,26 @@ const TurkishLearningApp = {
                 errorDiv.parentNode.removeChild(errorDiv);
             }
         }, 5000);
+    },
+    
+    // Show success message
+    showSuccess(message) {
+        const successDiv = document.createElement('div');
+        successDiv.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded-lg shadow-lg z-50 transition-all duration-300';
+        successDiv.innerHTML = `
+            <div class="flex items-center gap-3">
+                <i class="fas fa-check-circle text-xl"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        
+        document.body.appendChild(successDiv);
+        
+        setTimeout(() => {
+            if (successDiv.parentNode) {
+                successDiv.parentNode.removeChild(successDiv);
+            }
+        }, 4000);
     }
 };
 

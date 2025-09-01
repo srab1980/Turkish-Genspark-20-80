@@ -792,15 +792,16 @@ body {
 /* Flashcards */
 .flashcard-container {
   perspective: 1000px;
-  max-width: 400px;
+  max-width: 550px;
   margin: 0 auto;
   cursor: pointer;
+  min-height: 500px;
 }
 
 .flashcard {
   position: relative;
   width: 100%;
-  height: 350px;
+  height: 500px !important;
   transform-style: preserve-3d;
   transition: transform 0.6s;
   cursor: pointer;
@@ -818,7 +819,7 @@ body {
 .flashcard-back {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 500px !important;
   backface-visibility: hidden;
   background: var(--glass-bg);
   backdrop-filter: blur(15px);
@@ -827,12 +828,22 @@ body {
   box-shadow: var(--glass-shadow);
   display: flex;
   flex-direction: column;
+  text-align: center;
+  padding: 2.5rem;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.flashcard-front {
   justify-content: flex-start;
   align-items: center;
-  text-align: center;
-  padding: 1.25rem;
-  overflow: hidden;
   gap: 0.5rem;
+}
+
+.flashcard-back {
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0;
 }
 
 .flashcard-back {
@@ -870,13 +881,213 @@ body {
 
 .flashcard-hint {
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--gray-400);
-  opacity: 0.8;
+  opacity: 0.6;
   z-index: 1;
+  pointer-events: none;
+}
+
+/* Flashcard Back Side Styles */
+.translation-icon {
+  color: var(--primary-blue);
+  opacity: 0.8;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.word-meaning-icon {
+  font-size: 2.5rem;
+  color: var(--primary-blue);
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* Flashcard Back Header Layout */
+.flashcard-back-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+
+.flashcard-icon-container-small {
+  margin-bottom: 0.5rem;
+}
+
+.flashcard-arabic-main {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  font-family: 'Noto Sans Arabic', sans-serif;
+  direction: rtl;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  line-height: 1.1;
+}
+
+.flashcard-turkish-small {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Elevated Example Section Styles */
+.flashcard-example-elevated {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  min-height: 0;
+}
+
+.turkish-example-elevated {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: rgba(59, 130, 246, 0.12);
+  border-radius: 0.75rem;
+  border: 2px solid rgba(59, 130, 246, 0.25);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.example-text-elevated {
+  flex: 1;
+  font-size: 1.3rem;
+  color: var(--gray-800);
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.tts-example-elevated {
+  padding: 0.6rem;
+  min-width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tts-example-elevated:hover {
+  background: var(--primary-blue-dark);
+  transform: scale(1.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.arabic-translation-elevated {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(34, 197, 94, 0.15);
+  border-radius: 0.75rem;
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.example-arabic-elevated {
+  font-size: 1.5rem;
+  color: var(--gray-800);
+  font-family: 'Noto Sans Arabic', sans-serif;
+  direction: rtl;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.no-example-message-elevated {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem;
+  background: rgba(156, 163, 175, 0.12);
+  border-radius: 0.75rem;
+  border: 2px solid rgba(156, 163, 175, 0.25);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.no-example-message-elevated i {
+  color: var(--gray-400);
+  font-size: 1.4rem;
+}
+
+.no-example-text {
+  font-size: 1rem;
+  color: var(--gray-500);
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-style: italic;
+}
+
+.flashcard-example {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.example-turkish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.example-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--primary-blue);
+}
+
+.example-text {
+  font-size: 1rem;
+  color: var(--gray-700);
+  font-weight: 500;
+  text-align: center;
+}
+
+.example-arabic {
+  text-align: center;
+}
+
+.example-translation {
+  font-size: 1rem;
+  color: var(--gray-600);
+  font-family: 'Noto Sans Arabic', sans-serif;
+  direction: rtl;
+  font-style: italic;
+}
+
+.tts-example-btn {
+  padding: 0.25rem;
+  font-size: 0.8rem;
+  min-width: auto;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
 }
 
 /* Example sentence styles */
@@ -971,6 +1182,71 @@ body {
   flex-shrink: 0;
   position: relative;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Example Preview Styles on Front Side */
+.flashcard-example-preview {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  backdrop-filter: blur(10px);
+}
+
+.example-preview-label {
+  font-size: 0.9rem;
+  color: #f59e0b;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.example-preview-text {
+  font-size: 1rem;
+  color: #1f2937;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.example-preview-arabic {
+  font-size: 1rem;
+  color: #9333ea;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  direction: rtl;
+  line-height: 1.4;
+}
+
+/* Comprehensive Single-Side Flashcard Layout */
+.flashcard-translations {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flashcard-translations .flashcard-arabic {
+  font-size: 1.8rem !important;
+  color: #2563eb !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.75rem !important;
+  font-family: 'Noto Sans Arabic', sans-serif !important;
+  direction: rtl !important;
+  text-align: center !important;
+  line-height: 1.4 !important;
+}
+
+.flashcard-translations .flashcard-english {
+  font-size: 1.2rem !important;
+  color: #6b7280 !important;
+  font-style: italic !important;
+  text-align: center !important;
+  margin: 0 !important;
 }
 
 /* Enhanced corner TTS button styling */
@@ -1484,11 +1760,11 @@ body {
   }
   
   .flashcard-container {
-    max-width: 320px;
+    max-width: 380px;
   }
   
   .flashcard {
-    height: 250px;
+    height: 320px;
   }
   
   .flashcard-turkish {
