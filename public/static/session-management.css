@@ -4,26 +4,30 @@
 /* Session Overview Cards */
 .session-overview {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2.5rem 0;
+    padding: 1rem;
 }
 
 .session-category-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    border: 2px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.4s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
 .session-category-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    border-color: #3b82f6;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2), 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: rgba(59, 130, 246, 0.4);
 }
 
 .session-category-card.completed {
@@ -382,11 +386,157 @@
     font-size: 0.875rem;
 }
 
+/* Enhanced Visual Effects */
+.session-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 20px 20px 0 0;
+}
+
+.session-category-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+    border-radius: 50%;
+}
+
+.session-category-card:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Enhanced Icon Styling */
+.session-category-icon {
+    font-size: 3rem;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 16px;
+    color: white;
+    box-shadow: 0 8px 16px rgba(79, 172, 254, 0.3);
+    transition: all 0.3s ease;
+}
+
+.session-category-card:hover .session-category-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 24px rgba(79, 172, 254, 0.4);
+}
+
+/* Enhanced Progress Animation */
+.session-progress-fill {
+    position: relative;
+    overflow: hidden;
+}
+
+.session-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        transparent 25%, 
+        rgba(255, 255, 255, 0.3) 25%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 50%, 
+        transparent 75%, 
+        rgba(255, 255, 255, 0.3) 75%
+    );
+    background-size: 20px 20px;
+    animation: progress-shine 2s linear infinite;
+}
+
+@keyframes progress-shine {
+    0% { transform: translateX(-20px); }
+    100% { transform: translateX(20px); }
+}
+
+/* Enhanced Entry Animations */
+.session-category-card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.session-category-card:nth-child(1) { animation-delay: 0.1s; }
+.session-category-card:nth-child(2) { animation-delay: 0.2s; }
+.session-category-card:nth-child(3) { animation-delay: 0.3s; }
+.session-category-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Next Action Button */
+.session-next-action {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    color: white;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 4px 12px rgba(250, 112, 154, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.session-next-action::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+}
+
+.session-next-action:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+.session-next-action:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(250, 112, 154, 0.4);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .session-overview {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
+        padding: 0.5rem;
+    }
+    
+    .session-category-card {
+        padding: 1.5rem;
+    }
+    
+    .session-category-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2.5rem;
     }
     
     .session-list {
