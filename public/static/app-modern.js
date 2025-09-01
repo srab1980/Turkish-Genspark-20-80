@@ -440,12 +440,28 @@ const TurkishLearningApp = {
     
     // Start learning session
     startLearning() {
+        console.log('🚀 startLearning() called');
+        
         const categorySelect = document.getElementById('category-select');
         const modeSelect = document.getElementById('learning-mode');
         const startBtn = document.getElementById('start-learning');
         const learningContent = document.getElementById('learning-content');
         
+        console.log('Elements found:', {
+            categorySelect: !!categorySelect,
+            modeSelect: !!modeSelect,
+            startBtn: !!startBtn,
+            learningContent: !!learningContent
+        });
+        
+        if (!categorySelect) {
+            console.error('Category select element not found!');
+            this.showError('عنصر اختيار الفئة غير موجود');
+            return;
+        }
+        
         if (!categorySelect.value) {
+            console.log('No category selected');
             this.showError('يرجى اختيار فئة للتعلم أولاً');
             categorySelect.classList.add('error');
             setTimeout(() => categorySelect.classList.remove('error'), 2000);
@@ -454,12 +470,24 @@ const TurkishLearningApp = {
         
         const categoryId = categorySelect.value;
         const mode = modeSelect.value;
-        const categoryWords = this.vocabularyData[categoryId];
+        
+        // Get words from enhanced vocabulary data structure
+        let categoryWords = null;
+        if (this.vocabularyData[categoryId] && this.vocabularyData[categoryId].words) {
+            categoryWords = this.vocabularyData[categoryId].words;
+        } else if (this.vocabularyData[categoryId] && Array.isArray(this.vocabularyData[categoryId])) {
+            categoryWords = this.vocabularyData[categoryId];
+        }
         
         if (!categoryWords || categoryWords.length === 0) {
             this.showError('لا توجد كلمات في هذه الفئة');
+            console.error('No words found for category:', categoryId, 'Available data:', this.vocabularyData[categoryId]);
             return;
         }
+        
+        console.log('✅ Starting learning with', categoryWords.length, 'words from category', categoryId);
+        console.log('Selected mode:', mode);
+        console.log('Sample words:', categoryWords.slice(0, 3));
         
         // Show loading state
         startBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحضير...';

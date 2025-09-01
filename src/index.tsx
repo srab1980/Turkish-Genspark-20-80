@@ -1435,6 +1435,8 @@ app.get('/', (c) => {
         <!-- Main App (must be last) -->
         <script src="/static/app-modern.js"></script>
         
+        <!-- Debug Learning Script (for development) -->
+        <script src="/static/debug-learning.js"></script>
 
     </body>
     </html>
