@@ -390,10 +390,17 @@ class LearningModeManager {
         
         // If category is provided without session, get all words from category
         if (data.category && window.enhancedVocabularyData) {
-            const categoryWords = window.enhancedVocabularyData[data.category] || [];
+            const categoryData = window.enhancedVocabularyData[data.category];
+            const categoryWords = categoryData?.words || [];
             return {
                 ...data,
                 words: categoryWords,
+                categoryInfo: {
+                    id: data.category,
+                    name: categoryData?.name || data.category,
+                    nameArabic: categoryData?.nameArabic || '',
+                    totalWords: categoryWords.length
+                },
                 sessionInfo: null
             };
         }

@@ -1437,6 +1437,8 @@ app.get('/', (c) => {
         
         <!-- Debug Learning Script (for development) -->
         <script src="/static/debug-learning.js"></script>
+        
+
 
     </body>
     </html>

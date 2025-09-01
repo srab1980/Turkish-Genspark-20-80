@@ -369,14 +369,15 @@ const TurkishLearningApp = {
     showSection(sectionName) {
         console.log(`Switching to section: ${sectionName}`);
         
-        // Force hide all learning/review sessions first
+        // Hide learning/review sessions when switching away from them
         const learningContent = document.getElementById('learning-content');
         const reviewContent = document.getElementById('review-content');
         
-        if (learningContent) {
+        // Only hide learning content if not switching to learn section
+        if (learningContent && sectionName !== 'learn') {
             learningContent.classList.add('hidden');
         }
-        if (reviewContent) {
+        if (reviewContent && sectionName !== 'review') {
             reviewContent.classList.add('hidden');
         }
         
@@ -513,6 +514,7 @@ const TurkishLearningApp = {
                 
                 // Show success feedback
                 if (learningContent) {
+                    learningContent.classList.remove('hidden');
                     learningContent.classList.add('active');
                     learningContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }

@@ -101,6 +101,98 @@ window.forceStartLearning = function(categoryId = null, mode = 'flashcard') {
     }, 1000);
 };
 
+// Test direct modular learning system
+window.testModularLearning = function(categoryId = 'food', mode = 'flashcard') {
+    console.log('🧪 Testing Modular Learning System...');
+    
+    // Check if enhanced vocabulary data is available
+    if (!window.enhancedVocabularyData) {
+        console.error('❌ Enhanced vocabulary data not available');
+        return;
+    }
+    
+    // Check if learning mode manager is available
+    if (!window.learningModeManager) {
+        console.error('❌ Learning mode manager not available');
+        return;
+    }
+    
+    // Check if the category exists
+    if (!window.enhancedVocabularyData[categoryId]) {
+        console.error('❌ Category not found:', categoryId);
+        console.log('Available categories:', Object.keys(window.enhancedVocabularyData));
+        return;
+    }
+    
+    const categoryData = window.enhancedVocabularyData[categoryId];
+    console.log('✅ Category data found:', {
+        category: categoryId,
+        wordCount: categoryData.words?.length || 0,
+        name: categoryData.name
+    });
+    
+    // Prepare learning data
+    const learningData = {
+        category: categoryId,
+        words: categoryData.words || []
+    };
+    
+    console.log('🎯 Starting modular learning session...');
+    console.log('Data:', learningData);
+    console.log('Mode:', mode);
+    
+    // Test the modular integration startLearningSession function
+    if (window.startLearningSession) {
+        try {
+            const result = window.startLearningSession(learningData, mode);
+            console.log('✅ Learning session started:', result);
+        } catch (error) {
+            console.error('❌ Failed to start learning session:', error);
+        }
+    } else {
+        console.error('❌ startLearningSession function not available');
+    }
+};
+
+// Test learning mode manager directly
+window.testLearningModeManager = function(categoryId = 'food') {
+    console.log('🔬 Testing Learning Mode Manager Directly...');
+    
+    if (!window.learningModeManager) {
+        console.error('❌ Learning mode manager not available');
+        return;
+    }
+    
+    // Check available modes
+    const availableModes = window.learningModeManager.getAvailableModes();
+    console.log('📋 Available modes:', availableModes.map(m => ({ id: m.id, name: m.name })));
+    
+    // Get category data
+    const categoryData = window.enhancedVocabularyData[categoryId];
+    if (!categoryData) {
+        console.error('❌ Category not found:', categoryId);
+        return;
+    }
+    
+    const testData = {
+        words: categoryData.words || [],
+        category: categoryId
+    };
+    
+    console.log('🎯 Testing flashcard mode with data:', testData);
+    
+    // Try starting flashcard mode directly
+    window.learningModeManager.startMode('flashcard', testData)
+        .then(result => {
+            console.log('✅ Learning mode started successfully:', result);
+        })
+        .catch(error => {
+            console.error('❌ Failed to start learning mode:', error);
+        });
+};
+
 console.log('🛠️ Debug functions available:');
 console.log('   - debugLearningStartup(): Check learning setup');
 console.log('   - forceStartLearning(categoryId, mode): Force start learning');
+console.log('   - testModularLearning(categoryId, mode): Test modular learning system');
+console.log('   - testLearningModeManager(categoryId): Test learning mode manager directly');
