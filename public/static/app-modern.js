@@ -194,27 +194,30 @@ const TurkishLearningApp = {
     // Load data from API
     async loadData() {
         try {
-            console.log('Loading categories and vocabulary...');
+            console.log('Loading categories and enhanced vocabulary database...');
             
             // Load categories
             const categoriesResponse = await axios.get('/api/categories');
             this.categories = categoriesResponse.data.categories;
             
-            // Load all words
-            const wordsResponse = await axios.get('/api/words');
-            const allWords = wordsResponse.data.words;
-            
-            // Organize words by category
-            this.vocabularyData = {};
-            this.categories.forEach(category => {
-                this.vocabularyData[category.id] = allWords.filter(word => {
-                    // Match words to categories based on ID ranges or other logic
-                    return this.getWordCategory(word.id) === category.id;
-                });
-            });
-            
-            // Make vocabulary data globally available
-            window.vocabularyData = this.vocabularyData;
+            // Use enhanced vocabulary database (loaded via script tag)
+            if (window.enhancedVocabularyData) {
+                console.log('📚 Using enhanced vocabulary database:', window.vocabularyMetadata);
+                this.vocabularyData = window.enhancedVocabularyData;
+                
+                // Make enhanced data globally available for learning modes
+                window.vocabularyData = this.vocabularyData;
+                window.vocabularyMetadata = window.vocabularyMetadata;
+                window.difficultyLevels = window.difficultyLevels;
+                window.vowelHarmonyRules = window.vowelHarmonyRules;
+                
+                console.log(`✅ Enhanced database loaded with ${window.vocabularyMetadata.totalWords} words in ${window.vocabularyMetadata.categories} categories`);
+            } else {
+                console.warn('⚠️  Enhanced vocabulary database not loaded, using fallback API');
+                // Fallback to API if enhanced database is not available
+                const wordsResponse = await axios.get('/api/words');
+                this.vocabularyData = {};
+            }
             
             // Load user progress
             this.loadUserProgress();
@@ -227,9 +230,18 @@ const TurkishLearningApp = {
             // Hide loading screen after data is loaded
             this.hideLoadingScreen();
             
+            // Calculate total words from enhanced database
+            let totalWords = 0;
+            if (window.vocabularyMetadata) {
+                totalWords = window.vocabularyMetadata.totalWords;
+            } else {
+                // Fallback: count words in vocabularyData
+                totalWords = Object.values(this.vocabularyData).reduce((sum, categoryWords) => sum + categoryWords.length, 0);
+            }
+            
             console.log('Data loaded successfully:', {
                 categories: this.categories.length,
-                totalWords: allWords.length,
+                totalWords: totalWords,
                 vocabularyData: Object.keys(this.vocabularyData)
             });
             

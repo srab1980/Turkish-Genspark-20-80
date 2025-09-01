@@ -174,76 +174,80 @@ const vocabulary = {
   ]
 };
 
-// Get all categories
+// Get all categories (now uses enhanced vocabulary database)
 app.get('/api/categories', (c) => {
-  const categories = Object.keys(vocabulary).map(key => ({
-    id: key,
-    name: key.charAt(0).toUpperCase() + key.slice(1),
-    wordCount: vocabulary[key].length,
-    icon: getCategoryIcon(key)
-  }));
+  // Enhanced database categories with actual word counts
+  const enhancedCategories = [
+    { id: 'greetings', name: 'Greetings', wordCount: 8, icon: getCategoryIcon('greetings') },
+    { id: 'travel', name: 'Travel', wordCount: 31, icon: getCategoryIcon('travel') },
+    { id: 'food', name: 'Food', wordCount: 122, icon: getCategoryIcon('food') },
+    { id: 'shopping', name: 'Shopping', wordCount: 69, icon: getCategoryIcon('shopping') },
+    { id: 'directions', name: 'Directions', wordCount: 17, icon: getCategoryIcon('directions') },
+    { id: 'emergency', name: 'Emergency', wordCount: 19, icon: getCategoryIcon('emergency') },
+    { id: 'time', name: 'Time', wordCount: 57, icon: getCategoryIcon('time') },
+    { id: 'numbers', name: 'Numbers', wordCount: 86, icon: getCategoryIcon('numbers') },
+    { id: 'general', name: 'General', wordCount: 785, icon: getCategoryIcon('general') }
+  ];
   
-  return c.json({ categories });
+  return c.json({ categories: enhancedCategories });
 });
 
-// Get words by category
+// Get words by category (enhanced database will be loaded client-side)
 app.get('/api/words/:category', (c) => {
   const category = c.req.param('category');
-  const words = vocabulary[category] || [];
   
+  // Return message indicating client-side enhanced database loading
   return c.json({ 
     category,
-    words,
-    total: words.length
+    message: 'Words will be loaded from enhanced vocabulary database on client-side',
+    enhanced: true,
+    total: 0 // Will be populated by client-side enhanced database
   });
 });
 
-// Get all words
+// Get all words (enhanced database metadata)
 app.get('/api/words', (c) => {
-  const allWords = [];
-  Object.values(vocabulary).forEach(categoryWords => {
-    allWords.push(...categoryWords);
-  });
-  
   return c.json({ 
-    words: allWords,
-    total: allWords.length,
-    categories: Object.keys(vocabulary).length
+    enhanced: true,
+    message: 'Enhanced vocabulary database available client-side',
+    total: 1194, // From enhanced database
+    categories: 9,
+    source: 'Turkish Language Data CSV (1,804 words processed)'
   });
 });
 
-// Get random words for review
+// Get random words for review (enhanced database client-side)
 app.get('/api/words/random/:count', (c) => {
   const count = parseInt(c.req.param('count')) || 10;
-  const allWords = [];
-  Object.values(vocabulary).forEach(categoryWords => {
-    allWords.push(...categoryWords);
-  });
-  
-  const shuffled = allWords.sort(() => 0.5 - Math.random());
-  const randomWords = shuffled.slice(0, Math.min(count, allWords.length));
   
   return c.json({ 
-    words: randomWords,
+    enhanced: true,
+    message: 'Random words will be selected from enhanced database client-side',
     requested: count,
-    returned: randomWords.length
+    availableWords: 1194
   });
 });
 
-// Get user progress (demo endpoint)
+// Get user progress (enhanced database demo endpoint)
 app.get('/api/user/progress', (c) => {
   return c.json({
-    totalWords: 48,
+    totalWords: 1194, // Enhanced database total
     learnedWords: 0,
     currentLevel: 1,
     xp: 0,
     streak: 0,
     reviewsToday: 0,
-    categories: Object.keys(vocabulary).map(key => ({
-      name: key,
-      progress: 0,
-      completed: false
-    }))
+    categories: [
+      { name: 'greetings', progress: 0, completed: false },
+      { name: 'travel', progress: 0, completed: false },
+      { name: 'food', progress: 0, completed: false },
+      { name: 'shopping', progress: 0, completed: false },
+      { name: 'directions', progress: 0, completed: false },
+      { name: 'emergency', progress: 0, completed: false },
+      { name: 'time', progress: 0, completed: false },
+      { name: 'numbers', progress: 0, completed: false },
+      { name: 'general', progress: 0, completed: false }
+    ]
   });
 });
 
@@ -512,25 +516,31 @@ app.get('/api/enhanced-word/:id', (c) => {
   return c.json(word);
 });
 
-// Get content statistics
+// Get content statistics (enhanced database)
 app.get('/api/content-stats', (c) => {
   const stats = {
-    totalWords: 48,
+    totalWords: 1194,
     totalPhrases: 5,
     byDifficulty: {
-      beginner: 30,
-      intermediate: 15,
-      advanced: 8
+      A1: 329,
+      A2: 372,
+      B1: 245,
+      B2: 190,
+      C1: 53,
+      C2: 5
     },
     categories: {
-      words: 8,
+      words: 9,
       phrases: 4
     },
     features: {
-      culturalNotes: 48,
-      regionalVariations: 25,
-      multipleExamples: 48
-    }
+      vowelHarmonyRules: 1194,
+      difficultyLevels: 1194,
+      multipleExamples: 1194,
+      arabicTranslations: 1194,
+      turkishExamples: 1194
+    },
+    source: 'Enhanced Turkish Language Data CSV'
   };
   
   return c.json(stats);
@@ -565,7 +575,8 @@ function getCategoryIcon(category: string): string {
     directions: "🧭",
     emergency: "🚨",
     time: "⏰",
-    numbers: "🔢"
+    numbers: "🔢",
+    general: "📚"
   };
   
   return icons[category] || "📚";
@@ -1322,6 +1333,9 @@ app.get('/', (c) => {
         <script src="/static/gamification-system.js"></script>
         <script src="/static/visual-ux-system.js"></script>
         <script src="/static/enhanced-content-system.js"></script>
+        
+        <!-- Enhanced Vocabulary Database (1,194 Turkish words from CSV) -->
+        <script src="/static/enhanced-vocabulary-database.js"></script>
         
         <!-- New Modular Learning System -->
         <script src="/static/word-svg-icons.js"></script>
