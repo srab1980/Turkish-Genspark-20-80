@@ -94,13 +94,25 @@ class LearningModeManager {
                 container = this.createModeContainer(containerId, modeConfig);
             }
             
+            // Process session data if available
+            const enhancedData = this.processSessionData(data);
+            const enhancedOptions = { 
+                ...options, 
+                sessionBased: !!enhancedData.session,
+                sessionId: enhancedData.session?.sessionId,
+                categoryId: enhancedData.session?.categoryId
+            };
+            
             // Initialize mode instance
-            console.log(`🚀 Starting learning mode: ${modeId}`);
+            console.log(`🚀 Starting learning mode: ${modeId}`, {
+                sessionBased: enhancedOptions.sessionBased,
+                wordsCount: enhancedData.words?.length || 0
+            });
             
             const ModeClass = modeConfig.class;
             this.activeContainer = new ModeClass({
-                data,
-                options,
+                data: enhancedData,
+                options: enhancedOptions,
                 container,
                 eventBus: this.globalEventBus,
                 manager: this
@@ -355,6 +367,94 @@ class LearningModeManager {
         }
         
         return modes.find(m => m.id === 'quiz') || modes[0];
+    }
+    
+    // Process session data for enhanced learning modes
+    processSessionData(data) {
+        // If session is provided, extract words from session
+        if (data.session && data.session.words) {
+            return {
+                ...data,
+                words: data.session.words,
+                category: data.session.categoryId,
+                sessionInfo: {
+                    sessionId: data.session.sessionId,
+                    sessionNumber: data.session.sessionNumber,
+                    categoryId: data.session.categoryId,
+                    totalWords: data.session.wordCount,
+                    difficultyRange: data.session.difficultyRange,
+                    estimatedTime: data.session.estimatedTime
+                }
+            };
+        }
+        
+        // If category is provided without session, get all words from category
+        if (data.category && window.enhancedVocabularyData) {
+            const categoryWords = window.enhancedVocabularyData[data.category] || [];
+            return {
+                ...data,
+                words: categoryWords,
+                sessionInfo: null
+            };
+        }
+        
+        return data;
+    }
+    
+    // Start session-based learning
+    async startSessionMode(modeId, sessionId, options = {}) {
+        if (!window.SessionManager) {
+            throw new Error('SessionManager not available');
+        }
+        
+        const session = window.SessionManager.getSessionById(sessionId);
+        if (!session) {
+            throw new Error(`Session not found: ${sessionId}`);
+        }
+        
+        const sessionData = {
+            session: session,
+            words: session.words,
+            category: session.categoryId
+        };
+        
+        return await this.startMode(modeId, sessionData, {
+            ...options,
+            sessionBased: true,
+            sessionId: sessionId
+        });
+    }
+    
+    // Start category review with completed sessions
+    async startCategoryReview(categoryId, completedSessionIds = []) {
+        if (!window.SessionManager || !window.enhancedVocabularyData) {
+            throw new Error('Session data not available');
+        }
+        
+        // Get all words from completed sessions in this category
+        const reviewWords = [];
+        completedSessionIds.forEach(sessionId => {
+            const session = window.SessionManager.getSessionById(sessionId);
+            if (session && session.words) {
+                reviewWords.push(...session.words);
+            }
+        });
+        
+        if (reviewWords.length === 0) {
+            throw new Error('No words available for review');
+        }
+        
+        const reviewData = {
+            words: reviewWords,
+            category: categoryId,
+            reviewMode: true,
+            completedSessions: completedSessionIds
+        };
+        
+        return await this.startMode('review', reviewData, {
+            reviewMode: true,
+            categoryId: categoryId
+        });
     }
 }
 

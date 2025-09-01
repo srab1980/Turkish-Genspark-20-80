@@ -174,34 +174,68 @@ const vocabulary = {
   ]
 };
 
-// Get all categories (now uses enhanced vocabulary database)
+// Get all categories (enhanced with sessions)
 app.get('/api/categories', (c) => {
-  // Enhanced database categories with actual word counts
+  // Enhanced database categories with session information
   const enhancedCategories = [
-    { id: 'greetings', name: 'Greetings', wordCount: 8, icon: getCategoryIcon('greetings') },
-    { id: 'travel', name: 'Travel', wordCount: 31, icon: getCategoryIcon('travel') },
-    { id: 'food', name: 'Food', wordCount: 122, icon: getCategoryIcon('food') },
-    { id: 'shopping', name: 'Shopping', wordCount: 69, icon: getCategoryIcon('shopping') },
-    { id: 'directions', name: 'Directions', wordCount: 17, icon: getCategoryIcon('directions') },
-    { id: 'emergency', name: 'Emergency', wordCount: 19, icon: getCategoryIcon('emergency') },
-    { id: 'time', name: 'Time', wordCount: 57, icon: getCategoryIcon('time') },
-    { id: 'numbers', name: 'Numbers', wordCount: 86, icon: getCategoryIcon('numbers') },
-    { id: 'general', name: 'General', wordCount: 785, icon: getCategoryIcon('general') }
+    { id: 'greetings_basics', name: 'Basic Greetings', nameArabic: 'التحيات والمجاملات الأساسية', wordCount: 10, sessionCount: 1, icon: '👋' },
+    { id: 'family_relationships', name: 'Family & Relationships', nameArabic: 'العائلة والعلاقات', wordCount: 42, sessionCount: 5, icon: '👨‍👩‍👧‍👦' },
+    { id: 'body_health', name: 'Body & Health', nameArabic: 'أجزاء الجسم والصحة', wordCount: 76, sessionCount: 8, icon: '🏥' },
+    { id: 'food_cooking', name: 'Food & Cooking', nameArabic: 'الطعام والطبخ', wordCount: 84, sessionCount: 9, icon: '🍽️' },
+    { id: 'clothing_fashion', name: 'Clothing & Fashion', nameArabic: 'الملابس والأزياء', wordCount: 10, sessionCount: 1, icon: '👕' },
+    { id: 'transport_travel', name: 'Transportation & Travel', nameArabic: 'المواصلات والسفر', wordCount: 16, sessionCount: 2, icon: '🚗' },
+    { id: 'home_living', name: 'Home & Living', nameArabic: 'المنزل والمعيشة', wordCount: 39, sessionCount: 4, icon: '🏠' },
+    { id: 'work_education', name: 'Work & Education', nameArabic: 'العمل والتعليم', wordCount: 25, sessionCount: 3, icon: '🎓' },
+    { id: 'shopping_commerce', name: 'Shopping & Commerce', nameArabic: 'التسوق والتجارة', wordCount: 11, sessionCount: 2, icon: '🛒' },
+    { id: 'nature_weather', name: 'Nature & Weather', nameArabic: 'الطبيعة والطقس', wordCount: 35, sessionCount: 4, icon: '🌿' },
+    { id: 'technology_modern', name: 'Technology & Modern Life', nameArabic: 'التكنولوجيا والحياة العصرية', wordCount: 10, sessionCount: 1, icon: '📱' },
+    { id: 'colors_descriptions', name: 'Colors & Descriptions', nameArabic: 'الألوان والصفات', wordCount: 18, sessionCount: 2, icon: '🎨' },
+    { id: 'time_calendar', name: 'Time & Calendar', nameArabic: 'الوقت والتقويم', wordCount: 48, sessionCount: 5, icon: '⏰' },
+    { id: 'numbers_math', name: 'Numbers & Mathematics', nameArabic: 'الأرقام والرياضيات', wordCount: 49, sessionCount: 5, icon: '🔢' },
+    { id: 'arts_culture', name: 'Arts & Culture', nameArabic: 'الفنون والثقافة', wordCount: 12, sessionCount: 2, icon: '🎭' },
+    { id: 'sports_recreation', name: 'Sports & Recreation', nameArabic: 'الرياضة والترفيه', wordCount: 14, sessionCount: 2, icon: '⚽' },
+    { id: 'legal_government', name: 'Legal & Government', nameArabic: 'القانون والحكومة', wordCount: 8, sessionCount: 1, icon: '⚖️' },
+    { id: 'emergency_safety', name: 'Emergency & Safety', nameArabic: 'الطوارئ والأمان', wordCount: 8, sessionCount: 1, icon: '🚨' },
+    { id: 'science_research', name: 'Science & Research', nameArabic: 'العلوم والبحث', wordCount: 9, sessionCount: 1, icon: '🔬' },
+    { id: 'general_vocabulary', name: 'General Vocabulary', nameArabic: 'المفردات العامة', wordCount: 602, sessionCount: 61, icon: '📚' }
   ];
   
-  return c.json({ categories: enhancedCategories });
+  return c.json({ categories: enhancedCategories, totalSessions: 120 });
 });
 
-// Get words by category (enhanced database will be loaded client-side)
+// Get words by category (enhanced database with sessions)
 app.get('/api/words/:category', (c) => {
   const category = c.req.param('category');
   
-  // Return message indicating client-side enhanced database loading
   return c.json({ 
     category,
-    message: 'Words will be loaded from enhanced vocabulary database on client-side',
+    message: 'Words and sessions will be loaded from enhanced database client-side',
     enhanced: true,
-    total: 0 // Will be populated by client-side enhanced database
+    sessionBased: true,
+    wordsPerSession: 10
+  });
+});
+
+// Get sessions by category
+app.get('/api/sessions/:category', (c) => {
+  const category = c.req.param('category');
+  
+  return c.json({
+    category,
+    message: 'Sessions will be loaded from enhanced database client-side via SessionManager',
+    sessionBased: true,
+    wordsPerSession: 10
+  });
+});
+
+// Get specific session details
+app.get('/api/session/:sessionId', (c) => {
+  const sessionId = c.req.param('sessionId');
+  
+  return c.json({
+    sessionId,
+    message: 'Session details available via client-side SessionManager.getSessionById()',
+    enhanced: true
   });
 });
 
@@ -228,25 +262,32 @@ app.get('/api/words/random/:count', (c) => {
   });
 });
 
-// Get user progress (enhanced database demo endpoint)
+// Get user progress (enhanced database with sessions)
 app.get('/api/user/progress', (c) => {
   return c.json({
-    totalWords: 1194, // Enhanced database total
+    totalWords: 1126, // Enhanced database total
+    totalSessions: 120,
     learnedWords: 0,
+    completedSessions: 0,
     currentLevel: 1,
     xp: 0,
     streak: 0,
     reviewsToday: 0,
+    sessionBased: true,
+    wordsPerSession: 10,
     categories: [
-      { name: 'greetings', progress: 0, completed: false },
-      { name: 'travel', progress: 0, completed: false },
-      { name: 'food', progress: 0, completed: false },
-      { name: 'shopping', progress: 0, completed: false },
-      { name: 'directions', progress: 0, completed: false },
-      { name: 'emergency', progress: 0, completed: false },
-      { name: 'time', progress: 0, completed: false },
-      { name: 'numbers', progress: 0, completed: false },
-      { name: 'general', progress: 0, completed: false }
+      { id: 'greetings_basics', name: 'Basic Greetings', sessionsCompleted: 0, totalSessions: 1, progress: 0 },
+      { id: 'family_relationships', name: 'Family & Relationships', sessionsCompleted: 0, totalSessions: 5, progress: 0 },
+      { id: 'body_health', name: 'Body & Health', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
+      { id: 'food_cooking', name: 'Food & Cooking', sessionsCompleted: 0, totalSessions: 9, progress: 0 },
+      { id: 'transport_travel', name: 'Transportation & Travel', sessionsCompleted: 0, totalSessions: 2, progress: 0 },
+      { id: 'home_living', name: 'Home & Living', sessionsCompleted: 0, totalSessions: 4, progress: 0 },
+      { id: 'work_education', name: 'Work & Education', sessionsCompleted: 0, totalSessions: 3, progress: 0 },
+      { id: 'shopping_commerce', name: 'Shopping & Commerce', sessionsCompleted: 0, totalSessions: 2, progress: 0 },
+      { id: 'nature_weather', name: 'Nature & Weather', sessionsCompleted: 0, totalSessions: 4, progress: 0 },
+      { id: 'time_calendar', name: 'Time & Calendar', sessionsCompleted: 0, totalSessions: 5, progress: 0 },
+      { id: 'numbers_math', name: 'Numbers & Mathematics', sessionsCompleted: 0, totalSessions: 5, progress: 0 },
+      { id: 'general_vocabulary', name: 'General Vocabulary', sessionsCompleted: 0, totalSessions: 61, progress: 0 }
     ]
   });
 });
@@ -516,31 +557,46 @@ app.get('/api/enhanced-word/:id', (c) => {
   return c.json(word);
 });
 
-// Get content statistics (enhanced database)
+// Get content statistics (enhanced database with sessions)
 app.get('/api/content-stats', (c) => {
   const stats = {
-    totalWords: 1194,
+    totalWords: 1126,
+    totalSessions: 120,
+    totalCategories: 20,
+    wordsPerSession: 10,
     totalPhrases: 5,
     byDifficulty: {
-      A1: 329,
-      A2: 372,
-      B1: 245,
-      B2: 190,
-      C1: 53,
+      A1: 295,
+      A2: 355,
+      B1: 234,
+      B2: 186,
+      C1: 51,
       C2: 5
     },
     categories: {
-      words: 9,
-      phrases: 4
+      words: 20,
+      phrases: 4,
+      sessions: 120
     },
     features: {
-      vowelHarmonyRules: 1194,
-      difficultyLevels: 1194,
-      multipleExamples: 1194,
-      arabicTranslations: 1194,
-      turkishExamples: 1194
+      sessionBasedLearning: true,
+      progressiveDifficulty: true,
+      vowelHarmonyRules: 1126,
+      difficultyLevels: 1126,
+      multipleExamples: 1126,
+      arabicTranslations: 1126,
+      turkishExamples: 1126,
+      semanticCategorization: true,
+      enhancedMetadata: true
     },
-    source: 'Enhanced Turkish Language Data CSV'
+    sessionBreakdown: {
+      'greetings_basics': 1,
+      'family_relationships': 5,
+      'body_health': 8,
+      'food_cooking': 9,
+      'general_vocabulary': 61
+    },
+    source: 'Enhanced Turkish Language Data CSV with Advanced Categorization'
   };
   
   return c.json(stats);
@@ -608,6 +664,7 @@ app.get('/', (c) => {
         <link href="/static/flashcard-mode.css" rel="stylesheet">
         <link href="/static/quiz-mode.css" rel="stylesheet">
         <link href="/static/phrase-mode.css" rel="stylesheet">
+        <link href="/static/session-management.css" rel="stylesheet">
         <link href="/static/enhanced-learning-interface.css" rel="stylesheet">
         
         <!-- PWA Meta Tags -->
@@ -1334,8 +1391,8 @@ app.get('/', (c) => {
         <script src="/static/visual-ux-system.js"></script>
         <script src="/static/enhanced-content-system.js"></script>
         
-        <!-- Enhanced Vocabulary Database (1,194 Turkish words from CSV) -->
-        <script src="/static/enhanced-vocabulary-database.js"></script>
+        <!-- Enhanced Vocabulary Database with Sessions (1,126 Turkish words, 20 categories, 120 sessions) -->
+        <script src="/static/enhanced-vocabulary-with-sessions.js"></script>
         
         <!-- New Modular Learning System -->
         <script src="/static/word-svg-icons.js"></script>
@@ -1348,6 +1405,9 @@ app.get('/', (c) => {
         <script src="/static/modes/review-mode.js"></script>
         <script src="/static/modes/conversation-mode.js"></script>
         <script src="/static/modes/phrase-mode.js"></script>
+        
+        <!-- Session Management System -->
+        <script src="/static/session-management.js"></script>
         
         <!-- Integration Layer -->
         <script src="/static/modular-integration.js"></script>

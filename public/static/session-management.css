@@ -1,0 +1,411 @@
+/* 🎯 Session Management UI Styles */
+/* Enhanced learning interface with session-based progression */
+
+/* Session Overview Cards */
+.session-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.session-category-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.session-category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-color: #3b82f6;
+}
+
+.session-category-card.completed {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-color: #059669;
+}
+
+.session-category-card.in-progress {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border-color: #d97706;
+}
+
+.session-category-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.session-category-icon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 12px;
+}
+
+.session-category-card.completed .session-category-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.session-category-card.in-progress .session-category-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.session-category-info h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: #1e293b;
+}
+
+.session-category-card.completed .session-category-info h3,
+.session-category-card.in-progress .session-category-info h3 {
+    color: white;
+}
+
+.session-category-arabic {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-top: 0.25rem;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.session-category-card.completed .session-category-arabic,
+.session-category-card.in-progress .session-category-arabic {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.session-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.session-stat {
+    text-align: center;
+}
+
+.session-stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.session-category-card.completed .session-stat-number,
+.session-category-card.in-progress .session-stat-number {
+    color: white;
+}
+
+.session-stat-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 0.25rem;
+}
+
+.session-category-card.completed .session-stat-label,
+.session-category-card.in-progress .session-stat-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.session-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.session-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.session-category-card.completed .session-progress-fill {
+    background: linear-gradient(90deg, #ffffff 0%, #f3f4f6 100%);
+}
+
+.session-category-card.in-progress .session-progress-fill {
+    background: linear-gradient(90deg, #ffffff 0%, #f9fafb 100%);
+}
+
+.session-next-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: #f1f5f9;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.session-category-card.completed .session-next-action {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.session-category-card.in-progress .session-next-action {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Session Selection Interface */
+.session-selection {
+    margin: 2rem 0;
+}
+
+.session-selection-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.session-selection-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.session-selection-subtitle {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.session-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.session-item {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.session-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #3b82f6;
+}
+
+.session-item.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #f8fafc;
+}
+
+.session-item.completed {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-color: #059669;
+}
+
+.session-item.current {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    border-color: #1d4ed8;
+}
+
+.session-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.session-number {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.session-item.completed .session-number,
+.session-item.current .session-number {
+    color: white;
+}
+
+.session-status-icon {
+    font-size: 1.25rem;
+}
+
+.session-details {
+    margin-bottom: 1rem;
+}
+
+.session-word-count {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.25rem;
+}
+
+.session-item.completed .session-word-count,
+.session-item.current .session-word-count {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.session-difficulty {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: #e2e8f0;
+    color: #475569;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.session-item.completed .session-difficulty {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.session-item.current .session-difficulty {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.session-time-estimate {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 0.5rem;
+}
+
+.session-item.completed .session-time-estimate,
+.session-item.current .session-time-estimate {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Session Controls */
+.session-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.session-control-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #3b82f6;
+    background: white;
+    color: #3b82f6;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.session-control-btn:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.session-control-btn.primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.session-control-btn.primary:hover {
+    background: #1d4ed8;
+}
+
+.session-control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Session Progress Indicator */
+.session-progress-indicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.session-progress-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #3b82f6 0deg, #3b82f6 0deg, #e2e8f0 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #1e293b;
+    position: relative;
+}
+
+.session-progress-info {
+    flex: 1;
+}
+
+.session-progress-title {
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.session-progress-subtitle {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .session-overview {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .session-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .session-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .session-control-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .session-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}

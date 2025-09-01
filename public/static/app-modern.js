@@ -200,23 +200,33 @@ const TurkishLearningApp = {
             const categoriesResponse = await axios.get('/api/categories');
             this.categories = categoriesResponse.data.categories;
             
-            // Use enhanced vocabulary database (loaded via script tag)
-            if (window.enhancedVocabularyData) {
-                console.log('📚 Using enhanced vocabulary database:', window.vocabularyMetadata);
+            // Use enhanced vocabulary database with sessions
+            if (window.enhancedVocabularyData && window.vocabularySessions) {
+                console.log('🎯 Using enhanced vocabulary database with sessions:', window.vocabularyMetadata);
                 this.vocabularyData = window.enhancedVocabularyData;
+                this.vocabularySessions = window.vocabularySessions;
+                this.categoryMetadata = window.categoryMetadata;
                 
                 // Make enhanced data globally available for learning modes
                 window.vocabularyData = this.vocabularyData;
+                window.vocabularySessions = this.vocabularySessions;
+                window.categoryMetadata = this.categoryMetadata;
                 window.vocabularyMetadata = window.vocabularyMetadata;
                 window.difficultyLevels = window.difficultyLevels;
                 window.vowelHarmonyRules = window.vowelHarmonyRules;
+                window.SessionManager = window.SessionManager;
                 
-                console.log(`✅ Enhanced database loaded with ${window.vocabularyMetadata.totalWords} words in ${window.vocabularyMetadata.categories} categories`);
+                console.log(`✅ Enhanced database with sessions loaded:`);
+                console.log(`   📚 ${window.vocabularyMetadata.totalWords} words`);
+                console.log(`   📂 ${window.vocabularyMetadata.totalCategories} categories`); 
+                console.log(`   🎯 ${window.vocabularyMetadata.totalSessions} sessions`);
+                console.log(`   📝 ${window.vocabularyMetadata.wordsPerSession} words per session`);
             } else {
-                console.warn('⚠️  Enhanced vocabulary database not loaded, using fallback API');
+                console.warn('⚠️  Enhanced vocabulary database with sessions not loaded, using fallback API');
                 // Fallback to API if enhanced database is not available
                 const wordsResponse = await axios.get('/api/words');
                 this.vocabularyData = {};
+                this.vocabularySessions = {};
             }
             
             // Load user progress
@@ -230,10 +240,12 @@ const TurkishLearningApp = {
             // Hide loading screen after data is loaded
             this.hideLoadingScreen();
             
-            // Calculate total words from enhanced database
+            // Calculate total words and sessions from enhanced database
             let totalWords = 0;
+            let totalSessions = 0;
             if (window.vocabularyMetadata) {
                 totalWords = window.vocabularyMetadata.totalWords;
+                totalSessions = window.vocabularyMetadata.totalSessions;
             } else {
                 // Fallback: count words in vocabularyData
                 totalWords = Object.values(this.vocabularyData).reduce((sum, categoryWords) => sum + categoryWords.length, 0);
@@ -242,7 +254,9 @@ const TurkishLearningApp = {
             console.log('Data loaded successfully:', {
                 categories: this.categories.length,
                 totalWords: totalWords,
-                vocabularyData: Object.keys(this.vocabularyData)
+                totalSessions: totalSessions,
+                vocabularyData: Object.keys(this.vocabularyData),
+                sessionSupport: !!window.SessionManager
             });
             
         } catch (error) {
@@ -973,6 +987,19 @@ window.startReview = function(type = 'all') {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded, initializing Turkish Learning App...');
     TurkishLearningApp.init();
+    
+    // Initialize session interface after enhanced database loads
+    setTimeout(() => {
+        if (window.SessionManager && window.sessionManagement) {
+            console.log('🎯 Enhanced session system available');
+            
+            // Setup session event handlers
+            document.addEventListener('startSessionLearning', (event) => {
+                console.log('🎯 Session learning event:', event.detail);
+                TurkishLearningApp.showSection('learn');
+            });
+        }
+    }, 1500);
 });
 
 // Global function to update TTS status
