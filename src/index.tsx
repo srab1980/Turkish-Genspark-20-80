@@ -596,6 +596,7 @@ app.get('/', (c) => {
         <link href="/static/enhanced-content-styles.css" rel="stylesheet">
         <link href="/static/flashcard-mode.css" rel="stylesheet">
         <link href="/static/quiz-mode.css" rel="stylesheet">
+        <link href="/static/phrase-mode.css" rel="stylesheet">
         <link href="/static/enhanced-learning-interface.css" rel="stylesheet">
         
         <!-- PWA Meta Tags -->
@@ -815,6 +816,77 @@ app.get('/', (c) => {
                 <div class="categories-grid" id="categories-container">
                     <!-- Categories will be loaded dynamically -->
                 </div>
+                
+                <!-- Featured Learning Modes Section -->
+                <div class="featured-modes-section">
+                    <h3 class="featured-modes-title">أنماط التعلم المتاحة</h3>
+                    <p class="featured-modes-subtitle">اختر النمط الذي يناسبك لتعلم اللغة التركية بطريقة تفاعلية وممتعة</p>
+                    
+                    <div class="featured-modes-grid">
+                        <div class="featured-mode-card" data-mode="flashcard">
+                            <div class="mode-icon">📱</div>
+                            <h4 class="mode-title">البطاقات التعليمية</h4>
+                            <p class="mode-description">تعلم الكلمات التفاعلية مع الأصوات والأمثلة</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">🔊 نطق</span>
+                                <span class="feature-tag">📝 أمثلة</span>
+                                <span class="feature-tag">🎯 تفاعلي</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="quiz">
+                            <div class="mode-icon">🎯</div>
+                            <h4 class="mode-title">الاختبار التفاعلي</h4>
+                            <p class="mode-description">اختبر معرفتك بالكلمات مع خيارات متعددة</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">🎮 تحدي</span>
+                                <span class="feature-tag">📊 نتائج</span>
+                                <span class="feature-tag">⏱️ سرعة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="phrase">
+                            <div class="mode-icon">📝</div>
+                            <h4 class="mode-title">العبارات والتعابير</h4>
+                            <p class="mode-description">تعلم العبارات التركية الشائعة والمفيدة</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">💬 محادثة</span>
+                                <span class="feature-tag">🌍 سياق</span>
+                                <span class="feature-tag">📚 أمثلة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="conversation">
+                            <div class="mode-icon">💬</div>
+                            <h4 class="mode-title">المحادثات التفاعلية</h4>
+                            <p class="mode-description">تدرب على المحادثات التركية الحقيقية</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">🗣️ حوار</span>
+                                <span class="feature-tag">🎭 أدوار</span>
+                                <span class="feature-tag">🌟 واقعي</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="review">
+                            <div class="mode-icon">🔄</div>
+                            <h4 class="mode-title">المراجعة المتباعدة</h4>
+                            <p class="mode-description">راجع الكلمات بنظام التكرار الذكي</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">🧠 ذاكرة</span>
+                                <span class="feature-tag">📈 تقدم</span>
+                                <span class="feature-tag">⚡ فعال</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modes-cta">
+                        <p class="modes-cta-text">لبدء التعلم، انتقل إلى قسم "تعلم" واختر الفئة والنمط المفضل لديك</p>
+                        <button class="modes-cta-btn" onclick="TurkishLearningApp.showSection('learn')">
+                            <i class="fas fa-play"></i>
+                            ابدأ التعلم الآن
+                        </button>
+                    </div>
+                </div>
             </section>
 
             <!-- Learning Section -->
@@ -850,9 +922,12 @@ app.get('/', (c) => {
                                 <select id="learning-mode" class="control-select">
                                     <option value="flashcard">📱 بطاقات تعليمية - تعلم الكلمات التفاعلية مع الأصوات والأمثلة</option>
                                     <option value="quiz">🎯 اختبار تفاعلي - اختبر معرفتك بالكلمات مع خيارات متعددة</option>
+                                    <option value="phrase">📝 العبارات والتعابير - تعلم العبارات التركية الشائعة والمفيدة</option>
+                                    <option value="conversation">💬 محادثات تفاعلية - تدرب على المحادثات التركية الحقيقية</option>
+                                    <option value="review">🔄 المراجعة المتباعدة - راجع الكلمات بنظام التكرار الذكي</option>
                                 </select>
                                 <div class="mode-info-tooltip">
-                                    اختر نمط التعلم المناسب لك - البطاقات للتعلم أو الاختبار لقياس التقدم
+                                    جميع أنماط التعلم متاحة: البطاقات، الاختبارات، العبارات، المحادثات، والمراجعة الذكية
                                 </div>
                             </div>
                         </div>

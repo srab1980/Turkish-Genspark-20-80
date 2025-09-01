@@ -30,8 +30,11 @@ class PhraseMode extends LearningModeBase {
      */
     async init() {
         try {
-            // Load phrases data
-            if (this.data.phrases) {
+            // Load phrases data - check for vocabulary words first
+            if (this.data.words && this.data.words.length > 0) {
+                // Convert vocabulary words to phrase format for phrase mode
+                this.phrases = this.convertWordsToPhases(this.data.words);
+            } else if (this.data.phrases) {
                 this.phrases = this.data.phrases;
             } else {
                 await this.loadPhrases();
@@ -71,6 +74,32 @@ class PhraseMode extends LearningModeBase {
             // Fallback to built-in phrases
             this.phrases = this.getBuiltInPhrases();
         }
+    }
+    
+    /**
+     * Convert vocabulary words to phrase format
+     */
+    convertWordsToPhases(words) {
+        return words.map(word => ({
+            id: `phrase_${word.id}`,
+            turkish: word.example || word.turkish,
+            arabic: word.exampleArabic || word.arabic,
+            english: word.english,
+            pronunciation: word.pronunciation,
+            category: this.data.category || 'general',
+            difficulty: 'beginner',
+            context: 'conversational',
+            usage: `Using "${word.turkish}" in everyday conversation`,
+            word: word.turkish,
+            wordMeaning: word.arabic,
+            examples: word.example ? [{
+                situation: 'Everyday usage',
+                turkish: word.example,
+                arabic: word.exampleArabic || word.arabic
+            }] : [],
+            icon: word.icon,
+            emoji: word.emoji
+        }));
     }
     
     /**

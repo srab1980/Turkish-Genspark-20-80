@@ -26,6 +26,9 @@ const TurkishLearningApp = {
             this.bindNavigationEvents();
         }, 2000);
         
+        // Featured mode cards click handlers
+        this.setupFeaturedModeHandlers();
+        
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileMenu = document.querySelector('.mobile-menu');
@@ -80,6 +83,69 @@ const TurkishLearningApp = {
         });
         
         console.log('Event listeners setup complete');
+    },
+    
+    // Setup featured mode card handlers
+    setupFeaturedModeHandlers() {
+        const modeCards = document.querySelectorAll('.featured-mode-card');
+        modeCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                const mode = card.getAttribute('data-mode');
+                this.quickStartMode(mode);
+            });
+        });
+    },
+    
+    // Quick start a learning mode
+    quickStartMode(mode) {
+        // Navigate to learn section
+        this.showSection('learn');
+        
+        // Wait a moment for section to be visible
+        setTimeout(() => {
+            // Set the mode in the select
+            const modeSelect = document.getElementById('learning-mode');
+            if (modeSelect) {
+                modeSelect.value = mode;
+            }
+            
+            // If we have a default category, enable start button
+            const categorySelect = document.getElementById('category-select');
+            const startBtn = document.getElementById('start-learning');
+            
+            if (categorySelect && categorySelect.options.length > 1) {
+                // Select first available category
+                categorySelect.value = categorySelect.options[1].value;
+                
+                if (startBtn) {
+                    startBtn.disabled = false;
+                    
+                    // Highlight the start button
+                    startBtn.style.animation = 'pulse 2s infinite';
+                    setTimeout(() => {
+                        startBtn.style.animation = '';
+                    }, 4000);
+                }
+            }
+            
+            // Scroll to learning controls
+            const learningControls = document.querySelector('.learning-controls');
+            if (learningControls) {
+                learningControls.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            // Show success message
+            const modeNames = {
+                flashcard: 'البطاقات التعليمية',
+                quiz: 'الاختبار التفاعلي',
+                phrase: 'العبارات والتعابير',
+                conversation: 'المحادثات التفاعلية',
+                review: 'المراجعة المتباعدة'
+            };
+            
+            this.showSuccess(`تم اختيار نمط ${modeNames[mode]} - اختر فئة وابدأ التعلم! 🎯`);
+            
+        }, 300);
     },
     
     // Dedicated navigation binding function
@@ -400,7 +466,10 @@ const TurkishLearningApp = {
                 // Show success message
                 const modeNames = {
                     flashcard: 'البطاقات التعليمية',
-                    quiz: 'الاختبار التفاعلي'
+                    quiz: 'الاختبار التفاعلي',
+                    phrase: 'العبارات والتعابير',
+                    conversation: 'المحادثات التفاعلية',
+                    review: 'المراجعة المتباعدة'
                 };
                 
                 this.showSuccess(`تم بدء ${modeNames[mode] || mode} بنجاح! 🎉`);
