@@ -174,33 +174,44 @@ const vocabulary = {
   ]
 };
 
-// Get all categories (enhanced with sessions)
+// Get all categories (enhanced with Excel data)
 app.get('/api/categories', (c) => {
-  // Enhanced database categories with session information
+  // New categories from Excel file with 31 comprehensive categories
   const enhancedCategories = [
-    { id: 'greetings_basics', name: 'Basic Greetings', nameArabic: 'التحيات والمجاملات الأساسية', wordCount: 10, sessionCount: 1, icon: '👋' },
-    { id: 'family_relationships', name: 'Family & Relationships', nameArabic: 'العائلة والعلاقات', wordCount: 42, sessionCount: 5, icon: '👨‍👩‍👧‍👦' },
-    { id: 'body_health', name: 'Body & Health', nameArabic: 'أجزاء الجسم والصحة', wordCount: 76, sessionCount: 8, icon: '🏥' },
-    { id: 'food_cooking', name: 'Food & Cooking', nameArabic: 'الطعام والطبخ', wordCount: 84, sessionCount: 9, icon: '🍽️' },
-    { id: 'clothing_fashion', name: 'Clothing & Fashion', nameArabic: 'الملابس والأزياء', wordCount: 10, sessionCount: 1, icon: '👕' },
-    { id: 'transport_travel', name: 'Transportation & Travel', nameArabic: 'المواصلات والسفر', wordCount: 16, sessionCount: 2, icon: '🚗' },
-    { id: 'home_living', name: 'Home & Living', nameArabic: 'المنزل والمعيشة', wordCount: 39, sessionCount: 4, icon: '🏠' },
-    { id: 'work_education', name: 'Work & Education', nameArabic: 'العمل والتعليم', wordCount: 25, sessionCount: 3, icon: '🎓' },
-    { id: 'shopping_commerce', name: 'Shopping & Commerce', nameArabic: 'التسوق والتجارة', wordCount: 11, sessionCount: 2, icon: '🛒' },
-    { id: 'nature_weather', name: 'Nature & Weather', nameArabic: 'الطبيعة والطقس', wordCount: 35, sessionCount: 4, icon: '🌿' },
-    { id: 'technology_modern', name: 'Technology & Modern Life', nameArabic: 'التكنولوجيا والحياة العصرية', wordCount: 10, sessionCount: 1, icon: '📱' },
-    { id: 'colors_descriptions', name: 'Colors & Descriptions', nameArabic: 'الألوان والصفات', wordCount: 18, sessionCount: 2, icon: '🎨' },
-    { id: 'time_calendar', name: 'Time & Calendar', nameArabic: 'الوقت والتقويم', wordCount: 48, sessionCount: 5, icon: '⏰' },
-    { id: 'numbers_math', name: 'Numbers & Mathematics', nameArabic: 'الأرقام والرياضيات', wordCount: 49, sessionCount: 5, icon: '🔢' },
-    { id: 'arts_culture', name: 'Arts & Culture', nameArabic: 'الفنون والثقافة', wordCount: 12, sessionCount: 2, icon: '🎭' },
-    { id: 'sports_recreation', name: 'Sports & Recreation', nameArabic: 'الرياضة والترفيه', wordCount: 14, sessionCount: 2, icon: '⚽' },
-    { id: 'legal_government', name: 'Legal & Government', nameArabic: 'القانون والحكومة', wordCount: 8, sessionCount: 1, icon: '⚖️' },
-    { id: 'emergency_safety', name: 'Emergency & Safety', nameArabic: 'الطوارئ والأمان', wordCount: 8, sessionCount: 1, icon: '🚨' },
-    { id: 'science_research', name: 'Science & Research', nameArabic: 'العلوم والبحث', wordCount: 9, sessionCount: 1, icon: '🔬' },
-    { id: 'general_vocabulary', name: 'General Vocabulary', nameArabic: 'المفردات العامة', wordCount: 602, sessionCount: 61, icon: '📚' }
+    { id: 'adjective', name: 'Adjective', nameArabic: 'الصفات', wordCount: 77, sessionCount: 8, icon: '📝' },
+    { id: 'animal', name: 'Animal', nameArabic: 'الحيوانات', wordCount: 54, sessionCount: 6, icon: '🐾' },
+    { id: 'body', name: 'Body', nameArabic: 'أجزاء الجسم', wordCount: 78, sessionCount: 8, icon: '👤' },
+    { id: 'clothes', name: 'Clothes', nameArabic: 'الملابس', wordCount: 20, sessionCount: 2, icon: '👕' },
+    { id: 'color', name: 'Color', nameArabic: 'الألوان', wordCount: 18, sessionCount: 2, icon: '🎨' },
+    { id: 'direction', name: 'Direction', nameArabic: 'الاتجاهات', wordCount: 3, sessionCount: 1, icon: '🧭' },
+    { id: 'emotion', name: 'Emotion', nameArabic: 'المشاعر', wordCount: 14, sessionCount: 2, icon: '😊' },
+    { id: 'family', name: 'Family', nameArabic: 'العائلة', wordCount: 73, sessionCount: 8, icon: '👨‍👩‍👧‍👦' },
+    { id: 'finance', name: 'Finance', nameArabic: 'المالية', wordCount: 22, sessionCount: 3, icon: '💰' },
+    { id: 'food', name: 'Food', nameArabic: 'الطعام', wordCount: 113, sessionCount: 12, icon: '🍽️' },
+    { id: 'general', name: 'General', nameArabic: 'عام', wordCount: 9, sessionCount: 1, icon: '📚' },
+    { id: 'health', name: 'Health', nameArabic: 'الصحة', wordCount: 38, sessionCount: 4, icon: '🏥' },
+    { id: 'house', name: 'House', nameArabic: 'المنزل', wordCount: 76, sessionCount: 8, icon: '🏠' },
+    { id: 'instrument', name: 'Instrument', nameArabic: 'الآلات', wordCount: 7, sessionCount: 1, icon: '🎻' },
+    { id: 'measurement', name: 'Measurement', nameArabic: 'القياس', wordCount: 24, sessionCount: 3, icon: '📏' },
+    { id: 'music', name: 'Music', nameArabic: 'الموسيقى', wordCount: 12, sessionCount: 2, icon: '🎵' },
+    { id: 'nature', name: 'Nature', nameArabic: 'الطبيعة', wordCount: 37, sessionCount: 4, icon: '🌿' },
+    { id: 'number', name: 'Number', nameArabic: 'الأرقام', wordCount: 20, sessionCount: 2, icon: '🔢' },
+    { id: 'place', name: 'Place', nameArabic: 'الأماكن', wordCount: 37, sessionCount: 4, icon: '📍' },
+    { id: 'plant', name: 'Plant', nameArabic: 'النباتات', wordCount: 6, sessionCount: 1, icon: '🌱' },
+    { id: 'pronoun', name: 'Pronoun', nameArabic: 'الضمائر', wordCount: 3, sessionCount: 1, icon: '👆' },
+    { id: 'religion', name: 'Religion', nameArabic: 'الدين', wordCount: 5, sessionCount: 1, icon: '🕌' },
+    { id: 'school', name: 'School', nameArabic: 'المدرسة', wordCount: 55, sessionCount: 6, icon: '🎓' },
+    { id: 'science', name: 'Science', nameArabic: 'العلوم', wordCount: 66, sessionCount: 7, icon: '🔬' },
+    { id: 'sport', name: 'Sport', nameArabic: 'الرياضة', wordCount: 16, sessionCount: 2, icon: '⚽' },
+    { id: 'technology', name: 'Technology', nameArabic: 'التكنولوجيا', wordCount: 36, sessionCount: 4, icon: '📱' },
+    { id: 'time', name: 'Time', nameArabic: 'الوقت', wordCount: 54, sessionCount: 6, icon: '⏰' },
+    { id: 'travel', name: 'Travel', nameArabic: 'السفر', wordCount: 46, sessionCount: 5, icon: '✈️' },
+    { id: 'verb', name: 'Verb', nameArabic: 'الأفعال', wordCount: 43, sessionCount: 5, icon: '🎯' },
+    { id: 'weather', name: 'Weather', nameArabic: 'الطقس', wordCount: 13, sessionCount: 2, icon: '🌤️' },
+    { id: 'work', name: 'Work', nameArabic: 'العمل', wordCount: 51, sessionCount: 6, icon: '💼' }
   ];
   
-  return c.json({ categories: enhancedCategories, totalSessions: 120 });
+  return c.json({ categories: enhancedCategories, totalSessions: 127 });
 });
 
 // Get words by category (enhanced database with sessions)
@@ -239,14 +250,15 @@ app.get('/api/session/:sessionId', (c) => {
   });
 });
 
-// Get all words (enhanced database metadata)
+// Get all words (Excel database metadata)
 app.get('/api/words', (c) => {
   return c.json({ 
     enhanced: true,
-    message: 'Enhanced vocabulary database available client-side',
-    total: 1194, // From enhanced database
-    categories: 9,
-    source: 'Turkish Language Data CSV (1,804 words processed)'
+    message: 'Enhanced vocabulary database from Excel file available client-side',
+    total: 1126, // From Excel database
+    categories: 31,
+    sessions: 127,
+    source: 'Turkish_Language_Data_categorized_final.xlsx'
   });
 });
 
@@ -262,11 +274,11 @@ app.get('/api/words/random/:count', (c) => {
   });
 });
 
-// Get user progress (enhanced database with sessions)
+// Get user progress (Excel database with sessions)
 app.get('/api/user/progress', (c) => {
   return c.json({
-    totalWords: 1126, // Enhanced database total
-    totalSessions: 120,
+    totalWords: 1126, // Excel database total
+    totalSessions: 127,
     learnedWords: 0,
     completedSessions: 0,
     currentLevel: 1,
@@ -276,18 +288,18 @@ app.get('/api/user/progress', (c) => {
     sessionBased: true,
     wordsPerSession: 10,
     categories: [
-      { id: 'greetings_basics', name: 'Basic Greetings', sessionsCompleted: 0, totalSessions: 1, progress: 0 },
-      { id: 'family_relationships', name: 'Family & Relationships', sessionsCompleted: 0, totalSessions: 5, progress: 0 },
-      { id: 'body_health', name: 'Body & Health', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
-      { id: 'food_cooking', name: 'Food & Cooking', sessionsCompleted: 0, totalSessions: 9, progress: 0 },
-      { id: 'transport_travel', name: 'Transportation & Travel', sessionsCompleted: 0, totalSessions: 2, progress: 0 },
-      { id: 'home_living', name: 'Home & Living', sessionsCompleted: 0, totalSessions: 4, progress: 0 },
-      { id: 'work_education', name: 'Work & Education', sessionsCompleted: 0, totalSessions: 3, progress: 0 },
-      { id: 'shopping_commerce', name: 'Shopping & Commerce', sessionsCompleted: 0, totalSessions: 2, progress: 0 },
-      { id: 'nature_weather', name: 'Nature & Weather', sessionsCompleted: 0, totalSessions: 4, progress: 0 },
-      { id: 'time_calendar', name: 'Time & Calendar', sessionsCompleted: 0, totalSessions: 5, progress: 0 },
-      { id: 'numbers_math', name: 'Numbers & Mathematics', sessionsCompleted: 0, totalSessions: 5, progress: 0 },
-      { id: 'general_vocabulary', name: 'General Vocabulary', sessionsCompleted: 0, totalSessions: 61, progress: 0 }
+      { id: 'food', name: 'Food', sessionsCompleted: 0, totalSessions: 12, progress: 0 },
+      { id: 'body', name: 'Body', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
+      { id: 'adjective', name: 'Adjective', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
+      { id: 'house', name: 'House', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
+      { id: 'family', name: 'Family', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
+      { id: 'science', name: 'Science', sessionsCompleted: 0, totalSessions: 7, progress: 0 },
+      { id: 'school', name: 'School', sessionsCompleted: 0, totalSessions: 6, progress: 0 },
+      { id: 'animal', name: 'Animal', sessionsCompleted: 0, totalSessions: 6, progress: 0 },
+      { id: 'time', name: 'Time', sessionsCompleted: 0, totalSessions: 6, progress: 0 },
+      { id: 'work', name: 'Work', sessionsCompleted: 0, totalSessions: 6, progress: 0 },
+      { id: 'travel', name: 'Travel', sessionsCompleted: 0, totalSessions: 5, progress: 0 },
+      { id: 'verb', name: 'Verb', sessionsCompleted: 0, totalSessions: 5, progress: 0 }
     ]
   });
 });
@@ -557,12 +569,12 @@ app.get('/api/enhanced-word/:id', (c) => {
   return c.json(word);
 });
 
-// Get content statistics (enhanced database with sessions)
+// Get content statistics (Excel database with sessions)
 app.get('/api/content-stats', (c) => {
   const stats = {
     totalWords: 1126,
-    totalSessions: 120,
-    totalCategories: 20,
+    totalSessions: 127,
+    totalCategories: 31,
     wordsPerSession: 10,
     totalPhrases: 5,
     byDifficulty: {
@@ -574,9 +586,9 @@ app.get('/api/content-stats', (c) => {
       C2: 5
     },
     categories: {
-      words: 20,
+      words: 31,
       phrases: 4,
-      sessions: 120
+      sessions: 127
     },
     features: {
       sessionBasedLearning: true,
@@ -586,17 +598,25 @@ app.get('/api/content-stats', (c) => {
       multipleExamples: 1126,
       arabicTranslations: 1126,
       turkishExamples: 1126,
+      arabicSentences: 1126,
+      turkishSentences: 1126,
       semanticCategorization: true,
-      enhancedMetadata: true
+      enhancedMetadata: true,
+      excelBasedData: true
     },
     sessionBreakdown: {
-      'greetings_basics': 1,
-      'family_relationships': 5,
-      'body_health': 8,
-      'food_cooking': 9,
-      'general_vocabulary': 61
+      'food': 12,
+      'body': 8,
+      'adjective': 8,
+      'house': 8,
+      'family': 8,
+      'science': 7,
+      'school': 6,
+      'animal': 6,
+      'time': 6,
+      'work': 6
     },
-    source: 'Enhanced Turkish Language Data CSV with Advanced Categorization'
+    source: 'Turkish_Language_Data_categorized_final.xlsx - Comprehensive Excel Database'
   };
   
   return c.json(stats);

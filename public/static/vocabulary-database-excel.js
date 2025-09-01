@@ -45472,69 +45472,10 @@ const allVocabularyWords = [
   }
 ];
 
-// Generate vocabularySessions structure for compatibility
-const vocabularySessions = {};
-Object.keys(enhancedVocabularyData).forEach(categoryId => {
-    if (enhancedVocabularyData[categoryId].sessions) {
-        vocabularySessions[categoryId] = enhancedVocabularyData[categoryId].sessions;
-    }
-});
-
-// Session management utilities
-const SessionManager = {
-    getSessionsByCategory: function(categoryId) {
-        return vocabularySessions[categoryId] || [];
-    },
-    
-    getSessionById: function(sessionId) {
-        for (const categoryId in vocabularySessions) {
-            const sessions = vocabularySessions[categoryId];
-            const session = sessions.find(s => s.id === sessionId);
-            if (session) return session;
-        }
-        return null;
-    },
-    
-    getNextSession: function(categoryId, currentSessionNumber) {
-        const sessions = this.getSessionsByCategory(categoryId);
-        return sessions.find(s => s.sessionNumber === currentSessionNumber + 1) || null;
-    },
-    
-    getAllSessions: function() {
-        const allSessions = [];
-        for (const categoryId in vocabularySessions) {
-            allSessions.push(...vocabularySessions[categoryId]);
-        }
-        return allSessions;
-    },
-    
-    getCategoryProgress: function(categoryId) {
-        const sessions = this.getSessionsByCategory(categoryId);
-        return {
-            totalSessions: sessions.length,
-            completedSessions: 0, // This would be tracked in user progress
-            progress: 0
-        };
-    }
-};
-
 // Export for use in the application
 if (typeof window !== 'undefined') {
     window.enhancedVocabularyData = enhancedVocabularyData;
-    window.vocabularySessions = vocabularySessions;
     window.vocabularyMetadata = vocabularyMetadata;
     window.vocabularyStatistics = vocabularyStatistics;
     window.allVocabularyWords = allVocabularyWords;
-    window.SessionManager = SessionManager;
-    
-    console.log('🎯 Enhanced vocabulary database with sessions loaded:', vocabularyMetadata);
-} else {
-    module.exports = { 
-        enhancedVocabularyData,
-        vocabularySessions,
-        vocabularyMetadata,
-        vocabularyStatistics,
-        allVocabularyWords,
-        SessionManager
-    };
 }

@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "hono": "^4.9.4",
-    "pm2": "^6.0.8"
+    "pm2": "^6.0.8",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@hono/vite-build": "^1.2.0",
