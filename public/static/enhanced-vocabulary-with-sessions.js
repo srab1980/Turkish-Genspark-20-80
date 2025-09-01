@@ -31,8 +31,8 @@ const enhancedVocabularyData = {
       "category": "greetings_basics",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👋",
-      "emoji": "👋",
+      "icon": "📖",
+      "emoji": "📖",
       "sessionReady": true
     },
     {
@@ -46,8 +46,8 @@ const enhancedVocabularyData = {
       "category": "greetings_basics",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👋",
-      "emoji": "👋",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -61,8 +61,8 @@ const enhancedVocabularyData = {
       "category": "greetings_basics",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👋",
-      "emoji": "👋",
+      "icon": "👶",
+      "emoji": "👶",
       "sessionReady": true
     },
     {
@@ -76,8 +76,8 @@ const enhancedVocabularyData = {
       "category": "greetings_basics",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👋",
-      "emoji": "👋",
+      "icon": "👍",
+      "emoji": "👍",
       "sessionReady": true
     },
     {
@@ -106,8 +106,8 @@ const enhancedVocabularyData = {
       "category": "greetings_basics",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👋",
-      "emoji": "👋",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -121,8 +121,8 @@ const enhancedVocabularyData = {
       "category": "greetings_basics",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👋",
-      "emoji": "👋",
+      "icon": "👍",
+      "emoji": "👍",
       "sessionReady": true
     },
     {
@@ -136,8 +136,8 @@ const enhancedVocabularyData = {
       "category": "greetings_basics",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "👋",
-      "emoji": "👋",
+      "icon": "💑",
+      "emoji": "💑",
       "sessionReady": true
     },
     {
@@ -151,8 +151,8 @@ const enhancedVocabularyData = {
       "category": "greetings_basics",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "👋",
-      "emoji": "👋",
+      "icon": "🔧",
+      "emoji": "🔧",
       "sessionReady": true
     }
   ],
@@ -168,8 +168,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "🏠",
+      "emoji": "🏠",
       "sessionReady": true
     },
     {
@@ -183,8 +183,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "🟢",
+      "emoji": "🟢",
       "sessionReady": true
     },
     {
@@ -198,8 +198,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "🤒",
+      "emoji": "🤒",
       "sessionReady": true
     },
     {
@@ -213,8 +213,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👫",
+      "emoji": "👫",
       "sessionReady": true
     },
     {
@@ -228,8 +228,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -243,8 +243,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👨‍🦳",
+      "emoji": "👨‍🦳",
       "sessionReady": true
     },
     {
@@ -273,8 +273,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👫",
+      "emoji": "👫",
       "sessionReady": true
     },
     {
@@ -303,8 +303,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👩‍🦳",
+      "emoji": "👩‍🦳",
       "sessionReady": true
     },
     {
@@ -318,8 +318,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👴",
+      "emoji": "👴",
       "sessionReady": true
     },
     {
@@ -333,8 +333,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👵",
+      "emoji": "👵",
       "sessionReady": true
     },
     {
@@ -363,8 +363,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👨‍🦳",
+      "emoji": "👨‍🦳",
       "sessionReady": true
     },
     {
@@ -438,8 +438,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "☀️",
+      "emoji": "☀️",
       "sessionReady": true
     },
     {
@@ -468,8 +468,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "💑",
+      "emoji": "💑",
       "sessionReady": true
     },
     {
@@ -483,8 +483,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👫",
+      "emoji": "👫",
       "sessionReady": true
     },
     {
@@ -513,8 +513,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "🏝️",
+      "emoji": "🏝️",
       "sessionReady": true
     },
     {
@@ -528,8 +528,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👨",
+      "emoji": "👨",
       "sessionReady": true
     },
     {
@@ -543,8 +543,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👨",
+      "emoji": "👨",
       "sessionReady": true
     },
     {
@@ -558,8 +558,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👩",
+      "emoji": "👩",
       "sessionReady": true
     },
     {
@@ -573,8 +573,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👨‍🦳",
+      "emoji": "👨‍🦳",
       "sessionReady": true
     },
     {
@@ -588,8 +588,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👫",
+      "emoji": "👫",
       "sessionReady": true
     },
     {
@@ -603,8 +603,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👩‍🦳",
+      "emoji": "👩‍🦳",
       "sessionReady": true
     },
     {
@@ -633,8 +633,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "🍯",
+      "emoji": "🍯",
       "sessionReady": true
     },
     {
@@ -648,8 +648,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👩",
+      "emoji": "👩",
       "sessionReady": true
     },
     {
@@ -663,8 +663,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -678,8 +678,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "💑",
+      "emoji": "💑",
       "sessionReady": true
     },
     {
@@ -723,8 +723,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "🧳",
+      "emoji": "🧳",
       "sessionReady": true
     },
     {
@@ -738,8 +738,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "🏠",
+      "emoji": "🏠",
       "sessionReady": true
     },
     {
@@ -753,8 +753,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "💑",
+      "emoji": "💑",
       "sessionReady": true
     },
     {
@@ -768,8 +768,8 @@ const enhancedVocabularyData = {
       "category": "family_relationships",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "👨‍👩‍👧‍👦",
-      "emoji": "👨‍👩‍👧‍👦",
+      "icon": "👨‍🦳",
+      "emoji": "👨‍🦳",
       "sessionReady": true
     },
     {
@@ -800,8 +800,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👃",
+      "emoji": "👃",
       "sessionReady": true
     },
     {
@@ -815,8 +815,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "📱",
+      "emoji": "📱",
       "sessionReady": true
     },
     {
@@ -830,8 +830,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "😖",
+      "emoji": "😖",
       "sessionReady": true
     },
     {
@@ -845,8 +845,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "5️⃣0️⃣",
+      "emoji": "5️⃣0️⃣",
       "sessionReady": true
     },
     {
@@ -860,8 +860,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦶",
+      "emoji": "🦶",
       "sessionReady": true
     },
     {
@@ -875,8 +875,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "😊",
+      "emoji": "😊",
       "sessionReady": true
     },
     {
@@ -890,8 +890,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👁️",
+      "emoji": "👁️",
       "sessionReady": true
     },
     {
@@ -905,8 +905,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🤒",
+      "emoji": "🤒",
       "sessionReady": true
     },
     {
@@ -920,8 +920,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦷",
+      "emoji": "🦷",
       "sessionReady": true
     },
     {
@@ -935,8 +935,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -950,8 +950,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -965,8 +965,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🤕",
+      "emoji": "🤕",
       "sessionReady": true
     },
     {
@@ -980,8 +980,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👨‍⚕️",
+      "emoji": "👨‍⚕️",
       "sessionReady": true
     },
     {
@@ -995,8 +995,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👆",
+      "emoji": "👆",
       "sessionReady": true
     },
     {
@@ -1010,8 +1010,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "📺",
+      "emoji": "📺",
       "sessionReady": true
     },
     {
@@ -1025,8 +1025,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👗",
+      "emoji": "👗",
       "sessionReady": true
     },
     {
@@ -1040,8 +1040,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👃",
+      "emoji": "👃",
       "sessionReady": true
     },
     {
@@ -1055,8 +1055,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦷",
+      "emoji": "🦷",
       "sessionReady": true
     },
     {
@@ -1070,8 +1070,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "💇",
+      "emoji": "💇",
       "sessionReady": true
     },
     {
@@ -1085,8 +1085,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👂",
+      "emoji": "👂",
       "sessionReady": true
     },
     {
@@ -1100,8 +1100,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🍎",
+      "emoji": "🍎",
       "sessionReady": true
     },
     {
@@ -1115,8 +1115,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👄",
+      "emoji": "👄",
       "sessionReady": true
     },
     {
@@ -1130,8 +1130,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👠",
+      "emoji": "👠",
       "sessionReady": true
     },
     {
@@ -1145,8 +1145,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -1175,8 +1175,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "💊",
+      "emoji": "💊",
       "sessionReady": true
     },
     {
@@ -1190,8 +1190,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1220,8 +1220,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1235,8 +1235,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "📏",
+      "emoji": "📏",
       "sessionReady": true
     },
     {
@@ -1250,8 +1250,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "❤️",
+      "emoji": "❤️",
       "sessionReady": true
     },
     {
@@ -1265,8 +1265,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1280,8 +1280,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1310,8 +1310,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1325,8 +1325,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🤒",
+      "emoji": "🤒",
       "sessionReady": true
     },
     {
@@ -1340,8 +1340,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1355,8 +1355,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1370,8 +1370,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1385,8 +1385,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🏛️",
+      "emoji": "🏛️",
       "sessionReady": true
     },
     {
@@ -1400,8 +1400,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦷",
+      "emoji": "🦷",
       "sessionReady": true
     },
     {
@@ -1415,8 +1415,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🤕",
+      "emoji": "🤕",
       "sessionReady": true
     },
     {
@@ -1430,8 +1430,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👁️",
+      "emoji": "👁️",
       "sessionReady": true
     },
     {
@@ -1445,8 +1445,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦷",
+      "emoji": "🦷",
       "sessionReady": true
     },
     {
@@ -1460,8 +1460,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1490,8 +1490,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🤕",
+      "emoji": "🤕",
       "sessionReady": true
     },
     {
@@ -1505,8 +1505,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "😊",
+      "emoji": "😊",
       "sessionReady": true
     },
     {
@@ -1520,8 +1520,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1535,8 +1535,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🧤",
+      "emoji": "🧤",
       "sessionReady": true
     },
     {
@@ -1550,8 +1550,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🫁",
+      "emoji": "🫁",
       "sessionReady": true
     },
     {
@@ -1580,8 +1580,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦶",
+      "emoji": "🦶",
       "sessionReady": true
     },
     {
@@ -1595,8 +1595,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦷",
+      "emoji": "🦷",
       "sessionReady": true
     },
     {
@@ -1610,8 +1610,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦷",
+      "emoji": "🦷",
       "sessionReady": true
     },
     {
@@ -1625,8 +1625,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1640,8 +1640,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👨",
+      "emoji": "👨",
       "sessionReady": true
     },
     {
@@ -1655,8 +1655,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦋",
+      "emoji": "🦋",
       "sessionReady": true
     },
     {
@@ -1685,8 +1685,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "😊",
+      "emoji": "😊",
       "sessionReady": true
     },
     {
@@ -1700,8 +1700,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1715,8 +1715,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1730,8 +1730,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1745,8 +1745,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1760,8 +1760,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1775,8 +1775,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "🦷",
+      "emoji": "🦷",
       "sessionReady": true
     },
     {
@@ -1790,8 +1790,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1805,8 +1805,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1820,8 +1820,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "👂",
+      "emoji": "👂",
       "sessionReady": true
     },
     {
@@ -1835,8 +1835,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1850,8 +1850,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1865,8 +1865,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1880,8 +1880,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1895,8 +1895,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1910,8 +1910,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     },
     {
@@ -1925,8 +1925,8 @@ const enhancedVocabularyData = {
       "category": "body_health",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏥",
-      "emoji": "🏥",
+      "icon": "✋",
+      "emoji": "✋",
       "sessionReady": true
     }
   ],
@@ -1942,8 +1942,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🧂",
+      "emoji": "🧂",
       "sessionReady": true
     },
     {
@@ -1957,8 +1957,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "👨‍🏫",
+      "emoji": "👨‍🏫",
       "sessionReady": true
     },
     {
@@ -1972,8 +1972,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -1987,8 +1987,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🐓",
+      "emoji": "🐓",
       "sessionReady": true
     },
     {
@@ -2002,8 +2002,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🚽",
+      "emoji": "🚽",
       "sessionReady": true
     },
     {
@@ -2017,8 +2017,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥗",
+      "emoji": "🥗",
       "sessionReady": true
     },
     {
@@ -2032,8 +2032,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -2047,8 +2047,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "👗",
+      "emoji": "👗",
       "sessionReady": true
     },
     {
@@ -2062,8 +2062,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -2077,8 +2077,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🍎",
+      "emoji": "🍎",
       "sessionReady": true
     },
     {
@@ -2092,8 +2092,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥬",
+      "emoji": "🥬",
       "sessionReady": true
     },
     {
@@ -2107,8 +2107,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2137,8 +2137,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🍲",
+      "emoji": "🍲",
       "sessionReady": true
     },
     {
@@ -2167,8 +2167,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥛",
+      "emoji": "🥛",
       "sessionReady": true
     },
     {
@@ -2227,8 +2227,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2242,8 +2242,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🧀",
+      "emoji": "🧀",
       "sessionReady": true
     },
     {
@@ -2257,8 +2257,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2272,8 +2272,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "Mixed/Exception",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2287,8 +2287,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -2302,8 +2302,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "3️⃣0️⃣",
+      "emoji": "3️⃣0️⃣",
       "sessionReady": true
     },
     {
@@ -2317,8 +2317,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🍯",
+      "emoji": "🍯",
       "sessionReady": true
     },
     {
@@ -2332,8 +2332,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🏪",
+      "emoji": "🏪",
       "sessionReady": true
     },
     {
@@ -2347,8 +2347,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🎫",
+      "emoji": "🎫",
       "sessionReady": true
     },
     {
@@ -2377,8 +2377,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🍯",
+      "emoji": "🍯",
       "sessionReady": true
     },
     {
@@ -2392,8 +2392,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🍚",
+      "emoji": "🍚",
       "sessionReady": true
     },
     {
@@ -2407,8 +2407,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🧥",
+      "emoji": "🧥",
       "sessionReady": true
     },
     {
@@ -2422,8 +2422,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2437,8 +2437,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🧂",
+      "emoji": "🧂",
       "sessionReady": true
     },
     {
@@ -2452,8 +2452,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2467,8 +2467,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🌐",
+      "emoji": "🌐",
       "sessionReady": true
     },
     {
@@ -2482,8 +2482,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2497,8 +2497,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2512,8 +2512,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2527,8 +2527,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2542,8 +2542,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -2557,8 +2557,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "☕",
+      "emoji": "☕",
       "sessionReady": true
     },
     {
@@ -2587,8 +2587,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -2602,8 +2602,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🚇",
+      "emoji": "🚇",
       "sessionReady": true
     },
     {
@@ -2617,8 +2617,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2632,8 +2632,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -2647,8 +2647,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🫖",
+      "emoji": "🫖",
       "sessionReady": true
     },
     {
@@ -2662,8 +2662,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🚲",
+      "emoji": "🚲",
       "sessionReady": true
     },
     {
@@ -2677,8 +2677,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2707,8 +2707,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2722,8 +2722,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2737,8 +2737,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2752,8 +2752,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🔧",
+      "emoji": "🔧",
       "sessionReady": true
     },
     {
@@ -2767,8 +2767,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🏀",
+      "emoji": "🏀",
       "sessionReady": true
     },
     {
@@ -2782,8 +2782,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🏍️",
+      "emoji": "🏍️",
       "sessionReady": true
     },
     {
@@ -2797,8 +2797,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2812,8 +2812,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2827,8 +2827,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2842,8 +2842,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "☕",
+      "emoji": "☕",
       "sessionReady": true
     },
     {
@@ -2872,8 +2872,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -2887,8 +2887,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2902,8 +2902,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2917,8 +2917,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2932,8 +2932,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -2947,8 +2947,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -2962,8 +2962,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -2977,8 +2977,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🧂",
+      "emoji": "🧂",
       "sessionReady": true
     },
     {
@@ -2992,8 +2992,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3007,8 +3007,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "Mixed",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3022,8 +3022,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "Mixed",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3037,8 +3037,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -3052,8 +3052,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3067,8 +3067,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3082,8 +3082,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3097,8 +3097,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3112,8 +3112,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3127,8 +3127,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3142,8 +3142,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -3157,8 +3157,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🏛️",
+      "emoji": "🏛️",
       "sessionReady": true
     },
     {
@@ -3172,8 +3172,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "🥩",
+      "emoji": "🥩",
       "sessionReady": true
     },
     {
@@ -3187,8 +3187,8 @@ const enhancedVocabularyData = {
       "category": "food_cooking",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🍽️",
-      "emoji": "🍽️",
+      "icon": "⚖️",
+      "emoji": "⚖️",
       "sessionReady": true
     }
   ],
@@ -3204,8 +3204,8 @@ const enhancedVocabularyData = {
       "category": "clothing_fashion",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👕",
-      "emoji": "👕",
+      "icon": "🧦",
+      "emoji": "🧦",
       "sessionReady": true
     },
     {
@@ -3219,8 +3219,8 @@ const enhancedVocabularyData = {
       "category": "clothing_fashion",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👕",
-      "emoji": "👕",
+      "icon": "👔",
+      "emoji": "👔",
       "sessionReady": true
     },
     {
@@ -3234,8 +3234,8 @@ const enhancedVocabularyData = {
       "category": "clothing_fashion",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👕",
-      "emoji": "👕",
+      "icon": "👖",
+      "emoji": "👖",
       "sessionReady": true
     },
     {
@@ -3249,8 +3249,8 @@ const enhancedVocabularyData = {
       "category": "clothing_fashion",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "👕",
-      "emoji": "👕",
+      "icon": "👜",
+      "emoji": "👜",
       "sessionReady": true
     },
     {
@@ -3264,8 +3264,8 @@ const enhancedVocabularyData = {
       "category": "clothing_fashion",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "👕",
-      "emoji": "👕",
+      "icon": "🎩",
+      "emoji": "🎩",
       "sessionReady": true
     },
     {
@@ -3279,8 +3279,8 @@ const enhancedVocabularyData = {
       "category": "clothing_fashion",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "👕",
-      "emoji": "👕",
+      "icon": "🧥",
+      "emoji": "🧥",
       "sessionReady": true
     },
     {
@@ -3294,8 +3294,8 @@ const enhancedVocabularyData = {
       "category": "clothing_fashion",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "👕",
-      "emoji": "👕",
+      "icon": "🧥",
+      "emoji": "🧥",
       "sessionReady": true
     },
     {
@@ -3309,8 +3309,8 @@ const enhancedVocabularyData = {
       "category": "clothing_fashion",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👕",
-      "emoji": "👕",
+      "icon": "🥄",
+      "emoji": "🥄",
       "sessionReady": true
     },
     {
@@ -3324,8 +3324,8 @@ const enhancedVocabularyData = {
       "category": "clothing_fashion",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "👕",
-      "emoji": "👕",
+      "icon": "🧥",
+      "emoji": "🧥",
       "sessionReady": true
     },
     {
@@ -3356,8 +3356,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🌉",
+      "emoji": "🌉",
       "sessionReady": true
     },
     {
@@ -3386,8 +3386,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🌤️",
+      "emoji": "🌤️",
       "sessionReady": true
     },
     {
@@ -3446,8 +3446,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🚕",
+      "emoji": "🚕",
       "sessionReady": true
     },
     {
@@ -3461,8 +3461,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🚦",
+      "emoji": "🚦",
       "sessionReady": true
     },
     {
@@ -3491,8 +3491,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -3506,8 +3506,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🛤️",
+      "emoji": "🛤️",
       "sessionReady": true
     },
     {
@@ -3521,8 +3521,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🚉",
+      "emoji": "🚉",
       "sessionReady": true
     },
     {
@@ -3536,8 +3536,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🛫",
+      "emoji": "🛫",
       "sessionReady": true
     },
     {
@@ -3551,8 +3551,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🛫",
+      "emoji": "🛫",
       "sessionReady": true
     },
     {
@@ -3566,8 +3566,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -3581,8 +3581,8 @@ const enhancedVocabularyData = {
       "category": "transport_travel",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🚗",
-      "emoji": "🚗",
+      "icon": "🧬",
+      "emoji": "🧬",
       "sessionReady": true
     }
   ],
@@ -3598,8 +3598,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🪑",
+      "emoji": "🪑",
       "sessionReady": true
     },
     {
@@ -3613,8 +3613,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🌿",
+      "emoji": "🌿",
       "sessionReady": true
     },
     {
@@ -3628,8 +3628,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -3643,8 +3643,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -3658,8 +3658,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🪟",
+      "emoji": "🪟",
       "sessionReady": true
     },
     {
@@ -3673,8 +3673,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🍳",
+      "emoji": "🍳",
       "sessionReady": true
     },
     {
@@ -3688,8 +3688,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🪑",
+      "emoji": "🪑",
       "sessionReady": true
     },
     {
@@ -3703,8 +3703,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🚪",
+      "emoji": "🚪",
       "sessionReady": true
     },
     {
@@ -3718,8 +3718,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -3733,8 +3733,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🛏️",
+      "emoji": "🛏️",
       "sessionReady": true
     },
     {
@@ -3748,8 +3748,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🚿",
+      "emoji": "🚿",
       "sessionReady": true
     },
     {
@@ -3778,8 +3778,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🚪",
+      "emoji": "🚪",
       "sessionReady": true
     },
     {
@@ -3793,8 +3793,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🚪",
+      "emoji": "🚪",
       "sessionReady": true
     },
     {
@@ -3838,8 +3838,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🗄️",
+      "emoji": "🗄️",
       "sessionReady": true
     },
     {
@@ -3853,8 +3853,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -3883,8 +3883,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🚪",
+      "emoji": "🚪",
       "sessionReady": true
     },
     {
@@ -3928,8 +3928,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🚪",
+      "emoji": "🚪",
       "sessionReady": true
     },
     {
@@ -3943,8 +3943,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "📦",
+      "emoji": "📦",
       "sessionReady": true
     },
     {
@@ -3958,8 +3958,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -3973,8 +3973,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -4003,8 +4003,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🚪",
+      "emoji": "🚪",
       "sessionReady": true
     },
     {
@@ -4018,8 +4018,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "📦",
+      "emoji": "📦",
       "sessionReady": true
     },
     {
@@ -4138,8 +4138,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "B2",
       "vowelHarmony": "Mixed",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🪑",
+      "emoji": "🪑",
       "sessionReady": true
     },
     {
@@ -4153,8 +4153,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "B2",
       "vowelHarmony": "Mixed",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "👨‍🔬",
+      "emoji": "👨‍🔬",
       "sessionReady": true
     },
     {
@@ -4168,8 +4168,8 @@ const enhancedVocabularyData = {
       "category": "home_living",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🏠",
-      "emoji": "🏠",
+      "icon": "🏥",
+      "emoji": "🏥",
       "sessionReady": true
     }
   ],
@@ -4185,8 +4185,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -4200,8 +4200,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "👨‍🎓",
+      "emoji": "👨‍🎓",
       "sessionReady": true
     },
     {
@@ -4215,8 +4215,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "📄",
+      "emoji": "📄",
       "sessionReady": true
     },
     {
@@ -4230,8 +4230,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "✏️",
+      "emoji": "✏️",
       "sessionReady": true
     },
     {
@@ -4245,8 +4245,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "📚",
+      "emoji": "📚",
       "sessionReady": true
     },
     {
@@ -4260,8 +4260,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "🏫",
+      "emoji": "🏫",
       "sessionReady": true
     },
     {
@@ -4275,8 +4275,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "🛒",
+      "emoji": "🛒",
       "sessionReady": true
     },
     {
@@ -4290,8 +4290,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "👷",
+      "emoji": "👷",
       "sessionReady": true
     },
     {
@@ -4305,8 +4305,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -4320,8 +4320,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "📝",
+      "emoji": "📝",
       "sessionReady": true
     },
     {
@@ -4335,8 +4335,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -4350,8 +4350,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "🏬",
+      "emoji": "🏬",
       "sessionReady": true
     },
     {
@@ -4365,8 +4365,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "✏️",
+      "emoji": "✏️",
       "sessionReady": true
     },
     {
@@ -4380,8 +4380,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "👕",
+      "emoji": "👕",
       "sessionReady": true
     },
     {
@@ -4410,8 +4410,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -4425,8 +4425,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -4455,8 +4455,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -4470,8 +4470,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -4485,8 +4485,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -4515,8 +4515,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     },
     {
@@ -4530,8 +4530,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "📖",
+      "emoji": "📖",
       "sessionReady": true
     },
     {
@@ -4545,8 +4545,8 @@ const enhancedVocabularyData = {
       "category": "work_education",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎓",
-      "emoji": "🎓",
+      "icon": "💼",
+      "emoji": "💼",
       "sessionReady": true
     }
   ],
@@ -4562,8 +4562,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "💰",
+      "emoji": "💰",
       "sessionReady": true
     },
     {
@@ -4577,8 +4577,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "🏪",
+      "emoji": "🏪",
       "sessionReady": true
     },
     {
@@ -4592,8 +4592,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "💳",
+      "emoji": "💳",
       "sessionReady": true
     },
     {
@@ -4607,8 +4607,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -4622,8 +4622,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "🏷️",
+      "emoji": "🏷️",
       "sessionReady": true
     },
     {
@@ -4637,8 +4637,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "💰",
+      "emoji": "💰",
       "sessionReady": true
     },
     {
@@ -4652,8 +4652,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "💰",
+      "emoji": "💰",
       "sessionReady": true
     },
     {
@@ -4667,8 +4667,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -4682,8 +4682,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "🏬",
+      "emoji": "🏬",
       "sessionReady": true
     },
     {
@@ -4697,8 +4697,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -4712,8 +4712,8 @@ const enhancedVocabularyData = {
       "category": "shopping_commerce",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🛒",
-      "emoji": "🛒",
+      "icon": "💵",
+      "emoji": "💵",
       "sessionReady": true
     }
   ],
@@ -4744,8 +4744,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🏞️",
+      "emoji": "🏞️",
       "sessionReady": true
     },
     {
@@ -4759,8 +4759,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -4774,8 +4774,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🌳",
+      "emoji": "🌳",
       "sessionReady": true
     },
     {
@@ -4789,8 +4789,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🔥",
+      "emoji": "🔥",
       "sessionReady": true
     },
     {
@@ -4804,8 +4804,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🫒",
+      "emoji": "🫒",
       "sessionReady": true
     },
     {
@@ -4819,8 +4819,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -4834,8 +4834,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "⛰️",
+      "emoji": "⛰️",
       "sessionReady": true
     },
     {
@@ -4849,8 +4849,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🌸",
+      "emoji": "🌸",
       "sessionReady": true
     },
     {
@@ -4864,8 +4864,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🌊",
+      "emoji": "🌊",
       "sessionReady": true
     },
     {
@@ -4879,8 +4879,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🐜",
+      "emoji": "🐜",
       "sessionReady": true
     },
     {
@@ -4894,8 +4894,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -4909,8 +4909,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -4939,8 +4939,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🌲",
+      "emoji": "🌲",
       "sessionReady": true
     },
     {
@@ -4954,8 +4954,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🐝",
+      "emoji": "🐝",
       "sessionReady": true
     },
     {
@@ -4969,8 +4969,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "👮",
+      "emoji": "👮",
       "sessionReady": true
     },
     {
@@ -4984,8 +4984,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🔥",
+      "emoji": "🔥",
       "sessionReady": true
     },
     {
@@ -4999,8 +4999,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🐝",
+      "emoji": "🐝",
       "sessionReady": true
     },
     {
@@ -5014,8 +5014,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🍝",
+      "emoji": "🍝",
       "sessionReady": true
     },
     {
@@ -5029,8 +5029,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🌧️",
+      "emoji": "🌧️",
       "sessionReady": true
     },
     {
@@ -5044,8 +5044,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "💨",
+      "emoji": "💨",
       "sessionReady": true
     },
     {
@@ -5059,8 +5059,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -5074,8 +5074,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -5089,8 +5089,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🐘",
+      "emoji": "🐘",
       "sessionReady": true
     },
     {
@@ -5104,8 +5104,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -5119,8 +5119,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "☁️",
+      "emoji": "☁️",
       "sessionReady": true
     },
     {
@@ -5134,8 +5134,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🐦",
+      "emoji": "🐦",
       "sessionReady": true
     },
     {
@@ -5149,8 +5149,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     },
     {
@@ -5164,8 +5164,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🐝",
+      "emoji": "🐝",
       "sessionReady": true
     },
     {
@@ -5179,8 +5179,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🫒",
+      "emoji": "🫒",
       "sessionReady": true
     },
     {
@@ -5194,8 +5194,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "💧",
+      "emoji": "💧",
       "sessionReady": true
     },
     {
@@ -5209,8 +5209,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🐦",
+      "emoji": "🐦",
       "sessionReady": true
     },
     {
@@ -5224,8 +5224,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "🌊",
+      "emoji": "🌊",
       "sessionReady": true
     },
     {
@@ -5239,8 +5239,8 @@ const enhancedVocabularyData = {
       "category": "nature_weather",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🌿",
-      "emoji": "🌿",
+      "icon": "❄️",
+      "emoji": "❄️",
       "sessionReady": true
     }
   ],
@@ -5256,8 +5256,8 @@ const enhancedVocabularyData = {
       "category": "technology_modern",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📱",
-      "emoji": "📱",
+      "icon": "💻",
+      "emoji": "💻",
       "sessionReady": true
     },
     {
@@ -5271,8 +5271,8 @@ const enhancedVocabularyData = {
       "category": "technology_modern",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📱",
-      "emoji": "📱",
+      "icon": "💻",
+      "emoji": "💻",
       "sessionReady": true
     },
     {
@@ -5286,8 +5286,8 @@ const enhancedVocabularyData = {
       "category": "technology_modern",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "📱",
-      "emoji": "📱",
+      "icon": "💻",
+      "emoji": "💻",
       "sessionReady": true
     },
     {
@@ -5301,8 +5301,8 @@ const enhancedVocabularyData = {
       "category": "technology_modern",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📱",
-      "emoji": "📱",
+      "icon": "🌐",
+      "emoji": "🌐",
       "sessionReady": true
     },
     {
@@ -5316,8 +5316,8 @@ const enhancedVocabularyData = {
       "category": "technology_modern",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "📱",
-      "emoji": "📱",
+      "icon": "💻",
+      "emoji": "💻",
       "sessionReady": true
     },
     {
@@ -5346,8 +5346,8 @@ const enhancedVocabularyData = {
       "category": "technology_modern",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📱",
-      "emoji": "📱",
+      "icon": "🦠",
+      "emoji": "🦠",
       "sessionReady": true
     },
     {
@@ -5361,8 +5361,8 @@ const enhancedVocabularyData = {
       "category": "technology_modern",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📱",
-      "emoji": "📱",
+      "icon": "🔧",
+      "emoji": "🔧",
       "sessionReady": true
     },
     {
@@ -5376,8 +5376,8 @@ const enhancedVocabularyData = {
       "category": "technology_modern",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📱",
-      "emoji": "📱",
+      "icon": "💻",
+      "emoji": "💻",
       "sessionReady": true
     },
     {
@@ -5391,8 +5391,8 @@ const enhancedVocabularyData = {
       "category": "technology_modern",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📱",
-      "emoji": "📱",
+      "icon": "⚙️",
+      "emoji": "⚙️",
       "sessionReady": true
     }
   ],
@@ -5408,8 +5408,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "⚫",
+      "emoji": "⚫",
       "sessionReady": true
     },
     {
@@ -5423,8 +5423,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "🤏",
+      "emoji": "🤏",
       "sessionReady": true
     },
     {
@@ -5438,8 +5438,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "📏",
+      "emoji": "📏",
       "sessionReady": true
     },
     {
@@ -5453,8 +5453,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "⚪",
+      "emoji": "⚪",
       "sessionReady": true
     },
     {
@@ -5468,8 +5468,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "📐",
+      "emoji": "📐",
       "sessionReady": true
     },
     {
@@ -5483,8 +5483,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "🔵",
+      "emoji": "🔵",
       "sessionReady": true
     },
     {
@@ -5498,8 +5498,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "🟡",
+      "emoji": "🟡",
       "sessionReady": true
     },
     {
@@ -5513,8 +5513,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "😖",
+      "emoji": "😖",
       "sessionReady": true
     },
     {
@@ -5528,8 +5528,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "🔴",
+      "emoji": "🔴",
       "sessionReady": true
     },
     {
@@ -5558,8 +5558,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "📏",
+      "emoji": "📏",
       "sessionReady": true
     },
     {
@@ -5573,8 +5573,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "👎",
+      "emoji": "👎",
       "sessionReady": true
     },
     {
@@ -5603,8 +5603,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "🐝",
+      "emoji": "🐝",
       "sessionReady": true
     },
     {
@@ -5618,8 +5618,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "📏",
+      "emoji": "📏",
       "sessionReady": true
     },
     {
@@ -5633,8 +5633,8 @@ const enhancedVocabularyData = {
       "category": "colors_descriptions",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "🎨",
-      "emoji": "🎨",
+      "icon": "🔴",
+      "emoji": "🔴",
       "sessionReady": true
     },
     {
@@ -5680,8 +5680,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -5695,8 +5695,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -5710,8 +5710,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -5725,8 +5725,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🪞",
+      "emoji": "🪞",
       "sessionReady": true
     },
     {
@@ -5740,8 +5740,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -5755,8 +5755,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -5770,8 +5770,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🕐",
-      "emoji": "🕐",
+      "icon": "⌚",
+      "emoji": "⌚",
       "sessionReady": true
     },
     {
@@ -5785,8 +5785,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🌆",
+      "emoji": "🌆",
       "sessionReady": true
     },
     {
@@ -5815,8 +5815,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -5830,8 +5830,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "👨",
+      "emoji": "👨",
       "sessionReady": true
     },
     {
@@ -5845,8 +5845,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "☀️",
+      "emoji": "☀️",
       "sessionReady": true
     },
     {
@@ -5860,8 +5860,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -5875,8 +5875,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🌙",
+      "emoji": "🌙",
       "sessionReady": true
     },
     {
@@ -5890,8 +5890,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -5905,8 +5905,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -5920,8 +5920,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -5935,8 +5935,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -5950,8 +5950,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -5965,8 +5965,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -5980,8 +5980,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🍌",
+      "emoji": "🍌",
       "sessionReady": true
     },
     {
@@ -5995,8 +5995,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🌅",
+      "emoji": "🌅",
       "sessionReady": true
     },
     {
@@ -6010,8 +6010,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -6025,8 +6025,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -6040,8 +6040,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -6055,8 +6055,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🐻",
+      "emoji": "🐻",
       "sessionReady": true
     },
     {
@@ -6070,8 +6070,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🐻",
+      "emoji": "🐻",
       "sessionReady": true
     },
     {
@@ -6085,8 +6085,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🐻",
+      "emoji": "🐻",
       "sessionReady": true
     },
     {
@@ -6100,8 +6100,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -6115,8 +6115,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "⭐",
+      "emoji": "⭐",
       "sessionReady": true
     },
     {
@@ -6130,8 +6130,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -6145,8 +6145,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -6160,8 +6160,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🐻",
+      "emoji": "🐻",
       "sessionReady": true
     },
     {
@@ -6175,8 +6175,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -6190,8 +6190,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -6205,8 +6205,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -6220,8 +6220,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -6265,8 +6265,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -6280,8 +6280,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -6295,8 +6295,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -6370,8 +6370,8 @@ const enhancedVocabularyData = {
       "category": "time_calendar",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⏰",
-      "emoji": "⏰",
+      "icon": "📆",
+      "emoji": "📆",
       "sessionReady": true
     },
     {
@@ -6417,8 +6417,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6432,8 +6432,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "6️⃣0️⃣",
+      "emoji": "6️⃣0️⃣",
       "sessionReady": true
     },
     {
@@ -6462,8 +6462,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "6️⃣",
+      "emoji": "6️⃣",
       "sessionReady": true
     },
     {
@@ -6477,8 +6477,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "8️⃣",
+      "emoji": "8️⃣",
       "sessionReady": true
     },
     {
@@ -6492,8 +6492,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "6️⃣",
+      "emoji": "6️⃣",
       "sessionReady": true
     },
     {
@@ -6507,8 +6507,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "7️⃣",
+      "emoji": "7️⃣",
       "sessionReady": true
     },
     {
@@ -6522,8 +6522,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "4️⃣0️⃣",
+      "emoji": "4️⃣0️⃣",
       "sessionReady": true
     },
     {
@@ -6537,8 +6537,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "9️⃣",
+      "emoji": "9️⃣",
       "sessionReady": true
     },
     {
@@ -6567,8 +6567,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "2️⃣0️⃣",
+      "emoji": "2️⃣0️⃣",
       "sessionReady": true
     },
     {
@@ -6582,8 +6582,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "6️⃣",
+      "emoji": "6️⃣",
       "sessionReady": true
     },
     {
@@ -6597,8 +6597,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6612,8 +6612,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "3️⃣",
+      "emoji": "3️⃣",
       "sessionReady": true
     },
     {
@@ -6627,8 +6627,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6642,8 +6642,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🍯",
+      "emoji": "🍯",
       "sessionReady": true
     },
     {
@@ -6657,8 +6657,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "3️⃣",
+      "emoji": "3️⃣",
       "sessionReady": true
     },
     {
@@ -6672,8 +6672,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6687,8 +6687,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6702,8 +6702,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6717,8 +6717,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🚛",
+      "emoji": "🚛",
       "sessionReady": true
     },
     {
@@ -6732,8 +6732,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6747,8 +6747,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6762,8 +6762,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🧮",
+      "emoji": "🧮",
       "sessionReady": true
     },
     {
@@ -6777,8 +6777,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "3️⃣",
+      "emoji": "3️⃣",
       "sessionReady": true
     },
     {
@@ -6792,8 +6792,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6807,8 +6807,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🍅",
+      "emoji": "🍅",
       "sessionReady": true
     },
     {
@@ -6822,8 +6822,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🎪",
+      "emoji": "🎪",
       "sessionReady": true
     },
     {
@@ -6837,8 +6837,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -6852,8 +6852,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "➗",
+      "emoji": "➗",
       "sessionReady": true
     },
     {
@@ -6867,8 +6867,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "4️⃣",
+      "emoji": "4️⃣",
       "sessionReady": true
     },
     {
@@ -6882,8 +6882,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6897,8 +6897,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6912,8 +6912,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6927,8 +6927,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6942,8 +6942,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6957,8 +6957,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -6972,8 +6972,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🍯",
+      "emoji": "🍯",
       "sessionReady": true
     },
     {
@@ -6987,8 +6987,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -7002,8 +7002,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔭",
+      "emoji": "🔭",
       "sessionReady": true
     },
     {
@@ -7017,8 +7017,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -7032,8 +7032,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -7047,8 +7047,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -7062,8 +7062,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -7077,8 +7077,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -7092,8 +7092,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "C2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "⚗️",
+      "emoji": "⚗️",
       "sessionReady": true
     },
     {
@@ -7107,8 +7107,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "C2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     },
     {
@@ -7122,8 +7122,8 @@ const enhancedVocabularyData = {
       "category": "numbers_math",
       "difficultyLevel": "C2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔢",
-      "emoji": "🔢",
+      "icon": "🔟",
+      "emoji": "🔟",
       "sessionReady": true
     }
   ],
@@ -7139,8 +7139,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🎤",
+      "emoji": "🎤",
       "sessionReady": true
     },
     {
@@ -7154,8 +7154,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "💃",
+      "emoji": "💃",
       "sessionReady": true
     },
     {
@@ -7169,8 +7169,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🎬",
+      "emoji": "🎬",
       "sessionReady": true
     },
     {
@@ -7184,8 +7184,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🎤",
+      "emoji": "🎤",
       "sessionReady": true
     },
     {
@@ -7214,8 +7214,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -7229,8 +7229,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🎵",
+      "emoji": "🎵",
       "sessionReady": true
     },
     {
@@ -7244,8 +7244,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🖼️",
+      "emoji": "🖼️",
       "sessionReady": true
     },
     {
@@ -7259,8 +7259,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🏛️",
+      "emoji": "🏛️",
       "sessionReady": true
     },
     {
@@ -7274,8 +7274,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🎬",
+      "emoji": "🎬",
       "sessionReady": true
     },
     {
@@ -7289,8 +7289,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🏛️",
+      "emoji": "🏛️",
       "sessionReady": true
     },
     {
@@ -7304,8 +7304,8 @@ const enhancedVocabularyData = {
       "category": "arts_culture",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🎭",
-      "emoji": "🎭",
+      "icon": "🎨",
+      "emoji": "🎨",
       "sessionReady": true
     }
   ],
@@ -7321,8 +7321,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "🎾",
+      "emoji": "🎾",
       "sessionReady": true
     },
     {
@@ -7336,8 +7336,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "🐑",
+      "emoji": "🐑",
       "sessionReady": true
     },
     {
@@ -7351,8 +7351,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "💯",
+      "emoji": "💯",
       "sessionReady": true
     },
     {
@@ -7381,8 +7381,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "🎮",
+      "emoji": "🎮",
       "sessionReady": true
     },
     {
@@ -7411,8 +7411,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "💯",
+      "emoji": "💯",
       "sessionReady": true
     },
     {
@@ -7426,8 +7426,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "🎮",
+      "emoji": "🎮",
       "sessionReady": true
     },
     {
@@ -7441,8 +7441,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "🏟️",
+      "emoji": "🏟️",
       "sessionReady": true
     },
     {
@@ -7456,8 +7456,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "📹",
+      "emoji": "📹",
       "sessionReady": true
     },
     {
@@ -7471,8 +7471,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "🏊",
+      "emoji": "🏊",
       "sessionReady": true
     },
     {
@@ -7486,8 +7486,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "🏃",
+      "emoji": "🏃",
       "sessionReady": true
     },
     {
@@ -7501,8 +7501,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "🏃",
+      "emoji": "🏃",
       "sessionReady": true
     },
     {
@@ -7516,8 +7516,8 @@ const enhancedVocabularyData = {
       "category": "sports_recreation",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚽",
-      "emoji": "⚽",
+      "icon": "🐑",
+      "emoji": "🐑",
       "sessionReady": true
     }
   ],
@@ -7533,8 +7533,8 @@ const enhancedVocabularyData = {
       "category": "legal_government",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚖️",
-      "emoji": "⚖️",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -7548,8 +7548,8 @@ const enhancedVocabularyData = {
       "category": "legal_government",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚖️",
-      "emoji": "⚖️",
+      "icon": "👮",
+      "emoji": "👮",
       "sessionReady": true
     },
     {
@@ -7563,8 +7563,8 @@ const enhancedVocabularyData = {
       "category": "legal_government",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚖️",
-      "emoji": "⚖️",
+      "icon": "📜",
+      "emoji": "📜",
       "sessionReady": true
     },
     {
@@ -7578,8 +7578,8 @@ const enhancedVocabularyData = {
       "category": "legal_government",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚖️",
-      "emoji": "⚖️",
+      "icon": "📜",
+      "emoji": "📜",
       "sessionReady": true
     },
     {
@@ -7593,8 +7593,8 @@ const enhancedVocabularyData = {
       "category": "legal_government",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚖️",
-      "emoji": "⚖️",
+      "icon": "📜",
+      "emoji": "📜",
       "sessionReady": true
     },
     {
@@ -7608,8 +7608,8 @@ const enhancedVocabularyData = {
       "category": "legal_government",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "⚖️",
-      "emoji": "⚖️",
+      "icon": "🏛️",
+      "emoji": "🏛️",
       "sessionReady": true
     },
     {
@@ -7623,8 +7623,8 @@ const enhancedVocabularyData = {
       "category": "legal_government",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "⚖️",
-      "emoji": "⚖️",
+      "icon": "👨‍⚖️",
+      "emoji": "👨‍⚖️",
       "sessionReady": true
     },
     {
@@ -7655,8 +7655,8 @@ const enhancedVocabularyData = {
       "category": "emergency_safety",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🚨",
-      "emoji": "🚨",
+      "icon": "🚑",
+      "emoji": "🚑",
       "sessionReady": true
     },
     {
@@ -7670,8 +7670,8 @@ const enhancedVocabularyData = {
       "category": "emergency_safety",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🚨",
-      "emoji": "🚨",
+      "icon": "🔒",
+      "emoji": "🔒",
       "sessionReady": true
     },
     {
@@ -7685,8 +7685,8 @@ const enhancedVocabularyData = {
       "category": "emergency_safety",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "🚨",
-      "emoji": "🚨",
+      "icon": "🚒",
+      "emoji": "🚒",
       "sessionReady": true
     },
     {
@@ -7700,8 +7700,8 @@ const enhancedVocabularyData = {
       "category": "emergency_safety",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🚨",
-      "emoji": "🚨",
+      "icon": "🚒",
+      "emoji": "🚒",
       "sessionReady": true
     },
     {
@@ -7715,8 +7715,8 @@ const enhancedVocabularyData = {
       "category": "emergency_safety",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "🚨",
-      "emoji": "🚨",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -7730,8 +7730,8 @@ const enhancedVocabularyData = {
       "category": "emergency_safety",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🚨",
-      "emoji": "🚨",
+      "icon": "💉",
+      "emoji": "💉",
       "sessionReady": true
     },
     {
@@ -7745,8 +7745,8 @@ const enhancedVocabularyData = {
       "category": "emergency_safety",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🚨",
-      "emoji": "🚨",
+      "icon": "🔒",
+      "emoji": "🔒",
       "sessionReady": true
     },
     {
@@ -7760,8 +7760,8 @@ const enhancedVocabularyData = {
       "category": "emergency_safety",
       "difficultyLevel": "C1",
       "vowelHarmony": "E-type (front)",
-      "icon": "🚨",
-      "emoji": "🚨",
+      "icon": "💉",
+      "emoji": "💉",
       "sessionReady": true
     }
   ],
@@ -7792,8 +7792,8 @@ const enhancedVocabularyData = {
       "category": "science_research",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔬",
-      "emoji": "🔬",
+      "icon": "⚛️",
+      "emoji": "⚛️",
       "sessionReady": true
     },
     {
@@ -7807,8 +7807,8 @@ const enhancedVocabularyData = {
       "category": "science_research",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔬",
-      "emoji": "🔬",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -7822,8 +7822,8 @@ const enhancedVocabularyData = {
       "category": "science_research",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔬",
-      "emoji": "🔬",
+      "icon": "🧪",
+      "emoji": "🧪",
       "sessionReady": true
     },
     {
@@ -7837,8 +7837,8 @@ const enhancedVocabularyData = {
       "category": "science_research",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔬",
-      "emoji": "🔬",
+      "icon": "🧪",
+      "emoji": "🧪",
       "sessionReady": true
     },
     {
@@ -7852,8 +7852,8 @@ const enhancedVocabularyData = {
       "category": "science_research",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "🔬",
-      "emoji": "🔬",
+      "icon": "📊",
+      "emoji": "📊",
       "sessionReady": true
     },
     {
@@ -7867,8 +7867,8 @@ const enhancedVocabularyData = {
       "category": "science_research",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔬",
-      "emoji": "🔬",
+      "icon": "⚗️",
+      "emoji": "⚗️",
       "sessionReady": true
     },
     {
@@ -7882,8 +7882,8 @@ const enhancedVocabularyData = {
       "category": "science_research",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "🔬",
-      "emoji": "🔬",
+      "icon": "⚛️",
+      "emoji": "⚛️",
       "sessionReady": true
     },
     {
@@ -7929,8 +7929,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🏫",
+      "emoji": "🏫",
       "sessionReady": true
     },
     {
@@ -7944,8 +7944,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔢",
+      "emoji": "🔢",
       "sessionReady": true
     },
     {
@@ -7959,8 +7959,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -7989,8 +7989,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -8004,8 +8004,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -8019,8 +8019,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🛌",
+      "emoji": "🛌",
       "sessionReady": true
     },
     {
@@ -8034,8 +8034,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🩷",
+      "emoji": "🩷",
       "sessionReady": true
     },
     {
@@ -8094,8 +8094,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -8109,8 +8109,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🍴",
+      "emoji": "🍴",
       "sessionReady": true
     },
     {
@@ -8199,8 +8199,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📐",
+      "emoji": "📐",
       "sessionReady": true
     },
     {
@@ -8214,8 +8214,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐐",
+      "emoji": "🐐",
       "sessionReady": true
     },
     {
@@ -8289,8 +8289,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🗿",
+      "emoji": "🗿",
       "sessionReady": true
     },
     {
@@ -8304,8 +8304,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🌆",
+      "emoji": "🌆",
       "sessionReady": true
     },
     {
@@ -8349,8 +8349,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -8364,8 +8364,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📔",
+      "emoji": "📔",
       "sessionReady": true
     },
     {
@@ -8379,8 +8379,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🖊️",
+      "emoji": "🖊️",
       "sessionReady": true
     },
     {
@@ -8394,8 +8394,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🆕",
+      "emoji": "🆕",
       "sessionReady": true
     },
     {
@@ -8409,8 +8409,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🏘️",
+      "emoji": "🏘️",
       "sessionReady": true
     },
     {
@@ -8439,8 +8439,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -8484,8 +8484,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐘",
+      "emoji": "🐘",
       "sessionReady": true
     },
     {
@@ -8499,8 +8499,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🟣",
+      "emoji": "🟣",
       "sessionReady": true
     },
     {
@@ -8514,8 +8514,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🟠",
+      "emoji": "🟠",
       "sessionReady": true
     },
     {
@@ -8544,8 +8544,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "✨",
+      "emoji": "✨",
       "sessionReady": true
     },
     {
@@ -8649,8 +8649,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🍊",
+      "emoji": "🍊",
       "sessionReady": true
     },
     {
@@ -8664,8 +8664,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -8694,8 +8694,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -8709,8 +8709,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🦵",
+      "emoji": "🦵",
       "sessionReady": true
     },
     {
@@ -8724,8 +8724,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🚢",
+      "emoji": "🚢",
       "sessionReady": true
     },
     {
@@ -8769,8 +8769,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -8814,8 +8814,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🏦",
+      "emoji": "🏦",
       "sessionReady": true
     },
     {
@@ -8934,8 +8934,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -8949,8 +8949,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -8964,8 +8964,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🗓️",
+      "emoji": "🗓️",
       "sessionReady": true
     },
     {
@@ -8979,8 +8979,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🌆",
+      "emoji": "🌆",
       "sessionReady": true
     },
     {
@@ -8994,8 +8994,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐄",
+      "emoji": "🐄",
       "sessionReady": true
     },
     {
@@ -9009,8 +9009,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🥚",
+      "emoji": "🥚",
       "sessionReady": true
     },
     {
@@ -9024,8 +9024,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -9039,8 +9039,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🍃",
+      "emoji": "🍃",
       "sessionReady": true
     },
     {
@@ -9144,8 +9144,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🚶",
+      "emoji": "🚶",
       "sessionReady": true
     },
     {
@@ -9159,8 +9159,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "💇",
+      "emoji": "💇",
       "sessionReady": true
     },
     {
@@ -9189,8 +9189,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🏙️",
+      "emoji": "🏙️",
       "sessionReady": true
     },
     {
@@ -9204,8 +9204,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🏢",
+      "emoji": "🏢",
       "sessionReady": true
     },
     {
@@ -9249,8 +9249,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "💡",
+      "emoji": "💡",
       "sessionReady": true
     },
     {
@@ -9294,8 +9294,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -9309,8 +9309,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -9324,8 +9324,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -9339,8 +9339,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -9354,8 +9354,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "➡️",
+      "emoji": "➡️",
       "sessionReady": true
     },
     {
@@ -9369,8 +9369,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -9384,8 +9384,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -9414,8 +9414,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -9429,8 +9429,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -9519,8 +9519,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⏱️",
+      "emoji": "⏱️",
       "sessionReady": true
     },
     {
@@ -9549,8 +9549,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔢",
+      "emoji": "🔢",
       "sessionReady": true
     },
     {
@@ -9579,8 +9579,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "👨‍🍳",
+      "emoji": "👨‍🍳",
       "sessionReady": true
     },
     {
@@ -9609,8 +9609,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🏪",
+      "emoji": "🏪",
       "sessionReady": true
     },
     {
@@ -9624,8 +9624,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -9639,8 +9639,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🌅",
+      "emoji": "🌅",
       "sessionReady": true
     },
     {
@@ -9654,8 +9654,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🥤",
+      "emoji": "🥤",
       "sessionReady": true
     },
     {
@@ -9699,8 +9699,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📉",
+      "emoji": "📉",
       "sessionReady": true
     },
     {
@@ -9849,8 +9849,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📐",
+      "emoji": "📐",
       "sessionReady": true
     },
     {
@@ -9894,8 +9894,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🏞️",
+      "emoji": "🏞️",
       "sessionReady": true
     },
     {
@@ -9924,8 +9924,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐅",
+      "emoji": "🐅",
       "sessionReady": true
     },
     {
@@ -10134,8 +10134,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🏐",
+      "emoji": "🏐",
       "sessionReady": true
     },
     {
@@ -10224,8 +10224,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -10254,8 +10254,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🍌",
+      "emoji": "🍌",
       "sessionReady": true
     },
     {
@@ -10314,8 +10314,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🧹",
+      "emoji": "🧹",
       "sessionReady": true
     },
     {
@@ -10419,8 +10419,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔑",
+      "emoji": "🔑",
       "sessionReady": true
     },
     {
@@ -10434,8 +10434,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔥",
+      "emoji": "🔥",
       "sessionReady": true
     },
     {
@@ -10449,8 +10449,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐭",
+      "emoji": "🐭",
       "sessionReady": true
     },
     {
@@ -10479,8 +10479,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🍽️",
+      "emoji": "🍽️",
       "sessionReady": true
     },
     {
@@ -10494,8 +10494,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⚙️",
+      "emoji": "⚙️",
       "sessionReady": true
     },
     {
@@ -10539,8 +10539,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🫒",
+      "emoji": "🫒",
       "sessionReady": true
     },
     {
@@ -10704,8 +10704,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🤖",
+      "emoji": "🤖",
       "sessionReady": true
     },
     {
@@ -10749,8 +10749,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -10764,8 +10764,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📷",
+      "emoji": "📷",
       "sessionReady": true
     },
     {
@@ -10779,8 +10779,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🪢",
+      "emoji": "🪢",
       "sessionReady": true
     },
     {
@@ -10809,8 +10809,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -10869,8 +10869,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "💇",
+      "emoji": "💇",
       "sessionReady": true
     },
     {
@@ -10914,8 +10914,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📹",
+      "emoji": "📹",
       "sessionReady": true
     },
     {
@@ -10974,8 +10974,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🧶",
+      "emoji": "🧶",
       "sessionReady": true
     },
     {
@@ -10989,8 +10989,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📉",
+      "emoji": "📉",
       "sessionReady": true
     },
     {
@@ -11004,8 +11004,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🗿",
+      "emoji": "🗿",
       "sessionReady": true
     },
     {
@@ -11049,8 +11049,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🧶",
+      "emoji": "🧶",
       "sessionReady": true
     },
     {
@@ -11064,8 +11064,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "Mixed",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🫒",
+      "emoji": "🫒",
       "sessionReady": true
     },
     {
@@ -11139,8 +11139,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📉",
+      "emoji": "📉",
       "sessionReady": true
     },
     {
@@ -11184,8 +11184,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐄",
+      "emoji": "🐄",
       "sessionReady": true
     },
     {
@@ -11214,8 +11214,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐓",
+      "emoji": "🐓",
       "sessionReady": true
     },
     {
@@ -11244,8 +11244,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🍌",
+      "emoji": "🍌",
       "sessionReady": true
     },
     {
@@ -11349,8 +11349,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⚽",
+      "emoji": "⚽",
       "sessionReady": true
     },
     {
@@ -11394,8 +11394,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🌱",
+      "emoji": "🌱",
       "sessionReady": true
     },
     {
@@ -11559,8 +11559,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⚽",
+      "emoji": "⚽",
       "sessionReady": true
     },
     {
@@ -11604,8 +11604,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -11619,8 +11619,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🛌",
+      "emoji": "🛌",
       "sessionReady": true
     },
     {
@@ -11784,8 +11784,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📉",
+      "emoji": "📉",
       "sessionReady": true
     },
     {
@@ -11889,8 +11889,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -11949,8 +11949,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🛗",
+      "emoji": "🛗",
       "sessionReady": true
     },
     {
@@ -11979,8 +11979,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🪢",
+      "emoji": "🪢",
       "sessionReady": true
     },
     {
@@ -12009,8 +12009,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐑",
+      "emoji": "🐑",
       "sessionReady": true
     },
     {
@@ -12024,8 +12024,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🥤",
+      "emoji": "🥤",
       "sessionReady": true
     },
     {
@@ -12054,8 +12054,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -12084,8 +12084,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎹",
+      "emoji": "🎹",
       "sessionReady": true
     },
     {
@@ -12129,8 +12129,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐰",
+      "emoji": "🐰",
       "sessionReady": true
     },
     {
@@ -12174,8 +12174,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "👨",
+      "emoji": "👨",
       "sessionReady": true
     },
     {
@@ -12189,8 +12189,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🥄",
+      "emoji": "🥄",
       "sessionReady": true
     },
     {
@@ -12219,8 +12219,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -12234,8 +12234,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🧳",
+      "emoji": "🧳",
       "sessionReady": true
     },
     {
@@ -12339,8 +12339,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -12369,8 +12369,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⏱️",
+      "emoji": "⏱️",
       "sessionReady": true
     },
     {
@@ -12414,8 +12414,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🥊",
+      "emoji": "🥊",
       "sessionReady": true
     },
     {
@@ -12474,8 +12474,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎞️",
+      "emoji": "🎞️",
       "sessionReady": true
     },
     {
@@ -12534,8 +12534,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -12594,8 +12594,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔪",
+      "emoji": "🔪",
       "sessionReady": true
     },
     {
@@ -12729,8 +12729,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "A2",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📐",
+      "emoji": "📐",
       "sessionReady": true
     },
     {
@@ -12759,8 +12759,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🌤️",
+      "emoji": "🌤️",
       "sessionReady": true
     },
     {
@@ -12789,8 +12789,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🟣",
+      "emoji": "🟣",
       "sessionReady": true
     },
     {
@@ -12804,8 +12804,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "👔",
+      "emoji": "👔",
       "sessionReady": true
     },
     {
@@ -12864,8 +12864,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎸",
+      "emoji": "🎸",
       "sessionReady": true
     },
     {
@@ -12924,8 +12924,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⚙️",
+      "emoji": "⚙️",
       "sessionReady": true
     },
     {
@@ -13044,8 +13044,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "Mixed",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -13059,8 +13059,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -13074,8 +13074,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -13134,8 +13134,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⚽",
+      "emoji": "⚽",
       "sessionReady": true
     },
     {
@@ -13164,8 +13164,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🟠",
+      "emoji": "🟠",
       "sessionReady": true
     },
     {
@@ -13224,8 +13224,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🍯",
+      "emoji": "🍯",
       "sessionReady": true
     },
     {
@@ -13314,8 +13314,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🪟",
+      "emoji": "🪟",
       "sessionReady": true
     },
     {
@@ -13344,8 +13344,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⚙️",
+      "emoji": "⚙️",
       "sessionReady": true
     },
     {
@@ -13479,8 +13479,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -13509,8 +13509,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📉",
+      "emoji": "📉",
       "sessionReady": true
     },
     {
@@ -13569,8 +13569,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -13584,8 +13584,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐘",
+      "emoji": "🐘",
       "sessionReady": true
     },
     {
@@ -13674,8 +13674,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🌆",
+      "emoji": "🌆",
       "sessionReady": true
     },
     {
@@ -13734,8 +13734,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -13779,8 +13779,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐺",
+      "emoji": "🐺",
       "sessionReady": true
     },
     {
@@ -13824,8 +13824,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔨",
+      "emoji": "🔨",
       "sessionReady": true
     },
     {
@@ -13839,8 +13839,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -13914,8 +13914,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐳",
+      "emoji": "🐳",
       "sessionReady": true
     },
     {
@@ -13929,8 +13929,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -14064,8 +14064,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -14079,8 +14079,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔧",
+      "emoji": "🔧",
       "sessionReady": true
     },
     {
@@ -14094,8 +14094,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -14169,8 +14169,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐄",
+      "emoji": "🐄",
       "sessionReady": true
     },
     {
@@ -14214,8 +14214,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⚽",
+      "emoji": "⚽",
       "sessionReady": true
     },
     {
@@ -14289,8 +14289,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -14304,8 +14304,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🚿",
+      "emoji": "🚿",
       "sessionReady": true
     },
     {
@@ -14589,8 +14589,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⛈️",
+      "emoji": "⛈️",
       "sessionReady": true
     },
     {
@@ -14604,8 +14604,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📉",
+      "emoji": "📉",
       "sessionReady": true
     },
     {
@@ -14754,8 +14754,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -14799,8 +14799,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "💯",
+      "emoji": "💯",
       "sessionReady": true
     },
     {
@@ -14814,8 +14814,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -14844,8 +14844,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -14874,8 +14874,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -15054,8 +15054,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📉",
+      "emoji": "📉",
       "sessionReady": true
     },
     {
@@ -15339,8 +15339,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔧",
+      "emoji": "🔧",
       "sessionReady": true
     },
     {
@@ -15354,8 +15354,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -15384,8 +15384,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🌆",
+      "emoji": "🌆",
       "sessionReady": true
     },
     {
@@ -15399,8 +15399,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🍯",
+      "emoji": "🍯",
       "sessionReady": true
     },
     {
@@ -15414,8 +15414,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🥄",
+      "emoji": "🥄",
       "sessionReady": true
     },
     {
@@ -15429,8 +15429,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -15444,8 +15444,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -15534,8 +15534,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐝",
+      "emoji": "🐝",
       "sessionReady": true
     },
     {
@@ -15624,8 +15624,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -15669,8 +15669,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -15684,8 +15684,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "Mixed",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📅",
+      "emoji": "📅",
       "sessionReady": true
     },
     {
@@ -15729,8 +15729,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📉",
+      "emoji": "📉",
       "sessionReady": true
     },
     {
@@ -15864,8 +15864,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "💳",
+      "emoji": "💳",
       "sessionReady": true
     },
     {
@@ -15894,8 +15894,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔒",
+      "emoji": "🔒",
       "sessionReady": true
     },
     {
@@ -15954,8 +15954,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎹",
+      "emoji": "🎹",
       "sessionReady": true
     },
     {
@@ -15969,8 +15969,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -15984,8 +15984,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -15999,8 +15999,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -16014,8 +16014,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -16029,8 +16029,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -16059,8 +16059,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "E-type (front)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -16104,8 +16104,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -16119,8 +16119,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -16134,8 +16134,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐙",
+      "emoji": "🐙",
       "sessionReady": true
     },
     {
@@ -16149,8 +16149,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🔥",
+      "emoji": "🔥",
       "sessionReady": true
     },
     {
@@ -16164,8 +16164,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🎯",
+      "emoji": "🎯",
       "sessionReady": true
     },
     {
@@ -16179,8 +16179,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🍽️",
+      "emoji": "🍽️",
       "sessionReady": true
     },
     {
@@ -16194,8 +16194,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "B2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -16614,8 +16614,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐝",
+      "emoji": "🐝",
       "sessionReady": true
     },
     {
@@ -16719,8 +16719,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐝",
+      "emoji": "🐝",
       "sessionReady": true
     },
     {
@@ -16734,8 +16734,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🐎",
+      "emoji": "🐎",
       "sessionReady": true
     },
     {
@@ -16764,8 +16764,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⚗️",
+      "emoji": "⚗️",
       "sessionReady": true
     },
     {
@@ -16794,8 +16794,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "📉",
+      "emoji": "📉",
       "sessionReady": true
     },
     {
@@ -16854,8 +16854,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "C1",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "🌤️",
+      "emoji": "🌤️",
       "sessionReady": true
     },
     {
@@ -16914,8 +16914,8 @@ const enhancedVocabularyData = {
       "category": "general_vocabulary",
       "difficultyLevel": "C2",
       "vowelHarmony": "I-type (back)",
-      "icon": "📚",
-      "emoji": "📚",
+      "icon": "⚽",
+      "emoji": "⚽",
       "sessionReady": true
     },
     {
@@ -16970,8 +16970,8 @@ const vocabularySessions = {
           "category": "greetings_basics",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👋",
-          "emoji": "👋",
+          "icon": "📖",
+          "emoji": "📖",
           "sessionReady": true
         },
         {
@@ -16985,8 +16985,8 @@ const vocabularySessions = {
           "category": "greetings_basics",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👋",
-          "emoji": "👋",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -17000,8 +17000,8 @@ const vocabularySessions = {
           "category": "greetings_basics",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👋",
-          "emoji": "👋",
+          "icon": "👶",
+          "emoji": "👶",
           "sessionReady": true
         },
         {
@@ -17015,8 +17015,8 @@ const vocabularySessions = {
           "category": "greetings_basics",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👋",
-          "emoji": "👋",
+          "icon": "👍",
+          "emoji": "👍",
           "sessionReady": true
         },
         {
@@ -17045,8 +17045,8 @@ const vocabularySessions = {
           "category": "greetings_basics",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👋",
-          "emoji": "👋",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -17060,8 +17060,8 @@ const vocabularySessions = {
           "category": "greetings_basics",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👋",
-          "emoji": "👋",
+          "icon": "👍",
+          "emoji": "👍",
           "sessionReady": true
         },
         {
@@ -17075,8 +17075,8 @@ const vocabularySessions = {
           "category": "greetings_basics",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "👋",
-          "emoji": "👋",
+          "icon": "💑",
+          "emoji": "💑",
           "sessionReady": true
         },
         {
@@ -17090,8 +17090,8 @@ const vocabularySessions = {
           "category": "greetings_basics",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "👋",
-          "emoji": "👋",
+          "icon": "🔧",
+          "emoji": "🔧",
           "sessionReady": true
         }
       ],
@@ -17118,8 +17118,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "🏠",
+          "emoji": "🏠",
           "sessionReady": true
         },
         {
@@ -17133,8 +17133,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "🟢",
+          "emoji": "🟢",
           "sessionReady": true
         },
         {
@@ -17148,8 +17148,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "🤒",
+          "emoji": "🤒",
           "sessionReady": true
         },
         {
@@ -17163,8 +17163,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👫",
+          "emoji": "👫",
           "sessionReady": true
         },
         {
@@ -17178,8 +17178,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -17193,8 +17193,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👨‍🦳",
+          "emoji": "👨‍🦳",
           "sessionReady": true
         },
         {
@@ -17223,8 +17223,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👫",
+          "emoji": "👫",
           "sessionReady": true
         },
         {
@@ -17253,8 +17253,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👩‍🦳",
+          "emoji": "👩‍🦳",
           "sessionReady": true
         }
       ],
@@ -17279,8 +17279,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👴",
+          "emoji": "👴",
           "sessionReady": true
         },
         {
@@ -17294,8 +17294,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👵",
+          "emoji": "👵",
           "sessionReady": true
         },
         {
@@ -17324,8 +17324,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👨‍🦳",
+          "emoji": "👨‍🦳",
           "sessionReady": true
         },
         {
@@ -17399,8 +17399,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "☀️",
+          "emoji": "☀️",
           "sessionReady": true
         },
         {
@@ -17440,8 +17440,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "💑",
+          "emoji": "💑",
           "sessionReady": true
         },
         {
@@ -17455,8 +17455,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👫",
+          "emoji": "👫",
           "sessionReady": true
         },
         {
@@ -17485,8 +17485,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "🏝️",
+          "emoji": "🏝️",
           "sessionReady": true
         },
         {
@@ -17500,8 +17500,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👨",
+          "emoji": "👨",
           "sessionReady": true
         },
         {
@@ -17515,8 +17515,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👨",
+          "emoji": "👨",
           "sessionReady": true
         },
         {
@@ -17530,8 +17530,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👩",
+          "emoji": "👩",
           "sessionReady": true
         },
         {
@@ -17545,8 +17545,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👨‍🦳",
+          "emoji": "👨‍🦳",
           "sessionReady": true
         },
         {
@@ -17560,8 +17560,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👫",
+          "emoji": "👫",
           "sessionReady": true
         },
         {
@@ -17575,8 +17575,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👩‍🦳",
+          "emoji": "👩‍🦳",
           "sessionReady": true
         }
       ],
@@ -17616,8 +17616,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "🍯",
+          "emoji": "🍯",
           "sessionReady": true
         },
         {
@@ -17631,8 +17631,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👩",
+          "emoji": "👩",
           "sessionReady": true
         },
         {
@@ -17646,8 +17646,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -17661,8 +17661,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "💑",
+          "emoji": "💑",
           "sessionReady": true
         },
         {
@@ -17706,8 +17706,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "🧳",
+          "emoji": "🧳",
           "sessionReady": true
         },
         {
@@ -17721,8 +17721,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "🏠",
+          "emoji": "🏠",
           "sessionReady": true
         },
         {
@@ -17736,8 +17736,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "💑",
+          "emoji": "💑",
           "sessionReady": true
         }
       ],
@@ -17762,8 +17762,8 @@ const vocabularySessions = {
           "category": "family_relationships",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "👨‍👩‍👧‍👦",
-          "emoji": "👨‍👩‍👧‍👦",
+          "icon": "👨‍🦳",
+          "emoji": "👨‍🦳",
           "sessionReady": true
         },
         {
@@ -17805,8 +17805,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👃",
+          "emoji": "👃",
           "sessionReady": true
         },
         {
@@ -17820,8 +17820,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "📱",
+          "emoji": "📱",
           "sessionReady": true
         },
         {
@@ -17835,8 +17835,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "😖",
+          "emoji": "😖",
           "sessionReady": true
         },
         {
@@ -17850,8 +17850,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "5️⃣0️⃣",
+          "emoji": "5️⃣0️⃣",
           "sessionReady": true
         },
         {
@@ -17865,8 +17865,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦶",
+          "emoji": "🦶",
           "sessionReady": true
         },
         {
@@ -17880,8 +17880,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "😊",
+          "emoji": "😊",
           "sessionReady": true
         },
         {
@@ -17895,8 +17895,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👁️",
+          "emoji": "👁️",
           "sessionReady": true
         },
         {
@@ -17910,8 +17910,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🤒",
+          "emoji": "🤒",
           "sessionReady": true
         },
         {
@@ -17925,8 +17925,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦷",
+          "emoji": "🦷",
           "sessionReady": true
         },
         {
@@ -17940,8 +17940,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         }
       ],
@@ -17966,8 +17966,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -17981,8 +17981,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🤕",
+          "emoji": "🤕",
           "sessionReady": true
         },
         {
@@ -17996,8 +17996,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👨‍⚕️",
+          "emoji": "👨‍⚕️",
           "sessionReady": true
         },
         {
@@ -18011,8 +18011,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👆",
+          "emoji": "👆",
           "sessionReady": true
         },
         {
@@ -18026,8 +18026,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "📺",
+          "emoji": "📺",
           "sessionReady": true
         },
         {
@@ -18041,8 +18041,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👗",
+          "emoji": "👗",
           "sessionReady": true
         },
         {
@@ -18056,8 +18056,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👃",
+          "emoji": "👃",
           "sessionReady": true
         },
         {
@@ -18071,8 +18071,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦷",
+          "emoji": "🦷",
           "sessionReady": true
         },
         {
@@ -18086,8 +18086,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "💇",
+          "emoji": "💇",
           "sessionReady": true
         },
         {
@@ -18101,8 +18101,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👂",
+          "emoji": "👂",
           "sessionReady": true
         }
       ],
@@ -18127,8 +18127,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🍎",
+          "emoji": "🍎",
           "sessionReady": true
         },
         {
@@ -18142,8 +18142,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👄",
+          "emoji": "👄",
           "sessionReady": true
         },
         {
@@ -18157,8 +18157,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👠",
+          "emoji": "👠",
           "sessionReady": true
         },
         {
@@ -18172,8 +18172,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         },
         {
@@ -18202,8 +18202,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "💊",
+          "emoji": "💊",
           "sessionReady": true
         },
         {
@@ -18217,8 +18217,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18247,8 +18247,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18262,8 +18262,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "📏",
+          "emoji": "📏",
           "sessionReady": true
         }
       ],
@@ -18288,8 +18288,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "❤️",
+          "emoji": "❤️",
           "sessionReady": true
         },
         {
@@ -18303,8 +18303,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18318,8 +18318,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18348,8 +18348,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18363,8 +18363,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🤒",
+          "emoji": "🤒",
           "sessionReady": true
         },
         {
@@ -18378,8 +18378,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18393,8 +18393,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18408,8 +18408,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18423,8 +18423,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🏛️",
+          "emoji": "🏛️",
           "sessionReady": true
         }
       ],
@@ -18449,8 +18449,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦷",
+          "emoji": "🦷",
           "sessionReady": true
         },
         {
@@ -18464,8 +18464,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🤕",
+          "emoji": "🤕",
           "sessionReady": true
         },
         {
@@ -18479,8 +18479,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👁️",
+          "emoji": "👁️",
           "sessionReady": true
         },
         {
@@ -18494,8 +18494,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦷",
+          "emoji": "🦷",
           "sessionReady": true
         },
         {
@@ -18509,8 +18509,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18539,8 +18539,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🤕",
+          "emoji": "🤕",
           "sessionReady": true
         },
         {
@@ -18554,8 +18554,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "😊",
+          "emoji": "😊",
           "sessionReady": true
         },
         {
@@ -18569,8 +18569,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18584,8 +18584,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🧤",
+          "emoji": "🧤",
           "sessionReady": true
         }
       ],
@@ -18610,8 +18610,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🫁",
+          "emoji": "🫁",
           "sessionReady": true
         },
         {
@@ -18640,8 +18640,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦶",
+          "emoji": "🦶",
           "sessionReady": true
         },
         {
@@ -18655,8 +18655,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦷",
+          "emoji": "🦷",
           "sessionReady": true
         },
         {
@@ -18670,8 +18670,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦷",
+          "emoji": "🦷",
           "sessionReady": true
         },
         {
@@ -18685,8 +18685,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18700,8 +18700,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👨",
+          "emoji": "👨",
           "sessionReady": true
         },
         {
@@ -18715,8 +18715,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦋",
+          "emoji": "🦋",
           "sessionReady": true
         },
         {
@@ -18745,8 +18745,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "😊",
+          "emoji": "😊",
           "sessionReady": true
         }
       ],
@@ -18771,8 +18771,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18786,8 +18786,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18801,8 +18801,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18816,8 +18816,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18831,8 +18831,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18846,8 +18846,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "🦷",
+          "emoji": "🦷",
           "sessionReady": true
         },
         {
@@ -18861,8 +18861,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18876,8 +18876,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18891,8 +18891,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "👂",
+          "emoji": "👂",
           "sessionReady": true
         },
         {
@@ -18906,8 +18906,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         }
       ],
@@ -18932,8 +18932,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18947,8 +18947,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18962,8 +18962,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18977,8 +18977,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -18992,8 +18992,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         },
         {
@@ -19007,8 +19007,8 @@ const vocabularySessions = {
           "category": "body_health",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏥",
-          "emoji": "🏥",
+          "icon": "✋",
+          "emoji": "✋",
           "sessionReady": true
         }
       ],
@@ -19035,8 +19035,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🧂",
+          "emoji": "🧂",
           "sessionReady": true
         },
         {
@@ -19050,8 +19050,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "👨‍🏫",
+          "emoji": "👨‍🏫",
           "sessionReady": true
         },
         {
@@ -19065,8 +19065,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19080,8 +19080,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🐓",
+          "emoji": "🐓",
           "sessionReady": true
         },
         {
@@ -19095,8 +19095,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🚽",
+          "emoji": "🚽",
           "sessionReady": true
         },
         {
@@ -19110,8 +19110,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥗",
+          "emoji": "🥗",
           "sessionReady": true
         },
         {
@@ -19125,8 +19125,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -19140,8 +19140,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "👗",
+          "emoji": "👗",
           "sessionReady": true
         },
         {
@@ -19155,8 +19155,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -19170,8 +19170,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🍎",
+          "emoji": "🍎",
           "sessionReady": true
         }
       ],
@@ -19196,8 +19196,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥬",
+          "emoji": "🥬",
           "sessionReady": true
         },
         {
@@ -19211,8 +19211,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19241,8 +19241,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🍲",
+          "emoji": "🍲",
           "sessionReady": true
         },
         {
@@ -19271,8 +19271,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥛",
+          "emoji": "🥛",
           "sessionReady": true
         },
         {
@@ -19331,8 +19331,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         }
       ],
@@ -19357,8 +19357,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🧀",
+          "emoji": "🧀",
           "sessionReady": true
         },
         {
@@ -19372,8 +19372,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19387,8 +19387,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "Mixed/Exception",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19402,8 +19402,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -19417,8 +19417,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "3️⃣0️⃣",
+          "emoji": "3️⃣0️⃣",
           "sessionReady": true
         },
         {
@@ -19432,8 +19432,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🍯",
+          "emoji": "🍯",
           "sessionReady": true
         },
         {
@@ -19447,8 +19447,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🏪",
+          "emoji": "🏪",
           "sessionReady": true
         },
         {
@@ -19462,8 +19462,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🎫",
+          "emoji": "🎫",
           "sessionReady": true
         },
         {
@@ -19492,8 +19492,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🍯",
+          "emoji": "🍯",
           "sessionReady": true
         }
       ],
@@ -19518,8 +19518,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🍚",
+          "emoji": "🍚",
           "sessionReady": true
         },
         {
@@ -19533,8 +19533,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🧥",
+          "emoji": "🧥",
           "sessionReady": true
         },
         {
@@ -19548,8 +19548,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19563,8 +19563,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🧂",
+          "emoji": "🧂",
           "sessionReady": true
         },
         {
@@ -19578,8 +19578,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19593,8 +19593,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🌐",
+          "emoji": "🌐",
           "sessionReady": true
         },
         {
@@ -19608,8 +19608,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19623,8 +19623,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19638,8 +19638,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19653,8 +19653,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         }
       ],
@@ -19679,8 +19679,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -19694,8 +19694,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "☕",
+          "emoji": "☕",
           "sessionReady": true
         },
         {
@@ -19724,8 +19724,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -19739,8 +19739,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🚇",
+          "emoji": "🚇",
           "sessionReady": true
         },
         {
@@ -19754,8 +19754,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19769,8 +19769,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -19784,8 +19784,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🫖",
+          "emoji": "🫖",
           "sessionReady": true
         },
         {
@@ -19799,8 +19799,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🚲",
+          "emoji": "🚲",
           "sessionReady": true
         },
         {
@@ -19814,8 +19814,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         }
       ],
@@ -19855,8 +19855,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19870,8 +19870,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19885,8 +19885,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19900,8 +19900,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🔧",
+          "emoji": "🔧",
           "sessionReady": true
         },
         {
@@ -19915,8 +19915,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🏀",
+          "emoji": "🏀",
           "sessionReady": true
         },
         {
@@ -19930,8 +19930,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🏍️",
+          "emoji": "🏍️",
           "sessionReady": true
         },
         {
@@ -19945,8 +19945,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19960,8 +19960,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -19975,8 +19975,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         }
       ],
@@ -20001,8 +20001,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "☕",
+          "emoji": "☕",
           "sessionReady": true
         },
         {
@@ -20031,8 +20031,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -20046,8 +20046,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20061,8 +20061,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20076,8 +20076,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20091,8 +20091,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -20106,8 +20106,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -20121,8 +20121,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20136,8 +20136,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🧂",
+          "emoji": "🧂",
           "sessionReady": true
         }
       ],
@@ -20162,8 +20162,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20177,8 +20177,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "Mixed",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20192,8 +20192,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "Mixed",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20207,8 +20207,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -20222,8 +20222,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20237,8 +20237,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20252,8 +20252,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20267,8 +20267,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20282,8 +20282,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20297,8 +20297,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         }
       ],
@@ -20323,8 +20323,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -20338,8 +20338,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🏛️",
+          "emoji": "🏛️",
           "sessionReady": true
         },
         {
@@ -20353,8 +20353,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "🥩",
+          "emoji": "🥩",
           "sessionReady": true
         },
         {
@@ -20368,8 +20368,8 @@ const vocabularySessions = {
           "category": "food_cooking",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🍽️",
-          "emoji": "🍽️",
+          "icon": "⚖️",
+          "emoji": "⚖️",
           "sessionReady": true
         }
       ],
@@ -20396,8 +20396,8 @@ const vocabularySessions = {
           "category": "clothing_fashion",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👕",
-          "emoji": "👕",
+          "icon": "🧦",
+          "emoji": "🧦",
           "sessionReady": true
         },
         {
@@ -20411,8 +20411,8 @@ const vocabularySessions = {
           "category": "clothing_fashion",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👕",
-          "emoji": "👕",
+          "icon": "👔",
+          "emoji": "👔",
           "sessionReady": true
         },
         {
@@ -20426,8 +20426,8 @@ const vocabularySessions = {
           "category": "clothing_fashion",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👕",
-          "emoji": "👕",
+          "icon": "👖",
+          "emoji": "👖",
           "sessionReady": true
         },
         {
@@ -20441,8 +20441,8 @@ const vocabularySessions = {
           "category": "clothing_fashion",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "👕",
-          "emoji": "👕",
+          "icon": "👜",
+          "emoji": "👜",
           "sessionReady": true
         },
         {
@@ -20456,8 +20456,8 @@ const vocabularySessions = {
           "category": "clothing_fashion",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "👕",
-          "emoji": "👕",
+          "icon": "🎩",
+          "emoji": "🎩",
           "sessionReady": true
         },
         {
@@ -20471,8 +20471,8 @@ const vocabularySessions = {
           "category": "clothing_fashion",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "👕",
-          "emoji": "👕",
+          "icon": "🧥",
+          "emoji": "🧥",
           "sessionReady": true
         },
         {
@@ -20486,8 +20486,8 @@ const vocabularySessions = {
           "category": "clothing_fashion",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "👕",
-          "emoji": "👕",
+          "icon": "🧥",
+          "emoji": "🧥",
           "sessionReady": true
         },
         {
@@ -20501,8 +20501,8 @@ const vocabularySessions = {
           "category": "clothing_fashion",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👕",
-          "emoji": "👕",
+          "icon": "🥄",
+          "emoji": "🥄",
           "sessionReady": true
         },
         {
@@ -20516,8 +20516,8 @@ const vocabularySessions = {
           "category": "clothing_fashion",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "👕",
-          "emoji": "👕",
+          "icon": "🧥",
+          "emoji": "🧥",
           "sessionReady": true
         },
         {
@@ -20559,8 +20559,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🌉",
+          "emoji": "🌉",
           "sessionReady": true
         },
         {
@@ -20589,8 +20589,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🌤️",
+          "emoji": "🌤️",
           "sessionReady": true
         },
         {
@@ -20649,8 +20649,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🚕",
+          "emoji": "🚕",
           "sessionReady": true
         },
         {
@@ -20664,8 +20664,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🚦",
+          "emoji": "🚦",
           "sessionReady": true
         },
         {
@@ -20694,8 +20694,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         }
       ],
@@ -20720,8 +20720,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🛤️",
+          "emoji": "🛤️",
           "sessionReady": true
         },
         {
@@ -20735,8 +20735,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🚉",
+          "emoji": "🚉",
           "sessionReady": true
         },
         {
@@ -20750,8 +20750,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🛫",
+          "emoji": "🛫",
           "sessionReady": true
         },
         {
@@ -20765,8 +20765,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🛫",
+          "emoji": "🛫",
           "sessionReady": true
         },
         {
@@ -20780,8 +20780,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -20795,8 +20795,8 @@ const vocabularySessions = {
           "category": "transport_travel",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🚗",
-          "emoji": "🚗",
+          "icon": "🧬",
+          "emoji": "🧬",
           "sessionReady": true
         }
       ],
@@ -20823,8 +20823,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🪑",
+          "emoji": "🪑",
           "sessionReady": true
         },
         {
@@ -20838,8 +20838,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🌿",
+          "emoji": "🌿",
           "sessionReady": true
         },
         {
@@ -20853,8 +20853,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -20868,8 +20868,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -20883,8 +20883,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🪟",
+          "emoji": "🪟",
           "sessionReady": true
         },
         {
@@ -20898,8 +20898,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🍳",
+          "emoji": "🍳",
           "sessionReady": true
         },
         {
@@ -20913,8 +20913,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🪑",
+          "emoji": "🪑",
           "sessionReady": true
         },
         {
@@ -20928,8 +20928,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🚪",
+          "emoji": "🚪",
           "sessionReady": true
         },
         {
@@ -20943,8 +20943,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -20958,8 +20958,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🛏️",
+          "emoji": "🛏️",
           "sessionReady": true
         }
       ],
@@ -20984,8 +20984,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🚿",
+          "emoji": "🚿",
           "sessionReady": true
         },
         {
@@ -21014,8 +21014,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🚪",
+          "emoji": "🚪",
           "sessionReady": true
         },
         {
@@ -21029,8 +21029,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🚪",
+          "emoji": "🚪",
           "sessionReady": true
         },
         {
@@ -21074,8 +21074,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🗄️",
+          "emoji": "🗄️",
           "sessionReady": true
         },
         {
@@ -21089,8 +21089,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -21119,8 +21119,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🚪",
+          "emoji": "🚪",
           "sessionReady": true
         }
       ],
@@ -21175,8 +21175,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🚪",
+          "emoji": "🚪",
           "sessionReady": true
         },
         {
@@ -21190,8 +21190,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "📦",
+          "emoji": "📦",
           "sessionReady": true
         },
         {
@@ -21205,8 +21205,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -21220,8 +21220,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -21250,8 +21250,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🚪",
+          "emoji": "🚪",
           "sessionReady": true
         },
         {
@@ -21265,8 +21265,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "📦",
+          "emoji": "📦",
           "sessionReady": true
         },
         {
@@ -21396,8 +21396,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "B2",
           "vowelHarmony": "Mixed",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🪑",
+          "emoji": "🪑",
           "sessionReady": true
         },
         {
@@ -21411,8 +21411,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "B2",
           "vowelHarmony": "Mixed",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "👨‍🔬",
+          "emoji": "👨‍🔬",
           "sessionReady": true
         },
         {
@@ -21426,8 +21426,8 @@ const vocabularySessions = {
           "category": "home_living",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🏠",
-          "emoji": "🏠",
+          "icon": "🏥",
+          "emoji": "🏥",
           "sessionReady": true
         }
       ],
@@ -21454,8 +21454,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         },
         {
@@ -21469,8 +21469,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "👨‍🎓",
+          "emoji": "👨‍🎓",
           "sessionReady": true
         },
         {
@@ -21484,8 +21484,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "📄",
+          "emoji": "📄",
           "sessionReady": true
         },
         {
@@ -21499,8 +21499,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "✏️",
+          "emoji": "✏️",
           "sessionReady": true
         },
         {
@@ -21514,8 +21514,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "📚",
+          "emoji": "📚",
           "sessionReady": true
         },
         {
@@ -21529,8 +21529,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "🏫",
+          "emoji": "🏫",
           "sessionReady": true
         },
         {
@@ -21544,8 +21544,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "🛒",
+          "emoji": "🛒",
           "sessionReady": true
         },
         {
@@ -21559,8 +21559,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "👷",
+          "emoji": "👷",
           "sessionReady": true
         },
         {
@@ -21574,8 +21574,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         },
         {
@@ -21589,8 +21589,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "📝",
+          "emoji": "📝",
           "sessionReady": true
         }
       ],
@@ -21615,8 +21615,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         },
         {
@@ -21630,8 +21630,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "🏬",
+          "emoji": "🏬",
           "sessionReady": true
         },
         {
@@ -21645,8 +21645,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "✏️",
+          "emoji": "✏️",
           "sessionReady": true
         },
         {
@@ -21660,8 +21660,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "👕",
+          "emoji": "👕",
           "sessionReady": true
         },
         {
@@ -21690,8 +21690,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         },
         {
@@ -21705,8 +21705,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         },
         {
@@ -21735,8 +21735,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         },
         {
@@ -21750,8 +21750,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         }
       ],
@@ -21776,8 +21776,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         },
         {
@@ -21806,8 +21806,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         },
         {
@@ -21821,8 +21821,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "📖",
+          "emoji": "📖",
           "sessionReady": true
         },
         {
@@ -21836,8 +21836,8 @@ const vocabularySessions = {
           "category": "work_education",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎓",
-          "emoji": "🎓",
+          "icon": "💼",
+          "emoji": "💼",
           "sessionReady": true
         }
       ],
@@ -21864,8 +21864,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "💰",
+          "emoji": "💰",
           "sessionReady": true
         },
         {
@@ -21879,8 +21879,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "🏪",
+          "emoji": "🏪",
           "sessionReady": true
         },
         {
@@ -21894,8 +21894,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "💳",
+          "emoji": "💳",
           "sessionReady": true
         },
         {
@@ -21909,8 +21909,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -21924,8 +21924,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "🏷️",
+          "emoji": "🏷️",
           "sessionReady": true
         },
         {
@@ -21939,8 +21939,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "💰",
+          "emoji": "💰",
           "sessionReady": true
         },
         {
@@ -21954,8 +21954,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "💰",
+          "emoji": "💰",
           "sessionReady": true
         },
         {
@@ -21969,8 +21969,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -21984,8 +21984,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "🏬",
+          "emoji": "🏬",
           "sessionReady": true
         },
         {
@@ -21999,8 +21999,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         }
       ],
@@ -22025,8 +22025,8 @@ const vocabularySessions = {
           "category": "shopping_commerce",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🛒",
-          "emoji": "🛒",
+          "icon": "💵",
+          "emoji": "💵",
           "sessionReady": true
         }
       ],
@@ -22068,8 +22068,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🏞️",
+          "emoji": "🏞️",
           "sessionReady": true
         },
         {
@@ -22083,8 +22083,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -22098,8 +22098,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🌳",
+          "emoji": "🌳",
           "sessionReady": true
         },
         {
@@ -22113,8 +22113,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🔥",
+          "emoji": "🔥",
           "sessionReady": true
         },
         {
@@ -22128,8 +22128,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🫒",
+          "emoji": "🫒",
           "sessionReady": true
         },
         {
@@ -22143,8 +22143,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -22158,8 +22158,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "⛰️",
+          "emoji": "⛰️",
           "sessionReady": true
         },
         {
@@ -22173,8 +22173,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🌸",
+          "emoji": "🌸",
           "sessionReady": true
         },
         {
@@ -22188,8 +22188,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🌊",
+          "emoji": "🌊",
           "sessionReady": true
         }
       ],
@@ -22214,8 +22214,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🐜",
+          "emoji": "🐜",
           "sessionReady": true
         },
         {
@@ -22229,8 +22229,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -22244,8 +22244,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -22274,8 +22274,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🌲",
+          "emoji": "🌲",
           "sessionReady": true
         },
         {
@@ -22289,8 +22289,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🐝",
+          "emoji": "🐝",
           "sessionReady": true
         },
         {
@@ -22304,8 +22304,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "👮",
+          "emoji": "👮",
           "sessionReady": true
         },
         {
@@ -22319,8 +22319,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🔥",
+          "emoji": "🔥",
           "sessionReady": true
         },
         {
@@ -22334,8 +22334,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🐝",
+          "emoji": "🐝",
           "sessionReady": true
         },
         {
@@ -22349,8 +22349,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🍝",
+          "emoji": "🍝",
           "sessionReady": true
         }
       ],
@@ -22375,8 +22375,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🌧️",
+          "emoji": "🌧️",
           "sessionReady": true
         },
         {
@@ -22390,8 +22390,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "💨",
+          "emoji": "💨",
           "sessionReady": true
         },
         {
@@ -22405,8 +22405,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -22420,8 +22420,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -22435,8 +22435,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🐘",
+          "emoji": "🐘",
           "sessionReady": true
         },
         {
@@ -22450,8 +22450,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -22465,8 +22465,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "☁️",
+          "emoji": "☁️",
           "sessionReady": true
         },
         {
@@ -22480,8 +22480,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🐦",
+          "emoji": "🐦",
           "sessionReady": true
         },
         {
@@ -22495,8 +22495,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         },
         {
@@ -22510,8 +22510,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🐝",
+          "emoji": "🐝",
           "sessionReady": true
         }
       ],
@@ -22536,8 +22536,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🫒",
+          "emoji": "🫒",
           "sessionReady": true
         },
         {
@@ -22551,8 +22551,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "💧",
+          "emoji": "💧",
           "sessionReady": true
         },
         {
@@ -22566,8 +22566,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🐦",
+          "emoji": "🐦",
           "sessionReady": true
         },
         {
@@ -22581,8 +22581,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "🌊",
+          "emoji": "🌊",
           "sessionReady": true
         },
         {
@@ -22596,8 +22596,8 @@ const vocabularySessions = {
           "category": "nature_weather",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🌿",
-          "emoji": "🌿",
+          "icon": "❄️",
+          "emoji": "❄️",
           "sessionReady": true
         }
       ],
@@ -22624,8 +22624,8 @@ const vocabularySessions = {
           "category": "technology_modern",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📱",
-          "emoji": "📱",
+          "icon": "💻",
+          "emoji": "💻",
           "sessionReady": true
         },
         {
@@ -22639,8 +22639,8 @@ const vocabularySessions = {
           "category": "technology_modern",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📱",
-          "emoji": "📱",
+          "icon": "💻",
+          "emoji": "💻",
           "sessionReady": true
         },
         {
@@ -22654,8 +22654,8 @@ const vocabularySessions = {
           "category": "technology_modern",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "📱",
-          "emoji": "📱",
+          "icon": "💻",
+          "emoji": "💻",
           "sessionReady": true
         },
         {
@@ -22669,8 +22669,8 @@ const vocabularySessions = {
           "category": "technology_modern",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📱",
-          "emoji": "📱",
+          "icon": "🌐",
+          "emoji": "🌐",
           "sessionReady": true
         },
         {
@@ -22684,8 +22684,8 @@ const vocabularySessions = {
           "category": "technology_modern",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "📱",
-          "emoji": "📱",
+          "icon": "💻",
+          "emoji": "💻",
           "sessionReady": true
         },
         {
@@ -22714,8 +22714,8 @@ const vocabularySessions = {
           "category": "technology_modern",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📱",
-          "emoji": "📱",
+          "icon": "🦠",
+          "emoji": "🦠",
           "sessionReady": true
         },
         {
@@ -22729,8 +22729,8 @@ const vocabularySessions = {
           "category": "technology_modern",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📱",
-          "emoji": "📱",
+          "icon": "🔧",
+          "emoji": "🔧",
           "sessionReady": true
         },
         {
@@ -22744,8 +22744,8 @@ const vocabularySessions = {
           "category": "technology_modern",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📱",
-          "emoji": "📱",
+          "icon": "💻",
+          "emoji": "💻",
           "sessionReady": true
         },
         {
@@ -22759,8 +22759,8 @@ const vocabularySessions = {
           "category": "technology_modern",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📱",
-          "emoji": "📱",
+          "icon": "⚙️",
+          "emoji": "⚙️",
           "sessionReady": true
         }
       ],
@@ -22787,8 +22787,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "⚫",
+          "emoji": "⚫",
           "sessionReady": true
         },
         {
@@ -22802,8 +22802,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "🤏",
+          "emoji": "🤏",
           "sessionReady": true
         },
         {
@@ -22817,8 +22817,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "📏",
+          "emoji": "📏",
           "sessionReady": true
         },
         {
@@ -22832,8 +22832,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "⚪",
+          "emoji": "⚪",
           "sessionReady": true
         },
         {
@@ -22847,8 +22847,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "📐",
+          "emoji": "📐",
           "sessionReady": true
         },
         {
@@ -22862,8 +22862,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "🔵",
+          "emoji": "🔵",
           "sessionReady": true
         },
         {
@@ -22877,8 +22877,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "🟡",
+          "emoji": "🟡",
           "sessionReady": true
         },
         {
@@ -22892,8 +22892,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "😖",
+          "emoji": "😖",
           "sessionReady": true
         },
         {
@@ -22907,8 +22907,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "🔴",
+          "emoji": "🔴",
           "sessionReady": true
         },
         {
@@ -22948,8 +22948,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "📏",
+          "emoji": "📏",
           "sessionReady": true
         },
         {
@@ -22963,8 +22963,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "👎",
+          "emoji": "👎",
           "sessionReady": true
         },
         {
@@ -22993,8 +22993,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "🐝",
+          "emoji": "🐝",
           "sessionReady": true
         },
         {
@@ -23008,8 +23008,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "📏",
+          "emoji": "📏",
           "sessionReady": true
         },
         {
@@ -23023,8 +23023,8 @@ const vocabularySessions = {
           "category": "colors_descriptions",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "🎨",
-          "emoji": "🎨",
+          "icon": "🔴",
+          "emoji": "🔴",
           "sessionReady": true
         },
         {
@@ -23081,8 +23081,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -23096,8 +23096,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -23111,8 +23111,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23126,8 +23126,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🪞",
+          "emoji": "🪞",
           "sessionReady": true
         },
         {
@@ -23141,8 +23141,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -23156,8 +23156,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -23171,8 +23171,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🕐",
-          "emoji": "🕐",
+          "icon": "⌚",
+          "emoji": "⌚",
           "sessionReady": true
         },
         {
@@ -23186,8 +23186,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🌆",
+          "emoji": "🌆",
           "sessionReady": true
         },
         {
@@ -23216,8 +23216,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         }
       ],
@@ -23242,8 +23242,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "👨",
+          "emoji": "👨",
           "sessionReady": true
         },
         {
@@ -23257,8 +23257,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "☀️",
+          "emoji": "☀️",
           "sessionReady": true
         },
         {
@@ -23272,8 +23272,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -23287,8 +23287,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🌙",
+          "emoji": "🌙",
           "sessionReady": true
         },
         {
@@ -23302,8 +23302,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23317,8 +23317,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -23332,8 +23332,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -23347,8 +23347,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -23362,8 +23362,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -23377,8 +23377,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         }
       ],
@@ -23403,8 +23403,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🍌",
+          "emoji": "🍌",
           "sessionReady": true
         },
         {
@@ -23418,8 +23418,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🌅",
+          "emoji": "🌅",
           "sessionReady": true
         },
         {
@@ -23433,8 +23433,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -23448,8 +23448,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23463,8 +23463,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23478,8 +23478,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🐻",
+          "emoji": "🐻",
           "sessionReady": true
         },
         {
@@ -23493,8 +23493,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🐻",
+          "emoji": "🐻",
           "sessionReady": true
         },
         {
@@ -23508,8 +23508,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🐻",
+          "emoji": "🐻",
           "sessionReady": true
         },
         {
@@ -23523,8 +23523,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -23538,8 +23538,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "⭐",
+          "emoji": "⭐",
           "sessionReady": true
         }
       ],
@@ -23564,8 +23564,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23579,8 +23579,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23594,8 +23594,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🐻",
+          "emoji": "🐻",
           "sessionReady": true
         },
         {
@@ -23609,8 +23609,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23624,8 +23624,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -23639,8 +23639,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -23654,8 +23654,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23699,8 +23699,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         }
       ],
@@ -23725,8 +23725,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23740,8 +23740,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23815,8 +23815,8 @@ const vocabularySessions = {
           "category": "time_calendar",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⏰",
-          "emoji": "⏰",
+          "icon": "📆",
+          "emoji": "📆",
           "sessionReady": true
         },
         {
@@ -23873,8 +23873,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -23888,8 +23888,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "6️⃣0️⃣",
+          "emoji": "6️⃣0️⃣",
           "sessionReady": true
         },
         {
@@ -23918,8 +23918,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "6️⃣",
+          "emoji": "6️⃣",
           "sessionReady": true
         },
         {
@@ -23933,8 +23933,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "8️⃣",
+          "emoji": "8️⃣",
           "sessionReady": true
         },
         {
@@ -23948,8 +23948,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "6️⃣",
+          "emoji": "6️⃣",
           "sessionReady": true
         },
         {
@@ -23963,8 +23963,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "7️⃣",
+          "emoji": "7️⃣",
           "sessionReady": true
         },
         {
@@ -23978,8 +23978,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "4️⃣0️⃣",
+          "emoji": "4️⃣0️⃣",
           "sessionReady": true
         },
         {
@@ -23993,8 +23993,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "9️⃣",
+          "emoji": "9️⃣",
           "sessionReady": true
         }
       ],
@@ -24034,8 +24034,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "2️⃣0️⃣",
+          "emoji": "2️⃣0️⃣",
           "sessionReady": true
         },
         {
@@ -24049,8 +24049,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "6️⃣",
+          "emoji": "6️⃣",
           "sessionReady": true
         },
         {
@@ -24064,8 +24064,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24079,8 +24079,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "3️⃣",
+          "emoji": "3️⃣",
           "sessionReady": true
         },
         {
@@ -24094,8 +24094,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24109,8 +24109,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🍯",
+          "emoji": "🍯",
           "sessionReady": true
         },
         {
@@ -24124,8 +24124,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "3️⃣",
+          "emoji": "3️⃣",
           "sessionReady": true
         },
         {
@@ -24139,8 +24139,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24154,8 +24154,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         }
       ],
@@ -24180,8 +24180,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24195,8 +24195,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🚛",
+          "emoji": "🚛",
           "sessionReady": true
         },
         {
@@ -24210,8 +24210,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24225,8 +24225,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24240,8 +24240,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🧮",
+          "emoji": "🧮",
           "sessionReady": true
         },
         {
@@ -24255,8 +24255,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "3️⃣",
+          "emoji": "3️⃣",
           "sessionReady": true
         },
         {
@@ -24270,8 +24270,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24285,8 +24285,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🍅",
+          "emoji": "🍅",
           "sessionReady": true
         },
         {
@@ -24300,8 +24300,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🎪",
+          "emoji": "🎪",
           "sessionReady": true
         },
         {
@@ -24315,8 +24315,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         }
       ],
@@ -24341,8 +24341,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "➗",
+          "emoji": "➗",
           "sessionReady": true
         },
         {
@@ -24356,8 +24356,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "4️⃣",
+          "emoji": "4️⃣",
           "sessionReady": true
         },
         {
@@ -24371,8 +24371,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24386,8 +24386,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24401,8 +24401,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24416,8 +24416,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24431,8 +24431,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24446,8 +24446,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24461,8 +24461,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🍯",
+          "emoji": "🍯",
           "sessionReady": true
         },
         {
@@ -24476,8 +24476,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         }
       ],
@@ -24502,8 +24502,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔭",
+          "emoji": "🔭",
           "sessionReady": true
         },
         {
@@ -24517,8 +24517,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24532,8 +24532,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24547,8 +24547,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24562,8 +24562,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24577,8 +24577,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24592,8 +24592,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "C2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "⚗️",
+          "emoji": "⚗️",
           "sessionReady": true
         },
         {
@@ -24607,8 +24607,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "C2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         },
         {
@@ -24622,8 +24622,8 @@ const vocabularySessions = {
           "category": "numbers_math",
           "difficultyLevel": "C2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔢",
-          "emoji": "🔢",
+          "icon": "🔟",
+          "emoji": "🔟",
           "sessionReady": true
         }
       ],
@@ -24650,8 +24650,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🎤",
+          "emoji": "🎤",
           "sessionReady": true
         },
         {
@@ -24665,8 +24665,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "💃",
+          "emoji": "💃",
           "sessionReady": true
         },
         {
@@ -24680,8 +24680,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🎬",
+          "emoji": "🎬",
           "sessionReady": true
         },
         {
@@ -24695,8 +24695,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🎤",
+          "emoji": "🎤",
           "sessionReady": true
         },
         {
@@ -24725,8 +24725,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -24740,8 +24740,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🎵",
+          "emoji": "🎵",
           "sessionReady": true
         },
         {
@@ -24755,8 +24755,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🖼️",
+          "emoji": "🖼️",
           "sessionReady": true
         },
         {
@@ -24770,8 +24770,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🏛️",
+          "emoji": "🏛️",
           "sessionReady": true
         },
         {
@@ -24785,8 +24785,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🎬",
+          "emoji": "🎬",
           "sessionReady": true
         }
       ],
@@ -24811,8 +24811,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🏛️",
+          "emoji": "🏛️",
           "sessionReady": true
         },
         {
@@ -24826,8 +24826,8 @@ const vocabularySessions = {
           "category": "arts_culture",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🎭",
-          "emoji": "🎭",
+          "icon": "🎨",
+          "emoji": "🎨",
           "sessionReady": true
         }
       ],
@@ -24854,8 +24854,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "🎾",
+          "emoji": "🎾",
           "sessionReady": true
         },
         {
@@ -24869,8 +24869,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "🐑",
+          "emoji": "🐑",
           "sessionReady": true
         },
         {
@@ -24884,8 +24884,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "💯",
+          "emoji": "💯",
           "sessionReady": true
         },
         {
@@ -24914,8 +24914,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "🎮",
+          "emoji": "🎮",
           "sessionReady": true
         },
         {
@@ -24944,8 +24944,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "💯",
+          "emoji": "💯",
           "sessionReady": true
         },
         {
@@ -24959,8 +24959,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "🎮",
+          "emoji": "🎮",
           "sessionReady": true
         },
         {
@@ -24974,8 +24974,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "🏟️",
+          "emoji": "🏟️",
           "sessionReady": true
         },
         {
@@ -24989,8 +24989,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "📹",
+          "emoji": "📹",
           "sessionReady": true
         }
       ],
@@ -25015,8 +25015,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "🏊",
+          "emoji": "🏊",
           "sessionReady": true
         },
         {
@@ -25030,8 +25030,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "🏃",
+          "emoji": "🏃",
           "sessionReady": true
         },
         {
@@ -25045,8 +25045,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "🏃",
+          "emoji": "🏃",
           "sessionReady": true
         },
         {
@@ -25060,8 +25060,8 @@ const vocabularySessions = {
           "category": "sports_recreation",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚽",
-          "emoji": "⚽",
+          "icon": "🐑",
+          "emoji": "🐑",
           "sessionReady": true
         }
       ],
@@ -25088,8 +25088,8 @@ const vocabularySessions = {
           "category": "legal_government",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚖️",
-          "emoji": "⚖️",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -25103,8 +25103,8 @@ const vocabularySessions = {
           "category": "legal_government",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚖️",
-          "emoji": "⚖️",
+          "icon": "👮",
+          "emoji": "👮",
           "sessionReady": true
         },
         {
@@ -25118,8 +25118,8 @@ const vocabularySessions = {
           "category": "legal_government",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚖️",
-          "emoji": "⚖️",
+          "icon": "📜",
+          "emoji": "📜",
           "sessionReady": true
         },
         {
@@ -25133,8 +25133,8 @@ const vocabularySessions = {
           "category": "legal_government",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚖️",
-          "emoji": "⚖️",
+          "icon": "📜",
+          "emoji": "📜",
           "sessionReady": true
         },
         {
@@ -25148,8 +25148,8 @@ const vocabularySessions = {
           "category": "legal_government",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚖️",
-          "emoji": "⚖️",
+          "icon": "📜",
+          "emoji": "📜",
           "sessionReady": true
         },
         {
@@ -25163,8 +25163,8 @@ const vocabularySessions = {
           "category": "legal_government",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "⚖️",
-          "emoji": "⚖️",
+          "icon": "🏛️",
+          "emoji": "🏛️",
           "sessionReady": true
         },
         {
@@ -25178,8 +25178,8 @@ const vocabularySessions = {
           "category": "legal_government",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "⚖️",
-          "emoji": "⚖️",
+          "icon": "👨‍⚖️",
+          "emoji": "👨‍⚖️",
           "sessionReady": true
         },
         {
@@ -25221,8 +25221,8 @@ const vocabularySessions = {
           "category": "emergency_safety",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🚨",
-          "emoji": "🚨",
+          "icon": "🚑",
+          "emoji": "🚑",
           "sessionReady": true
         },
         {
@@ -25236,8 +25236,8 @@ const vocabularySessions = {
           "category": "emergency_safety",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🚨",
-          "emoji": "🚨",
+          "icon": "🔒",
+          "emoji": "🔒",
           "sessionReady": true
         },
         {
@@ -25251,8 +25251,8 @@ const vocabularySessions = {
           "category": "emergency_safety",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "🚨",
-          "emoji": "🚨",
+          "icon": "🚒",
+          "emoji": "🚒",
           "sessionReady": true
         },
         {
@@ -25266,8 +25266,8 @@ const vocabularySessions = {
           "category": "emergency_safety",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🚨",
-          "emoji": "🚨",
+          "icon": "🚒",
+          "emoji": "🚒",
           "sessionReady": true
         },
         {
@@ -25281,8 +25281,8 @@ const vocabularySessions = {
           "category": "emergency_safety",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "🚨",
-          "emoji": "🚨",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -25296,8 +25296,8 @@ const vocabularySessions = {
           "category": "emergency_safety",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🚨",
-          "emoji": "🚨",
+          "icon": "💉",
+          "emoji": "💉",
           "sessionReady": true
         },
         {
@@ -25311,8 +25311,8 @@ const vocabularySessions = {
           "category": "emergency_safety",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🚨",
-          "emoji": "🚨",
+          "icon": "🔒",
+          "emoji": "🔒",
           "sessionReady": true
         },
         {
@@ -25326,8 +25326,8 @@ const vocabularySessions = {
           "category": "emergency_safety",
           "difficultyLevel": "C1",
           "vowelHarmony": "E-type (front)",
-          "icon": "🚨",
-          "emoji": "🚨",
+          "icon": "💉",
+          "emoji": "💉",
           "sessionReady": true
         }
       ],
@@ -25369,8 +25369,8 @@ const vocabularySessions = {
           "category": "science_research",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔬",
-          "emoji": "🔬",
+          "icon": "⚛️",
+          "emoji": "⚛️",
           "sessionReady": true
         },
         {
@@ -25384,8 +25384,8 @@ const vocabularySessions = {
           "category": "science_research",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔬",
-          "emoji": "🔬",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -25399,8 +25399,8 @@ const vocabularySessions = {
           "category": "science_research",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔬",
-          "emoji": "🔬",
+          "icon": "🧪",
+          "emoji": "🧪",
           "sessionReady": true
         },
         {
@@ -25414,8 +25414,8 @@ const vocabularySessions = {
           "category": "science_research",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔬",
-          "emoji": "🔬",
+          "icon": "🧪",
+          "emoji": "🧪",
           "sessionReady": true
         },
         {
@@ -25429,8 +25429,8 @@ const vocabularySessions = {
           "category": "science_research",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "🔬",
-          "emoji": "🔬",
+          "icon": "📊",
+          "emoji": "📊",
           "sessionReady": true
         },
         {
@@ -25444,8 +25444,8 @@ const vocabularySessions = {
           "category": "science_research",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔬",
-          "emoji": "🔬",
+          "icon": "⚗️",
+          "emoji": "⚗️",
           "sessionReady": true
         },
         {
@@ -25459,8 +25459,8 @@ const vocabularySessions = {
           "category": "science_research",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "🔬",
-          "emoji": "🔬",
+          "icon": "⚛️",
+          "emoji": "⚛️",
           "sessionReady": true
         },
         {
@@ -25517,8 +25517,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🏫",
+          "emoji": "🏫",
           "sessionReady": true
         },
         {
@@ -25532,8 +25532,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔢",
+          "emoji": "🔢",
           "sessionReady": true
         },
         {
@@ -25547,8 +25547,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -25577,8 +25577,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -25592,8 +25592,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -25607,8 +25607,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🛌",
+          "emoji": "🛌",
           "sessionReady": true
         },
         {
@@ -25622,8 +25622,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🩷",
+          "emoji": "🩷",
           "sessionReady": true
         },
         {
@@ -25693,8 +25693,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -25708,8 +25708,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🍴",
+          "emoji": "🍴",
           "sessionReady": true
         },
         {
@@ -25798,8 +25798,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📐",
+          "emoji": "📐",
           "sessionReady": true
         }
       ],
@@ -25824,8 +25824,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐐",
+          "emoji": "🐐",
           "sessionReady": true
         },
         {
@@ -25899,8 +25899,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🗿",
+          "emoji": "🗿",
           "sessionReady": true
         },
         {
@@ -25914,8 +25914,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🌆",
+          "emoji": "🌆",
           "sessionReady": true
         },
         {
@@ -25959,8 +25959,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         }
       ],
@@ -25985,8 +25985,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📔",
+          "emoji": "📔",
           "sessionReady": true
         },
         {
@@ -26000,8 +26000,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🖊️",
+          "emoji": "🖊️",
           "sessionReady": true
         },
         {
@@ -26015,8 +26015,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🆕",
+          "emoji": "🆕",
           "sessionReady": true
         },
         {
@@ -26030,8 +26030,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🏘️",
+          "emoji": "🏘️",
           "sessionReady": true
         },
         {
@@ -26060,8 +26060,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -26105,8 +26105,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐘",
+          "emoji": "🐘",
           "sessionReady": true
         },
         {
@@ -26120,8 +26120,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🟣",
+          "emoji": "🟣",
           "sessionReady": true
         }
       ],
@@ -26146,8 +26146,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🟠",
+          "emoji": "🟠",
           "sessionReady": true
         },
         {
@@ -26176,8 +26176,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "✨",
+          "emoji": "✨",
           "sessionReady": true
         },
         {
@@ -26281,8 +26281,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🍊",
+          "emoji": "🍊",
           "sessionReady": true
         }
       ],
@@ -26307,8 +26307,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -26337,8 +26337,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -26352,8 +26352,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🦵",
+          "emoji": "🦵",
           "sessionReady": true
         },
         {
@@ -26367,8 +26367,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🚢",
+          "emoji": "🚢",
           "sessionReady": true
         },
         {
@@ -26412,8 +26412,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -26468,8 +26468,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🏦",
+          "emoji": "🏦",
           "sessionReady": true
         },
         {
@@ -26588,8 +26588,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -26603,8 +26603,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         }
       ],
@@ -26629,8 +26629,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🗓️",
+          "emoji": "🗓️",
           "sessionReady": true
         },
         {
@@ -26644,8 +26644,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🌆",
+          "emoji": "🌆",
           "sessionReady": true
         },
         {
@@ -26659,8 +26659,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐄",
+          "emoji": "🐄",
           "sessionReady": true
         },
         {
@@ -26674,8 +26674,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🥚",
+          "emoji": "🥚",
           "sessionReady": true
         },
         {
@@ -26689,8 +26689,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -26704,8 +26704,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🍃",
+          "emoji": "🍃",
           "sessionReady": true
         },
         {
@@ -26820,8 +26820,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🚶",
+          "emoji": "🚶",
           "sessionReady": true
         },
         {
@@ -26835,8 +26835,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "💇",
+          "emoji": "💇",
           "sessionReady": true
         },
         {
@@ -26865,8 +26865,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🏙️",
+          "emoji": "🏙️",
           "sessionReady": true
         },
         {
@@ -26880,8 +26880,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🏢",
+          "emoji": "🏢",
           "sessionReady": true
         },
         {
@@ -26925,8 +26925,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "💡",
+          "emoji": "💡",
           "sessionReady": true
         }
       ],
@@ -26981,8 +26981,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -26996,8 +26996,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -27011,8 +27011,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -27026,8 +27026,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -27041,8 +27041,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "➡️",
+          "emoji": "➡️",
           "sessionReady": true
         },
         {
@@ -27056,8 +27056,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -27071,8 +27071,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -27112,8 +27112,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -27127,8 +27127,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -27217,8 +27217,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⏱️",
+          "emoji": "⏱️",
           "sessionReady": true
         },
         {
@@ -27247,8 +27247,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔢",
+          "emoji": "🔢",
           "sessionReady": true
         }
       ],
@@ -27288,8 +27288,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "👨‍🍳",
+          "emoji": "👨‍🍳",
           "sessionReady": true
         },
         {
@@ -27318,8 +27318,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🏪",
+          "emoji": "🏪",
           "sessionReady": true
         },
         {
@@ -27333,8 +27333,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -27348,8 +27348,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🌅",
+          "emoji": "🌅",
           "sessionReady": true
         },
         {
@@ -27363,8 +27363,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🥤",
+          "emoji": "🥤",
           "sessionReady": true
         },
         {
@@ -27408,8 +27408,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📉",
+          "emoji": "📉",
           "sessionReady": true
         }
       ],
@@ -27569,8 +27569,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📐",
+          "emoji": "📐",
           "sessionReady": true
         }
       ],
@@ -27625,8 +27625,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🏞️",
+          "emoji": "🏞️",
           "sessionReady": true
         },
         {
@@ -27655,8 +27655,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐅",
+          "emoji": "🐅",
           "sessionReady": true
         },
         {
@@ -27876,8 +27876,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🏐",
+          "emoji": "🏐",
           "sessionReady": true
         },
         {
@@ -27977,8 +27977,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -28007,8 +28007,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🍌",
+          "emoji": "🍌",
           "sessionReady": true
         },
         {
@@ -28078,8 +28078,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🧹",
+          "emoji": "🧹",
           "sessionReady": true
         },
         {
@@ -28183,8 +28183,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔑",
+          "emoji": "🔑",
           "sessionReady": true
         },
         {
@@ -28198,8 +28198,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔥",
+          "emoji": "🔥",
           "sessionReady": true
         },
         {
@@ -28213,8 +28213,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐭",
+          "emoji": "🐭",
           "sessionReady": true
         }
       ],
@@ -28254,8 +28254,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🍽️",
+          "emoji": "🍽️",
           "sessionReady": true
         },
         {
@@ -28269,8 +28269,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⚙️",
+          "emoji": "⚙️",
           "sessionReady": true
         },
         {
@@ -28314,8 +28314,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🫒",
+          "emoji": "🫒",
           "sessionReady": true
         },
         {
@@ -28490,8 +28490,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🤖",
+          "emoji": "🤖",
           "sessionReady": true
         },
         {
@@ -28535,8 +28535,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         }
       ],
@@ -28561,8 +28561,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📷",
+          "emoji": "📷",
           "sessionReady": true
         },
         {
@@ -28576,8 +28576,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🪢",
+          "emoji": "🪢",
           "sessionReady": true
         },
         {
@@ -28606,8 +28606,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -28666,8 +28666,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "💇",
+          "emoji": "💇",
           "sessionReady": true
         },
         {
@@ -28722,8 +28722,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📹",
+          "emoji": "📹",
           "sessionReady": true
         },
         {
@@ -28782,8 +28782,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🧶",
+          "emoji": "🧶",
           "sessionReady": true
         },
         {
@@ -28797,8 +28797,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📉",
+          "emoji": "📉",
           "sessionReady": true
         },
         {
@@ -28812,8 +28812,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🗿",
+          "emoji": "🗿",
           "sessionReady": true
         },
         {
@@ -28857,8 +28857,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🧶",
+          "emoji": "🧶",
           "sessionReady": true
         }
       ],
@@ -28883,8 +28883,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "Mixed",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🫒",
+          "emoji": "🫒",
           "sessionReady": true
         },
         {
@@ -28958,8 +28958,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📉",
+          "emoji": "📉",
           "sessionReady": true
         },
         {
@@ -29003,8 +29003,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐄",
+          "emoji": "🐄",
           "sessionReady": true
         },
         {
@@ -29044,8 +29044,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐓",
+          "emoji": "🐓",
           "sessionReady": true
         },
         {
@@ -29074,8 +29074,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🍌",
+          "emoji": "🍌",
           "sessionReady": true
         },
         {
@@ -29179,8 +29179,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⚽",
+          "emoji": "⚽",
           "sessionReady": true
         }
       ],
@@ -29235,8 +29235,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🌱",
+          "emoji": "🌱",
           "sessionReady": true
         },
         {
@@ -29411,8 +29411,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⚽",
+          "emoji": "⚽",
           "sessionReady": true
         },
         {
@@ -29456,8 +29456,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -29471,8 +29471,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🛌",
+          "emoji": "🛌",
           "sessionReady": true
         },
         {
@@ -29647,8 +29647,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📉",
+          "emoji": "📉",
           "sessionReady": true
         },
         {
@@ -29763,8 +29763,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -29823,8 +29823,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🛗",
+          "emoji": "🛗",
           "sessionReady": true
         }
       ],
@@ -29864,8 +29864,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🪢",
+          "emoji": "🪢",
           "sessionReady": true
         },
         {
@@ -29894,8 +29894,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐑",
+          "emoji": "🐑",
           "sessionReady": true
         },
         {
@@ -29909,8 +29909,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🥤",
+          "emoji": "🥤",
           "sessionReady": true
         },
         {
@@ -29939,8 +29939,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -29969,8 +29969,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎹",
+          "emoji": "🎹",
           "sessionReady": true
         },
         {
@@ -30025,8 +30025,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐰",
+          "emoji": "🐰",
           "sessionReady": true
         },
         {
@@ -30070,8 +30070,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "👨",
+          "emoji": "👨",
           "sessionReady": true
         },
         {
@@ -30085,8 +30085,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🥄",
+          "emoji": "🥄",
           "sessionReady": true
         },
         {
@@ -30115,8 +30115,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -30130,8 +30130,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🧳",
+          "emoji": "🧳",
           "sessionReady": true
         },
         {
@@ -30246,8 +30246,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -30276,8 +30276,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⏱️",
+          "emoji": "⏱️",
           "sessionReady": true
         },
         {
@@ -30332,8 +30332,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🥊",
+          "emoji": "🥊",
           "sessionReady": true
         },
         {
@@ -30392,8 +30392,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎞️",
+          "emoji": "🎞️",
           "sessionReady": true
         },
         {
@@ -30452,8 +30452,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -30523,8 +30523,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔪",
+          "emoji": "🔪",
           "sessionReady": true
         },
         {
@@ -30669,8 +30669,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "A2",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📐",
+          "emoji": "📐",
           "sessionReady": true
         },
         {
@@ -30699,8 +30699,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🌤️",
+          "emoji": "🌤️",
           "sessionReady": true
         },
         {
@@ -30729,8 +30729,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🟣",
+          "emoji": "🟣",
           "sessionReady": true
         },
         {
@@ -30744,8 +30744,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "👔",
+          "emoji": "👔",
           "sessionReady": true
         },
         {
@@ -30815,8 +30815,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎸",
+          "emoji": "🎸",
           "sessionReady": true
         },
         {
@@ -30875,8 +30875,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⚙️",
+          "emoji": "⚙️",
           "sessionReady": true
         },
         {
@@ -31006,8 +31006,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "Mixed",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -31021,8 +31021,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -31036,8 +31036,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -31096,8 +31096,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⚽",
+          "emoji": "⚽",
           "sessionReady": true
         },
         {
@@ -31137,8 +31137,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🟠",
+          "emoji": "🟠",
           "sessionReady": true
         },
         {
@@ -31197,8 +31197,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🍯",
+          "emoji": "🍯",
           "sessionReady": true
         },
         {
@@ -31298,8 +31298,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🪟",
+          "emoji": "🪟",
           "sessionReady": true
         },
         {
@@ -31328,8 +31328,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⚙️",
+          "emoji": "⚙️",
           "sessionReady": true
         },
         {
@@ -31474,8 +31474,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -31504,8 +31504,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📉",
+          "emoji": "📉",
           "sessionReady": true
         },
         {
@@ -31564,8 +31564,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -31579,8 +31579,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐘",
+          "emoji": "🐘",
           "sessionReady": true
         },
         {
@@ -31680,8 +31680,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🌆",
+          "emoji": "🌆",
           "sessionReady": true
         },
         {
@@ -31740,8 +31740,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -31796,8 +31796,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐺",
+          "emoji": "🐺",
           "sessionReady": true
         },
         {
@@ -31841,8 +31841,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔨",
+          "emoji": "🔨",
           "sessionReady": true
         },
         {
@@ -31856,8 +31856,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -31942,8 +31942,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐳",
+          "emoji": "🐳",
           "sessionReady": true
         },
         {
@@ -31957,8 +31957,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -32103,8 +32103,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -32118,8 +32118,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔧",
+          "emoji": "🔧",
           "sessionReady": true
         },
         {
@@ -32133,8 +32133,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -32208,8 +32208,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐄",
+          "emoji": "🐄",
           "sessionReady": true
         },
         {
@@ -32264,8 +32264,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⚽",
+          "emoji": "⚽",
           "sessionReady": true
         },
         {
@@ -32339,8 +32339,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -32354,8 +32354,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🚿",
+          "emoji": "🚿",
           "sessionReady": true
         },
         {
@@ -32661,8 +32661,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⛈️",
+          "emoji": "⛈️",
           "sessionReady": true
         },
         {
@@ -32676,8 +32676,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📉",
+          "emoji": "📉",
           "sessionReady": true
         },
         {
@@ -32837,8 +32837,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -32882,8 +32882,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "💯",
+          "emoji": "💯",
           "sessionReady": true
         }
       ],
@@ -32908,8 +32908,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -32938,8 +32938,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -32968,8 +32968,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -33159,8 +33159,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📉",
+          "emoji": "📉",
           "sessionReady": true
         },
         {
@@ -33466,8 +33466,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔧",
+          "emoji": "🔧",
           "sessionReady": true
         },
         {
@@ -33481,8 +33481,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -33511,8 +33511,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🌆",
+          "emoji": "🌆",
           "sessionReady": true
         },
         {
@@ -33526,8 +33526,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🍯",
+          "emoji": "🍯",
           "sessionReady": true
         }
       ],
@@ -33552,8 +33552,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🥄",
+          "emoji": "🥄",
           "sessionReady": true
         },
         {
@@ -33567,8 +33567,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -33582,8 +33582,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -33672,8 +33672,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐝",
+          "emoji": "🐝",
           "sessionReady": true
         },
         {
@@ -33773,8 +33773,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -33818,8 +33818,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -33833,8 +33833,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "Mixed",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📅",
+          "emoji": "📅",
           "sessionReady": true
         },
         {
@@ -33889,8 +33889,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📉",
+          "emoji": "📉",
           "sessionReady": true
         },
         {
@@ -34035,8 +34035,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "💳",
+          "emoji": "💳",
           "sessionReady": true
         },
         {
@@ -34065,8 +34065,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔒",
+          "emoji": "🔒",
           "sessionReady": true
         },
         {
@@ -34125,8 +34125,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎹",
+          "emoji": "🎹",
           "sessionReady": true
         },
         {
@@ -34140,8 +34140,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -34155,8 +34155,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -34170,8 +34170,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         }
       ],
@@ -34196,8 +34196,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -34211,8 +34211,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -34241,8 +34241,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "E-type (front)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -34286,8 +34286,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -34301,8 +34301,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -34316,8 +34316,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐙",
+          "emoji": "🐙",
           "sessionReady": true
         },
         {
@@ -34331,8 +34331,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🔥",
+          "emoji": "🔥",
           "sessionReady": true
         }
       ],
@@ -34357,8 +34357,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🎯",
+          "emoji": "🎯",
           "sessionReady": true
         },
         {
@@ -34372,8 +34372,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🍽️",
+          "emoji": "🍽️",
           "sessionReady": true
         },
         {
@@ -34387,8 +34387,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "B2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -34840,8 +34840,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐝",
+          "emoji": "🐝",
           "sessionReady": true
         },
         {
@@ -34945,8 +34945,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐝",
+          "emoji": "🐝",
           "sessionReady": true
         },
         {
@@ -34960,8 +34960,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🐎",
+          "emoji": "🐎",
           "sessionReady": true
         },
         {
@@ -35001,8 +35001,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⚗️",
+          "emoji": "⚗️",
           "sessionReady": true
         },
         {
@@ -35031,8 +35031,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "📉",
+          "emoji": "📉",
           "sessionReady": true
         },
         {
@@ -35091,8 +35091,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "C1",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "🌤️",
+          "emoji": "🌤️",
           "sessionReady": true
         },
         {
@@ -35162,8 +35162,8 @@ const vocabularySessions = {
           "category": "general_vocabulary",
           "difficultyLevel": "C2",
           "vowelHarmony": "I-type (back)",
-          "icon": "📚",
-          "emoji": "📚",
+          "icon": "⚽",
+          "emoji": "⚽",
           "sessionReady": true
         },
         {
@@ -35384,7 +35384,7 @@ const vocabularyMetadata = {
     vowelHarmonyTypes: {"I-type (back)":576,"E-type (front)":400,"E-type":50,"Mixed":47,"I-type":43,"E-type (back)":6,"Mixed/Exception":4},
     categoryDistribution: {"general_vocabulary":602,"greetings_basics":10,"time_calendar":48,"nature_weather":35,"food_cooking":84,"clothing_fashion":10,"home_living":39,"technology_modern":10,"body_health":76,"numbers_math":49,"family_relationships":42,"arts_culture":12,"colors_descriptions":18,"legal_government":8,"emergency_safety":8,"science_research":9,"transport_travel":16,"sports_recreation":14,"shopping_commerce":11,"work_education":25},
     sessionDistribution: {"greetings_basics":1,"family_relationships":5,"body_health":8,"food_cooking":9,"clothing_fashion":1,"transport_travel":2,"home_living":4,"work_education":3,"shopping_commerce":2,"nature_weather":4,"technology_modern":1,"colors_descriptions":2,"time_calendar":5,"numbers_math":5,"arts_culture":2,"sports_recreation":2,"legal_government":1,"emergency_safety":1,"science_research":1,"general_vocabulary":61},
-    generatedAt: '2025-09-01T16:34:45.482Z',
+    generatedAt: '2025-09-01T17:48:48.392Z',
     sourceFile: 'Turkish Language Data.csv',
     processingVersion: '2.0-sessions'
 };

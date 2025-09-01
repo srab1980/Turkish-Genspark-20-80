@@ -310,29 +310,171 @@ class EnhancedTurkishCategorizer {
     }
     
     /**
-     * Generate contextual icon for word
+     * Generate contextual icon for word (Enhanced with comprehensive word-specific mappings)
      */
     generateWordIcon(word, category) {
+        const wordLower = word.toLowerCase().trim();
+        
+        // Comprehensive word-specific icon mappings
         const iconMappings = {
-            // Family
-            'anne': '👩', 'baba': '👨', 'çocuk': '👶', 'aile': '👨‍👩‍👧‍👦',
+            // Family & People (👨‍👩‍👧‍👦)
+            'anne': '👩', 'baba': '👨', 'çocuk': '👶', 'aile': '👨‍👩‍👧‍👦', 'kardeş': '👫',
+            'abla': '👩‍🦳', 'abi': '👨‍🦳', 'ağabey': '👨', 'arkadaş': '👫', 'eş': '💑',
+            'dede': '👴', 'nine': '👵', 'amca': '👨‍🦳', 'teyze': '👩‍🦳', 'dayı': '👨',
             
-            // Food
-            'ekmek': '🍞', 'su': '💧', 'çay': '🫖', 'kahve': '☕', 'balık': '🐟',
+            // Body & Health (🏥)
+            'baş': '🤕', 'göz': '👁️', 'kulak': '👂', 'burun': '👃', 'ağız': '👄',
+            'diş': '🦷', 'el': '✋', 'ayak': '🦶', 'bacak': '🦵', 'parmak': '👆',
+            'kalp': '❤️', 'akciğer': '🫁', 'alın': '😊', 'saç': '💇',
+            'hasta': '🤒', 'doktor': '👨‍⚕️', 'hastane': '🏥', 'ilaç': '💊',
+            'ağrı': '😖', 'ateş': '🤒', 'ameliyat': '🏥', 'anestezi': '💉',
             
-            // Animals
-            'kuş': '🐦', 'kedi': '🐱', 'köpek': '🐕', 'aslan': '🦁',
+            // Food & Cooking (🍽️)
+            'ekmek': '🍞', 'su': '💧', 'çay': '🫖', 'kahve': '☕', 'süt': '🥛',
+            'peynir': '🧀', 'yumurta': '🥚', 'et': '🥩', 'tavuk': '🍗', 'balık': '🐟',
+            'sebze': '🥬', 'meyve': '🍎', 'elma': '🍎', 'muz': '🍌', 'portakal': '🍊',
+            'domates': '🍅', 'patates': '🥔', 'soğan': '🧅', 'havuç': '🥕',
+            'pilav': '🍚', 'makarna': '🍝', 'çorba': '🍲', 'salata': '🥗',
+            'tuz': '🧂', 'şeker': '🍯', 'yağ': '🫒', 'bal': '🍯',
+            'bardak': '🥤', 'tabak': '🍽️', 'kaşık': '🥄', 'çatal': '🍴',
+            'bıçak': '🔪', 'aşçı': '👨‍🍳', 'yemek': '🍽️',
             
-            // Transportation
-            'araba': '🚗', 'uçak': '✈️', 'tren': '🚂', 'otobüs': '🚌',
+            // Animals (🐕)
+            'köpek': '🐕', 'kedi': '🐱', 'kuş': '🐦', 'balık': '🐟', 'at': '🐎',
+            'inek': '🐄', 'koyun': '🐑', 'keçi': '🐐', 'tavuk': '🐓', 'horoz': '🐓',
+            'aslan': '🦁', 'kaplan': '🐅', 'fil': '🐘', 'ayı': '🐻', 'kurt': '🐺',
+            'fare': '🐭', 'tavşan': '🐰', 'ahtapot': '🐙', 'balina': '🐳',
+            'arı': '🐝', 'kelebek': '🦋', 'karınca': '🐜',
             
-            // Numbers
+            // Transportation & Travel (🚗)
+            'araba': '🚗', 'otobüs': '🚌', 'tren': '🚂', 'uçak': '✈️', 'gemi': '🚢',
+            'taksi': '🚕', 'bisiklet': '🚲', 'motosiklet': '🏍️', 'kamyon': '🚛',
+            'ambulans': '🚑', 'itfaiye': '🚒', 'polis': '🚔', 'metro': '🚇',
+            'havaalanı': '🛫', 'istasyon': '🚉', 'bilet': '🎫', 'bagaj': '🧳',
+            'yol': '🛤️', 'köprü': '🌉', 'trafik': '🚦',
+            
+            // Home & Living (🏠)
+            'ev': '🏠', 'apartman': '🏢', 'oda': '🚪', 'yatak': '🛏️', 'yastık': '🛌',
+            'masa': '🪑', 'sandalye': '🪑', 'dolap': '🗄️', 'çekmece': '📦',
+            'pencere': '🪟', 'kapı': '🚪', 'anahtar': '🔑', 'kilit': '🔒',
+            'mutfak': '🍳', 'banyo': '🚿', 'tuvalet': '🚽', 'lavabo': '🚿',
+            'buzdolabı': '❄️', 'fırın': '🔥', 'ocak': '🔥', 'televizyon': '📺',
+            'telefon': '📞', 'bilgisayar': '💻', 'ayna': '🪞', 'lamba': '💡',
+            'halı': '🧶', 'perde': '🪟', 'battaniye': '🛌', 'asansör': '🛗',
+            
+            // Clothing & Fashion (👕)
+            'elbise': '👗', 'pantolon': '👖', 'gömlek': '👔', 'tişört': '👕',
+            'ayakkabı': '👠', 'çorap': '🧦', 'çanta': '👜', 'şapka': '🎩',
+            'eldiven': '🧤', 'kemer': '👔', 'mont': '🧥', 'etek': '👗',
+            'kazak': '🧥', 'ceket': '🧥', 'gözlük': '👓',
+            
+            // Technology & Modern (📱)
+            'telefon': '📱', 'bilgisayar': '💻', 'internet': '🌐', 'email': '📧',
+            'website': '🌐', 'teknoloji': '⚙️', 'dijital': '💾', 'online': '🌐',
+            'uygulama': '📱', 'yazılım': '💻', 'donanım': '🔧', 'virüs': '🦠',
+            'ATM': '🏧', 'kamera': '📷', 'müzik': '🎵', 'video': '📹',
+            
+            // Nature & Weather (🌿)
+            'ağaç': '🌳', 'çiçek': '🌸', 'yaprak': '🍃', 'dal': '🌿', 'kök': '🌱',
+            'çimen': '🌱', 'orman': '🌲', 'dağ': '⛰️', 'deniz': '🌊', 'göl': '🏞️',
+            'nehir': '🏞️', 'ada': '🏝️', 'güneş': '☀️', 'ay': '🌙', 'yıldız': '⭐',
+            'bulut': '☁️', 'yağmur': '🌧️', 'kar': '❄️', 'rüzgar': '💨',
+            'hava': '🌤️', 'sıcak': '🔥', 'soğuk': '❄️', 'ılık': '🌤️',
+            'çiy': '💧', 'fırtına': '⛈️',
+            
+            // Numbers & Math (🔢)
             'bir': '1️⃣', 'iki': '2️⃣', 'üç': '3️⃣', 'dört': '4️⃣', 'beş': '5️⃣',
+            'altı': '6️⃣', 'yedi': '7️⃣', 'sekiz': '8️⃣', 'dokuz': '9️⃣', 'on': '🔟',
+            'yirmi': '2️⃣0️⃣', 'otuz': '3️⃣0️⃣', 'kırk': '4️⃣0️⃣', 'elli': '5️⃣0️⃣',
+            'altmış': '6️⃣0️⃣', 'yüz': '💯', 'bin': '🔢', 'sayı': '🔢',
+            'matematik': '➗', 'hesap': '🧮', 'toplama': '➕', 'çıkarma': '➖',
             
-            // Time
-            'saat': '🕐', 'gün': '📅', 'ay': '📆', 'yıl': '🗓️',
+            // Time & Calendar (⏰)
+            'saat': '🕐', 'zaman': '⏰', 'gün': '📅', 'hafta': '📆', 'ay': '📆',
+            'yıl': '🗓️', 'bugün': '📅', 'yarın': '📅', 'dün': '📅',
+            'sabah': '🌅', 'öğle': '☀️', 'akşam': '🌆', 'gece': '🌙',
+            'pazartesi': '📅', 'salı': '📅', 'çarşamba': '📅', 'perşembe': '📅',
+            'cuma': '📅', 'cumartesi': '📅', 'pazar': '📅',
+            'ocak': '🗓️', 'şubat': '🗓️', 'mart': '🗓️', 'nisan': '🗓️',
+            'mayıs': '🗓️', 'haziran': '🗓️', 'temmuz': '🗓️', 'ağustos': '🗓️',
+            'eylül': '🗓️', 'ekim': '🗓️', 'kasım': '🗓️', 'aralık': '🗓️',
             
-            // Default category icons
+            // Colors & Descriptions (🎨)
+            'renk': '🎨', 'kırmızı': '🔴', 'mavi': '🔵', 'yeşil': '🟢', 'sarı': '🟡',
+            'siyah': '⚫', 'beyaz': '⚪', 'pembe': '🩷', 'mor': '🟣', 'turuncu': '🟠',
+            'büyük': '📏', 'küçük': '🤏', 'uzun': '📏', 'kısa': '📐',
+            'yüksek': '📐', 'alçak': '📉', 'kalın': '📏', 'ince': '📐',
+            'güzel': '😊', 'çirkin': '😖', 'iyi': '👍', 'kötü': '👎',
+            'yeni': '🆕', 'eski': '🗿', 'temiz': '✨', 'kirli': '🧹',
+            
+            // Work & Education (🎓)
+            'iş': '💼', 'çalışmak': '💼', 'işçi': '👷', 'işadamı': '👨‍💼',
+            'okul': '🏫', 'üniversite': '🎓', 'öğrenci': '👨‍🎓', 'öğretmen': '👨‍🏫',
+            'kitap': '📚', 'kalem': '✏️', 'kağıt': '📄', 'defter': '📔',
+            'ders': '📖', 'sınav': '📝', 'diploma': '🎓', 'sınıf': '🏫',
+            'masa': '🪑', 'tahta': '🖊️', 'hesap': '🧮',
+            
+            // Shopping & Commerce (🛒)
+            'alışveriş': '🛒', 'mağaza': '🏪', 'market': '🏪', 'para': '💰',
+            'fiyat': '💰', 'ücret': '💳', 'satın': '🛒', 'satmak': '💰',
+            'kart': '💳', 'nakit': '💵', 'indirim': '🏷️', 'fiş': '🧾',
+            'kasiyer': '👨‍💼', 'alışveriş merkezi': '🏬', 'bakkal': '🏪',
+            'banka': '🏦', 'kredi': '💳',
+            
+            // Sports & Recreation (⚽)
+            'spor': '⚽', 'futbol': '⚽', 'basketbol': '🏀', 'tenis': '🎾',
+            'yüzmek': '🏊', 'koşmak': '🏃', 'oyun': '🎮', 'maç': '🏟️',
+            'takım': '👥', 'sporcu': '🏃', 'stadyum': '🏟️', 'top': '⚽',
+            'golf': '⛳', 'voleybol': '🏐', 'boks': '🥊',
+            
+            // Arts & Culture (🎭)
+            'sanat': '🎨', 'müzik': '🎵', 'resim': '🖼️', 'şarkı': '🎤',
+            'dans': '💃', 'tiyatro': '🎭', 'sinema': '🎬', 'film': '🎞️',
+            'şiir': '📜', 'kültür': '🏛️', 'müze': '🏛️', 'galeri': '🖼️',
+            'konser': '🎪', 'enstrüman': '🎹', 'gitar': '🎸', 'piyano': '🎹',
+            
+            // Emergency & Safety (🚨)
+            'acil': '🚨', 'yardım': '🆘', 'polis': '👮', 'itfaiye': '🚒',
+            'ambulans': '🚑', 'güvenlik': '🔒', 'tehlike': '⚠️', 'kaza': '💥',
+            'yangın': '🔥', 'hırsız': '🦹',
+            
+            // Science & Research (🔬)
+            'bilim': '🔬', 'araştırma': '📊', 'deney': '🧪', 'kimya': '⚗️',
+            'fizik': '⚛️', 'biyoloji': '🧬', 'astronomi': '🔭', 'atom': '⚛️',
+            'asit': '🧪', 'argon': '⚗️', 'azot': '⚗️', 'araştırma görevlisi': '👨‍🔬',
+            
+            // Legal & Government (⚖️)
+            'hukuk': '⚖️', 'avukat': '👨‍⚖️', 'mahkeme': '🏛️', 'hükümet': '🏛️',
+            'devlet': '🏛️', 'belediye': '🏛️', 'kanun': '📜', 'adalet': '⚖️',
+            'anlaşma': '📜', 'imza': '✍️',
+            
+            // Objects & Tools (🔧)
+            'alet': '🔧', 'çekiç': '🔨', 'tornavida': '🔧', 'makine': '⚙️',
+            'motor': '🔧', 'düğme': '🔘', 'ip': '🪢', 'kutu': '📦',
+            'çanta': '👜', 'bavul': '🧳', 'şemsiye': '☂️', 'saat': '⌚',
+            'anahtar': '🔑', 'kilit': '🔒', 'zil': '🔔'
+        };
+        
+        // Try exact word match first (most specific)
+        if (iconMappings[wordLower]) {
+            return iconMappings[wordLower];
+        }
+        
+        // Try partial matches for compound words
+        for (const [iconWord, icon] of Object.entries(iconMappings)) {
+            if (wordLower.includes(iconWord) || iconWord.includes(wordLower)) {
+                return icon;
+            }
+        }
+        
+        // Advanced semantic matching based on word patterns and context
+        const semanticMatching = this.getSemanticIcon(wordLower, category);
+        if (semanticMatching) {
+            return semanticMatching;
+        }
+        
+        // Category-based fallback (only as last resort)
+        const categoryIcons = {
             'greetings_basics': '👋',
             'family_relationships': '👨‍👩‍👧‍👦',
             'body_health': '🏥',
@@ -355,13 +497,51 @@ class EnhancedTurkishCategorizer {
             'general_vocabulary': '📚'
         };
         
-        // Try specific word match first
-        if (iconMappings[word.toLowerCase()]) {
-            return iconMappings[word.toLowerCase()];
+        return categoryIcons[category] || '📚';
+    }
+    
+    /**
+     * Advanced semantic icon matching based on word patterns
+     */
+    getSemanticIcon(word, category) {
+        // Action words (verbs)
+        if (word.endsWith('mak') || word.endsWith('mek')) {
+            if (word.includes('yüz')) return '🏊';
+            if (word.includes('koş')) return '🏃';
+            if (word.includes('uç')) return '✈️';
+            if (word.includes('yürü')) return '🚶';
+            if (word.includes('git')) return '➡️';
+            if (word.includes('gel')) return '⬅️';
+            if (word.includes('ye')) return '🍽️';
+            if (word.includes('iç')) return '🥤';
+            if (word.includes('oku')) return '📖';
+            if (word.includes('yaz')) return '✍️';
+            return '🎯'; // Generic action
         }
         
-        // Fall back to category icon
-        return iconMappings[category] || '📚';
+        // Size/quantity indicators
+        if (word.includes('büyük')) return '📏';
+        if (word.includes('küçük')) return '🤏';
+        if (word.includes('çok')) return '📊';
+        if (word.includes('az')) return '📉';
+        
+        // Time-related words
+        if (word.includes('dakika')) return '⏱️';
+        if (word.includes('saniye')) return '⏱️';
+        if (word.includes('erken')) return '🌅';
+        if (word.includes('geç')) return '🌆';
+        
+        // Location indicators
+        if (word.includes('yer') || word.includes('alan')) return '📍';
+        if (word.includes('şehir')) return '🏙️';
+        if (word.includes('köy')) return '🏘️';
+        if (word.includes('ülke')) return '🗺️';
+        
+        // Technology/modern items
+        if (word.includes('elektronik') || word.includes('dijital')) return '💻';
+        if (word.includes('otomatik') || word.includes('akıllı')) return '🤖';
+        
+        return null; // No semantic match found
     }
     
     /**
