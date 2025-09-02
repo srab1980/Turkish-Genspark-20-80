@@ -1,0 +1,1009 @@
+/* 📱 Flashcard Mode - Dedicated Styles */
+/* Fixes corrupted difficulty buttons and layout issues */
+
+/* Flashcard Container */
+.flashcard-mode-interface {
+    width: 100%;
+    max-width: 1000px; /* Increased to accommodate two-column layout */
+    margin: 0 auto; /* Center the interface */
+    padding: 20px;
+    background: transparent;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+}
+
+/* Progress Bar */
+.flashcard-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.flashcard-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10B981, #059669);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.flashcard-progress-text {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #6B7280;
+    font-size: 14px;
+}
+
+/* Flashcard Container Wrapper - With Side Navigation */
+.flashcard-container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Remove margin to match button container */
+    min-height: auto;
+    position: relative;
+    gap: 30px;
+    height: 500px; /* Explicit height to match button container */
+}
+
+/* Main Flashcard with Enhanced 3D Flip */
+/* Flashcard Mode Specific Styles - Override global styles */
+.flashcard-mode-interface .flashcard {
+    width: 400px !important;
+    height: 500px !important; /* Override any global CSS variable calculations */
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 2px solid #E5E7EB;
+    box-sizing: border-box; /* Include padding and border in height calculation */
+    /* Enhanced 3D Flip Animation Properties */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.flashcard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.flashcard.flipped {
+    background: #F0FDF4;
+    border-color: #10B981;
+}
+
+/* Flashcard Content */
+.flashcard-content {
+    text-align: center;
+    width: 100%;
+}
+
+/* Flashcard Turkish Word/Sentence */
+.flashcard-turkish {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 15px 0;
+    direction: ltr;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* Flashcard Arabic and English Translations */
+.flashcard-arabic-main {
+    font-size: 20px;
+    font-weight: 600;
+    color: #059669;
+    margin: 10px 0;
+    direction: rtl;
+    text-align: center;
+}
+
+.flashcard-english-main {
+    font-size: 16px;
+    color: #6B7280;
+    margin: 8px 0;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Example Sections */
+.flashcard-example {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(16, 185, 129, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid #10B981;
+}
+
+.example-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #059669;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.turkish-example {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.example-text {
+    font-size: 16px;
+    color: #374151;
+    direction: ltr;
+    flex: 1;
+}
+
+.example-arabic {
+    font-size: 14px;
+    color: #6B7280;
+    direction: rtl;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.flashcard-front .turkish-word {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 10px;
+    direction: ltr;
+    font-family: 'Inter', sans-serif;
+}
+
+.flashcard-front .pronunciation {
+    font-size: 16px;
+    color: #6B7280;
+    font-style: italic;
+    margin-bottom: 8px;
+    direction: ltr;
+}
+
+.flashcard-back .arabic-translation {
+    font-size: 26px;
+    font-weight: 600;
+    color: #059669;
+    margin-bottom: 10px;
+    direction: rtl;
+    font-family: 'Noto Sans Arabic', Arial, sans-serif;
+}
+
+.flashcard-back .english-translation {
+    font-size: 18px;
+    color: #6B7280;
+    margin-bottom: 15px;
+    direction: ltr;
+}
+
+.flashcard-back .example-sentence {
+    font-size: 14px;
+    color: #4B5563;
+    font-style: italic;
+    padding: 10px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+    margin-top: 10px;
+    direction: rtl;
+}
+
+/* Additional styles for flashcard elements */
+.flashcard-pronunciation {
+    font-size: 16px;
+    color: #6B7280;
+    font-style: italic;
+    margin: 8px 0;
+    direction: ltr;
+}
+
+.flashcard-vowel-harmony {
+    font-size: 14px;
+    color: #8B5CF6;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+.flashcard-hint {
+    font-size: 12px;
+    color: #9CA3AF;
+    margin-top: 15px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    direction: rtl;
+}
+
+.tts-controls {
+    margin: 15px 0;
+}
+
+.tts-btn {
+    background: #3B82F6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+}
+
+.tts-btn:hover {
+    background: #2563EB;
+    transform: scale(1.1);
+}
+
+.flashcard-back-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.flashcard-arabic-main {
+    font-size: 26px;
+    font-weight: 600;
+    color: #059669;
+    margin: 10px 0;
+    direction: rtl;
+    font-family: 'Noto Sans Arabic', Arial, sans-serif;
+}
+
+.flashcard-difficulty-level {
+    font-size: 12px;
+    background: #EFF6FF;
+    color: #1D4ED8;
+    padding: 4px 8px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.flashcard-example-elevated {
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.turkish-example-elevated {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.example-text-elevated {
+    font-size: 16px;
+    color: #1F2937;
+    direction: ltr;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.arabic-translation-elevated {
+    text-align: center;
+}
+
+.example-arabic-elevated {
+    font-size: 16px;
+    color: #059669;
+    direction: rtl;
+    font-family: 'Noto Sans Arabic', Arial, sans-serif;
+}
+
+.no-example-message-elevated {
+    text-align: center;
+    color: #6B7280;
+    font-style: italic;
+    padding: 20px;
+}
+
+.word-icon.emoji {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.flashcard-icon-container-small .emoji {
+    font-size: 24px;
+}
+
+/* Flip Indicator */
+.flip-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 12px;
+    color: #9CA3AF;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+/* Side Navigation Buttons */
+.flashcard-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flashcard-nav-button:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.flashcard-nav-button:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.flashcard-nav-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.flashcard-nav-prev {
+    left: -25px;
+}
+
+.flashcard-nav-next {
+    right: -25px;
+}
+
+/* Hide old navigation controls */
+.flashcard-controls {
+    display: none;
+}
+
+.btn-flashcard-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 85px;
+    min-height: 75px;
+    padding: 12px 8px;
+    background: #ffffff;
+    border: 3px solid #E5E7EB;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Noto Sans Arabic', Arial, sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-flashcard-control:hover {
+    border-color: #3B82F6;
+    background: #EFF6FF;
+    color: #1D4ED8;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-flashcard-control:active {
+    transform: translateY(-1px);
+}
+
+.btn-flashcard-control i {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.btn-flashcard-control span {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.btn-flashcard-control.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-flashcard-control.disabled:hover {
+    transform: none;
+    border-color: #E5E7EB;
+    background: #ffffff;
+    color: #374151;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Special styling for flip button */
+.btn-flashcard-control.flip-btn {
+    border-color: #10B981;
+    color: #059669;
+}
+
+.btn-flashcard-control.flip-btn:hover {
+    background: #ECFDF5;
+    border-color: #059669;
+    color: #047857;
+}
+
+.btn-flashcard-control.flip-btn i {
+    color: #10B981;
+}
+
+/* Special styling for hint button */
+.btn-flashcard-control[data-action="hint"] {
+    border-color: #F59E0B;
+    color: #D97706;
+}
+
+.btn-flashcard-control[data-action="hint"]:hover {
+    background: #FFFBEB;
+    border-color: #D97706;
+    color: #B45309;
+}
+
+.btn-flashcard-control[data-action="hint"] i {
+    color: #F59E0B;
+}
+
+/* TTS Button */
+.btn-tts {
+    background: #EFF6FF !important;
+    border-color: #3B82F6 !important;
+    color: #1D4ED8 !important;
+}
+
+.btn-tts:hover {
+    background: #DBEAFE !important;
+    border-color: #1D4ED8 !important;
+}
+
+/* Difficulty Assessment Section */
+.flashcard-difficulty-section {
+    background: #F9FAFB;
+    border-radius: 16px;
+    padding: 25px;
+    margin-top: 30px;
+    border: 1px solid #E5E7EB;
+    direction: rtl;
+}
+
+.difficulty-instruction {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.difficulty-instruction p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+    margin: 0;
+    font-family: 'Noto Sans Arabic', Arial, sans-serif;
+}
+
+/* Difficulty Buttons Container */
+.difficulty-buttons {
+    display: flex !important;
+    gap: 12px !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+    flex-direction: row !important;
+}
+
+/* Individual Difficulty Buttons */
+.btn-difficulty {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 1 !important;
+    min-width: 90px !important;
+    min-height: 85px !important;
+    max-width: 140px !important;
+    padding: 12px 8px !important;
+    border: 3px solid;
+    border-radius: 16px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-family: 'Noto Sans Arabic', Arial, sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-difficulty:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-difficulty:active {
+    transform: translateY(-1px);
+}
+
+/* Difficulty Button Icons */
+.btn-difficulty i {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+/* Difficulty Button Text */
+.btn-difficulty span {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.btn-difficulty small {
+    font-size: 12px;
+    opacity: 0.8;
+    font-weight: 400;
+    line-height: 1.2;
+    display: block;
+}
+
+/* Hard Button - Red */
+.btn-hard {
+    border-color: #EF4444;
+    color: #DC2626;
+}
+
+.btn-hard:hover {
+    background: #FEF2F2;
+    border-color: #DC2626;
+}
+
+.btn-hard i {
+    color: #EF4444;
+}
+
+/* Medium Button - Orange */
+.btn-medium {
+    border-color: #F59E0B;
+    color: #D97706;
+}
+
+.btn-medium:hover {
+    background: #FFFBEB;
+    border-color: #D97706;
+}
+
+.btn-medium i {
+    color: #F59E0B;
+}
+
+/* Easy Button - Green */
+.btn-easy {
+    border-color: #10B981;
+    color: #059669;
+}
+
+.btn-easy:hover {
+    background: #ECFDF5;
+    border-color: #059669;
+}
+
+.btn-easy i {
+    color: #10B981;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .flashcard-mode-interface {
+        padding: 15px;
+    }
+    
+    .flashcard {
+        width: 100%;
+        max-width: 350px;
+        height: 450px;
+    }
+    
+    .flashcard-front .turkish-word {
+        font-size: 24px;
+    }
+    
+    .flashcard-back .arabic-translation {
+        font-size: 22px;
+    }
+    
+    .difficulty-buttons {
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
+    }
+    
+    .btn-difficulty {
+        min-width: 70px !important;
+        max-width: 90px !important;
+        min-height: 75px !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+        text-align: center !important;
+        padding: 8px 4px !important;
+    }
+    
+    .btn-difficulty i {
+        margin-bottom: 0;
+        font-size: 20px;
+    }
+    
+    .btn-difficulty span {
+        margin-bottom: 0;
+    }
+    
+    .flashcard-controls {
+        gap: 10px;
+    }
+    
+    .btn-flashcard-control {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flashcard {
+        height: 400px;
+    }
+    
+    .flashcard-front .turkish-word {
+        font-size: 20px;
+    }
+    
+    .flashcard-back .arabic-translation {
+        font-size: 20px;
+    }
+    
+    .btn-difficulty {
+        min-width: 65px;
+        max-width: 80px;
+        min-height: 70px;
+        padding: 6px 2px;
+    }
+    
+    .btn-difficulty span {
+        font-size: 11px;
+    }
+    
+    .btn-difficulty small {
+        font-size: 9px;
+    }
+    
+    .btn-difficulty i {
+        font-size: 16px;
+    }
+}
+
+/* Enhanced 3D Flip Animation for Front/Back Elements */
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    transition: transform 0.6s ease-in-out;
+}
+
+.flashcard-front {
+    transform: rotateY(0deg);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+}
+
+.flashcard.flipped .flashcard-front {
+    transform: rotateY(-180deg);
+}
+
+.flashcard.flipped .flashcard-back {
+    transform: rotateY(0deg);
+}
+
+/* Animation for card transitions */
+@keyframes cardFlip {
+    0% { transform: rotateY(0deg); }
+    50% { transform: rotateY(90deg); }
+    100% { transform: rotateY(0deg); }
+}
+
+.flashcard.flipping {
+    animation: cardFlip 0.6s ease-in-out;
+}
+
+/* Loading state */
+.flashcard.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.flashcard.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 3px solid #E5E7EB;
+    border-top: 3px solid #3B82F6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Success feedback */
+.flashcard.success {
+    border-color: #10B981;
+    background: #ECFDF5;
+}
+
+.flashcard.error {
+    border-color: #EF4444;
+    background: #FEF2F2;
+}
+
+/* Two-Column Layout for Flashcard Mode */
+.flashcard-main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Button column and flashcard column */
+    gap: 20px;
+    align-items: start; /* Align to top for exact height matching */
+    justify-content: center; /* Center the entire layout horizontally */
+    max-width: 800px; /* Reduced for better centering */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    direction: ltr; /* Left-to-right for button positioning */
+    width: 100%; /* Ensure full width usage */
+}
+
+.flashcard-difficulty-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 500px; /* Exact match with flashcard height */
+    max-height: 500px; /* Ensure it never exceeds 500px */
+    order: 1; /* Ensure this appears first (left side) */
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid #E5E7EB;
+    padding: 20px; /* Match flashcard padding exactly */
+    box-sizing: border-box; /* Include padding in height calculation */
+    overflow: hidden; /* Prevent any overflow */
+}
+
+.flashcard-content-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center flashcard horizontally */
+    justify-content: center; /* Center flashcard vertically */
+    order: 2; /* Ensure this appears second (right side) */
+    direction: rtl; /* Restore RTL for Arabic content */
+    height: 500px; /* Match button column height exactly */
+    padding: 0;
+    margin: 0;
+}
+
+/* Difficulty Section Container */
+.flashcard-difficulty-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+}
+
+/* Vertical Difficulty Buttons Layout */
+.difficulty-buttons.vertical-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    padding: 0;
+    flex: 1; /* Take remaining space after instruction */
+}
+
+.vertical-layout .btn-difficulty {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: 65px !important;
+    max-height: 120px !important;
+    max-width: none !important;
+    width: 100% !important;
+    padding: 12px 15px !important;
+    text-align: right !important;
+    gap: 12px !important;
+    flex: 1 !important; /* Equal height distribution */
+    box-sizing: border-box;
+}
+
+.vertical-layout .btn-difficulty i {
+    font-size: 22px !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+.vertical-layout .btn-difficulty span {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    flex-grow: 1 !important;
+}
+
+.vertical-layout .btn-difficulty small {
+    font-size: 12px !important;
+    opacity: 0.8 !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+/* Enhanced button styles for vertical layout */
+.vertical-layout .btn-easy {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+    border: 2px solid #10B981 !important;
+    color: white !important;
+}
+
+.vertical-layout .btn-medium {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+    border: 2px solid #F59E0B !important;
+    color: white !important;
+}
+
+.vertical-layout .btn-hard {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important;
+    border: 2px solid #EF4444 !important;
+    color: white !important;
+}
+
+.vertical-layout .btn-difficulty:hover {
+    transform: translateX(-5px) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Update difficulty instruction for vertical layout */
+.flashcard-difficulty-column .difficulty-instruction {
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border-radius: 10px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    flex-shrink: 0; /* Don't shrink the instruction */
+}
+
+.flashcard-difficulty-column .difficulty-instruction p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Responsive Behavior for Two-Column Layout */
+@media (max-width: 1024px) {
+    .flashcard-main-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .flashcard-difficulty-column {
+        order: 2;
+        min-height: auto;
+    }
+    
+    .flashcard-content-column {
+        order: 1;
+    }
+    
+    .difficulty-buttons.vertical-layout {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+    
+    .vertical-layout .btn-difficulty {
+        flex: 1 !important;
+        min-width: 120px !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        min-height: 80px !important;
+        padding: 12px 8px !important;
+    }
+    
+    .vertical-layout .btn-difficulty:hover {
+        transform: translateY(-2px) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .flashcard-main-layout {
+        padding: 10px 0;
+        gap: 20px;
+    }
+    
+    .difficulty-buttons.vertical-layout {
+        padding: 15px;
+        gap: 8px !important;
+    }
+    
+    .vertical-layout .btn-difficulty {
+        min-width: 100px !important;
+        min-height: 70px !important;
+        padding: 10px 6px !important;
+    }
+    
+    .vertical-layout .btn-difficulty span {
+        font-size: 16px !important;
+    }
+    
+    .vertical-layout .btn-difficulty i {
+        font-size: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .vertical-layout .btn-difficulty {
+        min-width: 90px !important;
+        min-height: 65px !important;
+        padding: 8px 4px !important;
+    }
+    
+    .vertical-layout .btn-difficulty span {
+        font-size: 14px !important;
+    }
+    
+    .vertical-layout .btn-difficulty small {
+        font-size: 11px !important;
+    }
+}

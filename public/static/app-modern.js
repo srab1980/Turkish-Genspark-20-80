@@ -26,6 +26,9 @@ const TurkishLearningApp = {
             this.bindNavigationEvents();
         }, 2000);
         
+        // Featured mode cards click handlers
+        this.setupFeaturedModeHandlers();
+        
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileMenu = document.querySelector('.mobile-menu');
@@ -82,6 +85,69 @@ const TurkishLearningApp = {
         console.log('Event listeners setup complete');
     },
     
+    // Setup featured mode card handlers
+    setupFeaturedModeHandlers() {
+        const modeCards = document.querySelectorAll('.featured-mode-card');
+        modeCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                const mode = card.getAttribute('data-mode');
+                this.quickStartMode(mode);
+            });
+        });
+    },
+    
+    // Quick start a learning mode
+    quickStartMode(mode) {
+        // Navigate to learn section
+        this.showSection('learn');
+        
+        // Wait a moment for section to be visible
+        setTimeout(() => {
+            // Set the mode in the select
+            const modeSelect = document.getElementById('learning-mode');
+            if (modeSelect) {
+                modeSelect.value = mode;
+            }
+            
+            // If we have a default category, enable start button
+            const categorySelect = document.getElementById('category-select');
+            const startBtn = document.getElementById('start-learning');
+            
+            if (categorySelect && categorySelect.options.length > 1) {
+                // Select first available category
+                categorySelect.value = categorySelect.options[1].value;
+                
+                if (startBtn) {
+                    startBtn.disabled = false;
+                    
+                    // Highlight the start button
+                    startBtn.style.animation = 'pulse 2s infinite';
+                    setTimeout(() => {
+                        startBtn.style.animation = '';
+                    }, 4000);
+                }
+            }
+            
+            // Scroll to learning controls
+            const learningControls = document.querySelector('.learning-controls');
+            if (learningControls) {
+                learningControls.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            // Show success message
+            const modeNames = {
+                flashcard: 'البطاقات التعليمية',
+                quiz: 'الاختبار التفاعلي',
+                phrase: 'العبارات والتعابير',
+                conversation: 'المحادثات التفاعلية',
+                review: 'المراجعة المتباعدة'
+            };
+            
+            this.showSuccess(`تم اختيار نمط ${modeNames[mode]} - اختر فئة وابدأ التعلم! 🎯`);
+            
+        }, 300);
+    },
+    
     // Dedicated navigation binding function
     bindNavigationEvents() {
         document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
@@ -121,34 +187,114 @@ const TurkishLearningApp = {
                 window.currentReviewSession = null;
             }
             
-            this.showSection(section);
+            // Special handling for phrase mode
+            if (section === 'phrase') {
+                // Navigate to learn section with phrase mode preselected
+                this.showSection('learn');
+                // Wait for section to be visible then setup phrase mode
+                setTimeout(() => {
+                    this.setupPhraseMode();
+                }, 300);
+            } else {
+                this.showSection(section);
+            }
         }
+    },
+    
+    // Setup phrase mode specifically
+    setupPhraseMode() {
+        console.log('Setting up phrase mode...');
+        
+        // Set learning mode to phrase
+        const modeSelect = document.getElementById('learning-mode');
+        if (modeSelect) {
+            modeSelect.value = 'phrase';
+        }
+        
+        // Select a default category for phrase mode (preferably one with good phrase content)
+        const categorySelect = document.getElementById('category-select');
+        const startBtn = document.getElementById('start-learning');
+        
+        if (categorySelect && categorySelect.options.length > 1) {
+            // Try to find a good category for phrases (food, travel, greetings etc.)
+            const preferredCategories = ['food', 'travel', 'greetings', 'family', 'conversation'];
+            let categorySelected = false;
+            
+            for (const category of preferredCategories) {
+                for (let i = 0; i < categorySelect.options.length; i++) {
+                    if (categorySelect.options[i].value === category) {
+                        categorySelect.value = category;
+                        categorySelected = true;
+                        break;
+                    }
+                }
+                if (categorySelected) break;
+            }
+            
+            // If no preferred category found, use first available
+            if (!categorySelected) {
+                categorySelect.value = categorySelect.options[1].value;
+            }
+            
+            if (startBtn) {
+                startBtn.disabled = false;
+                
+                // Highlight the start button
+                startBtn.style.animation = 'pulse 2s infinite';
+                setTimeout(() => {
+                    startBtn.style.animation = '';
+                }, 4000);
+            }
+        }
+        
+        // Scroll to learning controls
+        const learningControls = document.querySelector('.learning-controls');
+        if (learningControls) {
+            learningControls.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Show success message
+        this.showSuccess('تم اختيار نمط العبارات والتعابير - اختر فئة وابدأ التعلم! 📝');
     },
     
     // Load data from API
     async loadData() {
         try {
-            console.log('Loading categories and vocabulary...');
+            console.log('Loading categories and enhanced vocabulary database...');
             
             // Load categories
             const categoriesResponse = await axios.get('/api/categories');
             this.categories = categoriesResponse.data.categories;
             
-            // Load all words
-            const wordsResponse = await axios.get('/api/words');
-            const allWords = wordsResponse.data.words;
-            
-            // Organize words by category
-            this.vocabularyData = {};
-            this.categories.forEach(category => {
-                this.vocabularyData[category.id] = allWords.filter(word => {
-                    // Match words to categories based on ID ranges or other logic
-                    return this.getWordCategory(word.id) === category.id;
-                });
-            });
-            
-            // Make vocabulary data globally available
-            window.vocabularyData = this.vocabularyData;
+            // Use enhanced vocabulary database with sessions
+            if (window.enhancedVocabularyData && window.vocabularySessions) {
+                console.log('🎯 Using enhanced vocabulary database with sessions:', window.vocabularyMetadata);
+                this.vocabularyData = window.enhancedVocabularyData;
+                this.vocabularySessions = window.vocabularySessions;
+                this.categoryMetadata = window.categoryMetadata;
+                
+                // Make enhanced data globally available for learning modes
+                window.vocabularyData = this.vocabularyData;
+                window.vocabularySessions = this.vocabularySessions;
+                window.categoryMetadata = this.categoryMetadata;
+                // Backward compatibility: map new meta to old meta
+                window.vocabularyMetadata = window.enhancedVocabularyMeta;
+                window.difficultyLevels = window.difficultyLevels;
+                window.vowelHarmonyRules = window.vowelHarmonyRules;
+                window.SessionManager = window.SessionManager;
+                
+                console.log(`✅ Enhanced database with sessions loaded:`);
+                console.log(`   📚 ${window.enhancedVocabularyMeta.totalWords} words`);
+                console.log(`   📂 ${window.enhancedVocabularyMeta.totalCategories} categories`); 
+                console.log(`   🎯 ${window.enhancedVocabularyMeta.totalSessions} sessions`);
+                console.log(`   📝 ${window.enhancedVocabularyMeta.wordsPerSession} words per session`);
+            } else {
+                console.warn('⚠️  Enhanced vocabulary database with sessions not loaded, using fallback API');
+                // Fallback to API if enhanced database is not available
+                const wordsResponse = await axios.get('/api/words');
+                this.vocabularyData = {};
+                this.vocabularySessions = {};
+            }
             
             // Load user progress
             this.loadUserProgress();
@@ -161,10 +307,23 @@ const TurkishLearningApp = {
             // Hide loading screen after data is loaded
             this.hideLoadingScreen();
             
+            // Calculate total words and sessions from enhanced database
+            let totalWords = 0;
+            let totalSessions = 0;
+            if (window.enhancedVocabularyMeta) {
+                totalWords = window.enhancedVocabularyMeta.totalWords;
+                totalSessions = window.enhancedVocabularyMeta.totalSessions;
+            } else {
+                // Fallback: count words in vocabularyData
+                totalWords = Object.values(this.vocabularyData).reduce((sum, categoryWords) => sum + categoryWords.length, 0);
+            }
+            
             console.log('Data loaded successfully:', {
                 categories: this.categories.length,
-                totalWords: allWords.length,
-                vocabularyData: Object.keys(this.vocabularyData)
+                totalWords: totalWords,
+                totalSessions: totalSessions,
+                vocabularyData: Object.keys(this.vocabularyData),
+                sessionSupport: !!window.SessionManager
             });
             
         } catch (error) {
@@ -277,14 +436,15 @@ const TurkishLearningApp = {
     showSection(sectionName) {
         console.log(`Switching to section: ${sectionName}`);
         
-        // Force hide all learning/review sessions first
+        // Hide learning/review sessions when switching away from them
         const learningContent = document.getElementById('learning-content');
         const reviewContent = document.getElementById('review-content');
         
-        if (learningContent) {
+        // Only hide learning content if not switching to learn section
+        if (learningContent && sectionName !== 'learn') {
             learningContent.classList.add('hidden');
         }
-        if (reviewContent) {
+        if (reviewContent && sectionName !== 'review') {
             reviewContent.classList.add('hidden');
         }
         
@@ -348,37 +508,198 @@ const TurkishLearningApp = {
     
     // Start learning session
     startLearning() {
+        console.log('🚀 Starting learning session...');
+
+        
         const categorySelect = document.getElementById('category-select');
         const modeSelect = document.getElementById('learning-mode');
+        const startBtn = document.getElementById('start-learning');
+        const learningContent = document.getElementById('learning-content');
+        
+        console.log('Elements found:', {
+            categorySelect: !!categorySelect,
+            modeSelect: !!modeSelect,
+            startBtn: !!startBtn,
+            learningContent: !!learningContent
+        });
+        
+        if (!categorySelect) {
+            console.error('Category select element not found!');
+            this.showError('عنصر اختيار الفئة غير موجود');
+            return;
+        }
         
         if (!categorySelect.value) {
-            this.showError('يرجى اختيار فئة للتعلم');
+            console.log('No category selected');
+            this.showError('يرجى اختيار فئة للتعلم أولاً');
+            categorySelect.classList.add('error');
+            setTimeout(() => categorySelect.classList.remove('error'), 2000);
             return;
         }
         
         const categoryId = categorySelect.value;
         const mode = modeSelect.value;
-        const categoryWords = this.vocabularyData[categoryId];
+        
+        // Get words from enhanced vocabulary data structure
+        let categoryWords = null;
+        if (this.vocabularyData[categoryId] && this.vocabularyData[categoryId].words) {
+            categoryWords = this.vocabularyData[categoryId].words;
+        } else if (this.vocabularyData[categoryId] && Array.isArray(this.vocabularyData[categoryId])) {
+            categoryWords = this.vocabularyData[categoryId];
+        }
         
         if (!categoryWords || categoryWords.length === 0) {
             this.showError('لا توجد كلمات في هذه الفئة');
+            console.error('No words found for category:', categoryId, 'Available data:', this.vocabularyData[categoryId]);
             return;
+        }
+        
+        console.log('✅ Starting learning with', categoryWords.length, 'words from category', categoryId);
+        console.log('Selected mode:', mode);
+        console.log('Sample words:', categoryWords.slice(0, 3));
+        
+
+        
+        // Show loading state
+        startBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحضير...';
+        startBtn.disabled = true;
+        
+        // Add success animation to controls
+        const controlsGrid = document.querySelector('.controls-grid');
+        if (controlsGrid) {
+            controlsGrid.classList.add('success');
+            setTimeout(() => controlsGrid.classList.remove('success'), 600);
+        }
+        
+        // Get session-based words using difficulty-based session manager
+        let sessionData = null;
+        let sessionWords = categoryWords;
+        let sessionInfo = null;
+        
+
+        
+        // Check if session manager is available and use it for session-based learning
+        if (window.vocabularySessions && window.vocabularySessions.createSessionsFromWords) {
+            try {
+                console.log(`🔍 Session manager available, creating sessions for ${categoryId} with ${categoryWords.length} words`);
+
+                
+                // Create sessions for this category
+
+                
+                const sessions = window.vocabularySessions.createSessionsFromWords(categoryWords, categoryId);
+                console.log(`📚 Created ${sessions.length} sessions for category ${categoryId}`);
+                
+                // Get user progress for this category
+                const savedProgress = localStorage.getItem('turkishLearningProgress');
+                let categoryProgress = {};
+                if (savedProgress) {
+                    const progress = JSON.parse(savedProgress);
+                    categoryProgress = progress.categoryProgress || {};
+                }
+                
+                // Find the next unfinished session (or start with session 1)
+                let currentSessionIndex = 0;
+                const completedSessions = categoryProgress[categoryId]?.completedSessions || [];
+                
+                // Find first incomplete session
+                for (let i = 0; i < sessions.length; i++) {
+                    if (!completedSessions.includes(sessions[i].id)) {
+                        currentSessionIndex = i;
+                        break;
+                    }
+                }
+                
+                // If all sessions completed, restart from session 1
+                if (currentSessionIndex >= sessions.length) {
+                    currentSessionIndex = 0;
+                }
+                
+                const currentSession = sessions[currentSessionIndex];
+                sessionWords = currentSession.words;
+                sessionInfo = {
+                    sessionNumber: currentSessionIndex + 1,
+                    totalSessions: sessions.length,
+                    sessionId: currentSession.id,
+                    wordsInSession: currentSession.words.length
+                };
+                
+                // Also store the complete session object for the modular system
+                sessionData = {
+                    ...currentSession,
+                    sessionNumber: currentSessionIndex + 1,
+                    totalSessions: sessions.length
+                };
+                
+                console.log(`🎯 Starting session ${sessionInfo.sessionNumber}/${sessionInfo.totalSessions} with ${sessionInfo.wordsInSession} words`);
+                console.log('📋 Session info object:', sessionInfo);
+                console.log('🔗 Session words sample:', sessionWords.slice(0, 2));
+
+            } catch (error) {
+                console.warn('⚠️ Session manager error, falling back to full category:', error);
+
+            }
+        } else {
+            console.log('⚠️ Session manager not available, using full category words.');
         }
         
         // Prepare data for learning session
         const learningData = {
             category: categoryId,
-            words: categoryWords
+            words: sessionWords,
+            sessionInfo: sessionInfo,
+            session: sessionData  // Add session object for modular system
         };
+        
+
         
         // Start learning session
         if (window.startLearningSession) {
-            window.startLearningSession(learningData, mode);
+            try {
+
+                const result = window.startLearningSession(learningData, mode);
+                
+                // Show success feedback
+                if (learningContent) {
+                    learningContent.classList.remove('hidden');
+                    learningContent.classList.add('active');
+                    learningContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                
+                // Show success message
+                const modeNames = {
+                    flashcard: 'البطاقات التعليمية',
+                    quiz: 'الاختبار التفاعلي',
+                    phrase: 'العبارات والتعابير',
+                    conversation: 'المحادثات التفاعلية',
+                    review: 'المراجعة المتباعدة'
+                };
+                
+                this.showSuccess(`تم بدء ${modeNames[mode] || mode} بنجاح! 🎉`);
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    startBtn.innerHTML = '<i class="fas fa-play"></i> ابدأ جلسة التعلم';
+                    startBtn.disabled = !categorySelect.value;
+                }, 2000);
+                
+                console.log(`✅ Learning session started: ${categoryId}, mode: ${mode}`);
+                
+            } catch (error) {
+                console.error('Failed to start learning session:', error);
+                this.showError('حدث خطأ في بدء جلسة التعلم');
+                
+                // Reset button
+                startBtn.innerHTML = '<i class="fas fa-play"></i> ابدأ جلسة التعلم';
+                startBtn.disabled = false;
+            }
         } else {
             this.showError('نظام التعلم غير متوفر حالياً');
+            
+            // Reset button
+            startBtn.innerHTML = '<i class="fas fa-play"></i> ابدأ جلسة التعلم';
+            startBtn.disabled = false;
         }
-        
-        console.log(`Starting learning session: ${categoryId}, mode: ${mode}`);
     },
     
     // Select category and start learning directly
@@ -612,7 +933,7 @@ const TurkishLearningApp = {
     // Show error message
     showError(message) {
         const errorDiv = document.createElement('div');
-        errorDiv.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50';
+        errorDiv.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50 transition-all duration-300';
         errorDiv.textContent = message;
         
         document.body.appendChild(errorDiv);
@@ -622,6 +943,26 @@ const TurkishLearningApp = {
                 errorDiv.parentNode.removeChild(errorDiv);
             }
         }, 5000);
+    },
+    
+    // Show success message
+    showSuccess(message) {
+        const successDiv = document.createElement('div');
+        successDiv.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded-lg shadow-lg z-50 transition-all duration-300';
+        successDiv.innerHTML = `
+            <div class="flex items-center gap-3">
+                <i class="fas fa-check-circle text-xl"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        
+        document.body.appendChild(successDiv);
+        
+        setTimeout(() => {
+            if (successDiv.parentNode) {
+                successDiv.parentNode.removeChild(successDiv);
+            }
+        }, 4000);
     }
 };
 
@@ -823,6 +1164,19 @@ window.startReview = function(type = 'all') {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded, initializing Turkish Learning App...');
     TurkishLearningApp.init();
+    
+    // Initialize session interface after enhanced database loads
+    setTimeout(() => {
+        if (window.SessionManager && window.sessionManagement) {
+            console.log('🎯 Enhanced session system available');
+            
+            // Setup session event handlers
+            document.addEventListener('startSessionLearning', (event) => {
+                console.log('🎯 Session learning event:', event.detail);
+                TurkishLearningApp.showSection('learn');
+            });
+        }
+    }, 1500);
 });
 
 // Global function to update TTS status

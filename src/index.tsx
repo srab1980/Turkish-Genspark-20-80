@@ -10,7 +10,7 @@ app.use('/api/*', cors())
 // Serve static files from public directory
 app.use('/static/*', serveStatic({ root: './public' }))
 
-// Turkish vocabulary data - 48 words across 8 travel-focused categories
+// Enhanced Turkish learning data - Extended vocabulary with conversation practice
 const vocabulary = {
   greetings: [
     { id: 1, turkish: "Merhaba", arabic: "مرحبا", english: "Hello", pronunciation: "mer-ha-BA", 
@@ -174,76 +174,133 @@ const vocabulary = {
   ]
 };
 
-// Get all categories
+// Get all categories (enhanced with Excel data)
 app.get('/api/categories', (c) => {
-  const categories = Object.keys(vocabulary).map(key => ({
-    id: key,
-    name: key.charAt(0).toUpperCase() + key.slice(1),
-    wordCount: vocabulary[key].length,
-    icon: getCategoryIcon(key)
-  }));
+  // New categories from Excel file with 31 comprehensive categories
+  const enhancedCategories = [
+    { id: 'adjective', name: 'Adjective', nameArabic: 'الصفات', wordCount: 77, sessionCount: 8, icon: '📝' },
+    { id: 'animal', name: 'Animal', nameArabic: 'الحيوانات', wordCount: 54, sessionCount: 6, icon: '🐾' },
+    { id: 'body', name: 'Body', nameArabic: 'أجزاء الجسم', wordCount: 78, sessionCount: 8, icon: '👤' },
+    { id: 'clothes', name: 'Clothes', nameArabic: 'الملابس', wordCount: 20, sessionCount: 2, icon: '👕' },
+    { id: 'color', name: 'Color', nameArabic: 'الألوان', wordCount: 18, sessionCount: 2, icon: '🎨' },
+    { id: 'direction', name: 'Direction', nameArabic: 'الاتجاهات', wordCount: 3, sessionCount: 1, icon: '🧭' },
+    { id: 'emotion', name: 'Emotion', nameArabic: 'المشاعر', wordCount: 14, sessionCount: 2, icon: '😊' },
+    { id: 'family', name: 'Family', nameArabic: 'العائلة', wordCount: 73, sessionCount: 8, icon: '👨‍👩‍👧‍👦' },
+    { id: 'finance', name: 'Finance', nameArabic: 'المالية', wordCount: 22, sessionCount: 3, icon: '💰' },
+    { id: 'food', name: 'Food', nameArabic: 'الطعام', wordCount: 113, sessionCount: 12, icon: '🍽️' },
+    { id: 'general', name: 'General', nameArabic: 'عام', wordCount: 9, sessionCount: 1, icon: '📚' },
+    { id: 'health', name: 'Health', nameArabic: 'الصحة', wordCount: 38, sessionCount: 4, icon: '🏥' },
+    { id: 'house', name: 'House', nameArabic: 'المنزل', wordCount: 76, sessionCount: 8, icon: '🏠' },
+    { id: 'instrument', name: 'Instrument', nameArabic: 'الآلات', wordCount: 7, sessionCount: 1, icon: '🎻' },
+    { id: 'measurement', name: 'Measurement', nameArabic: 'القياس', wordCount: 24, sessionCount: 3, icon: '📏' },
+    { id: 'music', name: 'Music', nameArabic: 'الموسيقى', wordCount: 12, sessionCount: 2, icon: '🎵' },
+    { id: 'nature', name: 'Nature', nameArabic: 'الطبيعة', wordCount: 37, sessionCount: 4, icon: '🌿' },
+    { id: 'number', name: 'Number', nameArabic: 'الأرقام', wordCount: 20, sessionCount: 2, icon: '🔢' },
+    { id: 'place', name: 'Place', nameArabic: 'الأماكن', wordCount: 37, sessionCount: 4, icon: '📍' },
+    { id: 'plant', name: 'Plant', nameArabic: 'النباتات', wordCount: 6, sessionCount: 1, icon: '🌱' },
+    { id: 'pronoun', name: 'Pronoun', nameArabic: 'الضمائر', wordCount: 3, sessionCount: 1, icon: '👆' },
+    { id: 'religion', name: 'Religion', nameArabic: 'الدين', wordCount: 5, sessionCount: 1, icon: '🕌' },
+    { id: 'school', name: 'School', nameArabic: 'المدرسة', wordCount: 55, sessionCount: 6, icon: '🎓' },
+    { id: 'science', name: 'Science', nameArabic: 'العلوم', wordCount: 66, sessionCount: 7, icon: '🔬' },
+    { id: 'sport', name: 'Sport', nameArabic: 'الرياضة', wordCount: 16, sessionCount: 2, icon: '⚽' },
+    { id: 'technology', name: 'Technology', nameArabic: 'التكنولوجيا', wordCount: 36, sessionCount: 4, icon: '📱' },
+    { id: 'time', name: 'Time', nameArabic: 'الوقت', wordCount: 54, sessionCount: 6, icon: '⏰' },
+    { id: 'travel', name: 'Travel', nameArabic: 'السفر', wordCount: 46, sessionCount: 5, icon: '✈️' },
+    { id: 'verb', name: 'Verb', nameArabic: 'الأفعال', wordCount: 43, sessionCount: 5, icon: '🎯' },
+    { id: 'weather', name: 'Weather', nameArabic: 'الطقس', wordCount: 13, sessionCount: 2, icon: '🌤️' },
+    { id: 'work', name: 'Work', nameArabic: 'العمل', wordCount: 51, sessionCount: 6, icon: '💼' }
+  ];
   
-  return c.json({ categories });
+  return c.json({ categories: enhancedCategories, totalSessions: 127 });
 });
 
-// Get words by category
+// Get words by category (enhanced database with sessions)
 app.get('/api/words/:category', (c) => {
   const category = c.req.param('category');
-  const words = vocabulary[category] || [];
   
   return c.json({ 
     category,
-    words,
-    total: words.length
+    message: 'Words and sessions will be loaded from enhanced database client-side',
+    enhanced: true,
+    sessionBased: true,
+    wordsPerSession: 10
   });
 });
 
-// Get all words
-app.get('/api/words', (c) => {
-  const allWords = [];
-  Object.values(vocabulary).forEach(categoryWords => {
-    allWords.push(...categoryWords);
-  });
+// Get sessions by category
+app.get('/api/sessions/:category', (c) => {
+  const category = c.req.param('category');
   
-  return c.json({ 
-    words: allWords,
-    total: allWords.length,
-    categories: Object.keys(vocabulary).length
+  return c.json({
+    category,
+    message: 'Sessions will be loaded from enhanced database client-side via SessionManager',
+    sessionBased: true,
+    wordsPerSession: 10
   });
 });
 
-// Get random words for review
+// Get specific session details
+app.get('/api/session/:sessionId', (c) => {
+  const sessionId = c.req.param('sessionId');
+  
+  return c.json({
+    sessionId,
+    message: 'Session details available via client-side SessionManager.getSessionById()',
+    enhanced: true
+  });
+});
+
+// Get all words (Excel database metadata)
+app.get('/api/words', (c) => {
+  return c.json({ 
+    enhanced: true,
+    message: 'Enhanced vocabulary database from Excel file available client-side',
+    total: 1126, // From Excel database
+    categories: 31,
+    sessions: 127,
+    source: 'Turkish_Language_Data_categorized_final.xlsx'
+  });
+});
+
+// Get random words for review (enhanced database client-side)
 app.get('/api/words/random/:count', (c) => {
   const count = parseInt(c.req.param('count')) || 10;
-  const allWords = [];
-  Object.values(vocabulary).forEach(categoryWords => {
-    allWords.push(...categoryWords);
-  });
-  
-  const shuffled = allWords.sort(() => 0.5 - Math.random());
-  const randomWords = shuffled.slice(0, Math.min(count, allWords.length));
   
   return c.json({ 
-    words: randomWords,
+    enhanced: true,
+    message: 'Random words will be selected from enhanced database client-side',
     requested: count,
-    returned: randomWords.length
+    availableWords: 1194
   });
 });
 
-// Get user progress (demo endpoint)
+// Get user progress (Excel database with sessions)
 app.get('/api/user/progress', (c) => {
   return c.json({
-    totalWords: 48,
+    totalWords: 1126, // Excel database total
+    totalSessions: 127,
     learnedWords: 0,
+    completedSessions: 0,
     currentLevel: 1,
     xp: 0,
     streak: 0,
     reviewsToday: 0,
-    categories: Object.keys(vocabulary).map(key => ({
-      name: key,
-      progress: 0,
-      completed: false
-    }))
+    sessionBased: true,
+    wordsPerSession: 10,
+    categories: [
+      { id: 'food', name: 'Food', sessionsCompleted: 0, totalSessions: 12, progress: 0 },
+      { id: 'body', name: 'Body', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
+      { id: 'adjective', name: 'Adjective', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
+      { id: 'house', name: 'House', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
+      { id: 'family', name: 'Family', sessionsCompleted: 0, totalSessions: 8, progress: 0 },
+      { id: 'science', name: 'Science', sessionsCompleted: 0, totalSessions: 7, progress: 0 },
+      { id: 'school', name: 'School', sessionsCompleted: 0, totalSessions: 6, progress: 0 },
+      { id: 'animal', name: 'Animal', sessionsCompleted: 0, totalSessions: 6, progress: 0 },
+      { id: 'time', name: 'Time', sessionsCompleted: 0, totalSessions: 6, progress: 0 },
+      { id: 'work', name: 'Work', sessionsCompleted: 0, totalSessions: 6, progress: 0 },
+      { id: 'travel', name: 'Travel', sessionsCompleted: 0, totalSessions: 5, progress: 0 },
+      { id: 'verb', name: 'Verb', sessionsCompleted: 0, totalSessions: 5, progress: 0 }
+    ]
   });
 });
 
@@ -330,6 +387,156 @@ app.get('/api/phrases', (c) => {
   return c.json({ categories });
 });
 
+// Get conversation practice dialogues
+app.get('/api/conversations/:type', (c) => {
+  const type = c.req.param('type');
+  
+  const conversations = {
+    hotel: {
+      title: "Hotel Check-in",
+      titleArabic: "تسجيل الدخول في الفندق",
+      difficulty: "intermediate",
+      participants: ["Guest", "Receptionist"],
+      dialogue: [
+        {
+          speaker: "Guest",
+          turkish: "Merhaba, rezervasyonum var.",
+          arabic: "مرحباً، لدي حجز.",
+          english: "Hello, I have a reservation.",
+          pronunciation: "mer-ha-BA, re-zer-vas-yo-NUM var"
+        },
+        {
+          speaker: "Receptionist", 
+          turkish: "Tabii efendim, adınız nedir?",
+          arabic: "بالطبع سيدي، ما اسمك؟",
+          english: "Of course sir, what is your name?",
+          pronunciation: "ta-BII e-fen-DIM, a-dı-NıZ ne-DIR"
+        },
+        {
+          speaker: "Guest",
+          turkish: "Benim adım Ahmed Hassan.",
+          arabic: "اسمي أحمد حسن.",
+          english: "My name is Ahmed Hassan.",
+          pronunciation: "be-NIM a-DıM ah-MED has-SAN"
+        }
+      ],
+      keyPhrases: [
+        { turkish: "Rezervasyonum var", arabic: "لدي حجز", english: "I have a reservation" },
+        { turkish: "Adınız nedir?", arabic: "ما اسمك؟", english: "What is your name?" },
+        { turkish: "Oda anahtarı", arabic: "مفتاح الغرفة", english: "Room key" }
+      ]
+    },
+    restaurant: {
+      title: "Ordering Food",
+      titleArabic: "طلب الطعام", 
+      difficulty: "beginner",
+      participants: ["Customer", "Waiter"],
+      dialogue: [
+        {
+          speaker: "Waiter",
+          turkish: "Hoş geldiniz! Ne istiyorsunuz?",
+          arabic: "أهلاً وسهلاً! ماذا تريدون؟",
+          english: "Welcome! What would you like?",
+          pronunciation: "HOSH gel-di-NIZ! ne is-ti-yor-su-NUZ"
+        },
+        {
+          speaker: "Customer",
+          turkish: "Menüyü görebilir miyim?",
+          arabic: "هل يمكنني رؤية القائمة؟",
+          english: "Can I see the menu?",
+          pronunciation: "me-NÜ-yü gö-re-bi-LIR mi-YIM"
+        }
+      ]
+    },
+    taxi: {
+      title: "Taking a Taxi",
+      titleArabic: "ركوب التاكسي",
+      difficulty: "beginner", 
+      participants: ["Passenger", "Driver"],
+      dialogue: [
+        {
+          speaker: "Passenger",
+          turkish: "Havaalanına gitmek istiyorum.",
+          arabic: "أريد الذهاب إلى المطار.",
+          english: "I want to go to the airport.",
+          pronunciation: "ha-va-a-la-Nı-NA git-MEK is-ti-yo-RUM"
+        },
+        {
+          speaker: "Driver",
+          turkish: "Tabii, ne kadar sürer?",
+          arabic: "بالطبع، كم يستغرق؟",
+          english: "Sure, how long does it take?",
+          pronunciation: "ta-BII, ne ka-DAR sü-RER"
+        }
+      ]
+    }
+  };
+  
+  const conversation = conversations[type];
+  if (!conversation) {
+    return c.json({ error: "Conversation type not found" }, 404);
+  }
+  
+  return c.json(conversation);
+});
+
+// Get all conversation types
+app.get('/api/conversations', (c) => {
+  const types = [
+    { id: 'hotel', name: 'Hotel Check-in', nameArabic: 'تسجيل الدخول في الفندق', difficulty: 'intermediate' },
+    { id: 'restaurant', name: 'Ordering Food', nameArabic: 'طلب الطعام', difficulty: 'beginner' },
+    { id: 'taxi', name: 'Taking a Taxi', nameArabic: 'ركوب التاكسي', difficulty: 'beginner' },
+    { id: 'shopping', name: 'Shopping', nameArabic: 'التسوق', difficulty: 'intermediate' },
+    { id: 'directions', name: 'Asking for Directions', nameArabic: 'السؤال عن الاتجاهات', difficulty: 'intermediate' }
+  ];
+  
+  return c.json({ conversations: types });
+});
+
+// Daily Turkish tip endpoint
+app.get('/api/daily-tip', (c) => {
+  const tips = [
+    {
+      id: 1,
+      category: "pronunciation",
+      turkish: "Türkçede 'ğ' harfi sessizdir ve öncesindeki sesliyi uzatır.",
+      arabic: "في التركية، حرف 'ğ' صامت ويطيل الحرف المتحرك الذي يسبقه.",
+      english: "In Turkish, the letter 'ğ' is silent and lengthens the preceding vowel.",
+      example: "dağ (mountain) - pronounced like 'da:'"
+    },
+    {
+      id: 2,
+      category: "grammar",
+      turkish: "Türkçede fiiller cümlenin sonunda gelir.",
+      arabic: "في التركية، الأفعال تأتي في نهاية الجملة.",
+      english: "In Turkish, verbs come at the end of the sentence.",
+      example: "Ben okula gidiyorum (I am going to school)"
+    },
+    {
+      id: 3,
+      category: "culture",
+      turkish: "Türkiye'de çay kültürü çok önemlidir. Misafirlere her zaman çay ikram edilir.",
+      arabic: "في تركيا، ثقافة الشاي مهمة جداً. يُقدم الشاي دائماً للضيوف.",
+      english: "In Turkey, tea culture is very important. Tea is always offered to guests.",
+      example: "Çay içer misiniz? (Would you like some tea?)"
+    },
+    {
+      id: 4,
+      category: "vocabulary",
+      turkish: "Birçok Türkçe kelime Arapça kökenlidir.",
+      arabic: "العديد من الكلمات التركية لها أصول عربية.",
+      english: "Many Turkish words have Arabic origins.",
+      example: "kitap (book) from Arabic 'kitāb'"
+    }
+  ];
+  
+  const today = new Date();
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+  const tipIndex = dayOfYear % tips.length;
+  
+  return c.json({ tip: tips[tipIndex], date: today.toISOString().split('T')[0] });
+});
+
 // Get enhanced word with cultural context and examples
 app.get('/api/enhanced-word/:id', (c) => {
   const wordId = parseInt(c.req.param('id'));
@@ -362,25 +569,54 @@ app.get('/api/enhanced-word/:id', (c) => {
   return c.json(word);
 });
 
-// Get content statistics
+// Get content statistics (Excel database with sessions)
 app.get('/api/content-stats', (c) => {
   const stats = {
-    totalWords: 48,
+    totalWords: 1126,
+    totalSessions: 127,
+    totalCategories: 31,
+    wordsPerSession: 10,
     totalPhrases: 5,
     byDifficulty: {
-      beginner: 30,
-      intermediate: 15,
-      advanced: 8
+      A1: 295,
+      A2: 355,
+      B1: 234,
+      B2: 186,
+      C1: 51,
+      C2: 5
     },
     categories: {
-      words: 8,
-      phrases: 4
+      words: 31,
+      phrases: 4,
+      sessions: 127
     },
     features: {
-      culturalNotes: 48,
-      regionalVariations: 25,
-      multipleExamples: 48
-    }
+      sessionBasedLearning: true,
+      progressiveDifficulty: true,
+      vowelHarmonyRules: 1126,
+      difficultyLevels: 1126,
+      multipleExamples: 1126,
+      arabicTranslations: 1126,
+      turkishExamples: 1126,
+      arabicSentences: 1126,
+      turkishSentences: 1126,
+      semanticCategorization: true,
+      enhancedMetadata: true,
+      excelBasedData: true
+    },
+    sessionBreakdown: {
+      'food': 12,
+      'body': 8,
+      'adjective': 8,
+      'house': 8,
+      'family': 8,
+      'science': 7,
+      'school': 6,
+      'animal': 6,
+      'time': 6,
+      'work': 6
+    },
+    source: 'Turkish_Language_Data_categorized_final.xlsx - Comprehensive Excel Database'
   };
   
   return c.json(stats);
@@ -415,7 +651,8 @@ function getCategoryIcon(category: string): string {
     directions: "🧭",
     emergency: "🚨",
     time: "⏰",
-    numbers: "🔢"
+    numbers: "🔢",
+    general: "📚"
   };
   
   return icons[category] || "📚";
@@ -444,12 +681,211 @@ app.get('/', (c) => {
         <link href="/static/styles-modern.css" rel="stylesheet">
         <link href="/static/visual-ux-enhancements.css" rel="stylesheet">
         <link href="/static/enhanced-content-styles.css" rel="stylesheet">
+        <link href="/static/flashcard-mode.css" rel="stylesheet">
+        <link href="/static/quiz-mode.css" rel="stylesheet">
+        <link href="/static/phrase-mode.css" rel="stylesheet">
+        <style>
+            /* Side Menu Filters CSS */
+            .side-menu {
+                position: fixed; top: 0; right: 0; height: 100vh; width: 320px;
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+                backdrop-filter: blur(20px); border-left: 1px solid rgba(226, 232, 240, 0.8);
+                box-shadow: -10px 0 25px rgba(0, 0, 0, 0.1); transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000;
+                overflow-y: auto; direction: rtl;
+            }
+            .side-menu.active { transform: translateX(0); }
+            .side-menu-header {
+                padding: 1.5rem; border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;
+            }
+            .side-menu-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem 0; }
+            .side-menu-subtitle { font-size: 0.875rem; opacity: 0.9; margin: 0; }
+            .side-menu-close {
+                position: absolute; top: 1rem; left: 1rem; background: rgba(255, 255, 255, 0.2);
+                border: none; color: white; width: 2rem; height: 2rem; border-radius: 50%;
+                cursor: pointer; display: flex; align-items: center; justify-content: center;
+            }
+            .filter-section { padding: 1.5rem; border-bottom: 1px solid rgba(226, 232, 240, 0.4); }
+            .filter-section-title {
+                font-size: 1rem; font-weight: 600; color: #1e293b; margin: 0 0 1rem 0;
+                display: flex; align-items: center; gap: 0.5rem;
+            }
+            .filter-section-title .icon { color: #667eea; }
+            .category-item:hover { background-color: #f8fafc !important; }
+            .mode-option:hover { 
+                border-color: #667eea !important; background-color: #f8fafc !important; 
+                transform: translateY(-1px); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            }
+            .side-menu-toggle {
+                position: fixed; top: 1rem; right: 1rem; z-index: 1001;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;
+                border: none; width: 3rem; height: 3rem; border-radius: 50%; cursor: pointer;
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); display: flex;
+                align-items: center; justify-content: center; font-size: 1.1rem;
+                transition: all 0.2s ease;
+            }
+            .side-menu-toggle:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5); }
+            .side-menu-overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(2px); z-index: 999;
+                opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            }
+            .side-menu-overlay.active { opacity: 1; visibility: visible; }
+            @media (max-width: 768px) {
+                .side-menu { width: 100%; max-width: 400px; }
+                .side-menu-toggle { top: 0.75rem; right: 0.75rem; width: 2.5rem; height: 2.5rem; }
+            }
+            
+            /* Two-Column Learning Layout */
+            .learning-main-layout {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                margin-bottom: 2rem;
+                align-items: start;
+            }
+            
+            .learning-title-column {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                min-height: 200px;
+            }
+            
+            .learning-settings-column {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+            .learning-title-column .section-header {
+                text-align: center;
+                padding: 2rem;
+                background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+                border-radius: 1rem;
+                border: 1px solid rgba(102, 126, 234, 0.2);
+            }
+            
+            .learning-title-column .section-title {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #1e293b;
+                margin: 0 0 1rem 0;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .learning-title-column .section-subtitle {
+                font-size: 1.1rem;
+                color: #64748b;
+                margin: 0;
+                line-height: 1.6;
+            }
+            
+            /* Responsive Behavior for Two-Column Layout */
+            @media (max-width: 1024px) {
+                .learning-main-layout {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+                
+                .learning-title-column .section-title {
+                    font-size: 2rem;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .learning-title-column .section-header {
+                    padding: 1.5rem;
+                }
+                
+                .learning-title-column .section-title {
+                    font-size: 1.75rem;
+                }
+                
+                .learning-title-column .section-subtitle {
+                    font-size: 1rem;
+                }
+            }
+        </style>
+        <link href="/static/session-management.css" rel="stylesheet">
+        <link href="/static/enhanced-learning-interface.css" rel="stylesheet">
         
         <!-- PWA Meta Tags -->
         <meta name="theme-color" content="#2563EB">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="default">
         <meta name="apple-mobile-web-app-title" content="تعلم التركية">
+        
+        <!-- CRITICAL UI FIXES - INLINE STYLES FOR IMMEDIATE APPLICATION -->
+        <style>
+        /* FORCE HORIZONTAL DIFFICULTY BUTTONS */
+        .difficulty-buttons {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 12px !important;
+            flex-wrap: wrap !important;
+            align-items: stretch !important;
+        }
+        
+        .btn-difficulty {
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 !important;
+            min-width: 85px !important;
+            max-width: 120px !important;
+            min-height: 80px !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        /* MOBILE RESPONSIVE - KEEP HORIZONTAL */
+        @media (max-width: 768px) {
+            .difficulty-buttons {
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                gap: 8px !important;
+            }
+            
+            .btn-difficulty {
+                min-width: 70px !important;
+                max-width: 85px !important;
+                flex: 1 !important;
+            }
+        }
+        
+        /* NAVIGATION BUTTONS - SAME STYLE AS DIFFICULTY BUTTONS */
+        .flashcard-controls {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 12px !important;
+        }
+        
+        .flashcard-controls .btn-flashcard-control {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-width: 80px !important;
+            min-height: 75px !important;
+            border: 3px solid #E5E7EB !important;
+            border-radius: 16px !important;
+            background: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            font-size: 12px !important;
+            gap: 6px !important;
+        }
+        
+        .flashcard-controls .btn-flashcard-control:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .flashcard-controls .btn-flashcard-control i {
+            font-size: 18px !important;
+        }
+        </style>
         
         <!-- Configure Tailwind for RTL -->
         <script>
@@ -533,6 +969,14 @@ app.get('/', (c) => {
                         <i class="fas fa-repeat"></i>
                         مراجعة
                     </button>
+                    <button class="nav-link" data-section="conversation">
+                        <i class="fas fa-comments"></i>
+                        محادثة
+                    </button>
+                    <button class="nav-link" data-section="phrase">
+                        <i class="fas fa-quote-left"></i>
+                        العبارات
+                    </button>
                     <button class="nav-link" data-section="profile">
                         <i class="fas fa-user-circle"></i>
                         الملف الشخصي
@@ -557,6 +1001,10 @@ app.get('/', (c) => {
                 <button class="mobile-nav-link" data-section="review">
                     <i class="fas fa-repeat"></i>
                     <span>مراجعة</span>
+                </button>
+                <button class="mobile-nav-link" data-section="conversation">
+                    <i class="fas fa-comments"></i>
+                    <span>محادثة</span>
                 </button>
                 <button class="mobile-nav-link" data-section="profile">
                     <i class="fas fa-user-circle"></i>
@@ -654,27 +1102,109 @@ app.get('/', (c) => {
                 <div class="categories-grid" id="categories-container">
                     <!-- Categories will be loaded dynamically -->
                 </div>
+                
+                <!-- Featured Learning Modes Section -->
+                <div class="featured-modes-section">
+                    <h3 class="featured-modes-title">أنماط التعلم المتاحة</h3>
+                    <p class="featured-modes-subtitle">اختر النمط الذي يناسبك لتعلم اللغة التركية بطريقة تفاعلية وممتعة</p>
+                    
+                    <div class="featured-modes-grid">
+                        <div class="featured-mode-card" data-mode="flashcard">
+                            <div class="mode-icon">📱</div>
+                            <h4 class="mode-title">البطاقات التعليمية</h4>
+                            <p class="mode-description">تعلم الكلمات التفاعلية مع الأصوات والأمثلة</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">🔊 نطق</span>
+                                <span class="feature-tag">📝 أمثلة</span>
+                                <span class="feature-tag">🎯 تفاعلي</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="quiz">
+                            <div class="mode-icon">🎯</div>
+                            <h4 class="mode-title">الاختبار التفاعلي</h4>
+                            <p class="mode-description">اختبر معرفتك بالكلمات مع خيارات متعددة</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">🎮 تحدي</span>
+                                <span class="feature-tag">📊 نتائج</span>
+                                <span class="feature-tag">⏱️ سرعة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="phrase">
+                            <div class="mode-icon">📝</div>
+                            <h4 class="mode-title">العبارات والتعابير</h4>
+                            <p class="mode-description">تعلم العبارات التركية الشائعة والمفيدة</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">💬 محادثة</span>
+                                <span class="feature-tag">🌍 سياق</span>
+                                <span class="feature-tag">📚 أمثلة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="conversation">
+                            <div class="mode-icon">💬</div>
+                            <h4 class="mode-title">المحادثات التفاعلية</h4>
+                            <p class="mode-description">تدرب على المحادثات التركية الحقيقية</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">🗣️ حوار</span>
+                                <span class="feature-tag">🎭 أدوار</span>
+                                <span class="feature-tag">🌟 واقعي</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="review">
+                            <div class="mode-icon">🔄</div>
+                            <h4 class="mode-title">المراجعة المتباعدة</h4>
+                            <p class="mode-description">راجع الكلمات بنظام التكرار الذكي</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">🧠 ذاكرة</span>
+                                <span class="feature-tag">📈 تقدم</span>
+                                <span class="feature-tag">⚡ فعال</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modes-cta">
+                        <p class="modes-cta-text">لبدء التعلم، انتقل إلى قسم "تعلم" واختر الفئة والنمط المفضل لديك</p>
+                        <button class="modes-cta-btn" onclick="TurkishLearningApp.showSection('learn')">
+                            <i class="fas fa-play"></i>
+                            ابدأ التعلم الآن
+                        </button>
+                    </div>
+                </div>
             </section>
 
             <!-- Learning Section -->
             <section id="learn-section" class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">وضع التعلم</h2>
-                    <p class="section-subtitle">تعلم كلمات جديدة مع الأمثلة والنطق</p>
+                <!-- Two-Column Layout for Title and Settings -->
+                <div class="learning-main-layout">
+                    <!-- Left Column: Title Section -->
+                    <div class="learning-title-column">
+                        <div class="section-header">
+                            <h2 class="section-title">وضع التعلم</h2>
+                            <p class="section-subtitle">تعلم كلمات جديدة مع الأمثلة والنطق</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column: Learning Settings -->
+                    <div class="learning-settings-column">
+                        <!-- New Side Menu Filters Notice -->
+                        <div class="enhanced-controls-notice" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 1rem; text-align: center;">
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600;">
+                                <i class="fas fa-sparkles"></i>
+                                إعدادات التعلم المحسنة
+                            </h3>
+                            <p style="margin: 0 0 1rem 0; opacity: 0.9;">استخدم القائمة الجانبية الجديدة لفلترة أفضل وتجربة تعلم محسنة</p>
+                            <button onclick="window.sideMenuFilters?.openMenu()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 500; transition: all 0.2s;">
+                                <i class="fas fa-sliders-h"></i>
+                                فتح إعدادات التعلم
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 
                 <div id="learning-interface">
-                    <div class="learning-controls">
-                        <select id="category-select" class="control-select">
-                            <option value="">اختر فئة...</option>
-                        </select>
-                        <select id="learning-mode" class="control-select">
-                            <option value="flashcard">بطاقات تعليمية</option>
-                            <option value="quiz">اختبار</option>
-                        </select>
-                        <button id="start-learning" class="btn-primary" disabled>ابدأ التعلم</button>
-                    </div>
-                    
                     <div id="learning-content" class="learning-session hidden">
                         <!-- Learning content will be inserted here -->
                     </div>
@@ -711,6 +1241,78 @@ app.get('/', (c) => {
                     
                     <div id="review-content" class="review-session hidden">
                         <!-- Review content will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conversation Practice Section -->
+            <section id="conversation-section" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">ممارسة المحادثة</h2>
+                    <p class="section-subtitle">تعلم المحادثات التركية الشائعة في المواقف اليومية</p>
+                    
+                    <!-- Daily Turkish Tip -->
+                    <div class="daily-tip-card" id="daily-tip-card">
+                        <div class="daily-tip-header">
+                            <i class="fas fa-lightbulb"></i>
+                            <span class="daily-tip-title">نصيحة اليوم</span>
+                            <span class="daily-tip-date" id="daily-tip-date"></span>
+                        </div>
+                        <div class="daily-tip-content" id="daily-tip-content">
+                            <!-- Daily tip will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="conversation-interface">
+                    <!-- Conversation Selection -->
+                    <div class="conversation-selection">
+                        <h3 class="conversation-selection-title">اختر موقف المحادثة</h3>
+                        <div class="conversation-grid" id="conversation-types">
+                            <!-- Conversation types will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Active Conversation -->
+                    <div id="conversation-practice" class="conversation-practice hidden">
+                        <div class="conversation-header">
+                            <div class="conversation-info">
+                                <h3 class="conversation-title" id="conversation-title"></h3>
+                                <div class="conversation-meta">
+                                    <span class="difficulty-badge" id="conversation-difficulty"></span>
+                                    <span class="participants-info" id="conversation-participants"></span>
+                                </div>
+                            </div>
+                            <button class="btn-back" onclick="window.showConversationSelection()">
+                                <i class="fas fa-arrow-right"></i>
+                                عودة
+                            </button>
+                        </div>
+                        
+                        <!-- Dialogue Display -->
+                        <div class="dialogue-container" id="dialogue-container">
+                            <!-- Dialogue will be displayed here -->
+                        </div>
+                        
+                        <!-- Key Phrases -->
+                        <div class="key-phrases-section" id="key-phrases-section">
+                            <h4 class="key-phrases-title">العبارات المهمة</h4>
+                            <div class="key-phrases-grid" id="key-phrases-grid">
+                                <!-- Key phrases will be displayed here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Practice Controls -->
+                        <div class="practice-controls">
+                            <button class="btn-practice" id="btn-practice-dialogue">
+                                <i class="fas fa-microphone"></i>
+                                تدرب على المحادثة
+                            </button>
+                            <button class="btn-practice" id="btn-listen-dialogue">
+                                <i class="fas fa-volume-up"></i>
+                                استمع للمحادثة كاملة
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -977,12 +1579,368 @@ app.get('/', (c) => {
         <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
         <script src="/static/tts-service.js"></script>
         <script src="/static/review-system.js"></script>
+        <!-- Legacy Learning Systems (for compatibility) -->
         <script src="/static/learning-system.js"></script>
+        <script src="/static/conversation-system.js"></script>
         <script src="/static/analytics-dashboard.js"></script>
         <script src="/static/gamification-system.js"></script>
         <script src="/static/visual-ux-system.js"></script>
         <script src="/static/enhanced-content-system.js"></script>
+        
+        <!-- Enhanced Vocabulary Database with Sessions (1,126 Turkish words, 31 categories, 127 sessions) -->
+        <script src="/static/enhanced-vocabulary-with-sessions.js"></script>
+        
+        <!-- Difficulty-Based Session Management System -->
+        <script src="/static/difficulty-based-session-manager.js"></script>
+        
+        <!-- New Modular Learning System -->
+        <script src="/static/word-svg-icons.js"></script>
+        <script src="/static/learning-mode-base.js"></script>
+        <script src="/static/learning-mode-manager.js"></script>
+        
+        <!-- Learning Mode Containers -->
+        <script src="/static/modes/flashcard-mode.js"></script>
+        <script src="/static/modes/quiz-mode.js"></script>
+        <script src="/static/modes/review-mode.js"></script>
+        <script src="/static/modes/conversation-mode.js"></script>
+        <script src="/static/modes/phrase-mode.js"></script>
+        
+        <!-- Session Management System -->
+        <script src="/static/session-management.js"></script>
+        
+        <!-- Integration Layer -->
+        <script src="/static/modular-integration.js"></script>
+        
+        <!-- Side Menu Filters -->
+        <script>
+            // Side Menu Filters - Inline Implementation
+            class SideMenuFilters {
+                constructor() {
+                    this.isMenuOpen = false;
+                    this.selectedCategories = new Set();
+                    this.selectedModes = new Set(['flashcard']);
+                    this.categories = [];
+                    
+                    this.learningModes = [
+                        { id: 'flashcard', name: 'البطاقات التعليمية', description: 'تعلم الكلمات باستخدام البطاقات التفاعلية', icon: '📱' },
+                        { id: 'quiz', name: 'الاختبارات التفاعلية', description: 'اختبر معرفتك بالكلمات التركية', icon: '🎯' },
+                        { id: 'phrase', name: 'العبارات والتعابير', description: 'تعلم العبارات التركية الشائعة والمفيدة', icon: '📝' },
+                        { id: 'conversation', name: 'المحادثات التفاعلية', description: 'تدرب على المحادثات التركية الحقيقية', icon: '💬' },
+                        { id: 'review', name: 'المراجعة المتباعدة', description: 'راجع الكلمات بنظام التكرار المتباعد الذكي', icon: '🔄' }
+                    ];
+                    
+                    console.log('📋 Side Menu Filters initialized');
+                }
+                
+                async init() {
+                    await this.loadCategories();
+                    this.createSideMenu();
+                    this.setupEventListeners();
+                    console.log('✅ Side Menu Filters ready');
+                }
+                
+                async loadCategories() {
+                    let retries = 0;
+                    while (!window.enhancedVocabularyData && retries < 50) {
+                        await new Promise(resolve => setTimeout(resolve, 100));
+                        retries++;
+                    }
+                    
+                    if (window.enhancedVocabularyData) {
+                        // Convert the object structure to array format
+                        this.categories = Object.values(window.enhancedVocabularyData).map(category => ({
+                            id: category.id,
+                            name: category.nameArabic || category.name,
+                            wordCount: category.words ? category.words.length : 0,
+                            sessionCount: category.sessionCount || Math.ceil((category.words ? category.words.length : 0) / 10),
+                            icon: this.getCategoryIcon(category.id)
+                        }));
+                    }
+                    console.log(\`📂 Loaded \${this.categories.length} categories for filters\`);
+                }
+                
+                getCategoryIcon(categoryId) {
+                    const icons = {
+                        'adjective': '📝', 'animal': '🐾', 'body': '👤', 'clothes': '👕', 'color': '🎨', 'direction': '🧭',
+                        'emotion': '😊', 'family': '👨‍👩‍👧‍👦', 'food': '🍽️', 'greeting': '👋', 'health': '🏥', 'house': '🏠',
+                        'job': '💼', 'nature': '🌿', 'number': '🔢', 'place': '📍', 'pronoun': '👤', 'question': '❓',
+                        'sport': '⚽', 'time': '⏰', 'transport': '🚗', 'verb': '⚡', 'weather': '🌤️'
+                    };
+                    return icons[categoryId] || '📚';
+                }
+                
+                createSideMenu() {
+                    const toggleButton = document.createElement('button');
+                    toggleButton.className = 'side-menu-toggle';
+                    toggleButton.innerHTML = '<i class="fas fa-sliders-h"></i>';
+                    toggleButton.onclick = () => this.toggleMenu();
+                    toggleButton.title = 'فتح إعدادات التعلم';
+                    
+                    const overlay = document.createElement('div');
+                    overlay.className = 'side-menu-overlay';
+                    overlay.onclick = (e) => { if(e.target === overlay) this.closeMenu(); };
+                    
+                    const sideMenu = document.createElement('div');
+                    sideMenu.id = 'side-menu-filters';
+                    sideMenu.className = 'side-menu';
+                    sideMenu.innerHTML = \`
+                        <div class="side-menu-header">
+                            <h3 class="side-menu-title"><i class="fas fa-sliders-h"></i> إعدادات التعلم</h3>
+                            <p class="side-menu-subtitle">اختر فئة ونمط التعلم المفضل لديك</p>
+                            <button class="side-menu-close" onclick="window.sideMenuFilters.closeMenu()"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="filter-section">
+                            <h4 class="filter-section-title"><i class="fas fa-folder-open icon"></i> الفئات</h4>
+                            <div class="category-list" style="max-height: 300px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 0.5rem; background: white;">
+                                \${this.renderCategories()}
+                            </div>
+                        </div>
+                        <div class="filter-section">
+                            <h4 class="filter-section-title"><i class="fas fa-graduation-cap icon"></i> نمط التعلم</h4>
+                            <div class="learning-modes">\${this.renderLearningModes()}</div>
+                        </div>
+                        <div class="filter-actions" style="padding: 1.5rem; background: #f8fafc;">
+                            <button class="filter-button primary" onclick="window.sideMenuFilters.applyFilters()" style="width: 100%; padding: 0.875rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 0.75rem; font-weight: 600; cursor: pointer;">
+                                <i class="fas fa-play"></i> ابدأ جلسة التعلم
+                            </button>
+                        </div>
+                    \`;
+                    
+                    document.body.appendChild(toggleButton);
+                    document.body.appendChild(overlay);
+                    document.body.appendChild(sideMenu);
+                    
+                    this.setupInternalEventListeners();
+                }
+                
+                renderCategories() {
+                    return this.categories.map(category => \`
+                        <div class="category-item" data-category="\${category.id}" onclick="window.sideMenuFilters.handleCategorySelection('\${category.id}')" style="display: flex; align-items: center; padding: 0.75rem; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background-color 0.2s;">
+                            <input type="checkbox" class="category-checkbox" id="cat-\${category.id}" style="margin-left: 0.75rem;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500; color: #1e293b; font-size: 0.875rem; margin-bottom: 0.25rem;">\${category.icon} \${category.name}</div>
+                                <div style="font-size: 0.75rem; color: #64748b;">\${category.wordCount} كلمة • \${category.sessionCount} جلسة</div>
+                            </div>
+                        </div>
+                    \`).join('');
+                }
+                
+                renderLearningModes() {
+                    return this.learningModes.map(mode => \`
+                        <div class="mode-option \${this.selectedModes.has(mode.id) ? 'selected' : ''}" data-mode="\${mode.id}" onclick="window.sideMenuFilters.handleModeSelection('\${mode.id}')" style="display: flex; align-items: center; padding: 1rem; border: 1.5px solid #e2e8f0; border-radius: 0.75rem; margin-bottom: 0.75rem; cursor: pointer; transition: all 0.2s; background: white;">
+                            <input type="radio" name="learning-mode" class="mode-radio" \${this.selectedModes.has(mode.id) ? 'checked' : ''} style="margin-left: 0.75rem;">
+                            <div style="flex: 1;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 1.25rem;">\${mode.icon}</span>
+                                    <span style="font-weight: 600; color: #1e293b; font-size: 0.875rem;">\${mode.name}</span>
+                                </div>
+                                <div style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">\${mode.description}</div>
+                            </div>
+                        </div>
+                    \`).join('');
+                }
+                
+                setupEventListeners() {
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && this.isMenuOpen) this.closeMenu();
+                    });
+                }
+                
+                setupInternalEventListeners() {
+                    // Categories selection handled via onclick in HTML
+                }
+                
+                toggleMenu() {
+                    this.isMenuOpen ? this.closeMenu() : this.openMenu();
+                }
+                
+                openMenu() {
+                    const menu = document.getElementById('side-menu-filters');
+                    const overlay = document.querySelector('.side-menu-overlay');
+                    if (menu && overlay) {
+                        menu.classList.add('active');
+                        overlay.classList.add('active');
+                        this.isMenuOpen = true;
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+                
+                closeMenu() {
+                    const menu = document.getElementById('side-menu-filters');
+                    const overlay = document.querySelector('.side-menu-overlay');
+                    if (menu && overlay) {
+                        menu.classList.remove('active');
+                        overlay.classList.remove('active');
+                        this.isMenuOpen = false;
+                        document.body.style.overflow = '';
+                    }
+                }
+                
+                handleCategorySelection(categoryId) {
+                    const checkbox = document.getElementById(\`cat-\${categoryId}\`);
+                    const item = document.querySelector(\`[data-category="\${categoryId}"]\`);
+                    
+                    if(checkbox.checked) {
+                        this.selectedCategories.delete(categoryId);
+                        checkbox.checked = false;
+                        item.style.backgroundColor = '';
+                    } else {
+                        this.selectedCategories.add(categoryId);
+                        checkbox.checked = true;
+                        item.style.backgroundColor = '#f0f4ff';
+                    }
+                    
+                    console.log('📂 Categories selected:', Array.from(this.selectedCategories));
+                }
+                
+                handleModeSelection(modeId) {
+                    this.selectedModes.clear();
+                    this.selectedModes.add(modeId);
+                    
+                    document.querySelectorAll('.mode-option').forEach(option => {
+                        const isSelected = option.dataset.mode === modeId;
+                        if(isSelected) {
+                            option.style.borderColor = '#667eea';
+                            option.style.backgroundColor = '#f0f4ff';
+                        } else {
+                            option.style.borderColor = '#e2e8f0';
+                            option.style.backgroundColor = 'white';
+                        }
+                        const radio = option.querySelector('.mode-radio');
+                        if (radio) radio.checked = isSelected;
+                    });
+                    
+                    console.log('🎯 Learning mode selected:', modeId);
+                }
+                
+                applyFilters() {
+                    const filters = {
+                        categories: Array.from(this.selectedCategories),
+                        mode: Array.from(this.selectedModes)[0] || 'flashcard'
+                    };
+                    
+                    if (filters.categories.length === 0) {
+                        alert('يرجى اختيار فئة واحدة على الأقل');
+                        return;
+                    }
+                    
+                    this.closeMenu();
+                    
+                    // Start session directly using the enhanced learning system
+                    if (window.TurkishLearningApp && filters.categories.length > 0) {
+                        const primaryCategory = filters.categories[0];
+                        
+                        // Navigate to learn section first
+                        window.TurkishLearningApp.showSection('learn');
+                        
+                        // Wait for section to load, then start the session directly
+                        setTimeout(() => {
+                            // Get category data from enhanced vocabulary
+                            if (window.TurkishLearningApp.vocabularyData && window.TurkishLearningApp.vocabularyData[primaryCategory]) {
+                                const categoryWords = window.TurkishLearningApp.vocabularyData[primaryCategory].words;
+                                
+                                if (categoryWords && categoryWords.length > 0) {
+                                    // Create session data using the session manager
+                                    let sessionData = null;
+                                    let sessionWords = categoryWords;
+                                    let sessionInfo = null;
+                                    
+                                    // Use session manager if available
+                                    if (window.vocabularySessions && window.vocabularySessions.createSessionsFromWords) {
+                                        try {
+                                            const sessions = window.vocabularySessions.createSessionsFromWords(categoryWords, primaryCategory);
+                                            
+                                            // Get user progress
+                                            const savedProgress = localStorage.getItem('turkishLearningProgress');
+                                            let categoryProgress = {};
+                                            if (savedProgress) {
+                                                const progress = JSON.parse(savedProgress);
+                                                categoryProgress = progress.categoryProgress || {};
+                                            }
+                                            
+                                            // Find next unfinished session
+                                            let currentSessionIndex = 0;
+                                            const completedSessions = categoryProgress[primaryCategory]?.completedSessions || [];
+                                            
+                                            for (let i = 0; i < sessions.length; i++) {
+                                                if (!completedSessions.includes(sessions[i].id)) {
+                                                    currentSessionIndex = i;
+                                                    break;
+                                                }
+                                            }
+                                            
+                                            if (currentSessionIndex >= sessions.length) {
+                                                currentSessionIndex = 0;
+                                            }
+                                            
+                                            const currentSession = sessions[currentSessionIndex];
+                                            sessionWords = currentSession.words;
+                                            sessionInfo = {
+                                                sessionNumber: currentSessionIndex + 1,
+                                                totalSessions: sessions.length,
+                                                sessionId: currentSession.id,
+                                                wordsInSession: currentSession.words.length
+                                            };
+                                            
+                                            sessionData = {
+                                                ...currentSession,
+                                                sessionNumber: currentSessionIndex + 1,
+                                                totalSessions: sessions.length
+                                            };
+                                            
+                                            console.log(\`🎯 Side menu starting session \${sessionInfo.sessionNumber}/\${sessionInfo.totalSessions} for \${primaryCategory}\`);
+                                        } catch (error) {
+                                            console.warn('⚠️ Session manager error, using full category:', error);
+                                        }
+                                    }
+                                    
+                                    // Prepare learning data
+                                    const learningData = {
+                                        category: primaryCategory,
+                                        words: sessionWords,
+                                        sessionInfo: sessionInfo,
+                                        session: sessionData
+                                    };
+                                    
+                                    // Start the learning session
+                                    if (window.startLearningSession) {
+                                        window.startLearningSession(learningData, filters.mode);
+                                        
+                                        // Show the learning content
+                                        const learningContent = document.getElementById('learning-content');
+                                        if (learningContent) {
+                                            learningContent.classList.remove('hidden');
+                                            learningContent.classList.add('active');
+                                            learningContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        }
+                                        
+                                        console.log('✨ Session-based learning started with side menu filters:', filters);
+                                    }
+                                } else {
+                                    console.error('No words found for category:', primaryCategory);
+                                }
+                            } else {
+                                console.error('Category data not found:', primaryCategory);
+                            }
+                        }, 300);
+                    }
+                    
+                    console.log('✨ Side menu filters applied:', filters);
+                }
+            }
+            
+            // Initialize when DOM is ready
+            document.addEventListener('DOMContentLoaded', () => {
+                window.sideMenuFilters = new SideMenuFilters();
+                setTimeout(() => { window.sideMenuFilters.init(); }, 1000);
+            });
+        </script>
+        
+        <!-- Main App (must be last) -->
         <script src="/static/app-modern.js"></script>
+        
+
+
     </body>
     </html>
   `)
