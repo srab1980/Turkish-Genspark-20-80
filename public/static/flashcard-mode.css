@@ -788,17 +788,24 @@
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 20px;
-    align-items: start;
+    align-items: center;
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px 0;
+    direction: ltr; /* Force left-to-right to put buttons on actual left */
 }
 
 .flashcard-difficulty-column {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    min-height: 500px;
+    justify-content: flex-start;
+    height: 500px; /* Match flashcard height exactly */
+    order: 1; /* Ensure this appears first (left side) */
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid #E5E7EB;
+    padding: 20px;
 }
 
 .flashcard-content-column {
@@ -806,6 +813,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    order: 2; /* Ensure this appears second (right side) */
+    direction: rtl; /* Restore RTL for Arabic content */
+}
+
+/* Difficulty Section Container */
+.flashcard-difficulty-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
 }
 
 /* Vertical Difficulty Buttons Layout */
@@ -815,7 +832,8 @@
     gap: 15px !important;
     align-items: stretch !important;
     justify-content: center !important;
-    padding: 20px;
+    padding: 0;
+    flex: 1; /* Take remaining space after instruction */
 }
 
 .vertical-layout .btn-difficulty {
@@ -823,12 +841,13 @@
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    min-height: 70px !important;
+    min-height: 75px !important;
     max-width: none !important;
     width: 100% !important;
-    padding: 15px 20px !important;
+    padding: 15px 18px !important;
     text-align: right !important;
     gap: 15px !important;
+    flex: 1 !important; /* Equal height distribution */
 }
 
 .vertical-layout .btn-difficulty i {
@@ -876,19 +895,20 @@
 /* Update difficulty instruction for vertical layout */
 .flashcard-difficulty-column .difficulty-instruction {
     text-align: center;
-    margin-bottom: 20px;
-    padding: 15px;
+    margin-bottom: 15px;
+    padding: 12px 15px;
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
     border-radius: 12px;
     border: 1px solid rgba(99, 102, 241, 0.2);
+    flex-shrink: 0; /* Don't shrink the instruction */
 }
 
 .flashcard-difficulty-column .difficulty-instruction p {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: #374151;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 /* Responsive Behavior for Two-Column Layout */
