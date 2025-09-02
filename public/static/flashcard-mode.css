@@ -4,11 +4,15 @@
 /* Flashcard Container */
 .flashcard-mode-interface {
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px 20px 10px 20px;
+    max-width: 1000px; /* Increased to accommodate two-column layout */
+    margin: 0 auto; /* Center the interface */
+    padding: 20px;
     background: transparent;
     direction: rtl;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
 }
 
 /* Progress Bar */
@@ -789,13 +793,15 @@
 /* Two-Column Layout for Flashcard Mode */
 .flashcard-main-layout {
     display: grid;
-    grid-template-columns: 280px 1fr; /* Increased width from 250px to 280px */
+    grid-template-columns: 280px 1fr; /* Button column and flashcard column */
     gap: 20px;
-    align-items: start; /* Changed from center to start for exact alignment */
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px 0;
-    direction: ltr; /* Force left-to-right to put buttons on actual left */
+    align-items: start; /* Align to top for exact height matching */
+    justify-content: center; /* Center the entire layout horizontally */
+    max-width: 800px; /* Reduced for better centering */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    direction: ltr; /* Left-to-right for button positioning */
+    width: 100%; /* Ensure full width usage */
 }
 
 .flashcard-difficulty-column {
@@ -817,13 +823,13 @@
 .flashcard-content-column {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Center flashcard horizontally */
+    justify-content: center; /* Center flashcard vertically */
     order: 2; /* Ensure this appears second (right side) */
     direction: rtl; /* Restore RTL for Arabic content */
     height: 500px; /* Match button column height exactly */
-    padding: 0; /* Remove any default padding */
-    margin: 0; /* Remove any default margin */
+    padding: 0;
+    margin: 0;
 }
 
 /* Difficulty Section Container */
