@@ -40,10 +40,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px 0;
+    margin: 0; /* Remove margin to match button container */
     min-height: auto;
     position: relative;
     gap: 30px;
+    height: 500px; /* Explicit height to match button container */
 }
 
 /* Main Flashcard with Enhanced 3D Flip */
@@ -789,7 +790,7 @@
     display: grid;
     grid-template-columns: 280px 1fr; /* Increased width from 250px to 280px */
     gap: 20px;
-    align-items: center;
+    align-items: start; /* Changed from center to start for exact alignment */
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px 0;
@@ -819,6 +820,9 @@
     justify-content: center;
     order: 2; /* Ensure this appears second (right side) */
     direction: rtl; /* Restore RTL for Arabic content */
+    height: 500px; /* Match button column height exactly */
+    padding: 0; /* Remove any default padding */
+    margin: 0; /* Remove any default margin */
 }
 
 /* Difficulty Section Container */
