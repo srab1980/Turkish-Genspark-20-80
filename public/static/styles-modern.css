@@ -789,107 +789,12 @@ body {
   color: var(--primary-blue);
 }
 
-/* Flashcards */
-.flashcard-container {
-  perspective: 1000px;
-  max-width: 550px;
-  margin: 0 auto;
-  cursor: pointer;
-  min-height: 500px;
-}
+/* Flashcard styles removed - using dedicated flashcard-mode.css */
 
-.flashcard {
-  position: relative;
-  width: 100%;
-  height: 500px !important;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-  cursor: pointer;
-}
+/* Flashcard styles moved to dedicated flashcard-mode.css to prevent conflicts */
 
-.flashcard.flipped {
-  transform: rotateY(180deg);
-}
+/* Flashcard text styles moved to flashcard-mode.css */
 
-.flashcard.transitioning {
-  pointer-events: none;
-}
-
-.flashcard-front,
-.flashcard-back {
-  position: absolute;
-  width: 100%;
-  height: 500px !important;
-  backface-visibility: hidden;
-  background: var(--glass-bg);
-  backdrop-filter: blur(15px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--glass-shadow);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 2.5rem;
-  overflow: visible;
-  box-sizing: border-box;
-}
-
-.flashcard-front {
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.flashcard-back {
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 0;
-}
-
-.flashcard-back {
-  transform: rotateY(180deg);
-}
-
-.flashcard-turkish {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--primary-blue);
-  margin-bottom: 1rem;
-  font-family: 'Inter', sans-serif;
-}
-
-.flashcard-pronunciation {
-  font-size: 1rem;
-  color: var(--gray-500);
-  font-style: italic;
-  margin-bottom: 0.5rem;
-}
-
-.flashcard-arabic {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--gray-800);
-  margin-bottom: 1rem;
-  font-family: 'Noto Sans Arabic', sans-serif;
-}
-
-.flashcard-english {
-  font-size: 1.2rem;
-  color: var(--gray-600);
-  font-style: italic;
-}
-
-.flashcard-hint {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.75rem;
-  color: var(--gray-400);
-  opacity: 0.6;
-  z-index: 1;
-  pointer-events: none;
-}
 
 /* Flashcard Back Side Styles */
 .translation-icon {
@@ -906,48 +811,11 @@ body {
 }
 
 /* Flashcard Back Header Layout */
-.flashcard-back-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  flex-shrink: 0;
-}
 
-.flashcard-icon-container-small {
-  margin-bottom: 0.5rem;
-}
 
-.flashcard-arabic-main {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--gray-800);
-  font-family: 'Noto Sans Arabic', sans-serif;
-  direction: rtl;
-  text-align: center;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  line-height: 1.1;
-}
 
-.flashcard-turkish-small {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--primary-blue);
-  margin-bottom: 0.5rem;
-  font-family: 'Inter', sans-serif;
-}
 
 /* Elevated Example Section Styles */
-.flashcard-example-elevated {
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 4rem;
-  min-height: 0;
-}
 
 .turkish-example-elevated {
   display: flex;
@@ -1039,14 +907,6 @@ body {
   font-style: italic;
 }
 
-.flashcard-example {
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background: rgba(59, 130, 246, 0.1);
-  border-radius: 0.75rem;
-  border: 1px solid rgba(59, 130, 246, 0.2);
-}
 
 .example-turkish {
   display: flex;
@@ -1091,16 +951,6 @@ body {
 }
 
 /* Example sentence styles */
-.flashcard-examples {
-  margin: 0.75rem 0 1rem 0;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 100%;
-  position: relative;
-  z-index: 2;
-}
 
 .example-divider {
   display: flex;
@@ -1118,23 +968,7 @@ body {
   opacity: 0.7;
 }
 
-.flashcard-example-turkish {
-  font-size: 1rem;
-  color: #1f2937;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  font-style: italic;
-}
 
-.flashcard-example-arabic {
-  font-size: 1rem;
-  color: #059669;
-  font-weight: 600;
-  text-align: center;
-  direction: rtl;
-  line-height: 1.4;
-}
 
 /* TTS Control Buttons */
 .tts-controls {
@@ -1147,24 +981,7 @@ body {
   position: relative;
 }
 
-/* Corner positioned TTS controls for flashcards - Bottom Right */
-.flashcard .tts-controls {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  margin: 0;
-  z-index: 15;
-}
-
-/* Consistent bottom-right positioning for all flashcard TTS controls */
-.flashcard-examples .tts-controls {
-  position: absolute !important;
-  bottom: 0.75rem !important;
-  right: 0.75rem !important;
-  top: auto !important;
-  margin: 0 !important;
-  z-index: 15;
-}
+/* TTS controls - general styling */
 
 .tts-btn {
   background: rgba(59, 130, 246, 0.1);
@@ -1185,14 +1002,6 @@ body {
 }
 
 /* Example Preview Styles on Front Side */
-.flashcard-example-preview {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  margin: 1rem 0;
-  backdrop-filter: blur(10px);
-}
 
 .example-preview-label {
   font-size: 0.9rem;
@@ -1222,44 +1031,10 @@ body {
 }
 
 /* Comprehensive Single-Side Flashcard Layout */
-.flashcard-translations {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
 
-.flashcard-translations .flashcard-arabic {
-  font-size: 1.8rem !important;
-  color: #2563eb !important;
-  font-weight: 600 !important;
-  margin-bottom: 0.75rem !important;
-  font-family: 'Noto Sans Arabic', sans-serif !important;
-  direction: rtl !important;
-  text-align: center !important;
-  line-height: 1.4 !important;
-}
 
-.flashcard-translations .flashcard-english {
-  font-size: 1.2rem !important;
-  color: #6b7280 !important;
-  font-style: italic !important;
-  text-align: center !important;
-  margin: 0 !important;
-}
 
 /* Enhanced corner TTS button styling */
-.flashcard .tts-btn {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(59, 130, 246, 0.4);
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.15),
-    0 2px 4px rgba(59, 130, 246, 0.2);
-  width: 2.5rem;
-  height: 2.5rem;
-}
 
 .tts-btn:hover {
   background: rgba(59, 130, 246, 0.2);
@@ -1267,14 +1042,6 @@ body {
   transform: scale(1.05);
 }
 
-.flashcard .tts-btn:hover {
-  background: rgba(255, 255, 255, 1);
-  border-color: rgba(59, 130, 246, 0.6);
-  transform: scale(1.1);
-  box-shadow: 
-    0 6px 16px rgba(0, 0, 0, 0.2),
-    0 2px 6px rgba(59, 130, 246, 0.3);
-}
 
 .tts-btn.playing {
   background: #3b82f6;
@@ -1282,13 +1049,6 @@ body {
   animation: pulse 1.5s infinite;
 }
 
-.flashcard .tts-btn.playing {
-  background: #3b82f6;
-  border-color: #1e40af;
-  box-shadow: 
-    0 6px 20px rgba(59, 130, 246, 0.4),
-    0 0 0 4px rgba(59, 130, 246, 0.2);
-}
 
 .tts-btn.disabled {
   background: rgba(156, 163, 175, 0.1);
@@ -1361,16 +1121,6 @@ body {
   justify-content: center;
 }
 
-.flashcard-icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.75rem;
-  position: relative;
-  width: 100%;
-  height: 4.5rem;
-  flex-shrink: 0;
-}
 
 /* Quiz Interface */
 .quiz-container {
@@ -1759,17 +1509,8 @@ body {
     width: 100%;
   }
   
-  .flashcard-container {
-    max-width: 380px;
-  }
   
-  .flashcard {
-    height: 320px;
-  }
   
-  .flashcard-turkish {
-    font-size: 1.5rem;
-  }
   
   .quiz-word {
     font-size: 2rem;
@@ -2803,15 +2544,3 @@ body {
 }
 
 /* FORCED NAVIGATION BUTTONS STYLE - MATCH FLASHCARD BUTTONS */
-.flashcard-controls .btn-flashcard-control {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-width: 80px !important;
-    min-height: 70px !important;
-    border: 3px solid #E5E7EB !important;
-    border-radius: 16px !important;
-    background: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
-}

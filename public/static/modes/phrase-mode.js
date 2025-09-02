@@ -1,5 +1,9 @@
 // 📝 Phrase Learning Mode - Containerized
 // Independent common phrases and expressions learning system
+// 
+// 🎯 MODULE PURPOSE: Display Turkish SENTENCES/PHRASES for conversational learning
+// This module prioritizes: word.turkishSentence || word.example || word.turkish
+// Phrase mode = Sentences | Flashcard mode = Individual words
 
 class PhraseMode extends LearningModeBase {
     constructor(config = {}) {
