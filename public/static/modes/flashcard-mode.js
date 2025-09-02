@@ -122,6 +122,13 @@ class FlashcardMode extends LearningModeBase {
     
     /**
      * Render individual flashcard
+     * 
+     * IMPORTANT: Flashcard mode displays individual Turkish WORDS for vocabulary learning
+     * This is different from phrase mode which displays full sentences (turkishSentence)
+     * 
+     * Flashcard structure:
+     * - Front: Turkish word (word.turkish) 
+     * - Back: Arabic translation + English + example sentence (if available)
      */
     renderFlashcard() {
         const currentWord = this.getCurrentWord();
@@ -142,11 +149,10 @@ class FlashcardMode extends LearningModeBase {
             example: currentWord.example
         });
         
-        // Debug: Check which sentence will be displayed
-        const displayText = currentWord.turkishSentence || currentWord.example || currentWord.turkish;
-        console.log('📝 Flashcard will display:', displayText, 'from field:', 
-            currentWord.turkishSentence ? 'turkishSentence' : 
-            currentWord.example ? 'example' : 'turkish');
+        // Debug: Check flashcard main display
+        console.log('📝 Flashcard main word:', currentWord.turkish);
+        console.log('📝 Arabic translation:', currentWord.arabic);
+        console.log('📝 Example sentence:', currentWord.turkishSentence || currentWord.example || 'No example');
         
         const hasExample = currentWord.turkishSentence && currentWord.arabicSentence;
         const icon = currentWord.icon || 'fas fa-language';
@@ -160,7 +166,7 @@ class FlashcardMode extends LearningModeBase {
                         <div class="flashcard-icon-container">
                             <div class="word-icon emoji">${emoji}</div>
                         </div>
-                        <div class="flashcard-turkish">${currentWord.turkishSentence || currentWord.example || currentWord.turkish}</div>
+                        <div class="flashcard-turkish">${currentWord.turkish}</div>
                         ${currentWord.pronunciation && currentWord.pronunciation !== 'undefined' ? 
                             `<div class="flashcard-pronunciation">[${currentWord.pronunciation}]</div>` :
                             currentWord.vowelHarmony && currentWord.vowelHarmony !== 'undefined' ? 
@@ -185,6 +191,10 @@ class FlashcardMode extends LearningModeBase {
                                 }
                             </div>
                             <div class="flashcard-arabic-main">${currentWord.arabic}</div>
+                            ${currentWord.english ? 
+                                `<div class="flashcard-english-main">${currentWord.english}</div>` :
+                                ''
+                            }
                             ${currentWord.difficultyLevel ? 
                                 `<div class="flashcard-difficulty-level">${currentWord.difficultyLevel}</div>` :
                                 ''
@@ -192,24 +202,22 @@ class FlashcardMode extends LearningModeBase {
                         </div>
                         
                         ${hasExample ? `
-                            <div class="flashcard-example-elevated">
-                                <div class="turkish-example-elevated">
-                                    <div class="example-text-elevated">${currentWord.turkishSentence}</div>
-                                    <button class="tts-btn tts-example-elevated" data-action="speak-sentence" title="استمع للمثال">
-                                        <i class="fas fa-volume-up"></i>
-                                    </button>
+                            <div class="flashcard-example">
+                                <h4 class="example-title">مثال:</h4>
+                                <div class="turkish-example">
+                                    <div class="example-text">${currentWord.turkishSentence || currentWord.example || ''}</div>
+                                    ${currentWord.turkishSentence || currentWord.example ? `
+                                        <button class="tts-btn tts-example" data-action="speak-sentence" title="استمع للمثال">
+                                            <i class="fas fa-volume-up"></i>
+                                        </button>
+                                    ` : ''}
                                 </div>
                                 
-                                <div class="arabic-translation-elevated">
-                                    <div class="example-arabic-elevated">${currentWord.arabicSentence}</div>
+                                <div class="arabic-translation">
+                                    <div class="example-arabic">${currentWord.arabicSentence || currentWord.exampleArabic || ''}</div>
                                 </div>
                             </div>
-                        ` : `
-                            <div class="no-example-message-elevated">
-                                <i class="fas fa-info-circle"></i>
-                                <span class="no-example-text">لا يوجد مثال متاح</span>
-                            </div>
-                        `}
+                        ` : ''}
                         
                         <div class="flashcard-hint">اضغط للعودة للجهة الأمامية</div>
                     </div>
@@ -427,20 +435,12 @@ class FlashcardMode extends LearningModeBase {
         
         // Auto-play audio when flipping
         setTimeout(() => {
-            if (this.isFlipped) {
-                // Play the Turkish example sentence when showing back side (Arabic translation)
-                const currentWord = this.getCurrentWord();
-                const hasExample = currentWord?.turkishSentence || currentWord?.example;
-                
-                if (hasExample) {
-                    console.log('🔊 Auto-playing Turkish example sentence...');
-                    this.pronounceCurrentSentence(); // Play the Turkish sentence example
-                } else {
-                    console.log('🔊 Auto-playing Turkish word pronunciation...');
-                    this.pronounceCurrentWord(); // Fallback to single word if no example
-                }
+            if (this.isFlipped && this.settings.enableTTS) {
+                // Always play the main Turkish word when showing back side
+                console.log('🔊 Auto-playing Turkish word pronunciation...');
+                this.pronounceCurrentWord(); // Play the main Turkish word
             }
-        }, 300); // Slightly longer delay for smooth transition
+        }, 300);
         
         // Remove transitioning state
         setTimeout(() => {

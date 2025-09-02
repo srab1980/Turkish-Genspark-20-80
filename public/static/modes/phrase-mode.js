@@ -78,6 +78,13 @@ class PhraseMode extends LearningModeBase {
     
     /**
      * Convert vocabulary words to phrase format
+     * 
+     * IMPORTANT: Phrase mode displays Turkish SENTENCES for contextual learning
+     * This is different from flashcard mode which displays individual words
+     * 
+     * Phrase structure:
+     * - Primary: Turkish sentence (word.turkishSentence) 
+     * - Fallback: Example or individual word if no sentence available
      */
     convertWordsToPhases(words) {
         return words.map(word => ({
