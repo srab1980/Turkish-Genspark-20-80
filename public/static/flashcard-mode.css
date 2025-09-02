@@ -808,7 +808,7 @@
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border: 2px solid #E5E7EB;
-    padding: 15px; /* Reduced padding from 20px to 15px */
+    padding: 20px; /* Match flashcard padding exactly */
     box-sizing: border-box; /* Include padding in height calculation */
     overflow: hidden; /* Prevent any overflow */
 }
@@ -837,12 +837,11 @@
 .difficulty-buttons.vertical-layout {
     display: flex !important;
     flex-direction: column !important;
-    gap: 10px !important;
+    gap: 12px !important;
     align-items: stretch !important;
     justify-content: center !important;
     padding: 0;
     flex: 1; /* Take remaining space after instruction */
-    max-height: calc(100% - 70px); /* Reserve space for instruction panel */
 }
 
 .vertical-layout .btn-difficulty {
@@ -908,13 +907,12 @@
 /* Update difficulty instruction for vertical layout */
 .flashcard-difficulty-column .difficulty-instruction {
     text-align: center;
-    margin-bottom: 12px;
-    padding: 10px 12px;
+    margin-bottom: 15px;
+    padding: 12px 15px;
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
     border-radius: 10px;
     border: 1px solid rgba(99, 102, 241, 0.2);
     flex-shrink: 0; /* Don't shrink the instruction */
-    height: auto; /* Allow natural height */
 }
 
 .flashcard-difficulty-column .difficulty-instruction p {
