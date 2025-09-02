@@ -684,6 +684,59 @@ app.get('/', (c) => {
         <link href="/static/flashcard-mode.css" rel="stylesheet">
         <link href="/static/quiz-mode.css" rel="stylesheet">
         <link href="/static/phrase-mode.css" rel="stylesheet">
+        <style>
+            /* Side Menu Filters CSS */
+            .side-menu {
+                position: fixed; top: 0; right: 0; height: 100vh; width: 320px;
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+                backdrop-filter: blur(20px); border-left: 1px solid rgba(226, 232, 240, 0.8);
+                box-shadow: -10px 0 25px rgba(0, 0, 0, 0.1); transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000;
+                overflow-y: auto; direction: rtl;
+            }
+            .side-menu.active { transform: translateX(0); }
+            .side-menu-header {
+                padding: 1.5rem; border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;
+            }
+            .side-menu-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem 0; }
+            .side-menu-subtitle { font-size: 0.875rem; opacity: 0.9; margin: 0; }
+            .side-menu-close {
+                position: absolute; top: 1rem; left: 1rem; background: rgba(255, 255, 255, 0.2);
+                border: none; color: white; width: 2rem; height: 2rem; border-radius: 50%;
+                cursor: pointer; display: flex; align-items: center; justify-content: center;
+            }
+            .filter-section { padding: 1.5rem; border-bottom: 1px solid rgba(226, 232, 240, 0.4); }
+            .filter-section-title {
+                font-size: 1rem; font-weight: 600; color: #1e293b; margin: 0 0 1rem 0;
+                display: flex; align-items: center; gap: 0.5rem;
+            }
+            .filter-section-title .icon { color: #667eea; }
+            .category-item:hover { background-color: #f8fafc !important; }
+            .mode-option:hover { 
+                border-color: #667eea !important; background-color: #f8fafc !important; 
+                transform: translateY(-1px); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            }
+            .side-menu-toggle {
+                position: fixed; top: 1rem; right: 1rem; z-index: 1001;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;
+                border: none; width: 3rem; height: 3rem; border-radius: 50%; cursor: pointer;
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); display: flex;
+                align-items: center; justify-content: center; font-size: 1.1rem;
+                transition: all 0.2s ease;
+            }
+            .side-menu-toggle:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5); }
+            .side-menu-overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(2px); z-index: 999;
+                opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            }
+            .side-menu-overlay.active { opacity: 1; visibility: visible; }
+            @media (max-width: 768px) {
+                .side-menu { width: 100%; max-width: 400px; }
+                .side-menu-toggle { top: 0.75rem; right: 0.75rem; width: 2.5rem; height: 2.5rem; }
+            }
+        </style>
         <link href="/static/session-management.css" rel="stylesheet">
         <link href="/static/enhanced-learning-interface.css" rel="stylesheet">
         
@@ -1059,9 +1112,22 @@ app.get('/', (c) => {
                 </div>
                 
                 <div id="learning-interface">
-                    <div class="learning-controls">
+                    <!-- New Side Menu Filters Notice -->
+                    <div class="enhanced-controls-notice" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem; text-align: center;">
+                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600;">
+                            <i class="fas fa-sparkles"></i>
+                            إعدادات التعلم المحسنة
+                        </h3>
+                        <p style="margin: 0 0 1rem 0; opacity: 0.9;">استخدم القائمة الجانبية الجديدة لفلترة أفضل وتجربة تعلم محسنة</p>
+                        <button onclick="window.sideMenuFilters?.openMenu()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 500; transition: all 0.2s;">
+                            <i class="fas fa-sliders-h"></i>
+                            فتح إعدادات التعلم
+                        </button>
+                    </div>
+                    
+                    <div class="learning-controls" style="opacity: 0.7;">
                         <div class="controls-header">
-                            <h3>إعدادات التعلم</h3>
+                            <h3>إعدادات التعلم (الكلاسيكية)</h3>
                             <p class="controls-subtitle">اختر فئة ونمط التعلم المفضل لديك</p>
                         </div>
                         
@@ -1508,6 +1574,237 @@ app.get('/', (c) => {
         
         <!-- Integration Layer -->
         <script src="/static/modular-integration.js"></script>
+        
+        <!-- Side Menu Filters -->
+        <script>
+            // Side Menu Filters - Inline Implementation
+            class SideMenuFilters {
+                constructor() {
+                    this.isMenuOpen = false;
+                    this.selectedCategories = new Set();
+                    this.selectedModes = new Set(['flashcard']);
+                    this.categories = [];
+                    
+                    this.learningModes = [
+                        { id: 'flashcard', name: 'البطاقات التعليمية', description: 'تعلم الكلمات باستخدام البطاقات التفاعلية', icon: '📱' },
+                        { id: 'quiz', name: 'الاختبارات التفاعلية', description: 'اختبر معرفتك بالكلمات التركية', icon: '🎯' },
+                        { id: 'phrase', name: 'العبارات والتعابير', description: 'تعلم العبارات التركية الشائعة والمفيدة', icon: '📝' },
+                        { id: 'conversation', name: 'المحادثات التفاعلية', description: 'تدرب على المحادثات التركية الحقيقية', icon: '💬' },
+                        { id: 'review', name: 'المراجعة المتباعدة', description: 'راجع الكلمات بنظام التكرار المتباعد الذكي', icon: '🔄' }
+                    ];
+                    
+                    console.log('📋 Side Menu Filters initialized');
+                }
+                
+                async init() {
+                    await this.loadCategories();
+                    this.createSideMenu();
+                    this.setupEventListeners();
+                    console.log('✅ Side Menu Filters ready');
+                }
+                
+                async loadCategories() {
+                    let retries = 0;
+                    while (!window.enhancedVocabularyDatabase && retries < 50) {
+                        await new Promise(resolve => setTimeout(resolve, 100));
+                        retries++;
+                    }
+                    
+                    if (window.enhancedVocabularyDatabase && window.enhancedVocabularyDatabase.data) {
+                        this.categories = window.enhancedVocabularyDatabase.data.map(category => ({
+                            id: category.id,
+                            name: category.nameArabic || category.name,
+                            wordCount: category.words ? category.words.length : 0,
+                            sessionCount: category.sessionCount || Math.ceil((category.words ? category.words.length : 0) / 10),
+                            icon: this.getCategoryIcon(category.id)
+                        }));
+                    }
+                    console.log(\`📂 Loaded \${this.categories.length} categories for filters\`);
+                }
+                
+                getCategoryIcon(categoryId) {
+                    const icons = {
+                        'adjective': '📝', 'animal': '🐾', 'body': '👤', 'clothes': '👕', 'color': '🎨', 'direction': '🧭',
+                        'emotion': '😊', 'family': '👨‍👩‍👧‍👦', 'food': '🍽️', 'greeting': '👋', 'health': '🏥', 'house': '🏠',
+                        'job': '💼', 'nature': '🌿', 'number': '🔢', 'place': '📍', 'pronoun': '👤', 'question': '❓',
+                        'sport': '⚽', 'time': '⏰', 'transport': '🚗', 'verb': '⚡', 'weather': '🌤️'
+                    };
+                    return icons[categoryId] || '📚';
+                }
+                
+                createSideMenu() {
+                    const toggleButton = document.createElement('button');
+                    toggleButton.className = 'side-menu-toggle';
+                    toggleButton.innerHTML = '<i class="fas fa-sliders-h"></i>';
+                    toggleButton.onclick = () => this.toggleMenu();
+                    toggleButton.title = 'فتح إعدادات التعلم';
+                    
+                    const overlay = document.createElement('div');
+                    overlay.className = 'side-menu-overlay';
+                    overlay.onclick = (e) => { if(e.target === overlay) this.closeMenu(); };
+                    
+                    const sideMenu = document.createElement('div');
+                    sideMenu.id = 'side-menu-filters';
+                    sideMenu.className = 'side-menu';
+                    sideMenu.innerHTML = \`
+                        <div class="side-menu-header">
+                            <h3 class="side-menu-title"><i class="fas fa-sliders-h"></i> إعدادات التعلم</h3>
+                            <p class="side-menu-subtitle">اختر فئة ونمط التعلم المفضل لديك</p>
+                            <button class="side-menu-close" onclick="window.sideMenuFilters.closeMenu()"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="filter-section">
+                            <h4 class="filter-section-title"><i class="fas fa-folder-open icon"></i> الفئات</h4>
+                            <div class="category-list" style="max-height: 300px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 0.5rem; background: white;">
+                                \${this.renderCategories()}
+                            </div>
+                        </div>
+                        <div class="filter-section">
+                            <h4 class="filter-section-title"><i class="fas fa-graduation-cap icon"></i> نمط التعلم</h4>
+                            <div class="learning-modes">\${this.renderLearningModes()}</div>
+                        </div>
+                        <div class="filter-actions" style="padding: 1.5rem; background: #f8fafc;">
+                            <button class="filter-button primary" onclick="window.sideMenuFilters.applyFilters()" style="width: 100%; padding: 0.875rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 0.75rem; font-weight: 600; cursor: pointer;">
+                                <i class="fas fa-play"></i> ابدأ جلسة التعلم
+                            </button>
+                        </div>
+                    \`;
+                    
+                    document.body.appendChild(toggleButton);
+                    document.body.appendChild(overlay);
+                    document.body.appendChild(sideMenu);
+                    
+                    this.setupInternalEventListeners();
+                }
+                
+                renderCategories() {
+                    return this.categories.map(category => \`
+                        <div class="category-item" data-category="\${category.id}" onclick="window.sideMenuFilters.handleCategorySelection('\${category.id}')" style="display: flex; align-items: center; padding: 0.75rem; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background-color 0.2s;">
+                            <input type="checkbox" class="category-checkbox" id="cat-\${category.id}" style="margin-left: 0.75rem;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500; color: #1e293b; font-size: 0.875rem; margin-bottom: 0.25rem;">\${category.icon} \${category.name}</div>
+                                <div style="font-size: 0.75rem; color: #64748b;">\${category.wordCount} كلمة • \${category.sessionCount} جلسة</div>
+                            </div>
+                        </div>
+                    \`).join('');
+                }
+                
+                renderLearningModes() {
+                    return this.learningModes.map(mode => \`
+                        <div class="mode-option \${this.selectedModes.has(mode.id) ? 'selected' : ''}" data-mode="\${mode.id}" onclick="window.sideMenuFilters.handleModeSelection('\${mode.id}')" style="display: flex; align-items: center; padding: 1rem; border: 1.5px solid #e2e8f0; border-radius: 0.75rem; margin-bottom: 0.75rem; cursor: pointer; transition: all 0.2s; background: white;">
+                            <input type="radio" name="learning-mode" class="mode-radio" \${this.selectedModes.has(mode.id) ? 'checked' : ''} style="margin-left: 0.75rem;">
+                            <div style="flex: 1;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 1.25rem;">\${mode.icon}</span>
+                                    <span style="font-weight: 600; color: #1e293b; font-size: 0.875rem;">\${mode.name}</span>
+                                </div>
+                                <div style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">\${mode.description}</div>
+                            </div>
+                        </div>
+                    \`).join('');
+                }
+                
+                setupEventListeners() {
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && this.isMenuOpen) this.closeMenu();
+                    });
+                }
+                
+                setupInternalEventListeners() {
+                    // Categories selection handled via onclick in HTML
+                }
+                
+                toggleMenu() {
+                    this.isMenuOpen ? this.closeMenu() : this.openMenu();
+                }
+                
+                openMenu() {
+                    const menu = document.getElementById('side-menu-filters');
+                    const overlay = document.querySelector('.side-menu-overlay');
+                    if (menu && overlay) {
+                        menu.classList.add('active');
+                        overlay.classList.add('active');
+                        this.isMenuOpen = true;
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+                
+                closeMenu() {
+                    const menu = document.getElementById('side-menu-filters');
+                    const overlay = document.querySelector('.side-menu-overlay');
+                    if (menu && overlay) {
+                        menu.classList.remove('active');
+                        overlay.classList.remove('active');
+                        this.isMenuOpen = false;
+                        document.body.style.overflow = '';
+                    }
+                }
+                
+                handleCategorySelection(categoryId) {
+                    const checkbox = document.getElementById(\`cat-\${categoryId}\`);
+                    const item = document.querySelector(\`[data-category="\${categoryId}"]\`);
+                    
+                    if(checkbox.checked) {
+                        this.selectedCategories.delete(categoryId);
+                        checkbox.checked = false;
+                        item.style.backgroundColor = '';
+                    } else {
+                        this.selectedCategories.add(categoryId);
+                        checkbox.checked = true;
+                        item.style.backgroundColor = '#f0f4ff';
+                    }
+                    
+                    console.log('📂 Categories selected:', Array.from(this.selectedCategories));
+                }
+                
+                handleModeSelection(modeId) {
+                    this.selectedModes.clear();
+                    this.selectedModes.add(modeId);
+                    
+                    document.querySelectorAll('.mode-option').forEach(option => {
+                        const isSelected = option.dataset.mode === modeId;
+                        if(isSelected) {
+                            option.style.borderColor = '#667eea';
+                            option.style.backgroundColor = '#f0f4ff';
+                        } else {
+                            option.style.borderColor = '#e2e8f0';
+                            option.style.backgroundColor = 'white';
+                        }
+                        const radio = option.querySelector('.mode-radio');
+                        if (radio) radio.checked = isSelected;
+                    });
+                    
+                    console.log('🎯 Learning mode selected:', modeId);
+                }
+                
+                applyFilters() {
+                    const filters = {
+                        categories: Array.from(this.selectedCategories),
+                        mode: Array.from(this.selectedModes)[0] || 'flashcard'
+                    };
+                    
+                    if (filters.categories.length === 0) {
+                        alert('يرجى اختيار فئة واحدة على الأقل');
+                        return;
+                    }
+                    
+                    this.closeMenu();
+                    
+                    if (window.learningModeManager && filters.categories.length > 0) {
+                        const primaryCategory = filters.categories[0];
+                        window.learningModeManager.startMode(filters.mode, { category: primaryCategory });
+                        if (window.showSection) window.showSection('learn');
+                    }
+                    
+                    console.log('✨ Learning session started with filters:', filters);
+                }
+            }
+            
+            // Initialize when DOM is ready
+            document.addEventListener('DOMContentLoaded', () => {
+                window.sideMenuFilters = new SideMenuFilters();
+                setTimeout(() => { window.sideMenuFilters.init(); }, 1000);
+            });
+        </script>
         
         <!-- Main App (must be last) -->
         <script src="/static/app-modern.js"></script>
