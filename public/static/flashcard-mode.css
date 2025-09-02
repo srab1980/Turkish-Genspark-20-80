@@ -61,6 +61,7 @@
     justify-content: center;
     padding: 20px;
     border: 2px solid #E5E7EB;
+    box-sizing: border-box; /* Include padding and border in height calculation */
     /* Enhanced 3D Flip Animation Properties */
     transform-style: preserve-3d;
     perspective: 1000px;
