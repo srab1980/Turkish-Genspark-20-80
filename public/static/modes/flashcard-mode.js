@@ -72,14 +72,23 @@ class FlashcardMode extends LearningModeBase {
         
         this.clearContainer();
         
-        // Create main flashcard interface
+        // Create main flashcard interface with two-column layout
         const flashcardInterface = this.createElement('div', ['flashcard-mode-interface'], {}, `
             ${this.settings.showProgress ? this.renderProgressBar() : ''}
-            <div class="flashcard-container-wrapper">
-                ${this.renderFlashcard()}
+            <div class="flashcard-main-layout">
+                <!-- Left Column: Vertical Difficulty Buttons -->
+                <div class="flashcard-difficulty-column">
+                    ${this.renderDifficultyButtons()}
+                </div>
+                
+                <!-- Right Column: Flashcard with Navigation -->
+                <div class="flashcard-content-column">
+                    <div class="flashcard-container-wrapper">
+                        ${this.renderFlashcard()}
+                    </div>
+                    ${this.renderControls()}
+                </div>
             </div>
-            ${this.renderControls()}
-            ${this.renderDifficultyButtons()}
         `);
         
         this.appendToContainer(flashcardInterface);
@@ -254,7 +263,7 @@ class FlashcardMode extends LearningModeBase {
                 <div class="difficulty-instruction">
                     <p>كيف كانت صعوبة تذكر هذه الكلمة؟</p>
                 </div>
-                <div class="difficulty-buttons">
+                <div class="difficulty-buttons vertical-layout">
                     <button class="btn-difficulty btn-hard" data-difficulty="hard">
                         <i class="fas fa-times-circle"></i>
                         <span>صعب</span>
