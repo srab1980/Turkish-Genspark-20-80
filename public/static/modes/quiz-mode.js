@@ -148,12 +148,9 @@ class QuizMode extends LearningModeBase {
         this.currentOptions = this.generateOptions(currentWord);
         
         return `
-            <div class="quiz-question-container">
-                <div class="quiz-question">
-                    <div class="question-header">
-                        <h3>ما معنى هذه الكلمة؟</h3>
-                    </div>
-                    
+            <div class="quiz-main-layout">
+                <!-- Left Column: Word Card -->
+                <div class="quiz-word-card">
                     <div class="quiz-word-section">
                         <div class="quiz-word-container">
                             <div class="quiz-word-icon">
@@ -170,18 +167,21 @@ class QuizMode extends LearningModeBase {
                             </button>
                         </div>
                     </div>
+                </div>
+                
+                <!-- Right Column: Quiz Options -->
+                <div class="quiz-options-column">
+                    <div class="question-header">
+                        <h3 style="text-align: center; margin-bottom: 25px; font-size: 24px; color: #1E293B;">اختر الترجمة الصحيحة:</h3>
+                    </div>
                     
-                    <div class="quiz-instruction">
-                        <p>اختر الترجمة الصحيحة:</p>
+                    <div class="quiz-options-container">
+                        ${this.renderOptions()}
                     </div>
                 </div>
-                
-                <div class="quiz-options-container">
-                    ${this.renderOptions()}
-                </div>
-                
-                ${this.isAnswered ? this.renderFeedback() : ''}
             </div>
+            
+            ${this.isAnswered ? this.renderFeedback() : ''}
         `;
     }
     

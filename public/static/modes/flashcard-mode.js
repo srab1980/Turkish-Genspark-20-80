@@ -159,6 +159,11 @@ class FlashcardMode extends LearningModeBase {
         
         return `
             <div class="flashcard-container" id="flashcard-container">
+                <!-- Left Navigation Button -->
+                <button class="flashcard-nav-button flashcard-nav-prev ${this.currentIndex === 0 ? 'disabled' : ''}" data-action="previous" title="السابق">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
                 <div class="flashcard ${this.isFlipped ? 'flipped' : ''}" id="flashcard" data-word-id="${currentWord.id}">
                     <!-- FRONT: Individual Turkish Word Only -->
                     <div class="flashcard-front">
@@ -223,6 +228,11 @@ class FlashcardMode extends LearningModeBase {
                         <div class="flashcard-hint">اضغط للعودة للكلمة</div>
                     </div>
                 </div>
+                
+                <!-- Right Navigation Button -->
+                <button class="flashcard-nav-button flashcard-nav-next ${this.currentIndex >= this.words.length - 1 ? 'disabled' : ''}" data-action="next" title="التالي">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
             </div>
         `;
     }
@@ -231,29 +241,8 @@ class FlashcardMode extends LearningModeBase {
      * Render control buttons
      */
     renderControls() {
-        return `
-            <div class="flashcard-controls">
-                <button class="btn-flashcard-control" data-action="previous" ${this.currentIndex === 0 ? 'disabled' : ''}>
-                    <i class="fas fa-chevron-right"></i>
-                    <span>السابق</span>
-                </button>
-                
-                <button class="btn-flashcard-control" data-action="hint">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>تلميح</span>
-                </button>
-                
-                <button class="btn-flashcard-control flip-btn" data-action="flip">
-                    <i class="fas fa-sync-alt"></i>
-                    <span>اقلب البطاقة</span>
-                </button>
-                
-                <button class="btn-flashcard-control" data-action="next" ${this.currentIndex >= this.words.length - 1 ? 'disabled' : ''}>
-                    <i class="fas fa-chevron-left"></i>
-                    <span>التالي</span>
-                </button>
-            </div>
-        `;
+        // Controls are now integrated into the flashcard as side navigation buttons
+        return '';
     }
     
     /**
@@ -434,12 +423,21 @@ class FlashcardMode extends LearningModeBase {
         
         console.log('✅ Flip complete - new state:', this.isFlipped ? 'flipped' : 'front');
         
-        // Auto-play audio when flipping
+        // Auto-play audio when flipping to back side
         setTimeout(() => {
             if (this.isFlipped && this.settings.enableTTS) {
-                // Always play the main Turkish word when showing back side
-                console.log('🔊 Auto-playing Turkish word pronunciation...');
-                this.pronounceCurrentWord(); // Play the main Turkish word
+                const currentWord = this.getCurrentWord();
+                const hasExampleSentence = currentWord?.turkishSentence || currentWord?.example;
+                
+                if (hasExampleSentence) {
+                    // Auto-play example sentence when card is flipped to back side
+                    console.log('🔊 Auto-playing example sentence audio...');
+                    this.pronounceCurrentSentence();
+                } else {
+                    // Fallback to Turkish word if no example sentence exists
+                    console.log('🔊 Auto-playing Turkish word pronunciation...');
+                    this.pronounceCurrentWord();
+                }
             }
         }, 300);
         

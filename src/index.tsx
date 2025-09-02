@@ -736,6 +736,77 @@ app.get('/', (c) => {
                 .side-menu { width: 100%; max-width: 400px; }
                 .side-menu-toggle { top: 0.75rem; right: 0.75rem; width: 2.5rem; height: 2.5rem; }
             }
+            
+            /* Two-Column Learning Layout */
+            .learning-main-layout {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                margin-bottom: 2rem;
+                align-items: start;
+            }
+            
+            .learning-title-column {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                min-height: 200px;
+            }
+            
+            .learning-settings-column {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+            .learning-title-column .section-header {
+                text-align: center;
+                padding: 2rem;
+                background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+                border-radius: 1rem;
+                border: 1px solid rgba(102, 126, 234, 0.2);
+            }
+            
+            .learning-title-column .section-title {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #1e293b;
+                margin: 0 0 1rem 0;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .learning-title-column .section-subtitle {
+                font-size: 1.1rem;
+                color: #64748b;
+                margin: 0;
+                line-height: 1.6;
+            }
+            
+            /* Responsive Behavior for Two-Column Layout */
+            @media (max-width: 1024px) {
+                .learning-main-layout {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+                
+                .learning-title-column .section-title {
+                    font-size: 2rem;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .learning-title-column .section-header {
+                    padding: 1.5rem;
+                }
+                
+                .learning-title-column .section-title {
+                    font-size: 1.75rem;
+                }
+                
+                .learning-title-column .section-subtitle {
+                    font-size: 1rem;
+                }
+            }
         </style>
         <link href="/static/session-management.css" rel="stylesheet">
         <link href="/static/enhanced-learning-interface.css" rel="stylesheet">
@@ -1106,69 +1177,34 @@ app.get('/', (c) => {
 
             <!-- Learning Section -->
             <section id="learn-section" class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">وضع التعلم</h2>
-                    <p class="section-subtitle">تعلم كلمات جديدة مع الأمثلة والنطق</p>
+                <!-- Two-Column Layout for Title and Settings -->
+                <div class="learning-main-layout">
+                    <!-- Left Column: Title Section -->
+                    <div class="learning-title-column">
+                        <div class="section-header">
+                            <h2 class="section-title">وضع التعلم</h2>
+                            <p class="section-subtitle">تعلم كلمات جديدة مع الأمثلة والنطق</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column: Learning Settings -->
+                    <div class="learning-settings-column">
+                        <!-- New Side Menu Filters Notice -->
+                        <div class="enhanced-controls-notice" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 1rem; text-align: center;">
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600;">
+                                <i class="fas fa-sparkles"></i>
+                                إعدادات التعلم المحسنة
+                            </h3>
+                            <p style="margin: 0 0 1rem 0; opacity: 0.9;">استخدم القائمة الجانبية الجديدة لفلترة أفضل وتجربة تعلم محسنة</p>
+                            <button onclick="window.sideMenuFilters?.openMenu()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 500; transition: all 0.2s;">
+                                <i class="fas fa-sliders-h"></i>
+                                فتح إعدادات التعلم
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 
                 <div id="learning-interface">
-                    <!-- New Side Menu Filters Notice -->
-                    <div class="enhanced-controls-notice" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem; text-align: center;">
-                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600;">
-                            <i class="fas fa-sparkles"></i>
-                            إعدادات التعلم المحسنة
-                        </h3>
-                        <p style="margin: 0 0 1rem 0; opacity: 0.9;">استخدم القائمة الجانبية الجديدة لفلترة أفضل وتجربة تعلم محسنة</p>
-                        <button onclick="window.sideMenuFilters?.openMenu()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 500; transition: all 0.2s;">
-                            <i class="fas fa-sliders-h"></i>
-                            فتح إعدادات التعلم
-                        </button>
-                    </div>
-                    
-                    <div class="learning-controls" style="opacity: 0.7;">
-                        <div class="controls-header">
-                            <h3>إعدادات التعلم (الكلاسيكية)</h3>
-                            <p class="controls-subtitle">اختر فئة ونمط التعلم المفضل لديك</p>
-                        </div>
-                        
-                        <div class="controls-grid">
-                            <div class="control-group">
-                                <label for="category-select" class="control-label">
-                                    <i class="fas fa-folder-open"></i>
-                                    الفئة
-                                </label>
-                                <select id="category-select" class="control-select">
-                                    <option value="">اختر فئة للتعلم...</option>
-                                </select>
-                            </div>
-                            
-                            <div class="control-group">
-                                <label for="learning-mode" class="control-label">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    نمط التعلم
-                                </label>
-                                <select id="learning-mode" class="control-select">
-                                    <option value="flashcard">📱 بطاقات تعليمية - تعلم الكلمات التفاعلية مع الأصوات والأمثلة</option>
-                                    <option value="quiz">🎯 اختبار تفاعلي - اختبر معرفتك بالكلمات مع خيارات متعددة</option>
-                                    <option value="phrase">📝 العبارات والتعابير - تعلم العبارات التركية الشائعة والمفيدة</option>
-                                    <option value="conversation">💬 محادثات تفاعلية - تدرب على المحادثات التركية الحقيقية</option>
-                                    <option value="review">🔄 المراجعة المتباعدة - راجع الكلمات بنظام التكرار الذكي</option>
-                                </select>
-                                <div class="mode-info-tooltip">
-                                    جميع أنماط التعلم متاحة: البطاقات، الاختبارات، العبارات، المحادثات، والمراجعة الذكية
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="start-button-container">
-                            <button id="start-learning" class="btn-primary btn-enhanced" disabled>
-                                <i class="fas fa-play"></i>
-                                ابدأ جلسة التعلم
-                            </button>
-                            <p class="start-help-text">اختر فئة ونمط التعلم لبدء الجلسة</p>
-                        </div>
-                    </div>
-                    
                     <div id="learning-content" class="learning-session hidden">
                         <!-- Learning content will be inserted here -->
                     </div>
@@ -1605,13 +1641,14 @@ app.get('/', (c) => {
                 
                 async loadCategories() {
                     let retries = 0;
-                    while (!window.enhancedVocabularyDatabase && retries < 50) {
+                    while (!window.enhancedVocabularyData && retries < 50) {
                         await new Promise(resolve => setTimeout(resolve, 100));
                         retries++;
                     }
                     
-                    if (window.enhancedVocabularyDatabase && window.enhancedVocabularyDatabase.data) {
-                        this.categories = window.enhancedVocabularyDatabase.data.map(category => ({
+                    if (window.enhancedVocabularyData) {
+                        // Convert the object structure to array format
+                        this.categories = Object.values(window.enhancedVocabularyData).map(category => ({
                             id: category.id,
                             name: category.nameArabic || category.name,
                             wordCount: category.words ? category.words.length : 0,
@@ -1789,13 +1826,106 @@ app.get('/', (c) => {
                     
                     this.closeMenu();
                     
-                    if (window.learningModeManager && filters.categories.length > 0) {
+                    // Start session directly using the enhanced learning system
+                    if (window.TurkishLearningApp && filters.categories.length > 0) {
                         const primaryCategory = filters.categories[0];
-                        window.learningModeManager.startMode(filters.mode, { category: primaryCategory });
-                        if (window.showSection) window.showSection('learn');
+                        
+                        // Navigate to learn section first
+                        window.TurkishLearningApp.showSection('learn');
+                        
+                        // Wait for section to load, then start the session directly
+                        setTimeout(() => {
+                            // Get category data from enhanced vocabulary
+                            if (window.TurkishLearningApp.vocabularyData && window.TurkishLearningApp.vocabularyData[primaryCategory]) {
+                                const categoryWords = window.TurkishLearningApp.vocabularyData[primaryCategory].words;
+                                
+                                if (categoryWords && categoryWords.length > 0) {
+                                    // Create session data using the session manager
+                                    let sessionData = null;
+                                    let sessionWords = categoryWords;
+                                    let sessionInfo = null;
+                                    
+                                    // Use session manager if available
+                                    if (window.vocabularySessions && window.vocabularySessions.createSessionsFromWords) {
+                                        try {
+                                            const sessions = window.vocabularySessions.createSessionsFromWords(categoryWords, primaryCategory);
+                                            
+                                            // Get user progress
+                                            const savedProgress = localStorage.getItem('turkishLearningProgress');
+                                            let categoryProgress = {};
+                                            if (savedProgress) {
+                                                const progress = JSON.parse(savedProgress);
+                                                categoryProgress = progress.categoryProgress || {};
+                                            }
+                                            
+                                            // Find next unfinished session
+                                            let currentSessionIndex = 0;
+                                            const completedSessions = categoryProgress[primaryCategory]?.completedSessions || [];
+                                            
+                                            for (let i = 0; i < sessions.length; i++) {
+                                                if (!completedSessions.includes(sessions[i].id)) {
+                                                    currentSessionIndex = i;
+                                                    break;
+                                                }
+                                            }
+                                            
+                                            if (currentSessionIndex >= sessions.length) {
+                                                currentSessionIndex = 0;
+                                            }
+                                            
+                                            const currentSession = sessions[currentSessionIndex];
+                                            sessionWords = currentSession.words;
+                                            sessionInfo = {
+                                                sessionNumber: currentSessionIndex + 1,
+                                                totalSessions: sessions.length,
+                                                sessionId: currentSession.id,
+                                                wordsInSession: currentSession.words.length
+                                            };
+                                            
+                                            sessionData = {
+                                                ...currentSession,
+                                                sessionNumber: currentSessionIndex + 1,
+                                                totalSessions: sessions.length
+                                            };
+                                            
+                                            console.log(\`🎯 Side menu starting session \${sessionInfo.sessionNumber}/\${sessionInfo.totalSessions} for \${primaryCategory}\`);
+                                        } catch (error) {
+                                            console.warn('⚠️ Session manager error, using full category:', error);
+                                        }
+                                    }
+                                    
+                                    // Prepare learning data
+                                    const learningData = {
+                                        category: primaryCategory,
+                                        words: sessionWords,
+                                        sessionInfo: sessionInfo,
+                                        session: sessionData
+                                    };
+                                    
+                                    // Start the learning session
+                                    if (window.startLearningSession) {
+                                        window.startLearningSession(learningData, filters.mode);
+                                        
+                                        // Show the learning content
+                                        const learningContent = document.getElementById('learning-content');
+                                        if (learningContent) {
+                                            learningContent.classList.remove('hidden');
+                                            learningContent.classList.add('active');
+                                            learningContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        }
+                                        
+                                        console.log('✨ Session-based learning started with side menu filters:', filters);
+                                    }
+                                } else {
+                                    console.error('No words found for category:', primaryCategory);
+                                }
+                            } else {
+                                console.error('Category data not found:', primaryCategory);
+                            }
+                        }, 300);
                     }
                     
-                    console.log('✨ Learning session started with filters:', filters);
+                    console.log('✨ Side menu filters applied:', filters);
                 }
             }
             
