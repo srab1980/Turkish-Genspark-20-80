@@ -48,9 +48,10 @@
 }
 
 /* Main Flashcard with Enhanced 3D Flip */
-.flashcard {
-    width: 400px;
-    height: 500px;
+/* Flashcard Mode Specific Styles - Override global styles */
+.flashcard-mode-interface .flashcard {
+    width: 400px !important;
+    height: 500px !important; /* Override any global CSS variable calculations */
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
