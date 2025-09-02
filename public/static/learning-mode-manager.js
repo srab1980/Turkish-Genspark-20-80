@@ -373,15 +373,18 @@ class LearningModeManager {
     processSessionData(data) {
         // If session is provided, extract words from session
         if (data.session && data.session.words) {
+
             return {
                 ...data,
                 words: data.session.words,
                 category: data.session.categoryId,
                 sessionInfo: {
-                    sessionId: data.session.sessionId,
+                    sessionId: data.session.id || data.session.sessionId, // Handle both id and sessionId
                     sessionNumber: data.session.sessionNumber,
+                    totalSessions: data.session.totalSessions, // Add total sessions
                     categoryId: data.session.categoryId,
                     totalWords: data.session.wordCount,
+                    wordsInSession: data.session.wordCount, // Add wordsInSession for flashcard display
                     difficultyRange: data.session.difficultyRange,
                     estimatedTime: data.session.estimatedTime
                 }

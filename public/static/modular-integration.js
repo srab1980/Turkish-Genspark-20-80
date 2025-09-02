@@ -81,10 +81,10 @@ class ModularIntegration {
             
             const modeId = modeMap[mode] || 'flashcard';
             try {
-                return window.learningModeManager.startMode(modeId, {
-                    words: categoryData.words,
-                    category: categoryData.category
-                });
+
+                
+                // Pass all the data, not just words and category
+                return window.learningModeManager.startMode(modeId, categoryData);
             } catch (error) {
                 console.error('Failed to start modular learning session, falling back:', error);
                 if (this.legacyFunctions.startLearningSession) {

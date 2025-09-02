@@ -106,11 +106,21 @@ class QuizMode extends LearningModeBase {
     renderProgressSection() {
         const progress = this.state.totalWords > 0 ? (this.currentIndex / this.state.totalWords) * 100 : 0;
         
+        // Check if session information is available
+        const sessionInfo = this.data.sessionInfo;
+        let progressText = `السؤال ${this.currentIndex + 1} من ${this.state.totalWords}`;
+        let categoryText = this.getCategoryName();
+        
+        if (sessionInfo) {
+            progressText = `السؤال ${this.currentIndex + 1} من ${sessionInfo.wordsInSession}`;
+            categoryText = `الجلسة ${sessionInfo.sessionNumber} من ${sessionInfo.totalSessions} • ${this.getCategoryName()}`;
+        }
+        
         return `
             <div class="quiz-progress-section">
                 <div class="quiz-progress-info">
-                    <div class="progress-text">السؤال ${this.currentIndex + 1} من ${this.state.totalWords}</div>
-                    <div class="category-text">${this.getCategoryName()}</div>
+                    <div class="progress-text">${progressText}</div>
+                    <div class="category-text">${categoryText}</div>
                 </div>
                 <div class="quiz-progress-bar">
                     <div class="quiz-progress-fill" style="width: ${progress}%"></div>

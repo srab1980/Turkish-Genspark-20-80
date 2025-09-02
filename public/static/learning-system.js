@@ -4,7 +4,11 @@
 function LearningSession(categoryData, mode = 'flashcard') {
     this.category = categoryData.category;
     this.words = categoryData.words || [];
+    this.sessionInfo = categoryData.sessionInfo || null; // Store session information
     this.mode = mode; // 'flashcard' or 'quiz'
+    
+    // Debug: Log session info
+    console.log('🎯 LearningSession created with sessionInfo:', this.sessionInfo);
     this.currentIndex = 0;
     this.responses = [];
     this.startTime = Date.now();

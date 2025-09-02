@@ -2769,3 +2769,49 @@ body {
     padding: 0.75rem;
   }
 }
+/* FORCED HORIZONTAL DIFFICULTY BUTTONS - OVERRIDE ALL OTHER STYLES */
+.difficulty-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+}
+
+.btn-difficulty {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    min-width: 85px !important;
+    max-width: 120px !important;
+    min-height: 80px !important;
+}
+
+@media (max-width: 768px) {
+    .difficulty-buttons {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+    }
+    
+    .btn-difficulty {
+        min-width: 70px !important;
+        max-width: 85px !important;
+        flex: 1 !important;
+    }
+}
+
+/* FORCED NAVIGATION BUTTONS STYLE - MATCH FLASHCARD BUTTONS */
+.flashcard-controls .btn-flashcard-control {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 80px !important;
+    min-height: 70px !important;
+    border: 3px solid #E5E7EB !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}

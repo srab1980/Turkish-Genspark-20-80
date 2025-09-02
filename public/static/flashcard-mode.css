@@ -43,7 +43,7 @@
     min-height: 300px;
 }
 
-/* Main Flashcard */
+/* Main Flashcard with Enhanced 3D Flip */
 .flashcard {
     width: 400px;
     height: 250px;
@@ -58,6 +58,9 @@
     justify-content: center;
     padding: 20px;
     border: 2px solid #E5E7EB;
+    /* Enhanced 3D Flip Animation Properties */
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .flashcard:hover {
@@ -74,6 +77,18 @@
 .flashcard-content {
     text-align: center;
     width: 100%;
+}
+
+/* Flashcard Turkish Word/Sentence */
+.flashcard-turkish {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 15px 0;
+    direction: ltr;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.4;
+    text-align: center;
 }
 
 .flashcard-front .turkish-word {
@@ -120,6 +135,129 @@
     direction: rtl;
 }
 
+/* Additional styles for flashcard elements */
+.flashcard-pronunciation {
+    font-size: 16px;
+    color: #6B7280;
+    font-style: italic;
+    margin: 8px 0;
+    direction: ltr;
+}
+
+.flashcard-vowel-harmony {
+    font-size: 14px;
+    color: #8B5CF6;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+.flashcard-hint {
+    font-size: 12px;
+    color: #9CA3AF;
+    margin-top: 15px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    direction: rtl;
+}
+
+.tts-controls {
+    margin: 15px 0;
+}
+
+.tts-btn {
+    background: #3B82F6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+}
+
+.tts-btn:hover {
+    background: #2563EB;
+    transform: scale(1.1);
+}
+
+.flashcard-back-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.flashcard-arabic-main {
+    font-size: 26px;
+    font-weight: 600;
+    color: #059669;
+    margin: 10px 0;
+    direction: rtl;
+    font-family: 'Noto Sans Arabic', Arial, sans-serif;
+}
+
+.flashcard-difficulty-level {
+    font-size: 12px;
+    background: #EFF6FF;
+    color: #1D4ED8;
+    padding: 4px 8px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.flashcard-example-elevated {
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.turkish-example-elevated {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.example-text-elevated {
+    font-size: 16px;
+    color: #1F2937;
+    direction: ltr;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.arabic-translation-elevated {
+    text-align: center;
+}
+
+.example-arabic-elevated {
+    font-size: 16px;
+    color: #059669;
+    direction: rtl;
+    font-family: 'Noto Sans Arabic', Arial, sans-serif;
+}
+
+.no-example-message-elevated {
+    text-align: center;
+    color: #6B7280;
+    font-style: italic;
+    padding: 20px;
+}
+
+.word-icon.emoji {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.flashcard-icon-container-small .emoji {
+    font-size: 24px;
+}
+
 /* Flip Indicator */
 .flip-indicator {
     position: absolute;
@@ -136,36 +274,55 @@
 .flashcard-controls {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     margin: 20px 0;
     flex-wrap: wrap;
 }
 
 .btn-flashcard-control {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 6px;
+    min-width: 85px;
+    min-height: 75px;
+    padding: 12px 8px;
     background: #ffffff;
-    border: 2px solid #E5E7EB;
-    border-radius: 12px;
-    padding: 10px 16px;
-    font-size: 14px;
-    font-weight: 500;
+    border: 3px solid #E5E7EB;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 600;
     color: #374151;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     text-decoration: none;
+    text-align: center;
+    font-family: 'Noto Sans Arabic', Arial, sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .btn-flashcard-control:hover {
     border-color: #3B82F6;
     background: #EFF6FF;
     color: #1D4ED8;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-flashcard-control:active {
     transform: translateY(-1px);
 }
 
 .btn-flashcard-control i {
-    font-size: 16px;
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.btn-flashcard-control span {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
 .btn-flashcard-control.disabled {
@@ -178,6 +335,39 @@
     border-color: #E5E7EB;
     background: #ffffff;
     color: #374151;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Special styling for flip button */
+.btn-flashcard-control.flip-btn {
+    border-color: #10B981;
+    color: #059669;
+}
+
+.btn-flashcard-control.flip-btn:hover {
+    background: #ECFDF5;
+    border-color: #059669;
+    color: #047857;
+}
+
+.btn-flashcard-control.flip-btn i {
+    color: #10B981;
+}
+
+/* Special styling for hint button */
+.btn-flashcard-control[data-action="hint"] {
+    border-color: #F59E0B;
+    color: #D97706;
+}
+
+.btn-flashcard-control[data-action="hint"]:hover {
+    background: #FFFBEB;
+    border-color: #D97706;
+    color: #B45309;
+}
+
+.btn-flashcard-control[data-action="hint"] i {
+    color: #F59E0B;
 }
 
 /* TTS Button */
@@ -217,21 +407,25 @@
 
 /* Difficulty Buttons Container */
 .difficulty-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: flex !important;
+    gap: 12px !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+    flex-direction: row !important;
 }
 
 /* Individual Difficulty Buttons */
 .btn-difficulty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 120px;
-    min-height: 100px;
-    padding: 15px 20px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 1 !important;
+    min-width: 90px !important;
+    min-height: 85px !important;
+    max-width: 140px !important;
+    padding: 12px 8px !important;
     border: 3px solid;
     border-radius: 16px;
     background: #ffffff;
@@ -339,17 +533,20 @@
     }
     
     .difficulty-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
     }
     
     .btn-difficulty {
-        min-width: 200px;
-        min-height: 80px;
-        flex-direction: row;
-        gap: 12px;
-        text-align: right;
+        min-width: 70px !important;
+        max-width: 90px !important;
+        min-height: 75px !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+        text-align: center !important;
+        padding: 8px 4px !important;
     }
     
     .btn-difficulty i {
@@ -385,9 +582,57 @@
     }
     
     .btn-difficulty {
-        min-width: 180px;
+        min-width: 65px;
+        max-width: 80px;
         min-height: 70px;
+        padding: 6px 2px;
     }
+    
+    .btn-difficulty span {
+        font-size: 11px;
+    }
+    
+    .btn-difficulty small {
+        font-size: 9px;
+    }
+    
+    .btn-difficulty i {
+        font-size: 16px;
+    }
+}
+
+/* Enhanced 3D Flip Animation for Front/Back Elements */
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    transition: transform 0.6s ease-in-out;
+}
+
+.flashcard-front {
+    transform: rotateY(0deg);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+}
+
+.flashcard.flipped .flashcard-front {
+    transform: rotateY(-180deg);
+}
+
+.flashcard.flipped .flashcard-back {
+    transform: rotateY(0deg);
 }
 
 /* Animation for card transitions */

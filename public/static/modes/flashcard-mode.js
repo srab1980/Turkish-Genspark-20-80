@@ -30,6 +30,8 @@ class FlashcardMode extends LearningModeBase {
      */
     async init() {
         try {
+
+            
             // Validate required data
             this.validateData(['words', 'category']);
             
@@ -46,6 +48,8 @@ class FlashcardMode extends LearningModeBase {
             });
             
             console.log(`📱 Flashcard mode initialized with ${this.words.length} words`);
+            
+
             
         } catch (error) {
             console.error('❌ Failed to initialize flashcard mode:', error);
@@ -90,11 +94,24 @@ class FlashcardMode extends LearningModeBase {
     renderProgressBar() {
         const progress = this.state.totalWords > 0 ? (this.currentIndex / this.state.totalWords) * 100 : 0;
         
+        // Check if session information is available
+        const sessionInfo = this.data.sessionInfo;
+        
+
+        
+        let progressText = `الكلمة ${this.currentIndex + 1} من ${this.state.totalWords}`;
+        let sessionText = this.getCategoryName();
+        
+        if (sessionInfo) {
+            progressText = `الكلمة ${this.currentIndex + 1} من ${sessionInfo.wordsInSession}`;
+            sessionText = `الجلسة ${sessionInfo.sessionNumber} من ${sessionInfo.totalSessions} • ${this.getCategoryName()}`;
+        }
+        
         return `
             <div class="flashcard-progress-section">
                 <div class="flashcard-progress-info">
-                    <span class="progress-text">الكلمة ${this.currentIndex + 1} من ${this.state.totalWords}</span>
-                    <span class="category-text">${this.getCategoryName()}</span>
+                    <span class="progress-text">${progressText}</span>
+                    <span class="category-text">${sessionText}</span>
                 </div>
                 <div class="flashcard-progress-bar">
                     <div class="flashcard-progress-fill" style="width: ${progress}%"></div>
@@ -112,7 +129,26 @@ class FlashcardMode extends LearningModeBase {
             return '<div class="no-words-message">لا توجد كلمات متاحة</div>';
         }
         
-        const hasExample = currentWord.example && currentWord.exampleArabic;
+        // Debug: Log the word structure to verify data
+        console.log('🔍 Rendering flashcard with word data:', {
+            turkish: currentWord.turkish,
+            arabic: currentWord.arabic,
+            turkishSentence: currentWord.turkishSentence,
+            arabicSentence: currentWord.arabicSentence,
+            pronunciation: currentWord.pronunciation,
+            vowelHarmony: currentWord.vowelHarmony,
+            difficultyLevel: currentWord.difficultyLevel,
+            emoji: currentWord.emoji,
+            example: currentWord.example
+        });
+        
+        // Debug: Check which sentence will be displayed
+        const displayText = currentWord.turkishSentence || currentWord.example || currentWord.turkish;
+        console.log('📝 Flashcard will display:', displayText, 'from field:', 
+            currentWord.turkishSentence ? 'turkishSentence' : 
+            currentWord.example ? 'example' : 'turkish');
+        
+        const hasExample = currentWord.turkishSentence && currentWord.arabicSentence;
         const icon = currentWord.icon || 'fas fa-language';
         const emoji = currentWord.emoji || '📚';
         
@@ -124,8 +160,13 @@ class FlashcardMode extends LearningModeBase {
                         <div class="flashcard-icon-container">
                             <div class="word-icon emoji">${emoji}</div>
                         </div>
-                        <div class="flashcard-turkish">${currentWord.turkish}</div>
-                        <div class="flashcard-pronunciation">[${currentWord.pronunciation}]</div>
+                        <div class="flashcard-turkish">${currentWord.turkishSentence || currentWord.example || currentWord.turkish}</div>
+                        ${currentWord.pronunciation && currentWord.pronunciation !== 'undefined' ? 
+                            `<div class="flashcard-pronunciation">[${currentWord.pronunciation}]</div>` :
+                            currentWord.vowelHarmony && currentWord.vowelHarmony !== 'undefined' ? 
+                                `<div class="flashcard-vowel-harmony">${currentWord.vowelHarmony}</div>` :
+                                ''
+                        }
                         <div class="tts-controls">
                             <button class="tts-btn tts-word-btn" data-action="speak-word" title="استمع للكلمة">
                                 <i class="fas fa-volume-up"></i>
@@ -144,19 +185,23 @@ class FlashcardMode extends LearningModeBase {
                                 }
                             </div>
                             <div class="flashcard-arabic-main">${currentWord.arabic}</div>
+                            ${currentWord.difficultyLevel ? 
+                                `<div class="flashcard-difficulty-level">${currentWord.difficultyLevel}</div>` :
+                                ''
+                            }
                         </div>
                         
                         ${hasExample ? `
                             <div class="flashcard-example-elevated">
                                 <div class="turkish-example-elevated">
-                                    <div class="example-text-elevated">${currentWord.example}</div>
+                                    <div class="example-text-elevated">${currentWord.turkishSentence}</div>
                                     <button class="tts-btn tts-example-elevated" data-action="speak-sentence" title="استمع للمثال">
                                         <i class="fas fa-volume-up"></i>
                                     </button>
                                 </div>
                                 
                                 <div class="arabic-translation-elevated">
-                                    <div class="example-arabic-elevated">${currentWord.exampleArabic}</div>
+                                    <div class="example-arabic-elevated">${currentWord.arabicSentence}</div>
                                 </div>
                             </div>
                         ` : `
@@ -180,8 +225,13 @@ class FlashcardMode extends LearningModeBase {
         return `
             <div class="flashcard-controls">
                 <button class="btn-flashcard-control" data-action="previous" ${this.currentIndex === 0 ? 'disabled' : ''}>
-                    <i class="fas fa-chevron-left"></i>
+                    <i class="fas fa-chevron-right"></i>
                     <span>السابق</span>
+                </button>
+                
+                <button class="btn-flashcard-control" data-action="hint">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>تلميح</span>
                 </button>
                 
                 <button class="btn-flashcard-control flip-btn" data-action="flip">
@@ -190,7 +240,7 @@ class FlashcardMode extends LearningModeBase {
                 </button>
                 
                 <button class="btn-flashcard-control" data-action="next" ${this.currentIndex >= this.words.length - 1 ? 'disabled' : ''}>
-                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-left"></i>
                     <span>التالي</span>
                 </button>
             </div>
@@ -210,17 +260,17 @@ class FlashcardMode extends LearningModeBase {
                     <button class="btn-difficulty btn-hard" data-difficulty="hard">
                         <i class="fas fa-times-circle"></i>
                         <span>صعب</span>
-                        <small>سأراجعها قريباً</small>
+                        <small>مراجعة</small>
                     </button>
                     <button class="btn-difficulty btn-medium" data-difficulty="medium">
                         <i class="fas fa-minus-circle"></i>
                         <span>متوسط</span>
-                        <small>أحتاج مراجعة</small>
+                        <small>تكرار</small>
                     </button>
                     <button class="btn-difficulty btn-easy" data-difficulty="easy">
                         <i class="fas fa-check-circle"></i>
                         <span>سهل</span>
-                        <small>أتقنتها!</small>
+                        <small>أتقنت</small>
                     </button>
                 </div>
             </div>
@@ -264,6 +314,9 @@ class FlashcardMode extends LearningModeBase {
             case 'flip':
                 this.flipCard();
                 break;
+            case 'hint':
+                this.showHint();
+                break;
             case 'speak-word':
                 this.pronounceCurrentWord();
                 break;
@@ -277,13 +330,22 @@ class FlashcardMode extends LearningModeBase {
      * Handle flashcard click for flipping
      */
     handleFlashcardClick(event) {
-        if (!this.settings.flipOnClick) return;
+        console.log('👆 Flashcard clicked! Settings flipOnClick:', this.settings.flipOnClick);
         
-        const flashcard = event.target.closest('.flashcard');
-        if (!flashcard || flashcard.classList.contains('transitioning')) {
+        if (!this.settings.flipOnClick) {
+            console.log('🚫 Flip on click is disabled');
             return;
         }
         
+        const flashcard = event.target.closest('.flashcard');
+        console.log('📱 Flashcard element found:', !!flashcard);
+        
+        if (!flashcard || flashcard.classList.contains('transitioning')) {
+            console.log('🚫 Cannot flip: no flashcard or transitioning');
+            return;
+        }
+        
+        console.log('✅ Calling flipCard()');
         this.flipCard();
     }
     
@@ -348,8 +410,11 @@ class FlashcardMode extends LearningModeBase {
     flipCard() {
         const flashcard = this.container.querySelector('.flashcard');
         if (!flashcard || flashcard.classList.contains('transitioning')) {
+            console.log('🚫 Flip blocked: flashcard not found or transitioning');
             return;
         }
+        
+        console.log('🔄 Flipping flashcard - current state:', this.isFlipped ? 'flipped' : 'front');
         
         // Add transitioning state
         flashcard.classList.add('transitioning');
@@ -358,16 +423,24 @@ class FlashcardMode extends LearningModeBase {
         this.isFlipped = !this.isFlipped;
         flashcard.classList.toggle('flipped', this.isFlipped);
         
-        // Play appropriate audio
-        if (this.settings.enableTTS && window.turkishTTS) {
-            setTimeout(() => {
-                if (this.isFlipped) {
-                    this.pronounceCurrentSentence();
+        console.log('✅ Flip complete - new state:', this.isFlipped ? 'flipped' : 'front');
+        
+        // Auto-play audio when flipping
+        setTimeout(() => {
+            if (this.isFlipped) {
+                // Play the Turkish example sentence when showing back side (Arabic translation)
+                const currentWord = this.getCurrentWord();
+                const hasExample = currentWord?.turkishSentence || currentWord?.example;
+                
+                if (hasExample) {
+                    console.log('🔊 Auto-playing Turkish example sentence...');
+                    this.pronounceCurrentSentence(); // Play the Turkish sentence example
                 } else {
-                    this.pronounceCurrentWord();
+                    console.log('🔊 Auto-playing Turkish word pronunciation...');
+                    this.pronounceCurrentWord(); // Fallback to single word if no example
                 }
-            }, 200);
-        }
+            }
+        }, 300); // Slightly longer delay for smooth transition
         
         // Remove transitioning state
         setTimeout(() => {
@@ -411,13 +484,63 @@ class FlashcardMode extends LearningModeBase {
      */
     async pronounceCurrentWord() {
         const currentWord = this.getCurrentWord();
-        if (currentWord && window.speakTurkishWord) {
-            try {
+        if (!currentWord?.turkish) return;
+        
+        try {
+            // Try multiple TTS approaches
+            if (window.speakTurkishWord) {
                 await window.speakTurkishWord(currentWord.turkish);
-            } catch (error) {
-                console.log('Word pronunciation failed:', error);
+                console.log('🔊 Playing audio with Turkish TTS:', currentWord.turkish);
+            } else {
+                // Always use browser TTS as fallback
+                this.speakWithBrowserTTS(currentWord.turkish);
             }
+        } catch (error) {
+            console.log('Primary TTS failed, using browser fallback:', error);
+            this.speakWithBrowserTTS(currentWord.turkish);
         }
+    }
+    
+    /**
+     * Speak text using browser's Speech Synthesis API
+     */
+    speakWithBrowserTTS(text) {
+        if (!text || !window.speechSynthesis) {
+            console.log('Browser TTS not available');
+            return;
+        }
+        
+        // Stop any ongoing speech
+        window.speechSynthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'tr-TR';
+        
+        // Adjust rate based on text length for better comprehension
+        if (text.length > 20) {
+            utterance.rate = 0.7; // Slower for longer sentences
+        } else {
+            utterance.rate = 0.8; // Standard rate for single words
+        }
+        
+        utterance.pitch = 1;
+        utterance.volume = 1;
+        
+        // Add event listeners for debugging
+        utterance.onstart = () => {
+            const textType = text.length > 20 ? 'sentence' : 'word';
+            console.log(`🔊 Browser TTS started playing ${textType}:`, text.substring(0, 50) + (text.length > 50 ? '...' : ''));
+        };
+        
+        utterance.onend = () => {
+            console.log('✅ Browser TTS finished playing');
+        };
+        
+        utterance.onerror = (error) => {
+            console.log('❌ Browser TTS error:', error.error || error);
+        };
+        
+        window.speechSynthesis.speak(utterance);
     }
     
     /**
@@ -425,13 +548,76 @@ class FlashcardMode extends LearningModeBase {
      */
     async pronounceCurrentSentence() {
         const currentWord = this.getCurrentWord();
-        if (currentWord && currentWord.example && window.speakTurkishSentence) {
-            try {
-                await window.speakTurkishSentence(currentWord.example);
-            } catch (error) {
-                console.log('Sentence pronunciation failed:', error);
-            }
+        // Prioritize Excel data field (turkishSentence) over legacy field (example)
+        const sentence = currentWord?.turkishSentence || currentWord?.example;
+        
+        if (!sentence) {
+            console.log('⚠️ No Turkish sentence example found for this word');
+            return;
         }
+        
+        console.log('🎯 Playing Turkish example sentence:', sentence);
+        
+        try {
+            // Try multiple TTS approaches for the sentence
+            if (window.speakTurkishSentence) {
+                await window.speakTurkishSentence(sentence);
+                console.log('🔊 Sentence played with Turkish TTS service');
+            } else if (window.speakTurkishWord) {
+                await window.speakTurkishWord(sentence);
+                console.log('🔊 Sentence played with Turkish word TTS');
+            } else {
+                // Always use browser TTS as fallback for sentences
+                this.speakWithBrowserTTS(sentence);
+            }
+        } catch (error) {
+            console.log('Primary sentence TTS failed, using browser fallback:', error);
+            this.speakWithBrowserTTS(sentence);
+        }
+    }
+    
+    /**
+     * Show hint for current word
+     */
+    showHint() {
+        const currentWord = this.getCurrentWord();
+        if (!currentWord) return;
+        
+        let hintText = '';
+        
+        // Build hint based on available data
+        if (currentWord.difficultyLevel) {
+            hintText += `📊 المستوى: ${currentWord.difficultyLevel}\n`;
+        }
+        
+        if (currentWord.vowelHarmony) {
+            hintText += `🎵 قاعدة الصوت: ${currentWord.vowelHarmony}\n`;
+        }
+        
+        if (currentWord.pronunciation) {
+            hintText += `🔊 النطق: [${currentWord.pronunciation}]\n`;
+        }
+        
+        // Show first few letters of Arabic as additional hint
+        if (currentWord.arabic) {
+            const arabicHint = currentWord.arabic.substring(0, Math.ceil(currentWord.arabic.length / 2)) + '...';
+            hintText += `💡 تلميح الترجمة: ${arabicHint}`;
+        }
+        
+        if (!hintText) {
+            hintText = '💡 لا توجد تلميحات إضافية متاحة لهذه الكلمة';
+        }
+        
+        // Show hint in notification
+        this.showNotification(hintText, 'info');
+        
+        // Also pronounce the word as an audio hint
+        this.pronounceCurrentWord();
+        
+        this.trackEvent('hint_used', { 
+            wordId: currentWord?.id,
+            turkish: currentWord?.turkish 
+        });
     }
     
     /**
@@ -464,7 +650,8 @@ class FlashcardMode extends LearningModeBase {
             completed: this.responses.length,
             accuracy: Math.round(accuracy),
             timeSpent: Math.round((Date.now() - this.startTime) / 1000 / 60),
-            responses: this.responses
+            responses: this.responses,
+            sessionInfo: this.data.sessionInfo // Include session information
         };
         
         // Show completion screen
@@ -481,17 +668,97 @@ class FlashcardMode extends LearningModeBase {
      * Show session completion screen
      */
     showCompletionScreen(stats) {
+        // Check if there are more sessions available
+        const sessionInfo = stats.sessionInfo;
+        const hasNextSession = sessionInfo && sessionInfo.sessionNumber < sessionInfo.totalSessions;
+        
+        // Create session progress display
+        let sessionProgressHTML = '';
+        if (sessionInfo) {
+            sessionProgressHTML = `
+                <div class="session-progress">
+                    <p class="session-completed">تم إكمال الجلسة ${sessionInfo.sessionNumber} من ${sessionInfo.totalSessions}</p>
+                    ${hasNextSession ? 
+                        `<p class="next-session-available">الجلسة التالية متاحة الآن!</p>` : 
+                        `<p class="all-sessions-completed">🎉 تم إكمال جميع الجلسات في هذه الفئة!</p>`
+                    }
+                </div>
+            `;
+        }
+        
+        // Create next session button if available
+        let nextSessionButton = '';
+        if (hasNextSession) {
+            nextSessionButton = `
+                <button class="btn-action btn-success" data-action="next-session">
+                    <i class="fas fa-arrow-left"></i>
+                    بدء الجلسة التالية (${sessionInfo.sessionNumber + 1}/${sessionInfo.totalSessions})
+                </button>
+            `;
+        }
+        
         const completionHTML = `
+            <style>
+                .session-progress {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 15px;
+                    border-radius: 10px;
+                    margin: 15px 0;
+                    text-align: center;
+                }
+                .session-completed {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin: 0 0 5px 0;
+                }
+                .next-session-available {
+                    font-size: 14px;
+                    margin: 5px 0 0 0;
+                    opacity: 0.9;
+                }
+                .all-sessions-completed {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin: 0;
+                }
+                .btn-success {
+                    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+                    color: white !important;
+                    border: none !important;
+                    font-weight: bold;
+                    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+                    transform: scale(1.05);
+                }
+                .btn-success:hover {
+                    transform: scale(1.08);
+                    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+                }
+                .loading-next-session {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 300px;
+                    text-align: center;
+                }
+                .loading-content {
+                    padding: 40px;
+                    background: white;
+                    border-radius: 15px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                }
+            </style>
             <div class="flashcard-completion">
                 <div class="completion-header">
                     <i class="fas fa-trophy text-6xl text-yellow-500 mb-4"></i>
                     <h2 class="text-2xl font-bold text-gray-800 mb-2">أحسنت! تم إكمال الجلسة</h2>
                     <p class="text-gray-600">فئة: ${this.getCategoryName()}</p>
+                    ${sessionProgressHTML}
                 </div>
                 
                 <div class="completion-stats">
                     <div class="stat-item">
-                        <span class="stat-label">إجمالي الكلمات:</span>
+                        <span class="stat-label">كلمات هذه الجلسة:</span>
                         <span class="stat-value">${stats.totalWords}</span>
                     </div>
                     <div class="stat-item">
@@ -509,6 +776,7 @@ class FlashcardMode extends LearningModeBase {
                 </div>
                 
                 <div class="completion-actions">
+                    ${nextSessionButton}
                     <button class="btn-action btn-primary" data-action="restart">
                         <i class="fas fa-redo"></i>
                         إعادة الجلسة
@@ -533,6 +801,9 @@ class FlashcardMode extends LearningModeBase {
             const action = event.target.closest('[data-action]')?.getAttribute('data-action');
             
             switch (action) {
+                case 'next-session':
+                    this.startNextSession();
+                    break;
                 case 'restart':
                     this.restart();
                     break;
@@ -556,6 +827,88 @@ class FlashcardMode extends LearningModeBase {
         this.shuffleWords();
         this.render();
         this.trackEvent('session_restarted');
+    }
+    
+    /**
+     * Start next session in the same category
+     */
+    async startNextSession() {
+        const sessionInfo = this.data.sessionInfo;
+        
+        if (!sessionInfo || sessionInfo.sessionNumber >= sessionInfo.totalSessions) {
+            console.log('❌ No next session available');
+            return;
+        }
+        
+        // Mark current session as completed
+        this.markSessionCompleted(sessionInfo);
+        
+        // Show loading state
+        this.container.innerHTML = `
+            <div class="loading-next-session">
+                <div class="loading-content">
+                    <i class="fas fa-spinner fa-spin text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">جارٍ تحضير الجلسة التالية...</h3>
+                    <p class="text-gray-600">الجلسة ${sessionInfo.sessionNumber + 1} من ${sessionInfo.totalSessions}</p>
+                </div>
+            </div>
+        `;
+        
+        // Wait a moment for visual feedback
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Restart the learning flow for the same category
+        // This will automatically pick up the next session
+        if (window.TurkishLearningApp && window.TurkishLearningApp.startLearning) {
+            console.log('🎯 Starting next session for category:', this.data.category);
+            
+            // Set the category in the UI
+            const categorySelect = document.getElementById('category-select');
+            const modeSelect = document.getElementById('learning-mode');
+            
+            if (categorySelect && modeSelect) {
+                categorySelect.value = this.data.category;
+                modeSelect.value = 'flashcard';
+                
+                // Trigger the learning flow
+                window.TurkishLearningApp.startLearning();
+            }
+        }
+    }
+    
+    /**
+     * Mark session as completed and save progress
+     */
+    markSessionCompleted(sessionInfo) {
+        try {
+            // Get existing progress
+            let progress = JSON.parse(localStorage.getItem('turkishLearningProgress') || '{}');
+            
+            // Initialize structure if needed
+            if (!progress.categoryProgress) {
+                progress.categoryProgress = {};
+            }
+            if (!progress.categoryProgress[sessionInfo.categoryId]) {
+                progress.categoryProgress[sessionInfo.categoryId] = {
+                    completedSessions: [],
+                    currentSession: null
+                };
+            }
+            
+            // Mark session as completed
+            const completedSessions = progress.categoryProgress[sessionInfo.categoryId].completedSessions;
+            if (!completedSessions.includes(sessionInfo.sessionId)) {
+                completedSessions.push(sessionInfo.sessionId);
+            }
+            
+            // Save progress
+            localStorage.setItem('turkishLearningProgress', JSON.stringify(progress));
+            
+            console.log(`✅ Session ${sessionInfo.sessionNumber} marked as completed for ${sessionInfo.categoryId}`);
+            
+        } catch (error) {
+            console.error('❌ Error saving session progress:', error);
+        }
     }
     
     /**

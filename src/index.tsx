@@ -693,6 +693,76 @@ app.get('/', (c) => {
         <meta name="apple-mobile-web-app-status-bar-style" content="default">
         <meta name="apple-mobile-web-app-title" content="تعلم التركية">
         
+        <!-- CRITICAL UI FIXES - INLINE STYLES FOR IMMEDIATE APPLICATION -->
+        <style>
+        /* FORCE HORIZONTAL DIFFICULTY BUTTONS */
+        .difficulty-buttons {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 12px !important;
+            flex-wrap: wrap !important;
+            align-items: stretch !important;
+        }
+        
+        .btn-difficulty {
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 !important;
+            min-width: 85px !important;
+            max-width: 120px !important;
+            min-height: 80px !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        /* MOBILE RESPONSIVE - KEEP HORIZONTAL */
+        @media (max-width: 768px) {
+            .difficulty-buttons {
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                gap: 8px !important;
+            }
+            
+            .btn-difficulty {
+                min-width: 70px !important;
+                max-width: 85px !important;
+                flex: 1 !important;
+            }
+        }
+        
+        /* NAVIGATION BUTTONS - SAME STYLE AS DIFFICULTY BUTTONS */
+        .flashcard-controls {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 12px !important;
+        }
+        
+        .flashcard-controls .btn-flashcard-control {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-width: 80px !important;
+            min-height: 75px !important;
+            border: 3px solid #E5E7EB !important;
+            border-radius: 16px !important;
+            background: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            font-size: 12px !important;
+            gap: 6px !important;
+        }
+        
+        .flashcard-controls .btn-flashcard-control:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .flashcard-controls .btn-flashcard-control i {
+            font-size: 18px !important;
+        }
+        </style>
+        
         <!-- Configure Tailwind for RTL -->
         <script>
             tailwind.config = {
@@ -778,6 +848,10 @@ app.get('/', (c) => {
                     <button class="nav-link" data-section="conversation">
                         <i class="fas fa-comments"></i>
                         محادثة
+                    </button>
+                    <button class="nav-link" data-section="phrase">
+                        <i class="fas fa-quote-left"></i>
+                        العبارات
                     </button>
                     <button class="nav-link" data-section="profile">
                         <i class="fas fa-user-circle"></i>
@@ -1411,8 +1485,11 @@ app.get('/', (c) => {
         <script src="/static/visual-ux-system.js"></script>
         <script src="/static/enhanced-content-system.js"></script>
         
-        <!-- Enhanced Vocabulary Database with Sessions (1,126 Turkish words, 20 categories, 120 sessions) -->
+        <!-- Enhanced Vocabulary Database with Sessions (1,126 Turkish words, 31 categories, 127 sessions) -->
         <script src="/static/enhanced-vocabulary-with-sessions.js"></script>
+        
+        <!-- Difficulty-Based Session Management System -->
+        <script src="/static/difficulty-based-session-manager.js"></script>
         
         <!-- New Modular Learning System -->
         <script src="/static/word-svg-icons.js"></script>
@@ -1434,9 +1511,6 @@ app.get('/', (c) => {
         
         <!-- Main App (must be last) -->
         <script src="/static/app-modern.js"></script>
-        
-        <!-- Debug Learning Script (for development) -->
-        <script src="/static/debug-learning.js"></script>
         
 
 

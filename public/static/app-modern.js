@@ -187,8 +187,74 @@ const TurkishLearningApp = {
                 window.currentReviewSession = null;
             }
             
-            this.showSection(section);
+            // Special handling for phrase mode
+            if (section === 'phrase') {
+                // Navigate to learn section with phrase mode preselected
+                this.showSection('learn');
+                // Wait for section to be visible then setup phrase mode
+                setTimeout(() => {
+                    this.setupPhraseMode();
+                }, 300);
+            } else {
+                this.showSection(section);
+            }
         }
+    },
+    
+    // Setup phrase mode specifically
+    setupPhraseMode() {
+        console.log('Setting up phrase mode...');
+        
+        // Set learning mode to phrase
+        const modeSelect = document.getElementById('learning-mode');
+        if (modeSelect) {
+            modeSelect.value = 'phrase';
+        }
+        
+        // Select a default category for phrase mode (preferably one with good phrase content)
+        const categorySelect = document.getElementById('category-select');
+        const startBtn = document.getElementById('start-learning');
+        
+        if (categorySelect && categorySelect.options.length > 1) {
+            // Try to find a good category for phrases (food, travel, greetings etc.)
+            const preferredCategories = ['food', 'travel', 'greetings', 'family', 'conversation'];
+            let categorySelected = false;
+            
+            for (const category of preferredCategories) {
+                for (let i = 0; i < categorySelect.options.length; i++) {
+                    if (categorySelect.options[i].value === category) {
+                        categorySelect.value = category;
+                        categorySelected = true;
+                        break;
+                    }
+                }
+                if (categorySelected) break;
+            }
+            
+            // If no preferred category found, use first available
+            if (!categorySelected) {
+                categorySelect.value = categorySelect.options[1].value;
+            }
+            
+            if (startBtn) {
+                startBtn.disabled = false;
+                
+                // Highlight the start button
+                startBtn.style.animation = 'pulse 2s infinite';
+                setTimeout(() => {
+                    startBtn.style.animation = '';
+                }, 4000);
+            }
+        }
+        
+        // Scroll to learning controls
+        const learningControls = document.querySelector('.learning-controls');
+        if (learningControls) {
+            learningControls.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Show success message
+        this.showSuccess('تم اختيار نمط العبارات والتعابير - اختر فئة وابدأ التعلم! 📝');
     },
     
     // Load data from API
@@ -211,16 +277,17 @@ const TurkishLearningApp = {
                 window.vocabularyData = this.vocabularyData;
                 window.vocabularySessions = this.vocabularySessions;
                 window.categoryMetadata = this.categoryMetadata;
-                window.vocabularyMetadata = window.vocabularyMetadata;
+                // Backward compatibility: map new meta to old meta
+                window.vocabularyMetadata = window.enhancedVocabularyMeta;
                 window.difficultyLevels = window.difficultyLevels;
                 window.vowelHarmonyRules = window.vowelHarmonyRules;
                 window.SessionManager = window.SessionManager;
                 
                 console.log(`✅ Enhanced database with sessions loaded:`);
-                console.log(`   📚 ${window.vocabularyMetadata.totalWords} words`);
-                console.log(`   📂 ${window.vocabularyMetadata.totalCategories} categories`); 
-                console.log(`   🎯 ${window.vocabularyMetadata.totalSessions} sessions`);
-                console.log(`   📝 ${window.vocabularyMetadata.wordsPerSession} words per session`);
+                console.log(`   📚 ${window.enhancedVocabularyMeta.totalWords} words`);
+                console.log(`   📂 ${window.enhancedVocabularyMeta.totalCategories} categories`); 
+                console.log(`   🎯 ${window.enhancedVocabularyMeta.totalSessions} sessions`);
+                console.log(`   📝 ${window.enhancedVocabularyMeta.wordsPerSession} words per session`);
             } else {
                 console.warn('⚠️  Enhanced vocabulary database with sessions not loaded, using fallback API');
                 // Fallback to API if enhanced database is not available
@@ -243,9 +310,9 @@ const TurkishLearningApp = {
             // Calculate total words and sessions from enhanced database
             let totalWords = 0;
             let totalSessions = 0;
-            if (window.vocabularyMetadata) {
-                totalWords = window.vocabularyMetadata.totalWords;
-                totalSessions = window.vocabularyMetadata.totalSessions;
+            if (window.enhancedVocabularyMeta) {
+                totalWords = window.enhancedVocabularyMeta.totalWords;
+                totalSessions = window.enhancedVocabularyMeta.totalSessions;
             } else {
                 // Fallback: count words in vocabularyData
                 totalWords = Object.values(this.vocabularyData).reduce((sum, categoryWords) => sum + categoryWords.length, 0);
@@ -441,7 +508,8 @@ const TurkishLearningApp = {
     
     // Start learning session
     startLearning() {
-        console.log('🚀 startLearning() called');
+        console.log('🚀 Starting learning session...');
+
         
         const categorySelect = document.getElementById('category-select');
         const modeSelect = document.getElementById('learning-mode');
@@ -490,6 +558,8 @@ const TurkishLearningApp = {
         console.log('Selected mode:', mode);
         console.log('Sample words:', categoryWords.slice(0, 3));
         
+
+        
         // Show loading state
         startBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحضير...';
         startBtn.disabled = true;
@@ -501,15 +571,92 @@ const TurkishLearningApp = {
             setTimeout(() => controlsGrid.classList.remove('success'), 600);
         }
         
+        // Get session-based words using difficulty-based session manager
+        let sessionData = null;
+        let sessionWords = categoryWords;
+        let sessionInfo = null;
+        
+
+        
+        // Check if session manager is available and use it for session-based learning
+        if (window.vocabularySessions && window.vocabularySessions.createSessionsFromWords) {
+            try {
+                console.log(`🔍 Session manager available, creating sessions for ${categoryId} with ${categoryWords.length} words`);
+
+                
+                // Create sessions for this category
+
+                
+                const sessions = window.vocabularySessions.createSessionsFromWords(categoryWords, categoryId);
+                console.log(`📚 Created ${sessions.length} sessions for category ${categoryId}`);
+                
+                // Get user progress for this category
+                const savedProgress = localStorage.getItem('turkishLearningProgress');
+                let categoryProgress = {};
+                if (savedProgress) {
+                    const progress = JSON.parse(savedProgress);
+                    categoryProgress = progress.categoryProgress || {};
+                }
+                
+                // Find the next unfinished session (or start with session 1)
+                let currentSessionIndex = 0;
+                const completedSessions = categoryProgress[categoryId]?.completedSessions || [];
+                
+                // Find first incomplete session
+                for (let i = 0; i < sessions.length; i++) {
+                    if (!completedSessions.includes(sessions[i].id)) {
+                        currentSessionIndex = i;
+                        break;
+                    }
+                }
+                
+                // If all sessions completed, restart from session 1
+                if (currentSessionIndex >= sessions.length) {
+                    currentSessionIndex = 0;
+                }
+                
+                const currentSession = sessions[currentSessionIndex];
+                sessionWords = currentSession.words;
+                sessionInfo = {
+                    sessionNumber: currentSessionIndex + 1,
+                    totalSessions: sessions.length,
+                    sessionId: currentSession.id,
+                    wordsInSession: currentSession.words.length
+                };
+                
+                // Also store the complete session object for the modular system
+                sessionData = {
+                    ...currentSession,
+                    sessionNumber: currentSessionIndex + 1,
+                    totalSessions: sessions.length
+                };
+                
+                console.log(`🎯 Starting session ${sessionInfo.sessionNumber}/${sessionInfo.totalSessions} with ${sessionInfo.wordsInSession} words`);
+                console.log('📋 Session info object:', sessionInfo);
+                console.log('🔗 Session words sample:', sessionWords.slice(0, 2));
+
+            } catch (error) {
+                console.warn('⚠️ Session manager error, falling back to full category:', error);
+
+            }
+        } else {
+            console.log('⚠️ Session manager not available, using full category words.');
+        }
+        
         // Prepare data for learning session
         const learningData = {
             category: categoryId,
-            words: categoryWords
+            words: sessionWords,
+            sessionInfo: sessionInfo,
+            session: sessionData  // Add session object for modular system
         };
+        
+
         
         // Start learning session
         if (window.startLearningSession) {
             try {
+
                 const result = window.startLearningSession(learningData, mode);
                 
                 // Show success feedback

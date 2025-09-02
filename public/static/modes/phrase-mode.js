@@ -82,21 +82,25 @@ class PhraseMode extends LearningModeBase {
     convertWordsToPhases(words) {
         return words.map(word => ({
             id: `phrase_${word.id}`,
-            turkish: word.example || word.turkish,
-            arabic: word.exampleArabic || word.arabic,
+            turkish: word.turkishSentence || word.example || word.turkish,
+            arabic: word.arabicSentence || word.exampleArabic || word.arabic,
             english: word.english,
-            pronunciation: word.pronunciation,
+            pronunciation: word.pronunciation || null,
             category: this.data.category || 'general',
-            difficulty: 'beginner',
+            difficulty: word.difficultyLevel ? (word.difficultyLevel.includes('A') ? 'beginner' : word.difficultyLevel.includes('B') ? 'intermediate' : 'advanced') : 'beginner',
             context: 'conversational',
             usage: `Using "${word.turkish}" in everyday conversation`,
             word: word.turkish,
             wordMeaning: word.arabic,
-            examples: word.example ? [{
+            examples: word.turkishSentence ? [{
                 situation: 'Everyday usage',
+                turkish: word.turkishSentence,
+                arabic: word.arabicSentence || word.arabic
+            }] : (word.example ? [{
+                situation: 'Everyday usage', 
                 turkish: word.example,
                 arabic: word.exampleArabic || word.arabic
-            }] : [],
+            }] : []),
             icon: word.icon,
             emoji: word.emoji
         }));
@@ -427,7 +431,7 @@ class PhraseMode extends LearningModeBase {
                     <div class="phrase-front">
                         <div class="phrase-turkish-section">
                             <div class="phrase-turkish">${currentPhrase.turkish}</div>
-                            <div class="phrase-pronunciation">[${currentPhrase.pronunciation}]</div>
+                            ${currentPhrase.pronunciation ? `<div class="phrase-pronunciation">[${currentPhrase.pronunciation}]</div>` : ''}
                         </div>
                         
                         <div class="phrase-context-badges">
