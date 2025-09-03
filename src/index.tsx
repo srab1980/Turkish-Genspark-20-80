@@ -1231,7 +1231,59 @@ app.get('/', (c) => {
                                                 جلسة جديدة
                                             </button>
                                             
-                                            <button onclick="window.flashcardMode && window.flashcardMode.restart()" style="
+                                            <button onclick="(function() {
+                                                console.log('🔄 Restart Session Button clicked - trying multiple methods...');
+                                                
+                                                // Method 1: Try current flashcard mode instance restart
+                                                if (window.flashcardModeNew && typeof window.flashcardModeNew.restart === 'function') {
+                                                    console.log('🎯 Trying flashcardModeNew restart...');
+                                                    try {
+                                                        window.flashcardModeNew.restart();
+                                                        console.log('✅ FlashcardModeNew restart succeeded');
+                                                        return;
+                                                    } catch (e) {
+                                                        console.log('❌ FlashcardModeNew restart failed:', e.message);
+                                                    }
+                                                }
+                                                
+                                                // Method 2: Try legacy flashcard mode restart
+                                                if (window.flashcardMode && typeof window.flashcardMode.restart === 'function') {
+                                                    console.log('🗺 Trying legacy flashcardMode restart...');
+                                                    try {
+                                                        window.flashcardMode.restart();
+                                                        console.log('✅ Legacy flashcardMode restart succeeded');
+                                                        return;
+                                                    } catch (e) {
+                                                        console.log('❌ Legacy flashcardMode restart failed:', e.message);
+                                                    }
+                                                }
+                                                
+                                                // Method 3: Use new session function with same category as fallback
+                                                if (window.startNewFlashcardSession) {
+                                                    console.log('🔄 Using startNewFlashcardSession as restart fallback...');
+                                                    try {
+                                                        const result = window.startNewFlashcardSession({ categoryId: 'greetings' });
+                                                        if (result) {
+                                                            console.log('✅ Restart via new session succeeded');
+                                                            return;
+                                                        }
+                                                    } catch (e) {
+                                                        console.log('❌ Restart via new session failed:', e.message);
+                                                    }
+                                                }
+                                                
+                                                // Method 4: Direct navigation fallback
+                                                console.log('🆘 Using direct navigation for restart...');
+                                                if (window.showSection) {
+                                                    const completionScreens = document.querySelectorAll('.completion-screen, [id*=\"completion\"]');
+                                                    completionScreens.forEach(s => s.style && (s.style.display = 'none'));
+                                                    window.showSection('learn');
+                                                    console.log('✅ Restart via navigation completed');
+                                                } else {
+                                                    console.log('❌ No restart method available');
+                                                    alert('يرجى الانتقال يدوياً إلى قسم التعلم لإعادة الجلسة');
+                                                }
+                                            })()" style="
                                                 background: linear-gradient(135deg, #4f46e5, #7c3aed);
                                                 color: white;
                                                 border: none;
@@ -1502,28 +1554,57 @@ app.get('/', (c) => {
                     window.startNewFlashcardSession = function(options = {}) {
                         console.log('🚀 Starting new flashcard session...', options);
                         
-                        // DIAGNOSTIC: Check vocabulary data availability
-                        console.log('🔍 VOCABULARY DATA DIAGNOSTIC:');
+                        // COMPREHENSIVE DIAGNOSTIC: Check vocabulary data availability
+                        console.log('🔍 COMPREHENSIVE VOCABULARY DATA DIAGNOSTIC:');
+                        console.log('================================================');
                         console.log('  enhancedVocabularyData exists:', !!window.enhancedVocabularyData);
                         console.log('  enhancedVocabularyData type:', typeof window.enhancedVocabularyData);
                         
                         if (window.enhancedVocabularyData) {
                             const categories = Object.keys(window.enhancedVocabularyData);
-                            console.log('  Available categories (' + categories.length + '):', categories.slice(0, 10));
+                            console.log('  Total categories found:', categories.length);
+                            console.log('  All category names:', categories);
+                            
+                            // Check structure of first few categories
+                            categories.slice(0, 5).forEach(catId => {
+                                const catData = window.enhancedVocabularyData[catId];
+                                console.log(`  Category '${catId}' structure:`, {
+                                    type: typeof catData,
+                                    isNull: catData === null,
+                                    isArray: Array.isArray(catData),
+                                    keys: catData ? Object.keys(catData) : 'N/A',
+                                    hasWords: catData && catData.words,
+                                    wordsLength: catData && catData.words ? catData.words.length : 'N/A',
+                                    firstWord: catData && catData.words && catData.words[0] ? catData.words[0] : 'N/A'
+                                });
+                            });
                             
                             // Check specific categories that we typically use
-                            const testCategories = ['greetings', 'food', 'family', 'colors', 'numbers'];
+                            const testCategories = ['greetings', 'food', 'family', 'colors', 'numbers', 'Greetings', 'Food', 'Family'];
                             testCategories.forEach(cat => {
                                 const data = window.enhancedVocabularyData[cat];
                                 if (data) {
-                                    console.log('  ✅ ' + cat + ':', data.words ? data.words.length + ' words' : 'no words array');
+                                    console.log(`  ✅ Found '${cat}':`, {
+                                        hasWords: !!data.words,
+                                        wordsCount: data.words ? data.words.length : 0,
+                                        sampleWord: data.words && data.words[0] ? data.words[0].turkish || data.words[0] : 'N/A'
+                                    });
                                 } else {
-                                    console.log('  ❌ ' + cat + ': not found');
+                                    console.log(`  ❌ Missing '${cat}'`);
                                 }
                             });
                         } else {
-                            console.log('  ❌ enhancedVocabularyData is not available');
+                            console.log('  ❌ enhancedVocabularyData is not available - checking timing...');
+                            
+                            // Check if it's a timing issue
+                            setTimeout(() => {
+                                console.log('  🔄 Delayed check - enhancedVocabularyData exists:', !!window.enhancedVocabularyData);
+                                if (window.enhancedVocabularyData) {
+                                    console.log('  ⚠️ TIMING ISSUE DETECTED: Data loaded after function call');
+                                }
+                            }, 1000);
                         }
+                        console.log('================================================');
                         
                         // Hide current completion screen immediately
                         const completionScreens = document.querySelectorAll('.completion-screen, [id*="completion"], .flashcard-container, [style*="completion"]');
@@ -1539,9 +1620,36 @@ app.get('/', (c) => {
                             if (area) area.innerHTML = '';
                         });
                         
+                        // WAIT FOR VOCABULARY DATA if not immediately available
+                        if (!window.enhancedVocabularyData || Object.keys(window.enhancedVocabularyData).length === 0) {
+                            console.log('⏳ Vocabulary data not ready, waiting up to 3 seconds...');
+                            
+                            let attempts = 0;
+                            const maxAttempts = 6; // 3 seconds total (500ms * 6)
+                            
+                            const waitForData = () => {
+                                attempts++;
+                                
+                                if (window.enhancedVocabularyData && Object.keys(window.enhancedVocabularyData).length > 0) {
+                                    console.log(`✅ Vocabulary data loaded after ${attempts * 500}ms`);
+                                    // Retry the function now that data is available
+                                    return window.startNewFlashcardSession(options);
+                                } else if (attempts < maxAttempts) {
+                                    console.log(`⏳ Attempt ${attempts}/${maxAttempts} - still waiting...`);
+                                    setTimeout(waitForData, 500);
+                                    return;
+                                } else {
+                                    console.log('❌ Timeout: Vocabulary data never loaded');
+                                    // Continue with fallback methods below
+                                }
+                            };
+                            
+                            setTimeout(waitForData, 500);
+                        }
+                        
                         try {
                             // Method 1: Learning Mode Manager (Most reliable)
-                            if (window.learningModeManager && window.learningModeManager.startMode && window.enhancedVocabularyData) {
+                            if (window.learningModeManager && window.learningModeManager.startMode && window.enhancedVocabularyData && Object.keys(window.enhancedVocabularyData).length > 0) {
                                 console.log('📚 Using Learning Mode Manager...');
                                 
                                 // Get first available category if not specified
@@ -2917,6 +3025,18 @@ app.get('/', (c) => {
         
         <!-- New Modular Learning System -->
         <script src="/static/word-svg-icons.js?v=20250903-063800"></script>
+        <script>
+            // Ensure wordSVGIcons is globally available after loading
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    if (typeof WordSVGIcons !== 'undefined' && !window.wordSVGIcons) {
+                        console.log('🎨 Initializing global wordSVGIcons instance...');
+                        window.wordSVGIcons = new WordSVGIcons();
+                        console.log('✅ wordSVGIcons available globally');
+                    }
+                }, 100);
+            });
+        </script>
         <script src="/static/learning-mode-base.js?v=20250903-063400"></script>
         <script src="/static/learning-mode-manager.js"></script>
         

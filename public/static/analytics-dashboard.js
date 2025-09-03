@@ -118,6 +118,94 @@ class AnalyticsDashboard {
         this.showLevelUpNotification(levelData);
     }
     
+    updateSessionCompletionStats(sessionData) {
+        console.log('📊 Updating session completion stats:', sessionData);
+        
+        // Update real-time stats
+        const currentStats = this.getRealTimeStats();
+        
+        // Update daily progress
+        if (sessionData.wordsCompleted) {
+            currentStats.dailyProgress = (currentStats.dailyProgress || 0) + sessionData.wordsCompleted;
+        }
+        
+        // Update streak if session was successful
+        if (sessionData.accuracy && sessionData.accuracy > 60) {
+            currentStats.currentStreak = Math.max(currentStats.currentStreak, 1);
+        }
+        
+        // Update weekly progress
+        if (sessionData.totalWords) {
+            currentStats.weeklyProgress = (currentStats.weeklyProgress || 0) + sessionData.totalWords;
+        }
+        
+        // Save updated stats
+        localStorage.setItem('realTimeAnalytics', JSON.stringify(currentStats));
+        
+        // Update UI elements
+        this.updateStatsDisplay(currentStats);
+        
+        // Show completion feedback
+        this.showSessionCompletionFeedback(sessionData);
+    }
+    
+    updateStatsDisplay(stats) {
+        // Update daily progress
+        const dailyProgressValue = document.getElementById('daily-progress-value');
+        if (dailyProgressValue) {
+            dailyProgressValue.textContent = stats.dailyProgress || 0;
+        }
+        
+        // Update streak
+        const streakValue = document.getElementById('streak-value');
+        if (streakValue) {
+            streakValue.textContent = stats.currentStreak || 0;
+        }
+        
+        // Update progress bar
+        const progressFill = document.querySelector('.progress-fill');
+        if (progressFill && stats.dailyGoal) {
+            const percentage = Math.min((stats.dailyProgress / stats.dailyGoal) * 100, 100);
+            progressFill.style.width = percentage + '%';
+        }
+    }
+    
+    showSessionCompletionFeedback(sessionData) {
+        // Show a brief success message
+        const feedback = document.createElement('div');
+        feedback.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            z-index: 1000;
+            font-weight: 600;
+            animation: slideInRight 0.3s ease-out;
+            direction: rtl;
+        `;
+        
+        const accuracy = sessionData.accuracy || 0;
+        const emoji = accuracy >= 90 ? '🎆' : accuracy >= 70 ? '🎉' : '💪';
+        
+        feedback.innerHTML = `
+            ${emoji} جلسة مكتملة!<br>
+            <small>دقة: ${accuracy}% | كلمات: ${sessionData.totalWords || 0}</small>
+        `;
+        
+        document.body.appendChild(feedback);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            if (feedback.parentNode) {
+                feedback.remove();
+            }
+        }, 3000);
+    }
+    
     processUpdateQueue() {
         if (this.updateQueue.length > 0) {
             // Process the most recent update

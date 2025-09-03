@@ -361,16 +361,23 @@ class FlashcardModeNew extends LearningModeBase {
     }
     
     getWordIcon(word) {
-        // Use word-specific SVG icons if available
+        console.log('🎨 Getting icon for word:', word.turkish, '- ID:', word.id);
+        
+        // PRIORITY 1: Use word-specific SVG icons
         if (window.wordSVGIcons && window.wordSVGIcons.getIconForWord) {
             try {
                 const svgIcon = window.wordSVGIcons.getIconForWord(word);
                 if (svgIcon) {
+                    console.log('✅ Using word-specific SVG icon for:', word.turkish);
                     return `<div style="width: 64px; height: 64px; color: white;">${svgIcon}</div>`;
+                } else {
+                    console.log('⚠️ No word-specific SVG icon found for:', word.turkish);
                 }
             } catch (error) {
-                console.warn('Error getting word-specific icon:', error);
+                console.warn('❌ Error getting word-specific icon for', word.turkish, ':', error);
             }
+        } else {
+            console.log('❌ wordSVGIcons system not available');
         }
         
         // Fallback to emoji or simple icon
