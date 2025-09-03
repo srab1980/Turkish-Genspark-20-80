@@ -807,6 +807,38 @@ app.get('/', (c) => {
                     font-size: 1rem;
                 }
             }
+            
+            /* FORCE NEW COMPLETION SCREEN DESIGN - OVERRIDE CACHE */
+            .flashcard-completion-new {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                z-index: 1000 !important;
+                padding: 1rem !important;
+                box-sizing: border-box !important;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Arabic', sans-serif !important;
+                overflow-y: auto !important;
+            }
+            
+            .completion-card-new {
+                background: #ffffff !important;
+                border-radius: 20px !important;
+                padding: 2.5rem !important;
+                text-align: center !important;
+                max-width: 600px !important;
+                width: 100% !important;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+                animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+                position: relative !important;
+                overflow: hidden !important;
+                margin: 1rem 0 !important;
+            }
         </style>
         <link href="/static/session-management.css" rel="stylesheet">
         <link href="/static/enhanced-learning-interface.css" rel="stylesheet">
@@ -817,6 +849,23 @@ app.get('/', (c) => {
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="default">
         <meta name="apple-mobile-web-app-title" content="تعلم التركية">
+        
+        <!-- CACHE BUSTING SCRIPT -->
+        <script>
+            // Force clear cache and reload updated files
+            if (performance.navigation.type !== performance.navigation.TYPE_RELOAD) {
+                // Check if we need to force refresh for updated files
+                const cacheKey = 'app_version';
+                const currentVersion = '20250903-063400';
+                const storedVersion = localStorage.getItem(cacheKey);
+                
+                if (storedVersion !== currentVersion) {
+                    localStorage.setItem(cacheKey, currentVersion);
+                    // Force a hard refresh to get new files
+                    window.location.reload(true);
+                }
+            }
+        </script>
         
         <!-- CRITICAL UI FIXES - INLINE STYLES FOR IMMEDIATE APPLICATION -->
         <style>
@@ -1600,8 +1649,8 @@ app.get('/', (c) => {
         <!-- Legacy Learning Systems (for compatibility) -->
         <script src="/static/learning-system.js"></script>
         <script src="/static/conversation-system.js"></script>
-        <script src="/static/realtime-analytics.js"></script>
-        <script src="/static/analytics-dashboard.js"></script>
+        <script src="/static/realtime-analytics.js?v=20250903-1"></script>
+        <script src="/static/analytics-dashboard.js?v=20250903-1"></script>
         <script src="/static/gamification-system.js"></script>
         <script src="/static/visual-ux-system.js"></script>
         <script src="/static/enhanced-content-system.js"></script>
@@ -1613,12 +1662,12 @@ app.get('/', (c) => {
         <script src="/static/difficulty-based-session-manager.js"></script>
         
         <!-- New Modular Learning System -->
-        <script src="/static/word-svg-icons.js"></script>
-        <script src="/static/learning-mode-base.js"></script>
+        <script src="/static/word-svg-icons.js?v=20250903-063800"></script>
+        <script src="/static/learning-mode-base.js?v=20250903-063400"></script>
         <script src="/static/learning-mode-manager.js"></script>
         
         <!-- Learning Mode Containers -->
-        <script src="/static/modes/flashcard-mode.js"></script>
+        <script src="/static/modes/flashcard-mode.js?v=20250903-063400"></script>
         <script src="/static/modes/quiz-mode.js"></script>
         <script src="/static/modes/review-mode.js"></script>
         <script src="/static/modes/conversation-mode.js"></script>
