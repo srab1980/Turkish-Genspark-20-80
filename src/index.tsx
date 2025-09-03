@@ -1170,20 +1170,20 @@ app.get('/', (c) => {
                                             margin-top: 2.5rem;
                                             direction: rtl;
                                         ">
-                                            <button onclick="(function() {
-                                                console.log('🚀 New Session Button clicked - trying multiple methods...');
+                                            <button onclick="(async function() {
+                                                console.log('🚀 New Session Button clicked - using enhanced flow...');
                                                 
-                                                // Method 1: Try comprehensive startNewFlashcardSession
+                                                // Method 1: Try comprehensive startNewFlashcardSession (now async)
                                                 if (window.startNewFlashcardSession && typeof window.startNewFlashcardSession === 'function') {
-                                                    console.log('📚 Trying comprehensive startNewFlashcardSession...');
+                                                    console.log('📚 Trying enhanced startNewFlashcardSession...');
                                                     try {
-                                                        const result = window.startNewFlashcardSession({ categoryId: 'random' });
-                                                        if (result) {
-                                                            console.log('✅ Comprehensive method succeeded');
+                                                        const result = await window.startNewFlashcardSession({ categoryId: 'random' });
+                                                        if (result !== false) {
+                                                            console.log('✅ Enhanced method completed successfully');
                                                             return;
                                                         }
                                                     } catch (e) {
-                                                        console.log('❌ Comprehensive method failed:', e.message);
+                                                        console.log('❌ Enhanced method failed:', e.message);
                                                     }
                                                 }
                                                 
@@ -1231,8 +1231,8 @@ app.get('/', (c) => {
                                                 جلسة جديدة
                                             </button>
                                             
-                                            <button onclick="(function() {
-                                                console.log('🔄 Restart Session Button clicked - trying multiple methods...');
+                                            <button onclick="(async function() {
+                                                console.log('🔄 Restart Session Button clicked - using enhanced flow...');
                                                 
                                                 // Method 1: Try current flashcard mode instance restart
                                                 if (window.flashcardModeNew && typeof window.flashcardModeNew.restart === 'function') {
@@ -1248,7 +1248,7 @@ app.get('/', (c) => {
                                                 
                                                 // Method 2: Try legacy flashcard mode restart
                                                 if (window.flashcardMode && typeof window.flashcardMode.restart === 'function') {
-                                                    console.log('🗺 Trying legacy flashcardMode restart...');
+                                                    console.log('🗺 Trying legacy flashcard mode restart...');
                                                     try {
                                                         window.flashcardMode.restart();
                                                         console.log('✅ Legacy flashcardMode restart succeeded');
@@ -1258,17 +1258,17 @@ app.get('/', (c) => {
                                                     }
                                                 }
                                                 
-                                                // Method 3: Use new session function with same category as fallback
+                                                // Method 3: Use enhanced new session function as fallback
                                                 if (window.startNewFlashcardSession) {
-                                                    console.log('🔄 Using startNewFlashcardSession as restart fallback...');
+                                                    console.log('🔄 Using enhanced startNewFlashcardSession as restart fallback...');
                                                     try {
-                                                        const result = window.startNewFlashcardSession({ categoryId: 'greetings' });
-                                                        if (result) {
-                                                            console.log('✅ Restart via new session succeeded');
+                                                        const result = await window.startNewFlashcardSession({ categoryId: 'greetings' });
+                                                        if (result !== false) {
+                                                            console.log('✅ Restart via enhanced session succeeded');
                                                             return;
                                                         }
                                                     } catch (e) {
-                                                        console.log('❌ Restart via new session failed:', e.message);
+                                                        console.log('❌ Restart via enhanced session failed:', e.message);
                                                     }
                                                 }
                                                 
@@ -1550,9 +1550,38 @@ app.get('/', (c) => {
                     
                     console.log('✅ TARGETED analytics system ready with real numbers!');
                     
-                    // START NEW SESSION FUNCTION - Enhanced with better error handling and debugging
-                    window.startNewFlashcardSession = function(options = {}) {
+                    // START NEW SESSION FUNCTION - Enhanced with complete UI flow handling
+                    window.startNewFlashcardSession = async function(options = {}) {
                         console.log('🚀 Starting new flashcard session...', options);
+                        
+                        // STEP 1: Ensure we're in the learning section
+                        console.log('📍 STEP 1: Navigating to learning section...');
+                        if (window.showSection) {
+                            window.showSection('learn');
+                            // Wait for section transition
+                            await new Promise(resolve => setTimeout(resolve, 500));
+                        }
+                        
+                        // STEP 2: Hide any existing completion screens
+                        console.log('📍 STEP 2: Clearing completion screens...');
+                        const completionScreens = document.querySelectorAll(
+                            '.completion-screen, [id*="completion"], .flashcard-completion, [style*="completion"]'
+                        );
+                        completionScreens.forEach(screen => {
+                            if (screen && screen.style) {
+                                screen.style.display = 'none';
+                                console.log('✅ Hidden completion screen:', screen.className || screen.id);
+                            }
+                        });
+                        
+                        // STEP 3: Ensure learning content is visible
+                        console.log('📍 STEP 3: Ensuring learning content visibility...');
+                        const learningContent = document.getElementById('learning-content');
+                        if (learningContent) {
+                            learningContent.style.display = 'block';
+                            learningContent.classList.remove('hidden');
+                            console.log('✅ Learning content made visible');
+                        }
                         
                         // COMPREHENSIVE DIAGNOSTIC: Check vocabulary data availability
                         console.log('🔍 COMPREHENSIVE VOCABULARY DATA DIAGNOSTIC:');
@@ -1739,7 +1768,84 @@ app.get('/', (c) => {
                                     firstWord: sessionData.words[0]?.turkish
                                 });
                                 
-                                window.learningModeManager.startMode('flashcard', sessionData);
+                                console.log('🎯 Calling learningModeManager.startMode with data:', {
+                                    mode: 'flashcard',
+                                    sessionData: sessionData,
+                                    dataKeys: Object.keys(sessionData),
+                                    wordsCount: sessionData.words ? sessionData.words.length : 'N/A'
+                                });
+                                
+                                const modeResult = await window.learningModeManager.startMode('flashcard', sessionData);
+                                console.log('✅ Learning Mode Manager returned:', modeResult);
+                                
+                                // STEP 4: Advanced container visibility and UI sync
+                                console.log('📍 STEP 4: Advanced container visibility check...');
+                                
+                                // Multi-attempt container verification with progressive timing
+                                const verifyContainerVisibility = (attempt = 1, maxAttempts = 5) => {
+                                    const container = document.getElementById('flashcard-mode-container');
+                                    const learningContent = document.getElementById('learning-content');
+                                    
+                                    console.log(`🔍 Container verification attempt ${attempt}/${maxAttempts}:`, {
+                                        flashcardContainer: {
+                                            exists: !!container,
+                                            display: container ? container.style.display : 'N/A',
+                                            visibility: container ? container.style.visibility : 'N/A',
+                                            hasContent: container ? container.innerHTML.length > 50 : false,
+                                            isVisible: container ? container.offsetParent !== null : false,
+                                            classList: container ? Array.from(container.classList) : 'N/A'
+                                        },
+                                        learningContent: {
+                                            exists: !!learningContent,
+                                            display: learningContent ? learningContent.style.display : 'N/A',
+                                            hasHiddenClass: learningContent ? learningContent.classList.contains('hidden') : 'N/A'
+                                        }
+                                    });
+                                    
+                                    if (container) {
+                                        // Force all visibility properties
+                                        container.style.display = 'block';
+                                        container.style.visibility = 'visible';
+                                        container.style.opacity = '1';
+                                        container.style.zIndex = '1';
+                                        container.classList.add('active-mode');
+                                        container.classList.remove('hidden');
+                                        
+                                        // Ensure learning content is also visible
+                                        if (learningContent) {
+                                            learningContent.style.display = 'block';
+                                            learningContent.classList.remove('hidden');
+                                        }
+                                        
+                                        // Check if flashcard content is actually rendered
+                                        if (container.innerHTML.length > 50 && container.offsetParent) {
+                                            console.log('✅ Flashcard container successfully visible and populated');
+                                            return true; // Success
+                                        }
+                                    }
+                                    
+                                    // Retry if not successful and attempts remaining
+                                    if (attempt < maxAttempts) {
+                                        const delay = attempt * 300; // Progressive delay
+                                        console.log(`🔄 Retrying container verification in ${delay}ms...`);
+                                        setTimeout(() => verifyContainerVisibility(attempt + 1, maxAttempts), delay);
+                                    } else {
+                                        console.log('❌ Container visibility verification failed after all attempts');
+                                        
+                                        // FALLBACK: Force render by recreating the flashcard interface
+                                        if (modeResult && typeof modeResult.render === 'function') {
+                                            console.log('🔧 FALLBACK: Forcing mode re-render...');
+                                            modeResult.render();
+                                        }
+                                    }
+                                    
+                                    return false; // Not successful yet
+                                };
+                                
+                                // Start verification immediately and then after delay
+                                setTimeout(() => verifyContainerVisibility(), 100);
+                                setTimeout(() => verifyContainerVisibility(), 800);
+                                
                                 console.log('✅ New session started via Learning Mode Manager');
                                 return true;
                             }
