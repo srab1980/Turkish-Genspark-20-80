@@ -901,7 +901,7 @@ app.get('/', (c) => {
                     const el = document.getElementById(id);
                     if (el) {
                         el.textContent = value;
-                        console.log(`🎯 IMMEDIATE: Updated #${id} = ${value}`);
+                        console.log('IMMEDIATE: Updated #' + id + ' = ' + value);
                     }
                 });
             }
@@ -1336,9 +1336,9 @@ app.get('/', (c) => {
                             const el = document.getElementById(id);
                             if (el) {
                                 el.textContent = value;
-                                console.log(`✅ Dashboard: Updated #${id} = ${value}`);
+                                console.log('Dashboard: Updated #' + id + ' = ' + value);
                             } else {
-                                console.log(`❌ Dashboard: Element #${id} not found`);
+                                console.log('Dashboard: Element #' + id + ' not found');
                             }
                         });
                         
@@ -1356,9 +1356,9 @@ app.get('/', (c) => {
                             const el = document.getElementById(id);
                             if (el) {
                                 el.textContent = value;
-                                console.log(`✅ Profile: Updated #${id} = ${value}`);
+                                console.log('Profile: Updated #' + id + ' = ' + value);
                             } else {
-                                console.log(`❌ Profile: Element #${id} not found`);
+                                console.log('Profile: Element #' + id + ' not found');
                             }
                         });
                         
