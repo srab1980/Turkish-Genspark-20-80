@@ -417,6 +417,12 @@ class LearningModeBase {
         // Emit to event bus
         this.emit('analyticsEvent', eventData);
         
+        // Emit global event for real-time analytics system
+        const globalEvent = new CustomEvent('learningModeEvent', {
+            detail: { event: eventName, mode: this.constructor.name, ...eventData }
+        });
+        document.dispatchEvent(globalEvent);
+        
         console.log(`📊 Tracked event: ${eventName}`, eventData);
     }
     
@@ -430,6 +436,16 @@ class LearningModeBase {
             progress: progressData,
             timestamp: Date.now()
         });
+        
+        // Emit global progress event for real-time analytics
+        const globalProgressEvent = new CustomEvent('progressUpdated', {
+            detail: {
+                mode: this.constructor.name,
+                progress: progressData,
+                timestamp: Date.now()
+            }
+        });
+        document.dispatchEvent(globalProgressEvent);
         
         // Update global progress
         if (window.TurkishLearningApp && window.TurkishLearningApp.updateUserStats) {

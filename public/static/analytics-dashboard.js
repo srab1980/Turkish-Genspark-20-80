@@ -14,7 +14,13 @@ class AnalyticsDashboard {
             gradient: ['#4A90E2', '#6BA3E8', '#10B981', '#FFD700']
         };
         
+        // Real-time data integration
+        this.realTimeData = null;
+        this.isRealTimeEnabled = false;
+        this.updateQueue = [];
+        
         this.initializeAnalytics();
+        this.setupRealTimeIntegration();
     }
     
     initializeAnalytics() {
@@ -34,6 +40,91 @@ class AnalyticsDashboard {
         this.createCategoryRadarChart();
         this.createLearningVelocityChart();
         this.generateAIRecommendations();
+        this.createRealTimeStatsCards();
+    }
+    
+    setupRealTimeIntegration() {
+        // Listen for real-time analytics updates
+        document.addEventListener('analyticsUpdate', (event) => {
+            this.handleRealTimeUpdate(event.detail);
+        });
+        
+        // Listen for learning events
+        document.addEventListener('learningModeEvent', (event) => {
+            this.handleLearningEvent(event.detail);
+        });
+        
+        // Listen for milestone events
+        document.addEventListener('milestoneReached', (event) => {
+            this.handleMilestone(event.detail);
+        });
+        
+        // Listen for level up events
+        document.addEventListener('levelUp', (event) => {
+            this.handleLevelUp(event.detail);
+        });
+        
+        // Check if real-time analytics is available
+        if (window.realTimeAnalytics) {
+            this.isRealTimeEnabled = true;
+            this.realTimeData = window.getRealTimeAnalytics();
+            console.log('📊 Real-time analytics integration enabled');
+        }
+        
+        // Start live updates
+        this.startLiveUpdates();
+    }
+    
+    startLiveUpdates() {
+        // Update every 30 seconds
+        setInterval(() => {
+            if (this.isRealTimeEnabled && window.getRealTimeAnalytics) {
+                this.realTimeData = window.getRealTimeAnalytics();
+                this.updateRealTimeElements();
+            }
+        }, 30000);
+    }
+    
+    handleRealTimeUpdate(updateData) {
+        this.realTimeData = updateData.liveData;
+        this.updateRealTimeElements();
+        
+        // Queue chart updates (throttled)
+        if (this.updateQueue.length === 0) {
+            setTimeout(() => {
+                this.processUpdateQueue();
+            }, 2000);
+        }
+        this.updateQueue.push(updateData);
+    }
+    
+    handleLearningEvent(eventData) {
+        // Handle specific learning events for real-time feedback
+        switch (eventData.event) {
+            case 'question_answered':
+                this.showLiveAccuracy(eventData.data);
+                break;
+            case 'session_completed':
+                this.updateSessionCompletionStats(eventData.data);
+                break;
+        }
+    }
+    
+    handleMilestone(milestone) {
+        this.showMilestoneNotification(milestone);
+    }
+    
+    handleLevelUp(levelData) {
+        this.showLevelUpNotification(levelData);
+    }
+    
+    processUpdateQueue() {
+        if (this.updateQueue.length > 0) {
+            // Process the most recent update
+            const latestUpdate = this.updateQueue[this.updateQueue.length - 1];
+            this.updateChartsWithRealTimeData(latestUpdate.liveData);
+            this.updateQueue = [];
+        }
     }
     
     // Generate Learning Heatmap
@@ -206,7 +297,144 @@ class AnalyticsDashboard {
         });
     }
     
+    createRealTimeStatsCards() {
+        const statsContainer = document.getElementById('realtime-stats');
+        if (!statsContainer) return;
+        
+        const stats = this.getRealTimeStats();
+        
+        statsContainer.innerHTML = `
+            <div class="stats-grid">
+                <div class="stat-card" id="daily-progress-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="daily-progress-value">${stats.dailyProgress}</div>
+                        <div class="stat-label">كلمات اليوم</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${(stats.dailyProgress / stats.dailyGoal) * 100}%"></div>
+                            </div>
+                            <span class="progress-text">${stats.dailyGoal} هدف</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card" id="streak-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="streak-value">${stats.currentStreak}</div>
+                        <div class="stat-label">أيام متتالية</div>
+                        <div class="stat-subtitle">الأفضل: ${stats.bestStreak} يوم</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card" id="accuracy-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="accuracy-value">${Math.round(stats.averageAccuracy * 100)}%</div>
+                        <div class="stat-label">معدل الدقة</div>
+                        <div class="stat-trend ${stats.accuracyTrend}">
+                            ${stats.accuracyTrend === 'up' ? '↗️' : stats.accuracyTrend === 'down' ? '↘️' : '➡️'}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card" id="level-card">
+                    <div class="stat-icon">👑</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="level-value">${stats.level}</div>
+                        <div class="stat-label">المستوى</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${stats.xpProgress}%"></div>
+                            </div>
+                            <span class="progress-text">${stats.totalXP} XP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card" id="session-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="session-value">${stats.sessionTime}</div>
+                        <div class="stat-label">وقت الجلسة</div>
+                        <div class="stat-subtitle">${stats.totalSessions} جلسة</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card" id="velocity-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="velocity-value">${stats.wordsPerMinute}</div>
+                        <div class="stat-label">كلمة/دقيقة</div>
+                        <div class="stat-subtitle">السرعة الحالية</div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    getRealTimeStats() {
+        const defaultStats = {
+            dailyProgress: 0,
+            dailyGoal: 20,
+            currentStreak: 0,
+            bestStreak: 0,
+            averageAccuracy: 0,
+            accuracyTrend: 'stable',
+            level: 1,
+            totalXP: 0,
+            xpProgress: 0,
+            sessionTime: '0m',
+            totalSessions: 0,
+            wordsPerMinute: 0
+        };
+        
+        if (!this.realTimeData) {
+            return defaultStats;
+        }
+        
+        const nextLevelXP = this.realTimeData.level * 100;
+        const currentLevelXP = (this.realTimeData.level - 1) * 100;
+        const xpInLevel = this.realTimeData.totalXP - currentLevelXP;
+        const xpProgress = (xpInLevel / (nextLevelXP - currentLevelXP)) * 100;
+        
+        // Calculate session time from current session
+        const sessionData = window.getSessionData ? window.getSessionData() : {};
+        const sessionTime = sessionData.startTime ? 
+            this.formatTime(Date.now() - sessionData.startTime) : '0m';
+        
+        // Calculate words per minute
+        const wordsPerMinute = this.calculateWordsPerMinute();
+        
+        return {
+            ...defaultStats,
+            dailyProgress: this.realTimeData.dailyProgress || 0,
+            dailyGoal: this.realTimeData.dailyGoal || 20,
+            currentStreak: this.realTimeData.currentStreak || 0,
+            bestStreak: this.realTimeData.bestStreak || 0,
+            averageAccuracy: this.realTimeData.averageAccuracy || 0,
+            level: this.realTimeData.level || 1,
+            totalXP: this.realTimeData.totalXP || 0,
+            xpProgress: Math.min(100, Math.max(0, xpProgress)),
+            sessionTime,
+            wordsPerMinute
+        };
+    }
+
     generatePerformanceData() {
+        // Use real-time data if available
+        if (this.realTimeData && this.realTimeData.performanceHistory.length > 0) {
+            const history = this.realTimeData.performanceHistory.slice(-30);
+            const labels = history.map(entry => 
+                new Date(entry.timestamp).toLocaleDateString('ar-SA', { month: 'short', day: 'numeric' })
+            );
+            const accuracy = history.map(entry => entry.accuracy * 100);
+            
+            return { labels, accuracy };
+        }
+        
+        // Fallback to generated data
         const days = 30;
         const labels = [];
         const accuracy = [];
@@ -368,6 +596,17 @@ class AnalyticsDashboard {
     }
     
     generateVelocityData() {
+        // Use real-time data if available
+        if (this.realTimeData && this.realTimeData.learningVelocity.length > 0) {
+            const velocity = this.realTimeData.learningVelocity.slice(-7);
+            const labels = velocity.map(v => v.date);
+            const newWords = velocity.map(v => v.words);
+            const reviewWords = velocity.map(v => Math.floor(v.words * 0.3)); // Estimate review words
+            
+            return { labels, newWords, reviewWords };
+        }
+        
+        // Fallback to generated data
         const sessions = ['الجلسة 1', 'الجلسة 2', 'الجلسة 3', 'الجلسة 4', 'الجلسة 5', 'الجلسة 6', 'الجلسة 7'];
         const newWords = sessions.map(() => Math.floor(Math.random() * 8) + 2);
         const reviewWords = sessions.map(() => Math.floor(Math.random() * 6) + 1);
@@ -377,6 +616,206 @@ class AnalyticsDashboard {
             newWords,
             reviewWords
         };
+    }
+    
+    updateRealTimeElements() {
+        if (!this.realTimeData) return;
+        
+        // Update stat cards
+        this.updateStatCard('daily-progress-value', this.realTimeData.dailyProgress || 0);
+        this.updateStatCard('streak-value', this.realTimeData.currentStreak || 0);
+        this.updateStatCard('accuracy-value', `${Math.round((this.realTimeData.averageAccuracy || 0) * 100)}%`);
+        this.updateStatCard('level-value', this.realTimeData.level || 1);
+        
+        // Update progress bars
+        this.updateProgressBar('daily-progress-card', 
+            (this.realTimeData.dailyProgress || 0) / (this.realTimeData.dailyGoal || 20) * 100);
+        
+        const nextLevelXP = this.realTimeData.level * 100;
+        const currentLevelXP = (this.realTimeData.level - 1) * 100;
+        const xpInLevel = this.realTimeData.totalXP - currentLevelXP;
+        const xpProgress = (xpInLevel / (nextLevelXP - currentLevelXP)) * 100;
+        this.updateProgressBar('level-card', Math.min(100, Math.max(0, xpProgress)));
+        
+        // Update session time
+        const sessionData = window.getSessionData ? window.getSessionData() : {};
+        if (sessionData.startTime) {
+            const sessionTime = this.formatTime(Date.now() - sessionData.startTime);
+            this.updateStatCard('session-value', sessionTime);
+        }
+        
+        // Update words per minute
+        const wpm = this.calculateWordsPerMinute();
+        this.updateStatCard('velocity-value', wpm);
+    }
+    
+    updateStatCard(elementId, value) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.textContent = value;
+            element.classList.add('stat-updated');
+            setTimeout(() => {
+                element.classList.remove('stat-updated');
+            }, 500);
+        }
+    }
+    
+    updateProgressBar(cardId, percentage) {
+        const card = document.getElementById(cardId);
+        if (card) {
+            const progressFill = card.querySelector('.progress-fill');
+            if (progressFill) {
+                progressFill.style.width = `${Math.min(100, Math.max(0, percentage))}%`;
+            }
+        }
+    }
+    
+    calculateWordsPerMinute() {
+        const sessionData = window.getSessionData ? window.getSessionData() : {};
+        if (sessionData.startTime && sessionData.metrics.totalWords > 0) {
+            const sessionTimeMinutes = (Date.now() - sessionData.startTime) / 60000;
+            return Math.round(sessionData.metrics.totalWords / Math.max(sessionTimeMinutes, 1));
+        }
+        return 0;
+    }
+    
+    updateChartsWithRealTimeData(liveData) {
+        // Update performance trend chart
+        if (this.charts.performanceTrend && liveData.performanceHistory) {
+            const newData = this.generatePerformanceData();
+            this.charts.performanceTrend.data.labels = newData.labels;
+            this.charts.performanceTrend.data.datasets[0].data = newData.accuracy;
+            this.charts.performanceTrend.update('none'); // Smooth update
+        }
+        
+        // Update category radar chart
+        if (this.charts.categoryRadar) {
+            const newMasteryData = this.getCategoryMasteryDataRealTime(liveData);
+            this.charts.categoryRadar.data.datasets[0].data = newMasteryData;
+            this.charts.categoryRadar.update('none');
+        }
+        
+        // Update velocity chart
+        if (this.charts.learningVelocity) {
+            const newVelocityData = this.generateVelocityData();
+            this.charts.learningVelocity.data.labels = newVelocityData.labels;
+            this.charts.learningVelocity.data.datasets[0].data = newVelocityData.newWords;
+            this.charts.learningVelocity.data.datasets[1].data = newVelocityData.reviewWords;
+            this.charts.learningVelocity.update('none');
+        }
+        
+        // Regenerate heatmap with new data
+        this.generateLearningHeatmapRealTime(liveData);
+    }
+    
+    getCategoryMasteryDataRealTime(liveData) {
+        if (liveData.categoryProgress && Object.keys(liveData.categoryProgress).length > 0) {
+            const categories = ['greetings', 'travel', 'food', 'shopping', 'directions', 'emergency', 'time', 'numbers'];
+            return categories.map(category => {
+                const progress = liveData.categoryProgress[category];
+                if (progress && progress.wordsLearned) {
+                    return Math.min(100, (progress.wordsLearned / 10) * 100); // Assuming 10 words per category
+                }
+                return Math.floor(Math.random() * 80) + 20; // Fallback
+            });
+        }
+        
+        return this.getCategoryMasteryData();
+    }
+    
+    generateLearningHeatmapRealTime(liveData) {
+        // Enhanced heatmap with real-time data
+        const heatmapContainer = document.getElementById('learning-heatmap');
+        if (!heatmapContainer) return;
+        
+        this.generateLearningHeatmap(); // Use existing method with real-time enhancement
+    }
+    
+    showLiveAccuracy(answerData) {
+        if (answerData.isCorrect) {
+            this.showNotification('إجابة صحيحة! ✅', 'success', 2000);
+        } else {
+            this.showNotification('إجابة خاطئة ❌', 'warning', 2000);
+        }
+    }
+    
+    showMilestoneNotification(milestone) {
+        this.showNotification(
+            `🏆 إنجاز جديد: ${milestone.message}`, 
+            'success', 
+            5000
+        );
+    }
+    
+    showLevelUpNotification(levelData) {
+        this.showNotification(
+            `🎉 تهانينا! وصلت للمستوى ${levelData.newLevel}`, 
+            'success', 
+            5000
+        );
+    }
+    
+    showNotification(message, type = 'info', duration = 3000) {
+        const notification = document.createElement('div');
+        notification.className = `analytics-notification ${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span class="notification-message">${message}</span>
+                <button class="notification-close">&times;</button>
+            </div>
+        `;
+        
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            background: ${type === 'success' ? '#10B981' : type === 'warning' ? '#F59E0B' : '#4A90E2'};
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            font-family: 'Noto Sans Arabic', sans-serif;
+            max-width: 350px;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Close functionality
+        const closeBtn = notification.querySelector('.notification-close');
+        closeBtn.onclick = () => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => notification.remove(), 300);
+        };
+        
+        // Auto close
+        setTimeout(() => {
+            if (document.contains(notification)) {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            }
+        }, duration);
+    }
+    
+    formatTime(milliseconds) {
+        const seconds = Math.floor(milliseconds / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        
+        if (hours > 0) {
+            return `${hours}h ${minutes % 60}m`;
+        } else if (minutes > 0) {
+            return `${minutes}m`;
+        } else {
+            return `${seconds}s`;
+        }
     }
     
     // AI-Powered Recommendations
@@ -484,6 +923,11 @@ class AnalyticsDashboard {
     
     // Update analytics when profile is shown
     updateAnalytics() {
+        // Update real-time data
+        if (this.isRealTimeEnabled && window.getRealTimeAnalytics) {
+            this.realTimeData = window.getRealTimeAnalytics();
+        }
+        
         if (this.charts.performanceTrend) {
             const newData = this.generatePerformanceData();
             this.charts.performanceTrend.data.labels = newData.labels;
@@ -492,7 +936,9 @@ class AnalyticsDashboard {
         }
         
         if (this.charts.categoryRadar) {
-            const newMasteryData = this.getCategoryMasteryData();
+            const newMasteryData = this.realTimeData ? 
+                this.getCategoryMasteryDataRealTime(this.realTimeData) : 
+                this.getCategoryMasteryData();
             this.charts.categoryRadar.data.datasets[0].data = newMasteryData;
             this.charts.categoryRadar.update();
         }
@@ -506,6 +952,22 @@ class AnalyticsDashboard {
         
         this.generateLearningHeatmap();
         this.generateAIRecommendations();
+        this.updateRealTimeElements();
+    }
+    
+    // Method to be called by real-time analytics
+    updateWithRealTimeData(liveData) {
+        this.realTimeData = liveData;
+        this.updateRealTimeElements();
+        
+        // Throttled chart updates
+        if (!this.chartUpdatePending) {
+            this.chartUpdatePending = true;
+            setTimeout(() => {
+                this.updateChartsWithRealTimeData(liveData);
+                this.chartUpdatePending = false;
+            }, 1000);
+        }
     }
     
     // Destroy charts when needed

@@ -810,6 +810,7 @@ app.get('/', (c) => {
         </style>
         <link href="/static/session-management.css" rel="stylesheet">
         <link href="/static/enhanced-learning-interface.css" rel="stylesheet">
+        <link href="/static/realtime-analytics.css" rel="stylesheet">
         
         <!-- PWA Meta Tags -->
         <meta name="theme-color" content="#2563EB">
@@ -1507,6 +1508,23 @@ app.get('/', (c) => {
                     <div class="analytics-dashboard">
                         <h3 class="analytics-title">لوحة التحليلات المتقدمة</h3>
                         
+                        <!-- Real-Time Statistics Section -->
+                        <div class="analytics-section">
+                            <div class="analytics-card">
+                                <h4 class="analytics-card-title">
+                                    <i class="fas fa-chart-line"></i>
+                                    الإحصائيات المباشرة
+                                    <div class="live-indicator">
+                                        <span>مباشر</span>
+                                    </div>
+                                </h4>
+                                <p class="analytics-card-subtitle">إحصائيات التعلم المحدّثة لحظياً</p>
+                                <div id="realtime-stats">
+                                    <!-- Real-time stats will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                        
                         <!-- Learning Heatmap -->
                         <div class="analytics-section">
                             <div class="analytics-card">
@@ -1582,6 +1600,7 @@ app.get('/', (c) => {
         <!-- Legacy Learning Systems (for compatibility) -->
         <script src="/static/learning-system.js"></script>
         <script src="/static/conversation-system.js"></script>
+        <script src="/static/realtime-analytics.js"></script>
         <script src="/static/analytics-dashboard.js"></script>
         <script src="/static/gamification-system.js"></script>
         <script src="/static/visual-ux-system.js"></script>

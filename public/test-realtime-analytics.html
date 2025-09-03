@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Analytics Test - Turkish Learning</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/realtime-analytics.css">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .test-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .test-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        
+        .test-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .analytics-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: 300px;
+        }
+        
+        @media (max-width: 768px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .test-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .test-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 نظام التحليل المباشر</h1>
+            <p>اختبار نظام التحليل والإحصائيات المباشرة لتطبيق تعلم التركية</p>
+            <div class="live-indicator">
+                <span>مباشر</span>
+            </div>
+        </div>
+        
+        <div class="test-controls">
+            <button class="test-btn" onclick="simulateCorrectAnswer()">
+                <i class="fas fa-check"></i> محاكاة إجابة صحيحة
+            </button>
+            <button class="test-btn" onclick="simulateWrongAnswer()">
+                <i class="fas fa-times"></i> محاكاة إجابة خاطئة
+            </button>
+            <button class="test-btn" onclick="simulateLevelUp()">
+                <i class="fas fa-crown"></i> محاكاة رفع مستوى
+            </button>
+            <button class="test-btn" onclick="simulateStreak()">
+                <i class="fas fa-fire"></i> محاكاة متتالية
+            </button>
+            <button class="test-btn" onclick="simulateSession()">
+                <i class="fas fa-play"></i> محاكاة جلسة كاملة
+            </button>
+        </div>
+        
+        <div class="analytics-section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-line"></i>
+                الإحصائيات المباشرة
+            </h2>
+            <div id="realtime-stats"></div>
+        </div>
+        
+        <div class="analytics-section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                الرسوم البيانية المباشرة
+            </h2>
+            <div class="charts-container">
+                <div class="chart-card">
+                    <canvas id="performance-trend-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <canvas id="learning-velocity-chart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="analytics-section">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                خريطة النشاط
+            </h2>
+            <div id="learning-heatmap"></div>
+        </div>
+    </div>
+
+    <!-- Load Analytics Scripts -->
+    <script src="/static/realtime-analytics.js"></script>
+    <script src="/static/analytics-dashboard.js"></script>
+    
+    <script>
+        // Test simulation functions
+        function simulateCorrectAnswer() {
+            const event = new CustomEvent('learningModeEvent', {
+                detail: {
+                    event: 'question_answered',
+                    mode: 'QuizMode',
+                    data: {
+                        isCorrect: true,
+                        wordId: 'word_' + Math.random().toString(36).substr(2, 9),
+                        timeToAnswer: Math.floor(Math.random() * 10000) + 2000
+                    }
+                }
+            });
+            document.dispatchEvent(event);
+            
+            // Also trigger progress update
+            const progressEvent = new CustomEvent('progressUpdated', {
+                detail: {
+                    mode: 'QuizMode',
+                    progress: {
+                        isCorrect: true,
+                        accuracy: 0.85,
+                        wordId: 'word_' + Math.random().toString(36).substr(2, 9)
+                    }
+                }
+            });
+            document.dispatchEvent(progressEvent);
+        }
+        
+        function simulateWrongAnswer() {
+            const event = new CustomEvent('learningModeEvent', {
+                detail: {
+                    event: 'question_answered',
+                    mode: 'QuizMode',
+                    data: {
+                        isCorrect: false,
+                        wordId: 'word_' + Math.random().toString(36).substr(2, 9),
+                        timeToAnswer: Math.floor(Math.random() * 15000) + 5000
+                    }
+                }
+            });
+            document.dispatchEvent(event);
+        }
+        
+        function simulateLevelUp() {
+            const event = new CustomEvent('levelUp', {
+                detail: {
+                    newLevel: Math.floor(Math.random() * 10) + 2,
+                    totalXP: Math.floor(Math.random() * 1000) + 200
+                }
+            });
+            document.dispatchEvent(event);
+        }
+        
+        function simulateStreak() {
+            // Simulate daily goal reached
+            const event = new CustomEvent('dailyGoalReached', {
+                detail: {
+                    goal: 20,
+                    progress: 25
+                }
+            });
+            document.dispatchEvent(event);
+        }
+        
+        function simulateSession() {
+            // Simulate complete session
+            const sessionEvent = new CustomEvent('learningModeEvent', {
+                detail: {
+                    event: 'session_completed',
+                    mode: 'FlashcardMode',
+                    data: {
+                        accuracy: Math.floor(Math.random() * 40) + 60,
+                        correct: Math.floor(Math.random() * 8) + 5,
+                        totalQuestions: 10,
+                        timeSpent: Math.floor(Math.random() * 300) + 120
+                    }
+                }
+            });
+            document.dispatchEvent(sessionEvent);
+            
+            // Simulate milestone
+            setTimeout(() => {
+                const milestoneEvent = new CustomEvent('milestoneReached', {
+                    detail: {
+                        id: 'test_milestone',
+                        message: 'عشر جلسات مكتملة! 🎉',
+                        threshold: 10
+                    }
+                });
+                document.dispatchEvent(milestoneEvent);
+            }, 1000);
+        }
+        
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧪 Real-time Analytics Test Page Loaded');
+            
+            // Wait for analytics to initialize
+            setTimeout(() => {
+                if (window.analyticsDashboard) {
+                    window.analyticsDashboard.setupAnalytics();
+                    console.log('✅ Analytics dashboard initialized for testing');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
