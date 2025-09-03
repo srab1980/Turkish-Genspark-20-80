@@ -1192,28 +1192,161 @@ app.get('/', (c) => {
                     }
                 }, 1000);
                 
-                // Fix analytics initialization
+                // Force load new flashcard mode and analytics
                 setTimeout(function() {
-                    if (window.realTimeAnalytics) {
-                        console.log('🔧 Initializing analytics with sample data...');
+                    console.log('🔧 Loading new systems...');
+                    
+                    // Force load new flashcard mode
+                    const newFlashcardScript = document.createElement('script');
+                    newFlashcardScript.src = '/static/modes/flashcard-mode-new.js?v=' + Date.now();
+                    newFlashcardScript.onload = function() {
+                        console.log('✅ New flashcard mode loaded');
+                    };
+                    document.head.appendChild(newFlashcardScript);
+                    
+                    // Force load simple analytics
+                    const analyticsScript = document.createElement('script');
+                    analyticsScript.src = '/static/analytics-simple.js?v=' + Date.now();
+                    analyticsScript.onload = function() {
+                        console.log('✅ Simple analytics loaded');
+                    };
+                    document.head.appendChild(analyticsScript);
+                    
+                }, 1000);
+                
+                // Force override the flashcard mode after everything loads
+                setTimeout(function() {
+                    if (window.learningModeManager && window.FlashcardModeNew) {
+                        console.log('🔧 Forcing flashcard mode override...');
                         
-                        // Initialize analytics with some sample data
-                        window.realTimeAnalytics.sessionData = {
-                            wordsLearned: 0,
-                            correctAnswers: 0,
-                            totalAnswers: 0,
-                            sessionTime: 0,
-                            streak: 0
-                        };
+                        // Create and register new flashcard mode
+                        window.flashcardModeNew = new window.FlashcardModeNew();
                         
-                        // Update the analytics display
-                        if (window.realTimeAnalytics.updateDashboard) {
-                            window.realTimeAnalytics.updateDashboard();
+                        // Override the old flashcard mode
+                        window.learningModeManager.modes.set('flashcard', window.flashcardModeNew);
+                        
+                        console.log('✅ Flashcard mode overridden with new version');
+                    } else {
+                        console.log('⚠️ Retry flashcard override in 2s...');
+                        setTimeout(arguments.callee, 2000);
+                    }
+                }, 3000);
+                
+                // DIRECT ANALYTICS FIX - Force update profile stats
+                setTimeout(function() {
+                    console.log('🔧 Direct analytics fix...');
+                    
+                    // Initialize simple stats in localStorage if not exists
+                    let stats = {
+                        sessionsCompleted: 0,
+                        wordsLearned: 0,
+                        streak: 0,
+                        accuracy: 0,
+                        totalTime: 0
+                    };
+                    
+                    try {
+                        const stored = localStorage.getItem('simple_user_stats');
+                        if (stored) {
+                            stats = JSON.parse(stored);
+                        }
+                    } catch (e) {}
+                    
+                    // Function to update all stat displays
+                    window.updateAllStats = function(newStats) {
+                        if (newStats) {
+                            stats = { ...stats, ...newStats };
+                            localStorage.setItem('simple_user_stats', JSON.stringify(stats));
                         }
                         
-                        console.log('✅ Analytics initialized');
-                    }
-                }, 2000);
+                        console.log('📊 Updating all stats with:', stats);
+                        
+                        // Update profile section
+                        document.querySelectorAll('.stat-value, .user-stat-value, [data-stat]').forEach(el => {
+                            const parent = el.closest('.stat-card, .user-stat-card, .progress-item');
+                            if (parent) {
+                                const text = parent.textContent.toLowerCase();
+                                if (text.includes('يوم') || text.includes('streak') || text.includes('متتالي')) {
+                                    el.textContent = stats.streak;
+                                } else if (text.includes('كلمة') || text.includes('word') || text.includes('learned')) {
+                                    el.textContent = stats.wordsLearned;
+                                } else if (text.includes('نقطة') || text.includes('point')) {
+                                    el.textContent = stats.wordsLearned * 10;
+                                } else if (text.includes('جلسة') || text.includes('session')) {
+                                    el.textContent = stats.sessionsCompleted;
+                                } else if (text.includes('دقة') || text.includes('accuracy')) {
+                                    el.textContent = stats.accuracy + '%';
+                                }
+                            }
+                        });
+                        
+                        // Update any elements with specific IDs or classes
+                        const elements = [
+                            '.progress-circle-text',
+                            '.metric-value',
+                            '.stat-number',
+                            '[data-streak]',
+                            '[data-words]',
+                            '[data-sessions]'
+                        ];
+                        
+                        elements.forEach(selector => {
+                            document.querySelectorAll(selector).forEach(el => {
+                                const dataAttr = el.dataset;
+                                if (dataAttr.streak !== undefined) el.textContent = stats.streak;
+                                if (dataAttr.words !== undefined) el.textContent = stats.wordsLearned;
+                                if (dataAttr.sessions !== undefined) el.textContent = stats.sessionsCompleted;
+                                if (dataAttr.accuracy !== undefined) el.textContent = stats.accuracy + '%';
+                            });
+                        });
+                        
+                        console.log('✅ All stats updated');
+                    };
+                    
+                    // Initial update
+                    window.updateAllStats();
+                    
+                    // Update every 3 seconds
+                    setInterval(() => {
+                        window.updateAllStats();
+                    }, 3000);
+                    
+                    console.log('✅ Direct analytics system ready');
+                    
+                    // Listen for flashcard completion
+                    document.addEventListener('flashcard_completed', function(event) {
+                        console.log('🎉 Flashcard session completed, updating stats...');
+                        
+                        const sessionData = event.detail || {};
+                        const currentStats = JSON.parse(localStorage.getItem('simple_user_stats') || '{}');
+                        
+                        const newStats = {
+                            sessionsCompleted: (currentStats.sessionsCompleted || 0) + 1,
+                            wordsLearned: (currentStats.wordsLearned || 0) + (sessionData.totalWords || 10),
+                            streak: (currentStats.streak || 0) + 1,
+                            accuracy: sessionData.accuracy || 85,
+                            totalTime: (currentStats.totalTime || 0) + (sessionData.timeSpent || 5)
+                        };
+                        
+                        window.updateAllStats(newStats);
+                        console.log('✅ Stats updated after flashcard completion');
+                    });
+                    
+                    // Add test function to browser console
+                    window.testAnalytics = function() {
+                        console.log('🧪 Testing analytics update...');
+                        document.dispatchEvent(new CustomEvent('flashcard_completed', {
+                            detail: {
+                                totalWords: 10,
+                                accuracy: 90,
+                                timeSpent: 5
+                            }
+                        }));
+                    };
+                    
+                    console.log('🧪 Test function available: testAnalytics()');
+                    
+                }, 4000);
             });
         </script>
         
