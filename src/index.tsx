@@ -1618,8 +1618,20 @@ app.get('/', (c) => {
                 constructor() {
                     this.isMenuOpen = false;
                     this.selectedCategories = new Set();
+                    this.selectedProficiencyLevels = new Set();
                     this.selectedModes = new Set(['flashcard']);
                     this.categories = [];
+                    this.filterType = 'categories'; // 'categories' or 'proficiency'
+                    
+                    // CEFR Proficiency levels with Arabic translations and word counts
+                    this.proficiencyLevels = [
+                        { id: 'A1', name: 'A1 - مبتدئ', description: 'المستوى الأساسي للمبتدئين', wordCount: 590, icon: '🟢' },
+                        { id: 'A2', name: 'A2 - ما قبل المتوسط', description: 'المستوى الأساسي المتقدم', wordCount: 710, icon: '🔵' },
+                        { id: 'B1', name: 'B1 - متوسط', description: 'المستوى المتوسط', wordCount: 468, icon: '🟡' },
+                        { id: 'B2', name: 'B2 - فوق المتوسط', description: 'المستوى المتوسط المتقدم', wordCount: 372, icon: '🟠' },
+                        { id: 'C1', name: 'C1 - متقدم', description: 'المستوى المتقدم', wordCount: 102, icon: '🟣' },
+                        { id: 'C2', name: 'C2 - إتقان', description: 'مستوى الإتقان والكفاءة', wordCount: 10, icon: '🔴' }
+                    ];
                     
                     this.learningModes = [
                         { id: 'flashcard', name: 'البطاقات التعليمية', description: 'تعلم الكلمات باستخدام البطاقات التفاعلية', icon: '📱' },
@@ -1686,17 +1698,30 @@ app.get('/', (c) => {
                     sideMenu.innerHTML = \`
                         <div class="side-menu-header">
                             <h3 class="side-menu-title"><i class="fas fa-sliders-h"></i> إعدادات التعلم</h3>
-                            <p class="side-menu-subtitle">اختر فئة ونمط التعلم المفضل لديك</p>
+                            <p class="side-menu-subtitle">اختر طريقة التصفيق ونمط التعلم المفضل لديك</p>
                             <button class="side-menu-close" onclick="window.sideMenuFilters.closeMenu()"><i class="fas fa-times"></i></button>
                         </div>
+                        
+                        <!-- Filter Type Selection -->
                         <div class="filter-section">
-                            <h4 class="filter-section-title"><i class="fas fa-folder-open icon"></i> الفئات</h4>
-                            <div class="category-list" style="max-height: 300px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 0.5rem; background: white;">
-                                \${this.renderCategories()}
+                            <h4 class="filter-section-title"><i class="fas fa-filter icon"></i> طريقة التصفية</h4>
+                            <div class="filter-type-selector" style="display: flex; margin-bottom: 1rem; background: #f8fafc; border-radius: 0.5rem; padding: 0.25rem;">
+                                <button class="filter-type-btn active" data-type="categories" onclick="window.sideMenuFilters.switchFilterType('categories')" style="flex: 1; padding: 0.5rem; border: none; background: white; border-radius: 0.25rem; font-weight: 500; cursor: pointer; transition: all 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+                                    <i class="fas fa-folder-open"></i> الفئات
+                                </button>
+                                <button class="filter-type-btn" data-type="proficiency" onclick="window.sideMenuFilters.switchFilterType('proficiency')" style="flex: 1; padding: 0.5rem; border: none; background: transparent; border-radius: 0.25rem; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                                    <i class="fas fa-graduation-cap"></i> مستويات الكفاءة
+                                </button>
                             </div>
                         </div>
+                        
+                        <!-- Dynamic Content Container -->
+                        <div id="filter-content-container">
+                            \${this.renderFilterContent()}
+                        </div>
+                        
                         <div class="filter-section">
-                            <h4 class="filter-section-title"><i class="fas fa-graduation-cap icon"></i> نمط التعلم</h4>
+                            <h4 class="filter-section-title"><i class="fas fa-gamepad icon"></i> نمط التعلم</h4>
                             <div class="learning-modes">\${this.renderLearningModes()}</div>
                         </div>
                         <div class="filter-actions" style="padding: 1.5rem; background: #f8fafc;">
@@ -1725,6 +1750,43 @@ app.get('/', (c) => {
                     \`).join('');
                 }
                 
+                renderFilterContent() {
+                    if (this.filterType === 'categories') {
+                        return \`
+                            <div class="filter-section">
+                                <h4 class="filter-section-title"><i class="fas fa-folder-open icon"></i> الفئات</h4>
+                                <div class="category-list" style="max-height: 300px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 0.5rem; background: white;">
+                                    \${this.renderCategories()}
+                                </div>
+                            </div>
+                        \`;
+                    } else {
+                        return \`
+                            <div class="filter-section">
+                                <h4 class="filter-section-title"><i class="fas fa-graduation-cap icon"></i> مستويات الكفاءة</h4>
+                                <p style="font-size: 0.75rem; color: #64748b; margin-bottom: 1rem; padding: 0.5rem; background: #f0f9ff; border-radius: 0.5rem; border-left: 3px solid #0ea5e9;">
+                                    <i class="fas fa-info-circle" style="margin-left: 0.25rem;"></i> اختر مستوى الكفاءة وفقاً للإطار الأوروبي CEFR
+                                </p>
+                                <div class="proficiency-list" style="max-height: 300px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 0.5rem; background: white;">
+                                    \${this.renderProficiencyLevels()}
+                                </div>
+                            </div>
+                        \`;
+                    }
+                }
+                
+                renderProficiencyLevels() {
+                    return this.proficiencyLevels.map(level => \`
+                        <div class="proficiency-item" data-level="\${level.id}" onclick="window.sideMenuFilters.handleProficiencySelection('\${level.id}')" style="display: flex; align-items: center; padding: 0.75rem; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background-color 0.2s;">
+                            <input type="checkbox" class="proficiency-checkbox" id="level-\${level.id}" style="margin-left: 0.75rem;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500; color: #1e293b; font-size: 0.875rem; margin-bottom: 0.25rem;">\${level.icon} \${level.name}</div>
+                                <div style="font-size: 0.75rem; color: #64748b;">\${level.description} • \${level.wordCount} كلمة</div>
+                            </div>
+                        </div>
+                    \`).join('');
+                }
+
                 renderLearningModes() {
                     return this.learningModes.map(mode => \`
                         <div class="mode-option \${this.selectedModes.has(mode.id) ? 'selected' : ''}" data-mode="\${mode.id}" onclick="window.sideMenuFilters.handleModeSelection('\${mode.id}')" style="display: flex; align-items: center; padding: 1rem; border: 1.5px solid #e2e8f0; border-radius: 0.75rem; margin-bottom: 0.75rem; cursor: pointer; transition: all 0.2s; background: white;">
@@ -1793,6 +1855,48 @@ app.get('/', (c) => {
                     console.log('📂 Categories selected:', Array.from(this.selectedCategories));
                 }
                 
+                switchFilterType(type) {
+                    this.filterType = type;
+                    
+                    // Update filter type buttons
+                    document.querySelectorAll('.filter-type-btn').forEach(btn => {
+                        if (btn.dataset.type === type) {
+                            btn.classList.add('active');
+                            btn.style.background = 'white';
+                            btn.style.boxShadow = '0 1px 2px rgba(0,0,0,0.1)';
+                        } else {
+                            btn.classList.remove('active');
+                            btn.style.background = 'transparent';
+                            btn.style.boxShadow = 'none';
+                        }
+                    });
+                    
+                    // Update filter content
+                    const contentContainer = document.getElementById('filter-content-container');
+                    if (contentContainer) {
+                        contentContainer.innerHTML = this.renderFilterContent();
+                    }
+                    
+                    console.log('🔄 Filter type switched to:', type);
+                }
+                
+                handleProficiencySelection(levelId) {
+                    const checkbox = document.getElementById(\`level-\${levelId}\`);
+                    const item = document.querySelector(\`[data-level="\${levelId}"]\`);
+                    
+                    if(checkbox.checked) {
+                        this.selectedProficiencyLevels.delete(levelId);
+                        checkbox.checked = false;
+                        item.style.backgroundColor = '';
+                    } else {
+                        this.selectedProficiencyLevels.add(levelId);
+                        checkbox.checked = true;
+                        item.style.backgroundColor = '#f0f4ff';
+                    }
+                    
+                    console.log('🎓 Proficiency levels selected:', Array.from(this.selectedProficiencyLevels));
+                }
+
                 handleModeSelection(modeId) {
                     this.selectedModes.clear();
                     this.selectedModes.add(modeId);
@@ -1813,119 +1917,183 @@ app.get('/', (c) => {
                     console.log('🎯 Learning mode selected:', modeId);
                 }
                 
-                applyFilters() {
-                    const filters = {
-                        categories: Array.from(this.selectedCategories),
-                        mode: Array.from(this.selectedModes)[0] || 'flashcard'
-                    };
+                collectWordsByProficiencyLevels(selectedLevels) {
+                    let allWords = [];
+                    const targetLevelSet = new Set(selectedLevels);
                     
-                    if (filters.categories.length === 0) {
-                        alert('يرجى اختيار فئة واحدة على الأقل');
-                        return;
+                    // Collect words from all categories that match the selected proficiency levels
+                    if (window.TurkishLearningApp && window.TurkishLearningApp.vocabularyData) {
+                        Object.values(window.TurkishLearningApp.vocabularyData).forEach(category => {
+                            if (category.words && category.words.length > 0) {
+                                const filteredWords = category.words.filter(word => 
+                                    word.difficultyLevel && targetLevelSet.has(word.difficultyLevel)
+                                );
+                                allWords = allWords.concat(filteredWords);
+                            }
+                        });
+                    }
+                    
+                    // Shuffle words to mix different categories
+                    for (let i = allWords.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [allWords[i], allWords[j]] = [allWords[j], allWords[i]];
+                    }
+                    
+                    console.log(\`📚 Collected \${allWords.length} words for levels: \${selectedLevels.join(', ')}\`);
+                    return allWords;
+                }
+
+                applyFilters() {
+                    const mode = Array.from(this.selectedModes)[0] || 'flashcard';
+                    let filters, validationMessage, learningData, sessionIdentifier;
+                    
+                    if (this.filterType === 'categories') {
+                        // Category-based filtering
+                        const selectedCategories = Array.from(this.selectedCategories);
+                        
+                        if (selectedCategories.length === 0) {
+                            alert('يرجى اختيار فئة واحدة على الأقل');
+                            return;
+                        }
+                        
+                        filters = {
+                            type: 'categories',
+                            categories: selectedCategories,
+                            mode: mode
+                        };
+                        
+                        const primaryCategory = selectedCategories[0];
+                        sessionIdentifier = primaryCategory;
+                        
+                        if (window.TurkishLearningApp.vocabularyData && window.TurkishLearningApp.vocabularyData[primaryCategory]) {
+                            const categoryWords = window.TurkishLearningApp.vocabularyData[primaryCategory].words;
+                            
+                            if (categoryWords && categoryWords.length > 0) {
+                                learningData = {
+                                    category: primaryCategory,
+                                    words: categoryWords,
+                                    sessionInfo: null,
+                                    session: null,
+                                    filterType: 'categories'
+                                };
+                            } else {
+                                alert('لا توجد كلمات في هذه الفئة');
+                                return;
+                            }
+                        } else {
+                            alert('لم يتم العثور على بيانات الفئة');
+                            return;
+                        }
+                        
+                    } else {
+                        // Proficiency level-based filtering
+                        const selectedLevels = Array.from(this.selectedProficiencyLevels);
+                        
+                        if (selectedLevels.length === 0) {
+                            alert('يرجى اختيار مستوى كفاءة واحد على الأقل');
+                            return;
+                        }
+                        
+                        filters = {
+                            type: 'proficiency',
+                            proficiencyLevels: selectedLevels,
+                            mode: mode
+                        };
+                        
+                        const collectedWords = this.collectWordsByProficiencyLevels(selectedLevels);
+                        
+                        if (collectedWords.length === 0) {
+                            alert('لا توجد كلمات في مستويات الكفاءة المحددة');
+                            return;
+                        }
+                        
+                        sessionIdentifier = \`proficiency_\${selectedLevels.join('_')}\`;
+                        
+                        learningData = {
+                            category: \`مستوى \${selectedLevels.join(' + ')}\`,
+                            words: collectedWords,
+                            sessionInfo: null,
+                            session: null,
+                            filterType: 'proficiency',
+                            proficiencyLevels: selectedLevels
+                        };
                     }
                     
                     this.closeMenu();
                     
-                    // Start session directly using the enhanced learning system
-                    if (window.TurkishLearningApp && filters.categories.length > 0) {
-                        const primaryCategory = filters.categories[0];
-                        
-                        // Navigate to learn section first
+                    // Navigate to learn section first
+                    if (window.TurkishLearningApp) {
                         window.TurkishLearningApp.showSection('learn');
                         
-                        // Wait for section to load, then start the session directly
+                        // Wait for section to load, then start the session
                         setTimeout(() => {
-                            // Get category data from enhanced vocabulary
-                            if (window.TurkishLearningApp.vocabularyData && window.TurkishLearningApp.vocabularyData[primaryCategory]) {
-                                const categoryWords = window.TurkishLearningApp.vocabularyData[primaryCategory].words;
-                                
-                                if (categoryWords && categoryWords.length > 0) {
-                                    // Create session data using the session manager
-                                    let sessionData = null;
-                                    let sessionWords = categoryWords;
-                                    let sessionInfo = null;
+                            // Handle session management for both filter types
+                            if (window.vocabularySessions && window.vocabularySessions.createSessionsFromWords && learningData.words) {
+                                try {
+                                    const sessions = window.vocabularySessions.createSessionsFromWords(learningData.words, sessionIdentifier);
                                     
-                                    // Use session manager if available
-                                    if (window.vocabularySessions && window.vocabularySessions.createSessionsFromWords) {
-                                        try {
-                                            const sessions = window.vocabularySessions.createSessionsFromWords(categoryWords, primaryCategory);
-                                            
-                                            // Get user progress
-                                            const savedProgress = localStorage.getItem('turkishLearningProgress');
-                                            let categoryProgress = {};
-                                            if (savedProgress) {
-                                                const progress = JSON.parse(savedProgress);
-                                                categoryProgress = progress.categoryProgress || {};
-                                            }
-                                            
-                                            // Find next unfinished session
-                                            let currentSessionIndex = 0;
-                                            const completedSessions = categoryProgress[primaryCategory]?.completedSessions || [];
-                                            
-                                            for (let i = 0; i < sessions.length; i++) {
-                                                if (!completedSessions.includes(sessions[i].id)) {
-                                                    currentSessionIndex = i;
-                                                    break;
-                                                }
-                                            }
-                                            
-                                            if (currentSessionIndex >= sessions.length) {
-                                                currentSessionIndex = 0;
-                                            }
-                                            
-                                            const currentSession = sessions[currentSessionIndex];
-                                            sessionWords = currentSession.words;
-                                            sessionInfo = {
-                                                sessionNumber: currentSessionIndex + 1,
-                                                totalSessions: sessions.length,
-                                                sessionId: currentSession.id,
-                                                wordsInSession: currentSession.words.length
-                                            };
-                                            
-                                            sessionData = {
-                                                ...currentSession,
-                                                sessionNumber: currentSessionIndex + 1,
-                                                totalSessions: sessions.length
-                                            };
-                                            
-                                            console.log(\`🎯 Side menu starting session \${sessionInfo.sessionNumber}/\${sessionInfo.totalSessions} for \${primaryCategory}\`);
-                                        } catch (error) {
-                                            console.warn('⚠️ Session manager error, using full category:', error);
+                                    // Get user progress
+                                    const savedProgress = localStorage.getItem('turkishLearningProgress');
+                                    let categoryProgress = {};
+                                    if (savedProgress) {
+                                        const progress = JSON.parse(savedProgress);
+                                        categoryProgress = progress.categoryProgress || {};
+                                    }
+                                    
+                                    // Find next unfinished session
+                                    let currentSessionIndex = 0;
+                                    const completedSessions = categoryProgress[sessionIdentifier]?.completedSessions || [];
+                                    
+                                    for (let i = 0; i < sessions.length; i++) {
+                                        if (!completedSessions.includes(sessions[i].id)) {
+                                            currentSessionIndex = i;
+                                            break;
                                         }
                                     }
                                     
-                                    // Prepare learning data
-                                    const learningData = {
-                                        category: primaryCategory,
-                                        words: sessionWords,
-                                        sessionInfo: sessionInfo,
-                                        session: sessionData
+                                    if (currentSessionIndex >= sessions.length) {
+                                        currentSessionIndex = 0;
+                                    }
+                                    
+                                    const currentSession = sessions[currentSessionIndex];
+                                    learningData.words = currentSession.words;
+                                    learningData.sessionInfo = {
+                                        sessionNumber: currentSessionIndex + 1,
+                                        totalSessions: sessions.length,
+                                        sessionId: currentSession.id,
+                                        wordsInSession: currentSession.words.length
                                     };
                                     
-                                    // Start the learning session
-                                    if (window.startLearningSession) {
-                                        window.startLearningSession(learningData, filters.mode);
-                                        
-                                        // Show the learning content
-                                        const learningContent = document.getElementById('learning-content');
-                                        if (learningContent) {
-                                            learningContent.classList.remove('hidden');
-                                            learningContent.classList.add('active');
-                                            learningContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                        }
-                                        
-                                        console.log('✨ Session-based learning started with side menu filters:', filters);
-                                    }
-                                } else {
-                                    console.error('No words found for category:', primaryCategory);
+                                    learningData.session = {
+                                        ...currentSession,
+                                        sessionNumber: currentSessionIndex + 1,
+                                        totalSessions: sessions.length
+                                    };
+                                    
+                                    console.log(\`🎯 Starting session \${learningData.sessionInfo.sessionNumber}/\${learningData.sessionInfo.totalSessions} for \${sessionIdentifier}\`);
+                                } catch (error) {
+                                    console.warn('⚠️ Session manager error, using full word set:', error);
                                 }
-                            } else {
-                                console.error('Category data not found:', primaryCategory);
+                            }
+                            
+                            // Start the learning session
+                            if (window.startLearningSession) {
+                                window.startLearningSession(learningData, mode);
+                                
+                                // Show the learning content
+                                const learningContent = document.getElementById('learning-content');
+                                if (learningContent) {
+                                    learningContent.classList.remove('hidden');
+                                    learningContent.classList.add('active');
+                                    learningContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }
+                                
+                                console.log('✨ Session-based learning started with dual filters:', filters);
                             }
                         }, 300);
                     }
                     
-                    console.log('✨ Side menu filters applied:', filters);
+                    console.log('✨ Dual filtering system applied:', filters);
                 }
             }
             
