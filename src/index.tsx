@@ -2001,6 +2001,7 @@ app.get('/', (c) => {
         <script src="/static/conversation-system.js"></script>
         <script src="/static/realtime-analytics.js?v=20250903-1"></script>
         <script src="/static/analytics-dashboard.js?v=20250903-1"></script>
+        <script src="/static/analytics-simple.js?v=20250903-NEW"></script>
         <script src="/static/gamification-system.js"></script>
         <script src="/static/visual-ux-system.js"></script>
         <script src="/static/enhanced-content-system.js"></script>
@@ -2018,6 +2019,7 @@ app.get('/', (c) => {
         
         <!-- Learning Mode Containers -->
         <script src="/static/modes/flashcard-mode.js?v=20250903-063400"></script>
+        <script src="/static/modes/flashcard-mode-new.js?v=20250903-NEW"></script>
         <script src="/static/modes/quiz-mode.js"></script>
         <script src="/static/modes/review-mode.js"></script>
         <script src="/static/modes/conversation-mode.js"></script>
