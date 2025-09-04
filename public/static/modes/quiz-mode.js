@@ -252,20 +252,35 @@ class QuizMode extends LearningModeBase {
      * Render control buttons
      */
     renderControls() {
+        const isPreviousDisabled = this.currentIndex === 0;
+        const isHintDisabled = this.isAnswered;
+        const isNextDisabled = !this.isAnswered || this.currentIndex >= this.words.length - 1;
+        
         return `
             <div class="quiz-controls">
-                <button class="quiz-control-btn" data-action="previous" ${this.currentIndex === 0 ? 'disabled' : ''}>
+                <button class="quiz-control-btn" 
+                        data-action="previous" 
+                        ${isPreviousDisabled ? 'disabled' : ''}
+                        title="${isPreviousDisabled ? 'لا يوجد سؤال سابق' : 'العودة للسؤال السابق'}"
+                        aria-label="السؤال السابق">
                     <i class="fas fa-chevron-left"></i>
                     <span>السابق</span>
                 </button>
                 
-                <button class="quiz-control-btn hint-btn" data-action="hint" ${this.isAnswered ? 'disabled' : ''}>
+                <button class="quiz-control-btn hint-btn" 
+                        data-action="hint" 
+                        ${isHintDisabled ? 'disabled' : ''}
+                        title="${isHintDisabled ? 'التلميح غير متاح بعد الإجابة' : 'احصل على تلميح للسؤال الحالي'}"
+                        aria-label="طلب تلميح">
                     <i class="fas fa-lightbulb"></i>
                     <span>تلميح</span>
                 </button>
                 
-                <button class="quiz-control-btn next-btn" data-action="next" 
-                        ${!this.isAnswered || this.currentIndex >= this.words.length - 1 ? 'disabled' : ''}>
+                <button class="quiz-control-btn next-btn" 
+                        data-action="next"
+                        ${isNextDisabled ? 'disabled' : ''}
+                        title="${isNextDisabled ? (this.currentIndex >= this.words.length - 1 ? 'آخر سؤال في الاختبار' : 'يجب الإجابة أولاً') : 'الانتقال للسؤال التالي'}"
+                        aria-label="السؤال التالي">
                     <i class="fas fa-chevron-right"></i>
                     <span>التالي</span>
                 </button>

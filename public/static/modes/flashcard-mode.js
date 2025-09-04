@@ -687,15 +687,55 @@ class FlashcardMode extends LearningModeBase {
         const sessionInfo = stats.sessionInfo;
         const hasNextSession = sessionInfo && sessionInfo.sessionNumber < sessionInfo.totalSessions;
         
+        // Calculate performance metrics
+        const accuracy = stats.accuracy || 0;
+        let performanceLevel = 'جيد';
+        let performanceColor = '#22c55e';
+        let performanceIcon = '👍';
+        let performanceBg = '#22c55e15';
+        
+        if (accuracy >= 90) {
+            performanceLevel = 'ممتاز';
+            performanceColor = '#10b981';
+            performanceIcon = '🌟';
+            performanceBg = '#10b98115';
+        } else if (accuracy >= 70) {
+            performanceLevel = 'جيد جداً';
+            performanceColor = '#22c55e';
+            performanceIcon = '👍';
+            performanceBg = '#22c55e15';
+        } else if (accuracy >= 50) {
+            performanceLevel = 'مقبول';
+            performanceColor = '#f59e0b';
+            performanceIcon = '⚡';
+            performanceBg = '#f59e0b15';
+        } else {
+            performanceLevel = 'يحتاج تحسين';
+            performanceColor = '#ef4444';
+            performanceIcon = '💪';
+            performanceBg = '#ef444415';
+        }
+        
         // Create session progress display
         let sessionProgressHTML = '';
         if (sessionInfo) {
             sessionProgressHTML = `
-                <div class="session-progress">
-                    <p class="session-completed">تم إكمال الجلسة ${sessionInfo.sessionNumber} من ${sessionInfo.totalSessions}</p>
+                <div style="
+                    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+                    color: white;
+                    padding: 1.5rem;
+                    border-radius: 16px;
+                    margin: 1.5rem 0;
+                    text-align: center;
+                    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                ">
+                    <p style="font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem 0;">
+                        تم إكمال الجلسة ${sessionInfo.sessionNumber} من ${sessionInfo.totalSessions}
+                    </p>
                     ${hasNextSession ? 
-                        `<p class="next-session-available">الجلسة التالية متاحة الآن!</p>` : 
-                        `<p class="all-sessions-completed">🎉 تم إكمال جميع الجلسات في هذه الفئة!</p>`
+                        `<p style="font-size: 1rem; margin: 0; opacity: 0.9;">الجلسة التالية متاحة الآن! 🚀</p>` : 
+                        `<p style="font-size: 1.1rem; font-weight: 600; margin: 0;">🎉 تم إكمال جميع الجلسات في هذه الفئة!</p>`
                     }
                 </div>
             `;
@@ -705,107 +745,320 @@ class FlashcardMode extends LearningModeBase {
         let nextSessionButton = '';
         if (hasNextSession) {
             nextSessionButton = `
-                <button class="btn-action btn-success" data-action="next-session">
-                    <i class="fas fa-arrow-left"></i>
+                <button class="btn-action btn-success" data-action="next-session" style="
+                    background: linear-gradient(135deg, #10b981, #059669) !important;
+                    color: white !important;
+                    border: none !important;
+                    padding: 1rem 2rem !important;
+                    border-radius: 12px !important;
+                    font-size: 1rem !important;
+                    font-weight: 700 !important;
+                    cursor: pointer;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3) !important;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    min-width: 200px;
+                    margin: 0.5rem;
+                " onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.boxShadow='0 12px 35px rgba(16, 185, 129, 0.4)'" 
+                   onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(16, 185, 129, 0.3)'">
+                    <i class="fas fa-arrow-left" style="margin-left: 0.5rem;"></i>
                     بدء الجلسة التالية (${sessionInfo.sessionNumber + 1}/${sessionInfo.totalSessions})
                 </button>
             `;
         }
         
         const completionHTML = `
-            <style>
-                .session-progress {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    color: white;
-                    padding: 15px;
-                    border-radius: 10px;
-                    margin: 15px 0;
+            <div style="
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                padding: 1rem;
+                box-sizing: border-box;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Arabic', sans-serif;
+                overflow-y: auto;
+            ">
+                <div style="
+                    background: #ffffff;
+                    border-radius: 20px;
+                    padding: 2.5rem;
                     text-align: center;
-                }
-                .session-completed {
-                    font-size: 16px;
-                    font-weight: bold;
-                    margin: 0 0 5px 0;
-                }
-                .next-session-available {
-                    font-size: 14px;
-                    margin: 5px 0 0 0;
-                    opacity: 0.9;
-                }
-                .all-sessions-completed {
-                    font-size: 16px;
-                    font-weight: bold;
-                    margin: 0;
-                }
-                .btn-success {
-                    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
-                    color: white !important;
-                    border: none !important;
-                    font-weight: bold;
-                    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-                    transform: scale(1.05);
-                }
-                .btn-success:hover {
-                    transform: scale(1.08);
-                    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-                }
-                .loading-next-session {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    height: 300px;
-                    text-align: center;
-                }
-                .loading-content {
-                    padding: 40px;
-                    background: white;
-                    border-radius: 15px;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                }
-            </style>
-            <div class="flashcard-completion">
-                <div class="completion-header">
-                    <i class="fas fa-trophy text-6xl text-yellow-500 mb-4"></i>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-2">أحسنت! تم إكمال الجلسة</h2>
-                    <p class="text-gray-600">فئة: ${this.getCategoryName()}</p>
+                    max-width: 600px;
+                    width: 100%;
+                    box-shadow: 
+                        0 25px 50px rgba(0, 0, 0, 0.2),
+                        0 0 0 1px rgba(255, 255, 255, 0.1);
+                    animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+                    position: relative;
+                    overflow: hidden;
+                    margin: 1rem 0;
+                ">
+                    <!-- Decorative gradient overlay -->
+                    <div style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        height: 6px;
+                        background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899, #f59e0b, #10b981);
+                        background-size: 300% 100%;
+                        animation: shimmer 3s ease-in-out infinite;
+                    "></div>
+                    
+                    <div style="
+                        font-size: 4rem;
+                        margin-bottom: 1rem;
+                        animation: bounceIn 1s ease-out;
+                    ">🎉</div>
+                    
+                    <h2 style="
+                        font-size: 2.2rem;
+                        margin-bottom: 0.5rem;
+                        font-weight: 800;
+                        color: #1e293b;
+                        letter-spacing: -0.025em;
+                    ">أحسنت! تم إكمال الجلسة</h2>
+                    
+                    <p style="
+                        font-size: 1.2rem;
+                        color: #64748b;
+                        margin-bottom: 1rem;
+                        font-weight: 600;
+                    ">فئة: ${this.getCategoryName()}</p>
+                    
                     ${sessionProgressHTML}
-                </div>
-                
-                <div class="completion-stats">
-                    <div class="stat-item">
-                        <span class="stat-label">كلمات هذه الجلسة:</span>
-                        <span class="stat-value">${stats.totalWords}</span>
+                    
+                    <!-- Performance Badge -->
+                    <div style="
+                        background: ${performanceBg};
+                        border: 2px solid ${performanceColor}40;
+                        border-radius: 16px;
+                        padding: 1.5rem;
+                        margin: 1.5rem 0 2rem 0;
+                        display: inline-block;
+                        min-width: 200px;
+                    ">
+                        <div style="
+                            font-size: 2.5rem;
+                            margin-bottom: 0.5rem;
+                        ">${performanceIcon}</div>
+                        <div style="
+                            font-size: 1rem;
+                            color: #64748b;
+                            margin-bottom: 0.25rem;
+                            font-weight: 600;
+                        ">مستوى الأداء</div>
+                        <div style="
+                            font-size: 1.6rem;
+                            font-weight: 800;
+                            color: ${performanceColor};
+                        ">${performanceLevel}</div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-label">تم إكمالها:</span>
-                        <span class="stat-value">${stats.completed}</span>
+                    
+                    <!-- Stats Grid -->
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 1rem;
+                        margin: 2rem 0;
+                        direction: rtl;
+                    ">
+                        <div style="
+                            background: linear-gradient(135deg, #10b98115, #10b98125);
+                            border: 1px solid #10b98130;
+                            border-radius: 12px;
+                            padding: 1.25rem;
+                            text-align: center;
+                        ">
+                            <div style="
+                                font-size: 2rem;
+                                font-weight: 800;
+                                color: #10b981;
+                                margin-bottom: 0.25rem;
+                            ">${stats.totalWords}</div>
+                            <div style="
+                                font-size: 0.9rem;
+                                color: #64748b;
+                                font-weight: 600;
+                            ">كلمات الجلسة</div>
+                        </div>
+                        
+                        <div style="
+                            background: linear-gradient(135deg, #4f46e515, #4f46e525);
+                            border: 1px solid #4f46e530;
+                            border-radius: 12px;
+                            padding: 1.25rem;
+                            text-align: center;
+                        ">
+                            <div style="
+                                font-size: 2rem;
+                                font-weight: 800;
+                                color: #4f46e5;
+                                margin-bottom: 0.25rem;
+                            ">${stats.completed}</div>
+                            <div style="
+                                font-size: 0.9rem;
+                                color: #64748b;
+                                font-weight: 600;
+                            ">تم إكمالها</div>
+                        </div>
+                        
+                        <div style="
+                            background: linear-gradient(135deg, ${performanceBg}, ${performanceColor}25);
+                            border: 1px solid ${performanceColor}30;
+                            border-radius: 12px;
+                            padding: 1.25rem;
+                            text-align: center;
+                        ">
+                            <div style="
+                                font-size: 2rem;
+                                font-weight: 800;
+                                color: ${performanceColor};
+                                margin-bottom: 0.25rem;
+                            ">${accuracy}%</div>
+                            <div style="
+                                font-size: 0.9rem;
+                                color: #64748b;
+                                font-weight: 600;
+                            ">الدقة</div>
+                        </div>
+                        
+                        <div style="
+                            background: linear-gradient(135deg, #06b6d415, #06b6d425);
+                            border: 1px solid #06b6d430;
+                            border-radius: 12px;
+                            padding: 1.25rem;
+                            text-align: center;
+                        ">
+                            <div style="
+                                font-size: 2rem;
+                                font-weight: 800;
+                                color: #06b6d4;
+                                margin-bottom: 0.25rem;
+                            ">${stats.timeSpent}</div>
+                            <div style="
+                                font-size: 0.9rem;
+                                color: #64748b;
+                                font-weight: 600;
+                            ">دقيقة</div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-label">الدقة:</span>
-                        <span class="stat-value">${stats.accuracy}%</span>
+                    
+                    <!-- Action Buttons -->
+                    <div style="
+                        display: flex;
+                        gap: 1rem;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        margin-top: 2.5rem;
+                        direction: rtl;
+                    ">
+                        ${nextSessionButton}
+                        
+                        <button data-action="restart" style="
+                            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+                            color: white;
+                            border: none;
+                            padding: 1rem 2rem;
+                            border-radius: 12px;
+                            font-size: 1rem;
+                            font-weight: 700;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+                            min-width: 140px;
+                            margin: 0.5rem;
+                        " onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.boxShadow='0 12px 35px rgba(79, 70, 229, 0.4)'" 
+                           onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(79, 70, 229, 0.3)'">
+                            <i class="fas fa-redo" style="margin-left: 0.5rem;"></i>
+                            إعادة الجلسة
+                        </button>
+                        
+                        <button data-action="review" style="
+                            background: #f8fafc;
+                            color: #475569;
+                            border: 2px solid #e2e8f0;
+                            padding: 1rem 2rem;
+                            border-radius: 12px;
+                            font-size: 1rem;
+                            font-weight: 700;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            min-width: 140px;
+                            margin: 0.5rem;
+                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='#cbd5e1'; this.style.background='#f1f5f9'" 
+                           onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#e2e8f0'; this.style.background='#f8fafc'">
+                            <i class="fas fa-repeat" style="margin-left: 0.5rem;"></i>
+                            بدء المراجعة
+                        </button>
+                        
+                        <button data-action="home" style="
+                            background: #f8fafc;
+                            color: #475569;
+                            border: 2px solid #e2e8f0;
+                            padding: 1rem 2rem;
+                            border-radius: 12px;
+                            font-size: 1rem;
+                            font-weight: 700;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            min-width: 140px;
+                            margin: 0.5rem;
+                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='#cbd5e1'; this.style.background='#f1f5f9'" 
+                           onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#e2e8f0'; this.style.background='#f8fafc'">
+                            <i class="fas fa-home" style="margin-left: 0.5rem;"></i>
+                            العودة للرئيسية
+                        </button>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-label">الوقت المستغرق:</span>
-                        <span class="stat-value">${stats.timeSpent} دقيقة</span>
-                    </div>
-                </div>
-                
-                <div class="completion-actions">
-                    ${nextSessionButton}
-                    <button class="btn-action btn-primary" data-action="restart">
-                        <i class="fas fa-redo"></i>
-                        إعادة الجلسة
-                    </button>
-                    <button class="btn-action btn-secondary" data-action="review">
-                        <i class="fas fa-repeat"></i>
-                        بدء المراجعة
-                    </button>
-                    <button class="btn-action btn-secondary" data-action="home">
-                        <i class="fas fa-home"></i>
-                        العودة للرئيسية
-                    </button>
                 </div>
             </div>
+            
+            <style>
+                @keyframes slideInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(60px) scale(0.95);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0) scale(1);
+                    }
+                }
+                
+                @keyframes bounceIn {
+                    0% {
+                        opacity: 0;
+                        transform: scale(0.3);
+                    }
+                    50% {
+                        opacity: 1;
+                        transform: scale(1.1);
+                    }
+                    100% {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+                
+                @keyframes shimmer {
+                    0% {
+                        background-position: 0% 50%;
+                    }
+                    50% {
+                        background-position: 100% 50%;
+                    }
+                    100% {
+                        background-position: 0% 50%;
+                    }
+                }
+            </style>
         `;
         
         this.clearContainer();
