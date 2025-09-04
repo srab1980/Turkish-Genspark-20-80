@@ -1170,7 +1170,7 @@ app.get('/', (c) => {
                                             margin-top: 2.5rem;
                                             direction: rtl;
                                         ">
-                                            <button onclick="window.startNewFlashcardSession ? window.startNewFlashcardSession({categoryId:'random'}) : window.showSection('learn')" style="
+                                            <button onclick="if(window.startNewFlashcardSession){window.startNewFlashcardSession({categoryId:'family',sessionNumber:1,wordCount:10}).catch(e=>console.log('Session error:',e))}else{window.showSection('learn')}" style="
                                                 background: linear-gradient(135deg, #10b981, #059669);
                                                 color: white;
                                                 border: none;
@@ -1189,7 +1189,7 @@ app.get('/', (c) => {
                                                 جلسة جديدة
                                             </button>
                                             
-                                            <button onclick="window.startNewFlashcardSession ? window.startNewFlashcardSession({categoryId:'greetings'}) : window.showSection('learn')" style="
+                                            <button onclick="if(window.startNewFlashcardSession){window.startNewFlashcardSession({categoryId:'family',sessionNumber:1,wordCount:10}).catch(e=>console.log('Restart error:',e))}else{window.showSection('learn')}" style="
                                                 background: linear-gradient(135deg, #4f46e5, #7c3aed);
                                                 color: white;
                                                 border: none;
@@ -1456,6 +1456,43 @@ app.get('/', (c) => {
                     
                     console.log('✅ TARGETED analytics system ready with real numbers!');
                     
+                    // DEBUG FUNCTION for immediate testing
+                    window.debugSessionIssue = function() {
+                        console.log('🐛 DEBUG: Testing session start issue...');
+                        
+                        // Check vocabulary data
+                        if (window.enhancedVocabularyData) {
+                            const categories = Object.keys(window.enhancedVocabularyData);
+                            console.log('✅ Vocabulary data available:', categories.length, 'categories');
+                            
+                            // Test specific category
+                            const testCategory = 'family';
+                            const categoryData = window.enhancedVocabularyData[testCategory];
+                            if (categoryData) {
+                                console.log('✅ Family category found:', categoryData);
+                                if (categoryData.words) {
+                                    console.log('✅ Words in family:', categoryData.words.length);
+                                    console.log('✅ Sample word:', categoryData.words[0]);
+                                } else {
+                                    console.log('❌ No words property in category');
+                                }
+                            } else {
+                                console.log('❌ Family category not found');
+                            }
+                        } else {
+                            console.log('❌ No vocabulary data');
+                        }
+                        
+                        // Test function availability
+                        console.log('startNewFlashcardSession available:', typeof window.startNewFlashcardSession);
+                        
+                        // Try calling the function
+                        if (window.startNewFlashcardSession) {
+                            console.log('🚀 Testing function call...');
+                            return window.startNewFlashcardSession({categoryId: 'family', sessionNumber: 1});
+                        }
+                    };
+                    
                     // START NEW SESSION FUNCTION - Simplified with session ID management
                     window.startNewFlashcardSession = async function(options = {}) {
                         console.log('🚀 Starting new flashcard session with options:', options);
@@ -1463,7 +1500,7 @@ app.get('/', (c) => {
                         try {
                             // Enhanced options with session ID support
                             const {
-                                categoryId = 'greetings',
+                                categoryId = 'family',
                                 sessionNumber = 1,
                                 sessionId = null,
                                 wordCount = 10
@@ -1562,25 +1599,66 @@ app.get('/', (c) => {
                             
                             // If no session words, get regular words
                             if (sessionWords.length === 0) {
-                                const allWords = window.enhancedVocabularyData[targetCategoryId].words || [];
-                                const targetWordCount = Math.min(wordCount, allWords.length);
+                                console.log('📍 Getting words for category:', targetCategoryId);
+                                console.log('📍 Available categories:', Object.keys(window.enhancedVocabularyData));
                                 
-                                // For session progression, calculate offset based on session number
-                                const startIndex = sessionNumber > 1 ? (sessionNumber - 1) * wordCount : 0;
-                                sessionWords = allWords.slice(startIndex, startIndex + targetWordCount);
+                                const categoryData = window.enhancedVocabularyData[targetCategoryId];
+                                console.log('📍 Category data exists:', !!categoryData);
+                                console.log('📍 Category data structure:', categoryData ? Object.keys(categoryData) : 'N/A');
+                                
+                                const allWords = categoryData?.words || [];
+                                console.log('📍 All words found:', allWords.length);
+                                
+                                if (allWords.length === 0) {
+                                    console.log('❌ No words found for category:', targetCategoryId);
+                                    console.log('🔍 Trying to find any category with words...');
+                                    
+                                    // Find first category with words
+                                    let foundCategoryId = null;
+                                    let foundWords = [];
+                                    
+                                    for (const [catId, catData] of Object.entries(window.enhancedVocabularyData)) {
+                                        if (catData && catData.words && Array.isArray(catData.words) && catData.words.length > 0) {
+                                            foundCategoryId = catId;
+                                            foundWords = catData.words;
+                                            console.log('✅ Found working category:', catId, 'with', foundWords.length, 'words');
+                                            break;
+                                        }
+                                    }
+                                    
+                                    if (foundWords.length > 0) {
+                                        targetCategoryId = foundCategoryId;
+                                        sessionWords = foundWords.slice(0, Math.min(wordCount, foundWords.length));
+                                        console.log('🔄 Switched to category:', targetCategoryId, 'with', sessionWords.length, 'words');
+                                    } else {
+                                        throw new Error('No categories with words found in vocabulary database');
+                                    }
+                                } else {
+                                    const targetWordCount = Math.min(wordCount, allWords.length);
+                                    
+                                    // For session progression, calculate offset based on session number
+                                    const startIndex = sessionNumber > 1 ? (sessionNumber - 1) * wordCount : 0;
+                                    sessionWords = allWords.slice(startIndex, startIndex + targetWordCount);
+                                    
+                                    console.log('📚 Created session with words ' + startIndex + '-' + (startIndex + sessionWords.length) + ' of ' + allWords.length);
+                                }
                                 
                                 // Create session info
                                 sessionInfo = {
                                     sessionId: sessionId || (targetCategoryId + '_session_' + sessionNumber),
                                     categoryId: targetCategoryId,
                                     sessionNumber: sessionNumber,
-                                    totalSessions: Math.ceil(allWords.length / wordCount)
+                                    totalSessions: Math.ceil((allWords.length || sessionWords.length) / wordCount)
                                 };
                                 
-                                console.log('📚 Created session with words ' + startIndex + '-' + (startIndex + sessionWords.length) + ' of ' + allWords.length);
+                                console.log('📊 Final session info:', sessionInfo);
                             }
                             
                             // STEP 4: Create session data
+                            if (sessionWords.length === 0) {
+                                throw new Error('No words available for session - sessionWords is empty');
+                            }
+                            
                             const sessionData = {
                                 words: sessionWords,
                                 category: {
@@ -1600,7 +1678,9 @@ app.get('/', (c) => {
                                 wordsCount: sessionData.words.length,
                                 sessionId: sessionInfo.sessionId,
                                 sessionNumber: sessionInfo.sessionNumber,
-                                totalSessions: sessionInfo.totalSessions
+                                totalSessions: sessionInfo.totalSessions,
+                                firstWord: sessionData.words[0]?.turkish || 'N/A',
+                                sampleWords: sessionData.words.slice(0, 3).map(w => w.turkish).join(', ')
                             });
                             
                             // STEP 5: Start the learning mode
@@ -1652,7 +1732,7 @@ app.get('/', (c) => {
                     
                     // Quick start functions for specific categories
                     window.startRandomFlashcards = () => window.startNewFlashcardSession({ categoryId: 'random' });
-                    window.startGreetingsFlashcards = () => window.startNewFlashcardSession({ categoryId: 'greetings' });
+                    window.startFamilyFlashcards = () => window.startNewFlashcardSession({ categoryId: 'family' });
                     window.startTravelFlashcards = () => window.startNewFlashcardSession({ categoryId: 'travel' });
                     
                     // SUPER SIMPLE fallback function - just navigate to learn section
