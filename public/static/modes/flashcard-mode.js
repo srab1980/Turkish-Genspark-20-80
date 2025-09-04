@@ -27,6 +27,9 @@ class FlashcardMode extends LearningModeBase {
             ...this.options.settings
         };
         
+        // Store this instance as current flashcard mode for global access
+        window.currentFlashcardMode = this;
+        
         console.log('📱 Flashcard Mode container created');
     }
     
