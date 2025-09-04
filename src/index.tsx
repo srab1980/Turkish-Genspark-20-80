@@ -1170,49 +1170,7 @@ app.get('/', (c) => {
                                             margin-top: 2.5rem;
                                             direction: rtl;
                                         ">
-                                            <button onclick="(async function() {
-                                                console.log('🚀 New Session Button clicked - using enhanced flow...');
-                                                
-                                                // Method 1: Try comprehensive startNewFlashcardSession (now async)
-                                                if (window.startNewFlashcardSession && typeof window.startNewFlashcardSession === 'function') {
-                                                    console.log('📚 Trying enhanced startNewFlashcardSession...');
-                                                    try {
-                                                        const result = await window.startNewFlashcardSession({ categoryId: 'random' });
-                                                        if (result !== false) {
-                                                            console.log('✅ Enhanced method completed successfully');
-                                                            return;
-                                                        }
-                                                    } catch (e) {
-                                                        console.log('❌ Enhanced method failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 2: Try simple navigation fallback
-                                                if (window.startNewSessionSimple && typeof window.startNewSessionSimple === 'function') {
-                                                    console.log('🎯 Trying simple navigation method...');
-                                                    try {
-                                                        const result = window.startNewSessionSimple();
-                                                        if (result) {
-                                                            console.log('✅ Simple method succeeded');
-                                                            return;
-                                                        }
-                                                    } catch (e) {
-                                                        console.log('❌ Simple method failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 3: Direct navigation as last resort
-                                                console.log('🆘 Using direct navigation as last resort...');
-                                                if (window.showSection) {
-                                                    const completionScreens = document.querySelectorAll('.completion-screen, [id*=\"completion\"]');
-                                                    completionScreens.forEach(s => s.style && (s.style.display = 'none'));
-                                                    window.showSection('learn');
-                                                    console.log('✅ Direct navigation completed');
-                                                } else {
-                                                    console.log('❌ No navigation method available');
-                                                    alert('يرجى الانتقال يدوياً إلى قسم التعلم لبدء جلسة جديدة');
-                                                }
-                                            })()" style="
+                                            <button onclick="window.startNewFlashcardSession ? window.startNewFlashcardSession({categoryId:'random'}) : window.showSection('learn')" style="
                                                 background: linear-gradient(135deg, #10b981, #059669);
                                                 color: white;
                                                 border: none;
@@ -1231,59 +1189,7 @@ app.get('/', (c) => {
                                                 جلسة جديدة
                                             </button>
                                             
-                                            <button onclick="(async function() {
-                                                console.log('🔄 Restart Session Button clicked - using enhanced flow...');
-                                                
-                                                // Method 1: Try current flashcard mode instance restart
-                                                if (window.flashcardModeNew && typeof window.flashcardModeNew.restart === 'function') {
-                                                    console.log('🎯 Trying flashcardModeNew restart...');
-                                                    try {
-                                                        window.flashcardModeNew.restart();
-                                                        console.log('✅ FlashcardModeNew restart succeeded');
-                                                        return;
-                                                    } catch (e) {
-                                                        console.log('❌ FlashcardModeNew restart failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 2: Try legacy flashcard mode restart
-                                                if (window.flashcardMode && typeof window.flashcardMode.restart === 'function') {
-                                                    console.log('🗺 Trying legacy flashcard mode restart...');
-                                                    try {
-                                                        window.flashcardMode.restart();
-                                                        console.log('✅ Legacy flashcardMode restart succeeded');
-                                                        return;
-                                                    } catch (e) {
-                                                        console.log('❌ Legacy flashcardMode restart failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 3: Use enhanced new session function as fallback
-                                                if (window.startNewFlashcardSession) {
-                                                    console.log('🔄 Using enhanced startNewFlashcardSession as restart fallback...');
-                                                    try {
-                                                        const result = await window.startNewFlashcardSession({ categoryId: 'greetings' });
-                                                        if (result !== false) {
-                                                            console.log('✅ Restart via enhanced session succeeded');
-                                                            return;
-                                                        }
-                                                    } catch (e) {
-                                                        console.log('❌ Restart via enhanced session failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 4: Direct navigation fallback
-                                                console.log('🆘 Using direct navigation for restart...');
-                                                if (window.showSection) {
-                                                    const completionScreens = document.querySelectorAll('.completion-screen, [id*=\"completion\"]');
-                                                    completionScreens.forEach(s => s.style && (s.style.display = 'none'));
-                                                    window.showSection('learn');
-                                                    console.log('✅ Restart via navigation completed');
-                                                } else {
-                                                    console.log('❌ No restart method available');
-                                                    alert('يرجى الانتقال يدوياً إلى قسم التعلم لإعادة الجلسة');
-                                                }
-                                            })()" style="
+                                            <button onclick="window.startNewFlashcardSession ? window.startNewFlashcardSession({categoryId:'greetings'}) : window.showSection('learn')" style="
                                                 background: linear-gradient(135deg, #4f46e5, #7c3aed);
                                                 color: white;
                                                 border: none;
