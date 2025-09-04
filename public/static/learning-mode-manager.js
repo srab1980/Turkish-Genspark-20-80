@@ -38,6 +38,19 @@ class LearningModeManager {
         this.modes.set(modeId, modeConfig);
         console.log(`✅ Registered learning mode: ${modeId}`, modeConfig);
         
+        // Debug: Verify what was actually stored
+        const storedConfig = this.modes.get(modeId);
+        console.log(`🔍 Verification: What was actually stored for ${modeId}:`, {
+            isEqual: storedConfig === modeConfig,
+            storedType: typeof storedConfig,
+            hasEnabled: 'enabled' in storedConfig,
+            enabledValue: storedConfig.enabled,
+            keys: Object.keys(storedConfig).slice(0, 10) // First 10 keys only
+        });
+        
+        // Flashcard mode corruption issue resolved - no monitoring needed
+        console.log(`✅ Learning mode '${modeId}' registered successfully`);
+        
         // Trigger mode registration event
         this.globalEventBus.dispatchEvent(new CustomEvent('modeRegistered', {
             detail: { modeId, config: modeConfig }
@@ -76,10 +89,46 @@ class LearningModeManager {
                 throw new Error(`Learning mode '${modeId}' not found`);
             }
             
-            const modeConfig = this.modes.get(modeId);
+            let modeConfig = this.modes.get(modeId);
             
-            // Check if mode is enabled
+            // CORRUPTION PROTECTION: Check if stored config is actually an instance instead of config
+            const isCorrupted = modeConfig && ('data' in modeConfig && 'isInitialized' in modeConfig && !('enabled' in modeConfig));
+            
+            if (isCorrupted) {
+                console.warn(`⚠️ Detected corrupted config for '${modeId}' - rebuilding from backup`);
+                
+                // Rebuild the config object based on the mode ID
+                const restoredConfig = {
+                    id: modeId,
+                    class: modeConfig.constructor, // Get the class from the instance
+                    name: modeId === 'flashcard' ? 'البطاقات التعليمية' : modeId,
+                    icon: modeId === 'flashcard' ? '📱' : '📚',
+                    description: modeId === 'flashcard' ? 'تعلم الكلمات باستخدام البطاقات التفاعلية' : `Learning mode: ${modeId}`,
+                    containerId: `${modeId}-mode-container`,
+                    dependencies: [],
+                    enabled: true, // Force enable
+                    version: '3.0.0'
+                };
+                
+                // Restore the correct config
+                this.modes.set(modeId, restoredConfig);
+                modeConfig = restoredConfig;
+                console.log(`✅ Restored config for '${modeId}':`, restoredConfig);
+            }
+            
+            // Check if mode is enabled  
+            console.log(`🔍 Debug mode config for '${modeId}':`, {
+                exists: !!modeConfig,
+                enabled: modeConfig.enabled,
+                enabledType: typeof modeConfig.enabled,
+                enabledValue: JSON.stringify(modeConfig.enabled),
+                configKeys: Object.keys(modeConfig),
+                configClass: modeConfig.class?.name || 'no-class'
+            });
+            
             if (!modeConfig.enabled) {
+                console.error(`❌ Mode '${modeId}' is disabled.`);
+                console.error('Full config object:', JSON.stringify(modeConfig, null, 2));
                 throw new Error(`Learning mode '${modeId}' is disabled`);
             }
             

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Session Start - Turkish Learning App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">🐛 Debug Session Start Issues</h1>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">🧪 Quick Tests</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onclick="debugVocabularyData()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Check Vocabulary Data
+                </button>
+                
+                <button onclick="debugSessionStart()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                    Debug Session Start
+                </button>
+                
+                <button onclick="testSimpleSession()" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                    Test Simple Session
+                </button>
+                
+                <button onclick="openMainApp()" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
+                    Open Main App
+                </button>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-bold mb-4">📋 Debug Output</h2>
+            <div id="debug-output" class="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm h-96 overflow-y-auto">
+                Ready for debugging...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const debugOutput = document.getElementById('debug-output');
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            debugOutput.innerHTML += `[${timestamp}] ${message}\n`;
+            debugOutput.scrollTop = debugOutput.scrollHeight;
+            console.log(message);
+        }
+        
+        function debugVocabularyData() {
+            log('🔍 Checking vocabulary data...');
+            
+            // Load the main app in hidden iframe to access its data
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://3000-ivbmlm8vqak2xzzv33jm5-6532622b.e2b.dev';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            iframe.onload = function() {
+                try {
+                    const appWindow = iframe.contentWindow;
+                    
+                    if (appWindow.enhancedVocabularyData) {
+                        const data = appWindow.enhancedVocabularyData;
+                        const categories = Object.keys(data);
+                        log(`✅ Found ${categories.length} categories: ${categories.slice(0,5).join(', ')}`);
+                        
+                        // Test specific categories
+                        ['greetings', 'health', 'food', 'family'].forEach(cat => {
+                            if (data[cat] && data[cat].words) {
+                                log(`  ✅ ${cat}: ${data[cat].words.length} words`);
+                                log(`    Sample: ${data[cat].words[0]?.turkish || 'N/A'}`);
+                            } else {
+                                log(`  ❌ ${cat}: No words found`);
+                            }
+                        });
+                    } else {
+                        log('❌ No enhancedVocabularyData found');
+                    }
+                    
+                    if (appWindow.startNewFlashcardSession) {
+                        log('✅ startNewFlashcardSession function available');
+                    } else {
+                        log('❌ startNewFlashcardSession function not found');
+                    }
+                    
+                } catch (error) {
+                    log(`❌ Error accessing iframe: ${error.message}`);
+                }
+                
+                // Clean up
+                setTimeout(() => document.body.removeChild(iframe), 1000);
+            };
+            
+            iframe.onerror = function() {
+                log('❌ Failed to load main app');
+                document.body.removeChild(iframe);
+            };
+        }
+        
+        function debugSessionStart() {
+            log('🚀 Testing session start...');
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://3000-ivbmlm8vqak2xzzv33jm5-6532622b.e2b.dev';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            iframe.onload = function() {
+                try {
+                    const appWindow = iframe.contentWindow;
+                    
+                    if (appWindow.startNewFlashcardSession) {
+                        log('📞 Calling startNewFlashcardSession...');
+                        
+                        // Call the function with detailed logging
+                        appWindow.startNewFlashcardSession({
+                            categoryId: 'greetings',
+                            sessionNumber: 1,
+                            wordCount: 5
+                        }).then(result => {
+                            log(`✅ Session started successfully: ${result}`);
+                        }).catch(error => {
+                            log(`❌ Session start failed: ${error.message}`);
+                        });
+                        
+                    } else {
+                        log('❌ startNewFlashcardSession not available');
+                    }
+                    
+                } catch (error) {
+                    log(`❌ Error: ${error.message}`);
+                }
+                
+                setTimeout(() => document.body.removeChild(iframe), 5000);
+            };
+        }
+        
+        function testSimpleSession() {
+            log('🎯 Testing simple button click simulation...');
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://3000-ivbmlm8vqak2xzzv33jm5-6532622b.e2b.dev';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            iframe.onload = function() {
+                setTimeout(() => {
+                    try {
+                        const appWindow = iframe.contentWindow;
+                        const doc = iframe.contentDocument;
+                        
+                        // Look for category cards
+                        const categoryCard = doc.querySelector('.category-card[data-category="greetings"]');
+                        if (categoryCard) {
+                            log('🎯 Found greetings category, clicking...');
+                            categoryCard.click();
+                            
+                            setTimeout(() => {
+                                // Check if flashcard mode started
+                                const flashcardContainer = doc.getElementById('flashcard-mode-container');
+                                if (flashcardContainer && flashcardContainer.innerHTML.length > 100) {
+                                    log('✅ Flashcard container has content');
+                                } else {
+                                    log('❌ Flashcard container empty or missing');
+                                }
+                            }, 2000);
+                        } else {
+                            log('❌ No greetings category card found');
+                        }
+                        
+                    } catch (error) {
+                        log(`❌ Error: ${error.message}`);
+                    }
+                }, 3000);
+                
+                setTimeout(() => document.body.removeChild(iframe), 10000);
+            };
+        }
+        
+        function openMainApp() {
+            window.open('https://3000-ivbmlm8vqak2xzzv33jm5-6532622b.e2b.dev', '_blank');
+        }
+        
+        log('🏁 Debug tools ready. Click buttons above to test.');
+    </script>
+</body>
+</html>

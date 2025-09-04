@@ -3,9 +3,10 @@
  * Created to fix persistent caching and visibility issues
  */
 
-class FlashcardModeNew extends LearningModeBase {
-    constructor() {
-        super('flashcard', 'البطاقات التعليمية', '📱', 'تعلم الكلمات باستخدام البطاقات التفاعلية');
+// Use a unique class name to avoid conflicts
+class FlashcardModeEnhanced extends LearningModeBase {
+    constructor(config = {}) {
+        super(config);
         
         this.currentIndex = 0;
         this.words = [];
@@ -21,12 +22,91 @@ class FlashcardModeNew extends LearningModeBase {
             timeSpent: 0
         };
         
+        // Store this instance as current flashcard mode for global access
+        window.currentFlashcardMode = this;
+        
         console.log('🎯 NEW Flashcard Mode initialized');
+    }
+    
+    // Required by LearningModeBase - initialize the flashcard mode
+    async init() {
+        try {
+            console.log('🚀 Initializing FlashcardModeEnhanced...');
+            
+            // Initialize with data from the manager if available
+            if (this.data && this.data.words) {
+                this.words = this.data.words;
+                console.log('📚 Loaded words from manager data:', this.words.length);
+            }
+            
+            // Set up session information
+            if (this.data && this.data.session) {
+                this.sessionInfo = this.data.session;
+                console.log('📋 Session info loaded:', this.sessionInfo);
+            }
+            
+            // Initialize session stats
+            this.sessionStats.startTime = Date.now();
+            this.sessionStats.totalWords = this.words.length;
+            
+            // Set up event listeners
+            this.setupEventListeners();
+            
+            // Mark as initialized but not active yet (will be activated when started)
+            this.isInitialized = true;
+            this.isActive = false;
+            
+            console.log('✅ FlashcardModeEnhanced initialized successfully');
+            
+        } catch (error) {
+            console.error('❌ Failed to initialize FlashcardModeEnhanced:', error);
+            throw error;
+        }
+    }
+    
+    // Set up event listeners for flashcard interactions
+    setupEventListeners() {
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (this.isActive) {
+                switch(e.key) {
+                    case ' ':
+                    case 'Enter':
+                        e.preventDefault();
+                        this.flipCard();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        this.nextCard();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        this.previousCard();
+                        break;
+                }
+            }
+        });
     }
     
     async start(options = {}) {
         try {
             console.log('🎯 Starting NEW flashcard mode with options:', options);
+            
+            // Store session information for next session progression
+            this.data = options;
+            if (options.sessionInfo) {
+                this.data.sessionInfo = options.sessionInfo;
+            } else {
+                // Create basic session info if not provided
+                this.data.sessionInfo = {
+                    sessionId: options.sessionId || (options.categoryId + '_session_' + (options.sessionNumber || 1)),
+                    categoryId: options.categoryId || options.category || 'family',
+                    sessionNumber: options.sessionNumber || 1,
+                    totalSessions: options.totalSessions || 10 // Default estimate
+                };
+            }
+            
+            console.log('📊 Session info stored:', this.data.sessionInfo);
             
             // Get words for the session
             this.words = await this.getWordsForSession(options);
@@ -45,14 +125,22 @@ class FlashcardModeNew extends LearningModeBase {
             // Shuffle words for better learning
             this.shuffleWords();
             
+            // Activate the mode
+            this.isActive = true;
+            
             console.log(`📚 Flashcard session started with ${this.words.length} words`);
             
             // Render the first card
             this.render();
             
+            // Auto-pronounce the first word after a brief delay
+            setTimeout(() => {
+                this.autoPronounceTurkishWord();
+            }, 1000); // 1 second delay to let UI settle
+            
             // Track session start
             this.trackEvent('session_started', {
-                category: options.category,
+                category: options.category || options.categoryId,
                 wordCount: this.words.length,
                 mode: 'flashcard'
             });
@@ -158,6 +246,13 @@ class FlashcardModeNew extends LearningModeBase {
                     <button class="btn-difficulty btn-easy" onclick="window.flashcardModeNew.recordResponse('correct')">
                         <i class="fas fa-check"></i>
                         <span>سهل</span>
+                    </button>
+                </div>
+                
+                <div class="pronunciation-controls">
+                    <button class="btn-pronunciation" onclick="window.flashcardModeNew.playPronunciation()" title="استمع للنطق">
+                        <i class="fas fa-volume-up"></i>
+                        <span>استمع للنطق</span>
                     </button>
                 </div>
                 
@@ -354,6 +449,51 @@ class FlashcardModeNew extends LearningModeBase {
                     border-color: #cbd5e1;
                     background: #f8fafc;
                 }
+                
+                .pronunciation-controls {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                }
+                
+                .btn-pronunciation {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    padding: 0.75rem 1.5rem;
+                    border: none;
+                    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+                    color: white;
+                    border-radius: 25px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+                    min-width: 140px;
+                    justify-content: center;
+                }
+                
+                .btn-pronunciation:hover {
+                    transform: translateY(-2px) scale(1.02);
+                    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+                    background: linear-gradient(135deg, #2563eb, #1e40af);
+                }
+                
+                .btn-pronunciation:active {
+                    transform: translateY(0) scale(0.98);
+                    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+                }
+                
+                .btn-pronunciation i {
+                    font-size: 1.1rem;
+                    animation: pulse 2s infinite;
+                }
+                
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                }
             </style>
         `;
         
@@ -419,8 +559,13 @@ class FlashcardModeNew extends LearningModeBase {
             index: this.currentIndex
         });
         
-        // Move to next word
-        this.nextWord();
+        // Show brief feedback animation
+        this.showDifficultyFeedback(difficulty);
+        
+        // Auto-advance to next word after a short delay
+        setTimeout(() => {
+            this.nextWord();
+        }, 800); // 800ms delay for visual feedback
     }
     
     nextWord() {
@@ -431,6 +576,10 @@ class FlashcardModeNew extends LearningModeBase {
             this.completeSession();
         } else {
             this.render();
+            // Auto-pronounce the new word after rendering
+            setTimeout(() => {
+                this.autoPronounceTurkishWord();
+            }, 500); // 500ms delay to let the card render
         }
     }
     
@@ -689,7 +838,60 @@ class FlashcardModeNew extends LearningModeBase {
                         margin-top: 2.5rem;
                         direction: rtl;
                     ">
-                        <button onclick="window.flashcardModeNew && window.flashcardModeNew.restart()" style="
+                        <button onclick="
+                            console.log('🚀 New Session button clicked');
+                            if (window.flashcardModeNew && typeof window.flashcardModeNew.startNextSession === 'function') {
+                                console.log('✅ Calling startNextSession...');
+                                window.flashcardModeNew.startNextSession();
+                            } else {
+                                console.log('❌ flashcardModeNew not available, trying fallback...');
+                                if (window.currentFlashcardMode && typeof window.currentFlashcardMode.startNextSession === 'function') {
+                                    console.log('✅ Using currentFlashcardMode...');
+                                    window.currentFlashcardMode.startNextSession();
+                                } else if (window.startNewFlashcardSession) {
+                                    console.log('✅ Using startNewFlashcardSession fallback...');
+                                    window.startNewFlashcardSession({categoryId:'family',sessionNumber:2,wordCount:10});
+                                } else {
+                                    console.log('❌ No session functions available');
+                                }
+                            }
+                        " style="
+                            background: linear-gradient(135deg, #10b981, #059669);
+                            color: white;
+                            border: none;
+                            padding: 1rem 2rem;
+                            border-radius: 12px;
+                            font-size: 1rem;
+                            font-weight: 700;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+                            min-width: 160px;
+                            margin: 0.5rem;
+                        " onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.boxShadow='0 12px 35px rgba(16, 185, 129, 0.4)'" 
+                           onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(16, 185, 129, 0.3)'">
+                            <i class="fas fa-plus-circle" style="margin-left: 0.5rem;"></i>
+                            جلسة جديدة
+                        </button>
+
+                        <button onclick="
+                            console.log('🔄 Restart Session button clicked');
+                            if (window.flashcardModeNew && typeof window.flashcardModeNew.restart === 'function') {
+                                console.log('✅ Calling restart...');
+                                window.flashcardModeNew.restart();
+                            } else {
+                                console.log('❌ flashcardModeNew not available, trying fallback...');
+                                if (window.currentFlashcardMode && typeof window.currentFlashcardMode.restart === 'function') {
+                                    console.log('✅ Using currentFlashcardMode...');
+                                    window.currentFlashcardMode.restart();
+                                } else if (window.startNewFlashcardSession) {
+                                    console.log('✅ Using startNewFlashcardSession fallback...');
+                                    window.startNewFlashcardSession({categoryId:'family',sessionNumber:1,wordCount:10});
+                                } else {
+                                    console.log('❌ No restart functions available');
+                                }
+                            }
+                        " style="
                             background: linear-gradient(135deg, #4f46e5, #7c3aed);
                             color: white;
                             border: none;
@@ -803,22 +1005,290 @@ class FlashcardModeNew extends LearningModeBase {
             this.completeSession();
         }
     }
+    
+    /**
+     * Start next session in the same category with proper session ID management
+     */
+    async startNextSession() {
+        console.log('🎯 Starting next session...');
+        
+        // Get current session information from data
+        const sessionInfo = this.data && this.data.sessionInfo;
+        
+        if (!sessionInfo) {
+            console.log('❌ No session info available, falling back to new session');
+            // Fallback to starting a new session
+            if (window.startNewFlashcardSession) {
+                return window.startNewFlashcardSession({
+                    categoryId: 'family',
+                    sessionNumber: 1,
+                    wordCount: 10
+                });
+            }
+            return;
+        }
+        
+        if (sessionInfo.sessionNumber >= sessionInfo.totalSessions) {
+            console.log('❌ No next session available');
+            return;
+        }
+        
+        // Calculate next session ID and number
+        const nextSessionNumber = sessionInfo.sessionNumber + 1;
+        const nextSessionId = sessionInfo.categoryId + '_session_' + nextSessionNumber;
+        
+        // Show loading state
+        if (this.container) {
+            this.container.innerHTML = `
+                <div class="loading-next-session" style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 400px;
+                    text-align: center;
+                ">
+                    <div class="loading-content">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #4f46e5; margin-bottom: 1rem;"></i>
+                        <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;">جارٍ تحضير الجلسة التالية...</h3>
+                        <p style="color: #64748b;">الجلسة ${nextSessionNumber} من ${sessionInfo.totalSessions}</p>
+                        <p style="font-size: 0.9rem; color: #4f46e5; margin-top: 0.5rem;">معرف الجلسة: ${nextSessionId}</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Wait for visual feedback
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Use enhanced session function with specific session details
+        if (window.startNewFlashcardSession) {
+            console.log('🎯 Starting next session with ID:', nextSessionId);
+            
+            try {
+                const result = await window.startNewFlashcardSession({
+                    categoryId: sessionInfo.categoryId,
+                    sessionNumber: nextSessionNumber,
+                    sessionId: nextSessionId,
+                    wordCount: 10
+                });
+                
+                if (result !== false) {
+                    console.log('✅ Next session started successfully with ID:', nextSessionId);
+                    return;
+                }
+            } catch (error) {
+                console.error('❌ Enhanced next session failed:', error);
+            }
+        }
+        
+        console.log('❌ Failed to start next session');
+    }
+    
+    // 🔊 AUTO-PRONUNCIATION FEATURE - Automatically pronounce Turkish words
+    autoPronounceTurkishWord() {
+        const word = this.words[this.currentIndex];
+        if (!word || !word.turkish) {
+            console.log('🔇 No word to pronounce');
+            return;
+        }
+        
+        try {
+            // Check if TTS is supported
+            if (!('speechSynthesis' in window)) {
+                console.log('🔇 Text-to-Speech not supported in this browser');
+                return;
+            }
+            
+            // Cancel any ongoing speech
+            window.speechSynthesis.cancel();
+            
+            // Create utterance
+            const utterance = new SpeechSynthesisUtterance(word.turkish);
+            
+            // Configure Turkish language settings
+            utterance.lang = 'tr-TR'; // Turkish language code
+            utterance.rate = 0.7;     // Slightly slower for learning
+            utterance.pitch = 1.0;    // Normal pitch
+            utterance.volume = 0.8;   // Comfortable volume
+            
+            // Try to find Turkish voice
+            const voices = window.speechSynthesis.getVoices();
+            const turkishVoice = voices.find(voice => 
+                voice.lang.includes('tr') || voice.lang.includes('TR')
+            );
+            
+            if (turkishVoice) {
+                utterance.voice = turkishVoice;
+                console.log(`🔊 Using Turkish voice: ${turkishVoice.name}`);
+            } else {
+                console.log('🔊 No Turkish voice found, using default voice');
+            }
+            
+            // Add event listeners for debugging
+            utterance.onstart = () => {
+                console.log(`🔊 Started pronouncing: "${word.turkish}"`);
+            };
+            
+            utterance.onend = () => {
+                console.log(`✅ Finished pronouncing: "${word.turkish}"`);
+            };
+            
+            utterance.onerror = (event) => {
+                console.error('🔇 TTS Error:', event.error);
+            };
+            
+            // Speak the word
+            window.speechSynthesis.speak(utterance);
+            
+        } catch (error) {
+            console.error('🔇 Error in auto-pronunciation:', error);
+        }
+    }
+    
+    // 🎯 DIFFICULTY FEEDBACK - Show visual feedback when difficulty is selected
+    showDifficultyFeedback(difficulty) {
+        // Find the clicked button and show feedback animation
+        const buttons = document.querySelectorAll('.btn-difficulty');
+        buttons.forEach(btn => btn.style.transform = 'scale(1)');
+        
+        // Find the correct button based on difficulty
+        let targetButton;
+        if (difficulty === 'correct') {
+            targetButton = document.querySelector('.btn-easy');
+        } else if (difficulty === 'medium') {
+            targetButton = document.querySelector('.btn-medium');
+        } else if (difficulty === 'incorrect') {
+            targetButton = document.querySelector('.btn-hard');
+        }
+        
+        if (targetButton) {
+            // Add selection animation
+            targetButton.style.transform = 'scale(0.95)';
+            targetButton.style.opacity = '0.7';
+            
+            // Reset after animation
+            setTimeout(() => {
+                targetButton.style.transform = 'scale(1)';
+                targetButton.style.opacity = '1';
+            }, 200);
+        }
+        
+        // Show difficulty feedback message
+        this.showTemporaryMessage(difficulty);
+    }
+    
+    // 💬 TEMPORARY MESSAGE - Show brief feedback messages
+    showTemporaryMessage(difficulty) {
+        const messages = {
+            'correct': { text: '✅ سهل!', color: '#22c55e' },
+            'medium': { text: '⚡ متوسط', color: '#f59e0b' },
+            'incorrect': { text: '💪 صعب - سنراجعها', color: '#ef4444' }
+        };
+        
+        const message = messages[difficulty] || messages['medium'];
+        
+        // Create floating message element
+        const messageEl = document.createElement('div');
+        messageEl.innerHTML = message.text;
+        messageEl.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            background: ${message.color};
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            z-index: 10000;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        `;
+        
+        document.body.appendChild(messageEl);
+        
+        // Animate in
+        setTimeout(() => {
+            messageEl.style.opacity = '1';
+            messageEl.style.transform = 'translate(-50%, -50%) scale(1)';
+        }, 10);
+        
+        // Animate out and remove
+        setTimeout(() => {
+            messageEl.style.opacity = '0';
+            messageEl.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            setTimeout(() => {
+                document.body.removeChild(messageEl);
+            }, 300);
+        }, 1500);
+    }
+    
+    // 🎵 MANUAL PRONUNCIATION - Allow users to replay pronunciation
+    playPronunciation() {
+        this.autoPronounceTurkishWord();
+    }
 }
 
-// Register the NEW flashcard mode
-if (window.learningModeManager) {
-    window.flashcardModeNew = new FlashcardModeNew();
-    window.learningModeManager.registerMode(window.flashcardModeNew);
-    console.log('✅ NEW Flashcard Mode registered successfully');
-} else {
-    console.warn('⚠️ Learning Mode Manager not found, will retry...');
+// Register the NEW flashcard mode with proper error handling
+function registerFlashcardMode() {
+    if (!window.learningModeManager) {
+        console.warn('⚠️ Learning Mode Manager not found, retrying...');
+        return false;
+    }
+    
+    try {
+        // Create instance for global access
+        window.flashcardModeNew = new FlashcardModeEnhanced();
+        
+        // Register using proper method signature
+        const config = {
+            name: 'البطاقات التعليمية',
+            icon: '📱',
+            description: 'تعلم الكلمات باستخدام البطاقات التفاعلية',
+            containerId: 'flashcard-mode-container',
+            dependencies: [],
+            enabled: true,
+            version: '3.0.0'
+        };
+        
+        console.log('🔧 Registering flashcard mode with config:', config);
+        window.learningModeManager.registerMode('flashcard', FlashcardModeEnhanced, config);
+        
+        // Verify registration
+        const registered = window.learningModeManager.modes.get('flashcard');
+        console.log('🔍 Registration result:', {
+            exists: !!registered,
+            enabled: registered?.enabled,
+            name: registered?.name
+        });
+        
+        if (registered && registered.enabled) {
+            console.log('✅ NEW Enhanced Flashcard Mode registered successfully');
+            return true;
+        } else {
+            console.error('❌ Flashcard mode registration failed - mode disabled');
+            return false;
+        }
+    } catch (error) {
+        console.error('❌ Error registering flashcard mode:', error);
+        return false;
+    }
+}
+
+// Attempt registration
+if (!registerFlashcardMode()) {
+    // Retry after delay if initial registration fails
     setTimeout(() => {
-        if (window.learningModeManager) {
-            window.flashcardModeNew = new FlashcardModeNew();
-            window.learningModeManager.registerMode(window.flashcardModeNew);
-            console.log('✅ NEW Flashcard Mode registered successfully (delayed)');
+        if (!registerFlashcardMode()) {
+            console.error('❌ Failed to register flashcard mode after retry');
         }
     }, 1000);
 }
+
+// Store the class globally for backward compatibility
+window.FlashcardModeNew = FlashcardModeEnhanced;
 
 console.log('🎯 NEW Enhanced Flashcard Mode loaded successfully!');

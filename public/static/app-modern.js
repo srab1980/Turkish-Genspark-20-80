@@ -1315,44 +1315,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 console.log('Turkish Learning App script loaded successfully!');
 
-// AUTO-DIAGNOSTIC: Test startNewFlashcardSession after everything loads
-setTimeout(() => {
-    console.log('\n🔬 AUTO-DIAGNOSTIC: Testing startNewFlashcardSession function');
-    console.log('================================================');
-    
-    // Test vocabulary data first
-    if (window.enhancedVocabularyData) {
-        const categories = Object.keys(window.enhancedVocabularyData);
-        console.log('✅ Vocabulary data available:', categories.length, 'categories');
-        console.log('   Sample categories:', categories.slice(0, 5));
-        
-        // Check specific test categories
-        const testCats = ['greetings', 'food', 'family', 'numbers'];
-        testCats.forEach(cat => {
-            const data = window.enhancedVocabularyData[cat];
-            if (data && data.words && data.words.length > 0) {
-                console.log('   ✅', cat + ':', data.words.length, 'words', '- First word:', data.words[0].turkish);
-            } else {
-                console.log('   ❌', cat + ':', 'invalid data');
-            }
-        });
-    } else {
-        console.log('❌ Vocabulary data not available');
-    }
-    
-    // Test the startNewFlashcardSession function
-    if (typeof window.startNewFlashcardSession === 'function') {
-        console.log('\n🚀 Testing startNewFlashcardSession function...');
-        try {
-            const result = window.startNewFlashcardSession({ categoryId: 'greetings' });
-            console.log('✅ startNewFlashcardSession completed, result:', result);
-        } catch (error) {
-            console.log('❌ startNewFlashcardSession failed:', error.message);
-            console.error('Full error details:', error);
-        }
-    } else {
-        console.log('❌ startNewFlashcardSession function not available');
-    }
-    
-    console.log('================================================');
-}, 5000); // Wait 5 seconds for everything to load
+// AUTO-DIAGNOSTIC: Disabled to prevent corruption during development
+// This auto-diagnostic was causing the flashcard mode config to be corrupted
+console.log('🔬 AUTO-DIAGNOSTIC: Disabled to prevent mode corruption');

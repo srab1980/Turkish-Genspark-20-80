@@ -1170,49 +1170,20 @@ app.get('/', (c) => {
                                             margin-top: 2.5rem;
                                             direction: rtl;
                                         ">
-                                            <button onclick="(async function() {
-                                                console.log('🚀 New Session Button clicked - using enhanced flow...');
-                                                
-                                                // Method 1: Try comprehensive startNewFlashcardSession (now async)
-                                                if (window.startNewFlashcardSession && typeof window.startNewFlashcardSession === 'function') {
-                                                    console.log('📚 Trying enhanced startNewFlashcardSession...');
-                                                    try {
-                                                        const result = await window.startNewFlashcardSession({ categoryId: 'random' });
-                                                        if (result !== false) {
-                                                            console.log('✅ Enhanced method completed successfully');
-                                                            return;
-                                                        }
-                                                    } catch (e) {
-                                                        console.log('❌ Enhanced method failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 2: Try simple navigation fallback
-                                                if (window.startNewSessionSimple && typeof window.startNewSessionSimple === 'function') {
-                                                    console.log('🎯 Trying simple navigation method...');
-                                                    try {
-                                                        const result = window.startNewSessionSimple();
-                                                        if (result) {
-                                                            console.log('✅ Simple method succeeded');
-                                                            return;
-                                                        }
-                                                    } catch (e) {
-                                                        console.log('❌ Simple method failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 3: Direct navigation as last resort
-                                                console.log('🆘 Using direct navigation as last resort...');
-                                                if (window.showSection) {
-                                                    const completionScreens = document.querySelectorAll('.completion-screen, [id*=\"completion\"]');
-                                                    completionScreens.forEach(s => s.style && (s.style.display = 'none'));
-                                                    window.showSection('learn');
-                                                    console.log('✅ Direct navigation completed');
+                                            <button onclick="
+                                                console.log('🚀 New Session button clicked');
+                                                // Try to start next session using current flashcard mode
+                                                if (window.currentFlashcardMode && typeof window.currentFlashcardMode.startNextSession === 'function') {
+                                                    console.log('✅ Found current flashcard mode, starting next session...');
+                                                    window.currentFlashcardMode.startNextSession();
+                                                } else if (window.startNewFlashcardSession) {
+                                                    console.log('⚠️ No current flashcard mode, starting new session from beginning...');
+                                                    window.startNewFlashcardSession({categoryId:'family',sessionNumber:1,wordCount:10}).catch(e=>console.log('Session error:',e));
                                                 } else {
-                                                    console.log('❌ No navigation method available');
-                                                    alert('يرجى الانتقال يدوياً إلى قسم التعلم لبدء جلسة جديدة');
+                                                    console.log('❌ No session functions available, navigating to learn section...');
+                                                    window.showSection('learn');
                                                 }
-                                            })()" style="
+                                            " style="
                                                 background: linear-gradient(135deg, #10b981, #059669);
                                                 color: white;
                                                 border: none;
@@ -1231,59 +1202,7 @@ app.get('/', (c) => {
                                                 جلسة جديدة
                                             </button>
                                             
-                                            <button onclick="(async function() {
-                                                console.log('🔄 Restart Session Button clicked - using enhanced flow...');
-                                                
-                                                // Method 1: Try current flashcard mode instance restart
-                                                if (window.flashcardModeNew && typeof window.flashcardModeNew.restart === 'function') {
-                                                    console.log('🎯 Trying flashcardModeNew restart...');
-                                                    try {
-                                                        window.flashcardModeNew.restart();
-                                                        console.log('✅ FlashcardModeNew restart succeeded');
-                                                        return;
-                                                    } catch (e) {
-                                                        console.log('❌ FlashcardModeNew restart failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 2: Try legacy flashcard mode restart
-                                                if (window.flashcardMode && typeof window.flashcardMode.restart === 'function') {
-                                                    console.log('🗺 Trying legacy flashcard mode restart...');
-                                                    try {
-                                                        window.flashcardMode.restart();
-                                                        console.log('✅ Legacy flashcardMode restart succeeded');
-                                                        return;
-                                                    } catch (e) {
-                                                        console.log('❌ Legacy flashcardMode restart failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 3: Use enhanced new session function as fallback
-                                                if (window.startNewFlashcardSession) {
-                                                    console.log('🔄 Using enhanced startNewFlashcardSession as restart fallback...');
-                                                    try {
-                                                        const result = await window.startNewFlashcardSession({ categoryId: 'greetings' });
-                                                        if (result !== false) {
-                                                            console.log('✅ Restart via enhanced session succeeded');
-                                                            return;
-                                                        }
-                                                    } catch (e) {
-                                                        console.log('❌ Restart via enhanced session failed:', e.message);
-                                                    }
-                                                }
-                                                
-                                                // Method 4: Direct navigation fallback
-                                                console.log('🆘 Using direct navigation for restart...');
-                                                if (window.showSection) {
-                                                    const completionScreens = document.querySelectorAll('.completion-screen, [id*=\"completion\"]');
-                                                    completionScreens.forEach(s => s.style && (s.style.display = 'none'));
-                                                    window.showSection('learn');
-                                                    console.log('✅ Restart via navigation completed');
-                                                } else {
-                                                    console.log('❌ No restart method available');
-                                                    alert('يرجى الانتقال يدوياً إلى قسم التعلم لإعادة الجلسة');
-                                                }
-                                            })()" style="
+                                            <button onclick="if(window.startNewFlashcardSession){window.startNewFlashcardSession({categoryId:'family',sessionNumber:1,wordCount:10}).catch(e=>console.log('Restart error:',e))}else{window.showSection('learn')}" style="
                                                 background: linear-gradient(135deg, #4f46e5, #7c3aed);
                                                 color: white;
                                                 border: none;
@@ -1375,45 +1294,10 @@ app.get('/', (c) => {
                     }
                 }, 1000);
                 
-                // Force load new flashcard mode and analytics
-                setTimeout(function() {
-                    console.log('🔧 Loading new systems...');
-                    
-                    // Force load new flashcard mode
-                    const newFlashcardScript = document.createElement('script');
-                    newFlashcardScript.src = '/static/modes/flashcard-mode-new.js?v=' + Date.now();
-                    newFlashcardScript.onload = function() {
-                        console.log('✅ New flashcard mode loaded');
-                    };
-                    document.head.appendChild(newFlashcardScript);
-                    
-                    // Force load simple analytics
-                    const analyticsScript = document.createElement('script');
-                    analyticsScript.src = '/static/analytics-simple.js?v=' + Date.now();
-                    analyticsScript.onload = function() {
-                        console.log('✅ Simple analytics loaded');
-                    };
-                    document.head.appendChild(analyticsScript);
-                    
-                }, 1000);
+                // Systems already loaded in HTML, no need for dynamic loading
                 
-                // Force override the flashcard mode after everything loads
-                setTimeout(function() {
-                    if (window.learningModeManager && window.FlashcardModeNew) {
-                        console.log('🔧 Forcing flashcard mode override...');
-                        
-                        // Create and register new flashcard mode
-                        window.flashcardModeNew = new window.FlashcardModeNew();
-                        
-                        // Override the old flashcard mode
-                        window.learningModeManager.modes.set('flashcard', window.flashcardModeNew);
-                        
-                        console.log('✅ Flashcard mode overridden with new version');
-                    } else {
-                        console.log('⚠️ Retry flashcard override in 2s...');
-                        setTimeout(arguments.callee, 2000);
-                    }
-                }, 3000);
+                // Flashcard mode override removed - proper registration happens in flashcard-mode-new.js
+                console.log('✅ Flashcard mode registration delegated to modular system');
                 
                 // SECTION CHANGE LISTENER - Update when switching to profile
                 document.addEventListener('click', function(e) {
@@ -1550,472 +1434,285 @@ app.get('/', (c) => {
                     
                     console.log('✅ TARGETED analytics system ready with real numbers!');
                     
-                    // START NEW SESSION FUNCTION - Enhanced with session ID management
+                    // DEBUG FUNCTION for immediate testing
+                    window.debugSessionIssue = function() {
+                        console.log('🐛 DEBUG: Testing session start issue...');
+                        
+                        // Check vocabulary data
+                        if (window.enhancedVocabularyData) {
+                            const categories = Object.keys(window.enhancedVocabularyData);
+                            console.log('✅ Vocabulary data available:', categories.length, 'categories');
+                            
+                            // Test specific category
+                            const testCategory = 'family';
+                            const categoryData = window.enhancedVocabularyData[testCategory];
+                            if (categoryData) {
+                                console.log('✅ Family category found:', categoryData);
+                                if (categoryData.words) {
+                                    console.log('✅ Words in family:', categoryData.words.length);
+                                    console.log('✅ Sample word:', categoryData.words[0]);
+                                } else {
+                                    console.log('❌ No words property in category');
+                                }
+                            } else {
+                                console.log('❌ Family category not found');
+                            }
+                        } else {
+                            console.log('❌ No vocabulary data');
+                        }
+                        
+                        // Test function availability
+                        console.log('startNewFlashcardSession available:', typeof window.startNewFlashcardSession);
+                        
+                        // Try calling the function
+                        if (window.startNewFlashcardSession) {
+                            console.log('🚀 Testing function call...');
+                            return window.startNewFlashcardSession({categoryId: 'family', sessionNumber: 1});
+                        }
+                    };
+                    
+
+                    
+                    // START NEW SESSION FUNCTION - Simplified with session ID management
                     window.startNewFlashcardSession = async function(options = {}) {
                         console.log('🚀 Starting new flashcard session with options:', options);
                         
-                        // Enhanced options with session ID support
-                        const {
-                            categoryId = 'greetings',
-                            sessionNumber = 1,
-                            sessionId = null,
-                            wordCount = 10
-                        } = options;
-                        
-                        // STEP 1: Ensure we're in the learning section
-                        console.log('📍 STEP 1: Navigating to learning section...');
-                        if (window.showSection) {
-                            window.showSection('learn');
-                            // Wait for section transition
-                            await new Promise(resolve => setTimeout(resolve, 500));
-                        }
-                        
-                        // STEP 2: Hide any existing completion screens
-                        console.log('📍 STEP 2: Clearing completion screens...');
-                        const completionScreens = document.querySelectorAll(
-                            '.completion-screen, [id*="completion"], .flashcard-completion, [style*="completion"]'
-                        );
-                        completionScreens.forEach(screen => {
-                            if (screen && screen.style) {
-                                screen.style.display = 'none';
-                                console.log('✅ Hidden completion screen:', screen.className || screen.id);
+                        try {
+                            // Enhanced options with session ID support
+                            const {
+                                categoryId = 'family',
+                                sessionNumber = 1,
+                                sessionId = null,
+                                wordCount = 10
+                            } = options;
+                            
+                            // STEP 1: Navigate to learning section and clear screens
+                            console.log('📍 STEP 1: Preparing UI...');
+                            if (window.showSection) {
+                                window.showSection('learn');
                             }
-                        });
-                        
-                        // STEP 3: Ensure learning content is visible
-                        console.log('📍 STEP 3: Ensuring learning content visibility...');
-                        const learningContent = document.getElementById('learning-content');
-                        if (learningContent) {
-                            learningContent.style.display = 'block';
-                            learningContent.classList.remove('hidden');
-                            console.log('✅ Learning content made visible');
-                        }
-                        
-                        // COMPREHENSIVE DIAGNOSTIC: Check vocabulary data availability
-                        console.log('🔍 COMPREHENSIVE VOCABULARY DATA DIAGNOSTIC:');
-                        console.log('================================================');
-                        console.log('  enhancedVocabularyData exists:', !!window.enhancedVocabularyData);
-                        console.log('  enhancedVocabularyData type:', typeof window.enhancedVocabularyData);
-                        
-                        if (window.enhancedVocabularyData) {
-                            const categories = Object.keys(window.enhancedVocabularyData);
-                            console.log('  Total categories found:', categories.length);
-                            console.log('  All category names:', categories);
                             
-                            // Check structure of first few categories
-                            categories.slice(0, 5).forEach(catId => {
-                                const catData = window.enhancedVocabularyData[catId];
-                                console.log('  Category \'' + catId + '\' structure:', {
-                                    type: typeof catData,
-                                    isNull: catData === null,
-                                    isArray: Array.isArray(catData),
-                                    keys: catData ? Object.keys(catData) : 'N/A',
-                                    hasWords: catData && catData.words,
-                                    wordsLength: catData && catData.words ? catData.words.length : 'N/A',
-                                    firstWord: catData && catData.words && catData.words[0] ? catData.words[0] : 'N/A'
-                                });
-                            });
-                            
-                            // Check specific categories that we typically use
-                            const testCategories = ['greetings', 'food', 'family', 'colors', 'numbers', 'Greetings', 'Food', 'Family'];
-                            testCategories.forEach(cat => {
-                                const data = window.enhancedVocabularyData[cat];
-                                if (data) {
-                                    console.log('  ✅ Found \'' + cat + '\':', {
-                                        hasWords: !!data.words,
-                                        wordsCount: data.words ? data.words.length : 0,
-                                        sampleWord: data.words && data.words[0] ? data.words[0].turkish || data.words[0] : 'N/A'
-                                    });
-                                } else {
-                                    console.log('  ❌ Missing \'' + cat + '\'');
+                            // Clear completion screens
+                            const completionScreens = document.querySelectorAll(
+                                '.completion-screen, [id*="completion"], .flashcard-completion, [style*="completion"]'
+                            );
+                            completionScreens.forEach(screen => {
+                                if (screen && screen.style) {
+                                    screen.style.display = 'none';
                                 }
                             });
-                        } else {
-                            console.log('  ❌ enhancedVocabularyData is not available - checking timing...');
                             
-                            // Check if it's a timing issue
-                            setTimeout(() => {
-                                console.log('  🔄 Delayed check - enhancedVocabularyData exists:', !!window.enhancedVocabularyData);
-                                if (window.enhancedVocabularyData) {
-                                    console.log('  ⚠️ TIMING ISSUE DETECTED: Data loaded after function call');
-                                }
-                            }, 1000);
-                        }
-                        console.log('================================================');
-                        
-                        // Hide current completion screen immediately
-                        const completionScreens = document.querySelectorAll('.completion-screen, [id*="completion"], .flashcard-container, [style*="completion"]');
-                        completionScreens.forEach(screen => {
-                            if (screen && screen.style) {
-                                screen.style.display = 'none';
+                            // Ensure learning content is visible
+                            const learningContent = document.getElementById('learning-content');
+                            if (learningContent) {
+                                learningContent.style.display = 'block';
+                                learningContent.classList.remove('hidden');
                             }
-                        });
-                        
-                        // Clear any flashcard content areas
-                        const contentAreas = document.querySelectorAll('.learning-content, .flashcard-content, .mode-content');
-                        contentAreas.forEach(area => {
-                            if (area) area.innerHTML = '';
-                        });
-                        
-                        // WAIT FOR VOCABULARY DATA if not immediately available
-                        if (!window.enhancedVocabularyData || Object.keys(window.enhancedVocabularyData).length === 0) {
-                            console.log('⏳ Vocabulary data not ready, waiting up to 3 seconds...');
                             
+                            // STEP 2: Wait for vocabulary data if needed (with timeout)
+                            console.log('📍 STEP 2: Checking vocabulary data...');
+                            let dataReady = false;
                             let attempts = 0;
-                            const maxAttempts = 6; // 3 seconds total (500ms * 6)
+                            const maxAttempts = 6; // 3 seconds total
                             
-                            const waitForData = () => {
-                                attempts++;
-                                
+                            while (!dataReady && attempts < maxAttempts) {
                                 if (window.enhancedVocabularyData && Object.keys(window.enhancedVocabularyData).length > 0) {
-                                    console.log('✅ Vocabulary data loaded after ' + (attempts * 500) + 'ms');
-                                    // Retry the function now that data is available
-                                    return window.startNewFlashcardSession(options);
-                                } else if (attempts < maxAttempts) {
-                                    console.log('⏳ Attempt ' + attempts + '/' + maxAttempts + ' - still waiting...');
-                                    setTimeout(waitForData, 500);
-                                    return;
-                                } else {
-                                    console.log('❌ Timeout: Vocabulary data never loaded');
-                                    // Continue with fallback methods below
+                                    dataReady = true;
+                                    console.log('✅ Vocabulary data available');
+                                    break;
                                 }
+                                
+                                attempts++;
+                                console.log('⏳ Waiting for vocabulary data... attempt ' + attempts + '/' + maxAttempts);
+                                await new Promise(resolve => setTimeout(resolve, 500));
+                            }
+                            
+                            if (!dataReady) {
+                                throw new Error('Vocabulary data not available after timeout');
+                            }
+                            
+                            // STEP 3: Enhanced session creation with ID support
+                            console.log('📍 STEP 3: Creating session with ID support...');
+                            
+                            // Validate category
+                            let targetCategoryId = categoryId;
+                            if (categoryId === 'random') {
+                                const categories = Object.keys(window.enhancedVocabularyData);
+                                targetCategoryId = categories[Math.floor(Math.random() * categories.length)];
+                                console.log('🎲 Random category selected:', targetCategoryId);
+                            }
+                            
+                            const categoryData = window.enhancedVocabularyData[targetCategoryId];
+                            if (!categoryData || !categoryData.words || categoryData.words.length === 0) {
+                                // Find first working category
+                                const availableCategories = Object.keys(window.enhancedVocabularyData);
+                                for (let testCat of availableCategories) {
+                                    const testData = window.enhancedVocabularyData[testCat];
+                                    if (testData && testData.words && Array.isArray(testData.words) && testData.words.length > 0) {
+                                        targetCategoryId = testCat;
+                                        console.log('🔄 Switched to working category:', targetCategoryId);
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                            // Get session-based words if sessionId is provided
+                            let sessionWords = [];
+                            let sessionInfo = null;
+                            
+                            if (sessionId && window.vocabularySessions && window.vocabularySessions.getSessionById) {
+                                console.log('🎯 Loading specific session:', sessionId);
+                                const sessionData = window.vocabularySessions.getSessionById(sessionId);
+                                if (sessionData && sessionData.words) {
+                                    sessionWords = sessionData.words;
+                                    sessionInfo = {
+                                        sessionId: sessionId,
+                                        categoryId: targetCategoryId,
+                                        sessionNumber: sessionNumber,
+                                        totalSessions: window.vocabularySessions.getSessionCount(targetCategoryId)
+                                    };
+                                    console.log('✅ Session loaded with ' + sessionWords.length + ' words');
+                                } else {
+                                    console.log('⚠️ Session not found, falling back to default');
+                                }
+                            }
+                            
+                            // If no session words, get regular words
+                            if (sessionWords.length === 0) {
+                                console.log('📍 Getting words for category:', targetCategoryId);
+                                console.log('📍 Available categories:', Object.keys(window.enhancedVocabularyData));
+                                
+                                const categoryData = window.enhancedVocabularyData[targetCategoryId];
+                                console.log('📍 Category data exists:', !!categoryData);
+                                console.log('📍 Category data structure:', categoryData ? Object.keys(categoryData) : 'N/A');
+                                
+                                const allWords = categoryData?.words || [];
+                                console.log('📍 All words found:', allWords.length);
+                                
+                                if (allWords.length === 0) {
+                                    console.log('❌ No words found for category:', targetCategoryId);
+                                    console.log('🔍 Trying to find any category with words...');
+                                    
+                                    // Find first category with words
+                                    let foundCategoryId = null;
+                                    let foundWords = [];
+                                    
+                                    for (const [catId, catData] of Object.entries(window.enhancedVocabularyData)) {
+                                        if (catData && catData.words && Array.isArray(catData.words) && catData.words.length > 0) {
+                                            foundCategoryId = catId;
+                                            foundWords = catData.words;
+                                            console.log('✅ Found working category:', catId, 'with', foundWords.length, 'words');
+                                            break;
+                                        }
+                                    }
+                                    
+                                    if (foundWords.length > 0) {
+                                        targetCategoryId = foundCategoryId;
+                                        sessionWords = foundWords.slice(0, Math.min(wordCount, foundWords.length));
+                                        console.log('🔄 Switched to category:', targetCategoryId, 'with', sessionWords.length, 'words');
+                                    } else {
+                                        throw new Error('No categories with words found in vocabulary database');
+                                    }
+                                } else {
+                                    const targetWordCount = Math.min(wordCount, allWords.length);
+                                    
+                                    // For session progression, calculate offset based on session number
+                                    const startIndex = sessionNumber > 1 ? (sessionNumber - 1) * wordCount : 0;
+                                    sessionWords = allWords.slice(startIndex, startIndex + targetWordCount);
+                                    
+                                    console.log('📚 Created session with words ' + startIndex + '-' + (startIndex + sessionWords.length) + ' of ' + allWords.length);
+                                }
+                                
+                                // Create session info
+                                sessionInfo = {
+                                    sessionId: sessionId || (targetCategoryId + '_session_' + sessionNumber),
+                                    categoryId: targetCategoryId,
+                                    sessionNumber: sessionNumber,
+                                    totalSessions: Math.ceil((allWords.length || sessionWords.length) / wordCount)
+                                };
+                                
+                                console.log('📊 Final session info:', sessionInfo);
+                            }
+                            
+                            // STEP 4: Create session data
+                            if (sessionWords.length === 0) {
+                                throw new Error('No words available for session - sessionWords is empty');
+                            }
+                            
+                            const sessionData = {
+                                words: sessionWords,
+                                category: {
+                                    id: targetCategoryId,
+                                    name: targetCategoryId.charAt(0).toUpperCase() + targetCategoryId.slice(1),
+                                    ...window.enhancedVocabularyData[targetCategoryId]
+                                },
+                                categoryId: targetCategoryId,
+                                difficulty: options.difficulty || 'A1',
+                                wordCount: sessionWords.length,
+                                sessionBased: true,
+                                sessionInfo: sessionInfo
                             };
                             
-                            setTimeout(waitForData, 500);
-                        }
-                        
-                        try {
-                            // Method 1: Learning Mode Manager (Most reliable)
-                            if (window.learningModeManager && window.learningModeManager.startMode && window.enhancedVocabularyData && Object.keys(window.enhancedVocabularyData).length > 0) {
-                                console.log('📚 Using Learning Mode Manager...');
-                                
-                                // Get first available category if not specified
-                                let categoryId = options.categoryId || 'greetings';
-                                console.log('🎯 Requested categoryId:', categoryId);
-                                
-                                if (categoryId === 'random') {
-                                    const categories = Object.keys(window.enhancedVocabularyData);
-                                    categoryId = categories[Math.floor(Math.random() * categories.length)];
-                                    console.log('🎲 Random category selected:', categoryId);
-                                }
-                                
-                                // Get the actual category data with detailed logging
-                                console.log('📊 Looking for category data:', categoryId);
-                                const categoryData = window.enhancedVocabularyData[categoryId];
-                                console.log('📊 Category data found:', !!categoryData);
-                                
-                                if (categoryData) {
-                                    console.log('📊 Category data structure:', {
-                                        hasWords: !!categoryData.words,
-                                        wordsType: typeof categoryData.words,
-                                        wordsLength: categoryData.words ? categoryData.words.length : 'N/A',
-                                        keys: Object.keys(categoryData).slice(0, 5)
-                                    });
-                                }
-                                
-                                if (!categoryData || !categoryData.words || categoryData.words.length === 0) {
-                                    console.log('❌ Category data validation failed for:', categoryId);
-                                    console.log('Available categories:', Object.keys(window.enhancedVocabularyData).slice(0, 10));
-                                    
-                                    // SIMPLIFIED APPROACH: Try to find any category with words
-                                    const availableCategories = Object.keys(window.enhancedVocabularyData);
-                                    let workingCategory = null;
-                                    
-                                    console.log('🔍 Searching through', availableCategories.length, 'categories for valid data...');
-                                    
-                                    for (let testCat of availableCategories) {
-                                        const testData = window.enhancedVocabularyData[testCat];
-                                        if (testData && testData.words && Array.isArray(testData.words) && testData.words.length > 0) {
-                                            workingCategory = testCat;
-                                            console.log('✅ Found working category:', testCat, 'with', testData.words.length, 'words');
-                                            console.log('   Sample word:', testData.words[0]);
-                                            break;
-                                        } else {
-                                            console.log('   ❌', testCat, ': invalid -', !testData ? 'no data' : !testData.words ? 'no words' : !Array.isArray(testData.words) ? 'not array' : 'empty array');
-                                        }
-                                    }
-                                    
-                                    if (workingCategory) {
-                                        categoryId = workingCategory;
-                                        console.log('🔄 Successfully switched to working category:', categoryId);
-                                    } else {
-                                        console.log('💥 CRITICAL: No categories with valid words found after checking', availableCategories.length, 'categories');
-                                        
-                                        // Last resort: try navigating to learn section instead
-                                        console.log('🎆 FALLBACK: Navigating to learn section instead...');
-                                        if (window.showSection) {
-                                            window.showSection('learn');
-                                            return true; // Consider this a success since we navigated
-                                        }
-                                        
-                                        throw new Error('No valid category data available - checked ' + availableCategories.length + ' categories. Vocabulary data structure may be invalid.');
-                                    }
-                                }
-                                
-                                // Get words for the session
-                                const allWords = window.enhancedVocabularyData[categoryId].words || [];
-                                const wordCount = Math.min(options.wordCount || 10, allWords.length);
-                                const selectedWords = allWords.slice(0, wordCount);
-                                
-                                const sessionData = {
-                                    words: selectedWords,
-                                    category: {
-                                        id: categoryId,
-                                        name: categoryId.charAt(0).toUpperCase() + categoryId.slice(1),
-                                        ...window.enhancedVocabularyData[categoryId]
-                                    },
-                                    categoryId: categoryId,
-                                    difficulty: options.difficulty || 'A1',
-                                    wordCount: wordCount,
-                                    sessionBased: true
-                                };
-                                
-                                console.log('📊 Proper session data with words:', {
-                                    categoryId: sessionData.categoryId,
-                                    wordsCount: sessionData.words.length,
-                                    firstWord: sessionData.words[0]?.turkish
-                                });
-                                
-                                console.log('🎯 Calling learningModeManager.startMode with data:', {
-                                    mode: 'flashcard',
-                                    sessionData: sessionData,
-                                    dataKeys: Object.keys(sessionData),
-                                    wordsCount: sessionData.words ? sessionData.words.length : 'N/A'
-                                });
-                                
+                            console.log('📊 Session data prepared:', {
+                                categoryId: sessionData.categoryId,
+                                wordsCount: sessionData.words.length,
+                                sessionId: sessionInfo.sessionId,
+                                sessionNumber: sessionInfo.sessionNumber,
+                                totalSessions: sessionInfo.totalSessions,
+                                firstWord: sessionData.words[0]?.turkish || 'N/A',
+                                sampleWords: sessionData.words.slice(0, 3).map(w => w.turkish).join(', ')
+                            });
+                            
+                            // STEP 5: Start the learning mode
+                            console.log('📍 STEP 5: Starting learning mode...');
+                            
+                            if (window.learningModeManager && window.learningModeManager.startMode) {
                                 const modeResult = await window.learningModeManager.startMode('flashcard', sessionData);
-                                console.log('✅ Learning Mode Manager returned:', modeResult);
+                                console.log('✅ Learning Mode Manager started successfully');
                                 
-                                // STEP 4: Advanced container visibility and UI sync
-                                console.log('📍 STEP 4: Advanced container visibility check...');
-                                
-                                // Multi-attempt container verification with progressive timing
-                                const verifyContainerVisibility = (attempt = 1, maxAttempts = 5) => {
+                                // Simple container visibility check with timeout
+                                setTimeout(() => {
                                     const container = document.getElementById('flashcard-mode-container');
-                                    const learningContent = document.getElementById('learning-content');
-                                    
-                                    console.log('🔍 Container verification attempt ' + attempt + '/' + maxAttempts + ':', {
-                                        flashcardContainer: {
-                                            exists: !!container,
-                                            display: container ? container.style.display : 'N/A',
-                                            visibility: container ? container.style.visibility : 'N/A',
-                                            hasContent: container ? container.innerHTML.length > 50 : false,
-                                            isVisible: container ? container.offsetParent !== null : false,
-                                            classList: container ? Array.from(container.classList) : 'N/A'
-                                        },
-                                        learningContent: {
-                                            exists: !!learningContent,
-                                            display: learningContent ? learningContent.style.display : 'N/A',
-                                            hasHiddenClass: learningContent ? learningContent.classList.contains('hidden') : 'N/A'
-                                        }
-                                    });
-                                    
                                     if (container) {
-                                        // Force all visibility properties
                                         container.style.display = 'block';
                                         container.style.visibility = 'visible';
-                                        container.style.opacity = '1';
-                                        container.style.zIndex = '1';
-                                        container.classList.add('active-mode');
                                         container.classList.remove('hidden');
-                                        
-                                        // Ensure learning content is also visible
-                                        if (learningContent) {
-                                            learningContent.style.display = 'block';
-                                            learningContent.classList.remove('hidden');
-                                        }
-                                        
-                                        // Check if flashcard content is actually rendered
-                                        if (container.innerHTML.length > 50 && container.offsetParent) {
-                                            console.log('✅ Flashcard container successfully visible and populated');
-                                            return true; // Success
-                                        }
                                     }
-                                    
-                                    // Retry if not successful and attempts remaining
-                                    if (attempt < maxAttempts) {
-                                        const delay = attempt * 300; // Progressive delay
-                                        console.log('🔄 Retrying container verification in ' + delay + 'ms...');
-                                        setTimeout(() => verifyContainerVisibility(attempt + 1, maxAttempts), delay);
-                                    } else {
-                                        console.log('❌ Container visibility verification failed after all attempts');
-                                        
-                                        // FALLBACK: Force render by recreating the flashcard interface
-                                        if (modeResult && typeof modeResult.render === 'function') {
-                                            console.log('🔧 FALLBACK: Forcing mode re-render...');
-                                            modeResult.render();
-                                        }
+                                    if (learningContent) {
+                                        learningContent.style.display = 'block';
+                                        learningContent.classList.remove('hidden');
                                     }
-                                    
-                                    return false; // Not successful yet
-                                };
+                                }, 200);
                                 
-                                // Start verification immediately and then after delay
-                                setTimeout(() => verifyContainerVisibility(), 100);
-                                setTimeout(() => verifyContainerVisibility(), 800);
-                                
-                                console.log('✅ New session started via Learning Mode Manager');
                                 return true;
                             }
                             
-                            // Method 2: Direct FlashcardModeNew
-                            if (window.flashcardModeNew && typeof window.flashcardModeNew.start === 'function' && window.enhancedVocabularyData) {
-                                console.log('🎯 Using FlashcardModeNew directly...');
-                                
-                                let categoryId = options.categoryId || 'greetings';
-                                if (categoryId === 'random') {
-                                    const categories = Object.keys(window.enhancedVocabularyData);
-                                    categoryId = categories[Math.floor(Math.random() * categories.length)];
-                                }
-                                
-                                const sessionOptions = {
-                                    categoryId: categoryId,
-                                    wordCount: options.wordCount || 10,
-                                    difficulty: options.difficulty || 'A1'
-                                };
-                                
-                                window.flashcardModeNew.start(sessionOptions);
-                                console.log('✅ New session started via FlashcardModeNew');
-                                return true;
-                            }
-                            
-                            // Method 3: Global startLearningSession
-                            if (window.startLearningSession && typeof window.startLearningSession === 'function' && window.enhancedVocabularyData) {
-                                console.log('🔧 Using global startLearningSession...');
-                                
-                                let categoryId = options.categoryId || 'greetings';
-                                if (categoryId === 'random') {
-                                    const categories = Object.keys(window.enhancedVocabularyData);
-                                    categoryId = categories[Math.floor(Math.random() * categories.length)];
-                                }
-                                
-                                // Enhanced session management with proper session IDs
-                                console.log('🎯 Enhanced session creation with ID support...');
-                                const categoryData = window.enhancedVocabularyData[categoryId];
-                                if (categoryData && categoryData.words) {
-                                    // Create sessions if not using specific sessionId
-                                    let sessions = [];
-                                    let currentSessionData = null;
-                                    
-                                    // Use session manager to create sessions with proper IDs
-                                    if (window.vocabularySessions && window.vocabularySessions.createSessionsFromWords) {
-                                        sessions = window.vocabularySessions.createSessionsFromWords(categoryData.words, categoryId);
-                                        console.log('📚 Created ' + sessions.length + ' sessions for ' + categoryId);
-                                    }
-                                    
-                                    // Determine which session to use
-                                    if (sessionId) {
-                                        // Use specific session ID
-                                        currentSessionData = sessions.find(s => s.id === sessionId);
-                                        console.log('🎯 Using specific sessionId:', sessionId);
-                                    } else if (sessionNumber > 0) {
-                                        // Use specific session number
-                                        currentSessionData = sessions[sessionNumber - 1];
-                                        console.log('🎯 Using sessionNumber:', sessionNumber);
-                                    } else {
-                                        // Find next unfinished session
-                                        const savedProgress = localStorage.getItem('turkishLearningProgress');
-                                        let completedSessions = [];
-                                        if (savedProgress) {
-                                            const progress = JSON.parse(savedProgress);
-                                            completedSessions = progress.categoryProgress?.[categoryId]?.completedSessions || [];
-                                        }
-                                        
-                                        // Find first uncompleted session
-                                        currentSessionData = sessions.find(s => !completedSessions.includes(s.id)) || sessions[0];
-                                        console.log('🔍 Auto-selected next session:', currentSessionData?.id);
-                                    }
-                                    
-                                    // Fallback to first session or simple word slice
-                                    if (!currentSessionData) {
-                                        const selectedWords = categoryData.words.slice((sessionNumber - 1) * wordCount, sessionNumber * wordCount);
-                                        const generatedSessionId = categoryId + '_session_' + sessionNumber;
-                                        
-                                        currentSessionData = {
-                                            id: generatedSessionId,
-                                            sessionNumber: sessionNumber,
-                                            words: selectedWords,
-                                            categoryId: categoryId
-                                        };
-                                        console.log('📋 Generated fallback session:', generatedSessionId);
-                                    }
-                                    
-                                    const learningData = {
-                                        words: currentSessionData.words,
-                                        category: {
-                                            id: categoryId,
-                                            name: categoryId.charAt(0).toUpperCase() + categoryId.slice(1),
-                                            ...categoryData
-                                        },
-                                        categoryId: categoryId,
-                                        difficulty: options.difficulty || 'A1',
-                                        wordCount: currentSessionData.words.length,
-                                        sessionInfo: {
-                                            sessionId: currentSessionData.id,
-                                            sessionNumber: currentSessionData.sessionNumber || sessionNumber,
-                                            totalSessions: sessions.length || Math.ceil(categoryData.words.length / wordCount),
-                                            categoryId: categoryId,
-                                            wordsInSession: currentSessionData.words.length
-                                        },
-                                        session: currentSessionData
-                                    };
-                                    
-                                    window.startLearningSession(learningData, 'flashcard');
-                                    console.log('✅ New session started via global function');
-                                    return true;
-                                }
-                            }
-                            
-                            // Method 4: Navigate and auto-start
-                            console.log('🎯 Fallback: Navigate to learn section...');
-                            
+                            // Fallback: Simple navigation
+                            console.log('🔄 Fallback: Navigating to learn section');
                             if (window.showSection) {
                                 window.showSection('learn');
-                                
-                                // Try to auto-click after navigation
-                                setTimeout(() => {
-                                    console.log('🔍 Looking for clickable elements...');
-                                    
-                                    // Priority order: flashcard cards, then any category
-                                    const selectors = [
-                                        '.featured-mode-card[data-mode="flashcard"]',
-                                        '.category-card[data-category="greetings"]',
-                                        '.category-card[data-category="food"]', 
-                                        '.category-card:first-child',
-                                        '.learning-mode-card:first-child'
-                                    ];
-                                    
-                                    for (let selector of selectors) {
-                                        const element = document.querySelector(selector);
-                                        if (element) {
-                                            console.log('✅ Auto-clicking:', selector);
-                                            element.click();
-                                            return true;
-                                        }
-                                    }
-                                    
-                                    console.log('ℹ️ Manual selection needed - choose a category');
-                                }, 1500);
+                                return true;
                             }
                             
-                            return false;
+                            throw new Error('No learning mode manager available');
                             
                         } catch (error) {
-                            console.error('❌ Error starting new session:', error);
+                            console.error('❌ Session start failed:', error);
                             
-                            // Last resort: navigate to learn page
+                            // Emergency fallback: Just navigate to learn section
+                            console.log('🆘 Emergency fallback: Direct navigation');
                             if (window.showSection) {
-                                console.log('🆘 Last resort: navigate to learn section');
                                 window.showSection('learn');
+                                return false; // Indicate partial success
                             }
                             
-                            return false;
+                            throw error;
                         }
                     };
                     
                     // Quick start functions for specific categories
                     window.startRandomFlashcards = () => window.startNewFlashcardSession({ categoryId: 'random' });
-                    window.startGreetingsFlashcards = () => window.startNewFlashcardSession({ categoryId: 'greetings' });
+                    window.startFamilyFlashcards = () => window.startNewFlashcardSession({ categoryId: 'family' });
                     window.startTravelFlashcards = () => window.startNewFlashcardSession({ categoryId: 'travel' });
                     
                     // SUPER SIMPLE fallback function - just navigate to learn section
@@ -3178,8 +2875,6 @@ app.get('/', (c) => {
         <!-- Legacy Learning Systems (for compatibility) -->
         <script src="/static/learning-system.js"></script>
         <script src="/static/conversation-system.js"></script>
-        <script src="/static/realtime-analytics.js?v=20250903-1"></script>
-        <script src="/static/analytics-dashboard.js?v=20250903-1"></script>
         <script src="/static/analytics-simple.js?v=20250903-NEW"></script>
         <script src="/static/gamification-system.js"></script>
         <script src="/static/visual-ux-system.js"></script>
@@ -3209,8 +2904,7 @@ app.get('/', (c) => {
         <script src="/static/learning-mode-manager.js"></script>
         
         <!-- Learning Mode Containers -->
-        <script src="/static/modes/flashcard-mode.js?v=20250903-063400"></script>
-        <script src="/static/modes/flashcard-mode-new.js?v=20250903-NEW"></script>
+        <script src="/static/modes/flashcard-mode-new.js?v=20250904-ENABLED"></script>
         <script src="/static/modes/quiz-mode.js"></script>
         <script src="/static/modes/review-mode.js"></script>
         <script src="/static/modes/conversation-mode.js"></script>
