@@ -5,8 +5,8 @@
 
 // Use a unique class name to avoid conflicts
 class FlashcardModeEnhanced extends LearningModeBase {
-    constructor() {
-        super('flashcard', 'البطاقات التعليمية', '📱', 'تعلم الكلمات باستخدام البطاقات التفاعلية');
+    constructor(config = {}) {
+        super(config);
         
         this.currentIndex = 0;
         this.words = [];
@@ -26,6 +26,66 @@ class FlashcardModeEnhanced extends LearningModeBase {
         window.currentFlashcardMode = this;
         
         console.log('🎯 NEW Flashcard Mode initialized');
+    }
+    
+    // Required by LearningModeBase - initialize the flashcard mode
+    async init() {
+        try {
+            console.log('🚀 Initializing FlashcardModeEnhanced...');
+            
+            // Initialize with data from the manager if available
+            if (this.data && this.data.words) {
+                this.words = this.data.words;
+                console.log('📚 Loaded words from manager data:', this.words.length);
+            }
+            
+            // Set up session information
+            if (this.data && this.data.session) {
+                this.sessionInfo = this.data.session;
+                console.log('📋 Session info loaded:', this.sessionInfo);
+            }
+            
+            // Initialize session stats
+            this.sessionStats.startTime = Date.now();
+            this.sessionStats.totalWords = this.words.length;
+            
+            // Set up event listeners
+            this.setupEventListeners();
+            
+            // Mark as initialized but not active yet (will be activated when started)
+            this.isInitialized = true;
+            this.isActive = false;
+            
+            console.log('✅ FlashcardModeEnhanced initialized successfully');
+            
+        } catch (error) {
+            console.error('❌ Failed to initialize FlashcardModeEnhanced:', error);
+            throw error;
+        }
+    }
+    
+    // Set up event listeners for flashcard interactions
+    setupEventListeners() {
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (this.isActive) {
+                switch(e.key) {
+                    case ' ':
+                    case 'Enter':
+                        e.preventDefault();
+                        this.flipCard();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        this.nextCard();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        this.previousCard();
+                        break;
+                }
+            }
+        });
     }
     
     async start(options = {}) {
@@ -65,10 +125,18 @@ class FlashcardModeEnhanced extends LearningModeBase {
             // Shuffle words for better learning
             this.shuffleWords();
             
+            // Activate the mode
+            this.isActive = true;
+            
             console.log(`📚 Flashcard session started with ${this.words.length} words`);
             
             // Render the first card
             this.render();
+            
+            // Auto-pronounce the first word after a brief delay
+            setTimeout(() => {
+                this.autoPronounceTurkishWord();
+            }, 1000); // 1 second delay to let UI settle
             
             // Track session start
             this.trackEvent('session_started', {
@@ -178,6 +246,13 @@ class FlashcardModeEnhanced extends LearningModeBase {
                     <button class="btn-difficulty btn-easy" onclick="window.flashcardModeNew.recordResponse('correct')">
                         <i class="fas fa-check"></i>
                         <span>سهل</span>
+                    </button>
+                </div>
+                
+                <div class="pronunciation-controls">
+                    <button class="btn-pronunciation" onclick="window.flashcardModeNew.playPronunciation()" title="استمع للنطق">
+                        <i class="fas fa-volume-up"></i>
+                        <span>استمع للنطق</span>
                     </button>
                 </div>
                 
@@ -374,6 +449,51 @@ class FlashcardModeEnhanced extends LearningModeBase {
                     border-color: #cbd5e1;
                     background: #f8fafc;
                 }
+                
+                .pronunciation-controls {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                }
+                
+                .btn-pronunciation {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    padding: 0.75rem 1.5rem;
+                    border: none;
+                    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+                    color: white;
+                    border-radius: 25px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+                    min-width: 140px;
+                    justify-content: center;
+                }
+                
+                .btn-pronunciation:hover {
+                    transform: translateY(-2px) scale(1.02);
+                    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+                    background: linear-gradient(135deg, #2563eb, #1e40af);
+                }
+                
+                .btn-pronunciation:active {
+                    transform: translateY(0) scale(0.98);
+                    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+                }
+                
+                .btn-pronunciation i {
+                    font-size: 1.1rem;
+                    animation: pulse 2s infinite;
+                }
+                
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                }
             </style>
         `;
         
@@ -439,8 +559,13 @@ class FlashcardModeEnhanced extends LearningModeBase {
             index: this.currentIndex
         });
         
-        // Move to next word
-        this.nextWord();
+        // Show brief feedback animation
+        this.showDifficultyFeedback(difficulty);
+        
+        // Auto-advance to next word after a short delay
+        setTimeout(() => {
+            this.nextWord();
+        }, 800); // 800ms delay for visual feedback
     }
     
     nextWord() {
@@ -451,6 +576,10 @@ class FlashcardModeEnhanced extends LearningModeBase {
             this.completeSession();
         } else {
             this.render();
+            // Auto-pronounce the new word after rendering
+            setTimeout(() => {
+                this.autoPronounceTurkishWord();
+            }, 500); // 500ms delay to let the card render
         }
     }
     
@@ -955,39 +1084,206 @@ class FlashcardModeEnhanced extends LearningModeBase {
         
         console.log('❌ Failed to start next session');
     }
+    
+    // 🔊 AUTO-PRONUNCIATION FEATURE - Automatically pronounce Turkish words
+    autoPronounceTurkishWord() {
+        const word = this.words[this.currentIndex];
+        if (!word || !word.turkish) {
+            console.log('🔇 No word to pronounce');
+            return;
+        }
+        
+        try {
+            // Check if TTS is supported
+            if (!('speechSynthesis' in window)) {
+                console.log('🔇 Text-to-Speech not supported in this browser');
+                return;
+            }
+            
+            // Cancel any ongoing speech
+            window.speechSynthesis.cancel();
+            
+            // Create utterance
+            const utterance = new SpeechSynthesisUtterance(word.turkish);
+            
+            // Configure Turkish language settings
+            utterance.lang = 'tr-TR'; // Turkish language code
+            utterance.rate = 0.7;     // Slightly slower for learning
+            utterance.pitch = 1.0;    // Normal pitch
+            utterance.volume = 0.8;   // Comfortable volume
+            
+            // Try to find Turkish voice
+            const voices = window.speechSynthesis.getVoices();
+            const turkishVoice = voices.find(voice => 
+                voice.lang.includes('tr') || voice.lang.includes('TR')
+            );
+            
+            if (turkishVoice) {
+                utterance.voice = turkishVoice;
+                console.log(`🔊 Using Turkish voice: ${turkishVoice.name}`);
+            } else {
+                console.log('🔊 No Turkish voice found, using default voice');
+            }
+            
+            // Add event listeners for debugging
+            utterance.onstart = () => {
+                console.log(`🔊 Started pronouncing: "${word.turkish}"`);
+            };
+            
+            utterance.onend = () => {
+                console.log(`✅ Finished pronouncing: "${word.turkish}"`);
+            };
+            
+            utterance.onerror = (event) => {
+                console.error('🔇 TTS Error:', event.error);
+            };
+            
+            // Speak the word
+            window.speechSynthesis.speak(utterance);
+            
+        } catch (error) {
+            console.error('🔇 Error in auto-pronunciation:', error);
+        }
+    }
+    
+    // 🎯 DIFFICULTY FEEDBACK - Show visual feedback when difficulty is selected
+    showDifficultyFeedback(difficulty) {
+        // Find the clicked button and show feedback animation
+        const buttons = document.querySelectorAll('.btn-difficulty');
+        buttons.forEach(btn => btn.style.transform = 'scale(1)');
+        
+        // Find the correct button based on difficulty
+        let targetButton;
+        if (difficulty === 'correct') {
+            targetButton = document.querySelector('.btn-easy');
+        } else if (difficulty === 'medium') {
+            targetButton = document.querySelector('.btn-medium');
+        } else if (difficulty === 'incorrect') {
+            targetButton = document.querySelector('.btn-hard');
+        }
+        
+        if (targetButton) {
+            // Add selection animation
+            targetButton.style.transform = 'scale(0.95)';
+            targetButton.style.opacity = '0.7';
+            
+            // Reset after animation
+            setTimeout(() => {
+                targetButton.style.transform = 'scale(1)';
+                targetButton.style.opacity = '1';
+            }, 200);
+        }
+        
+        // Show difficulty feedback message
+        this.showTemporaryMessage(difficulty);
+    }
+    
+    // 💬 TEMPORARY MESSAGE - Show brief feedback messages
+    showTemporaryMessage(difficulty) {
+        const messages = {
+            'correct': { text: '✅ سهل!', color: '#22c55e' },
+            'medium': { text: '⚡ متوسط', color: '#f59e0b' },
+            'incorrect': { text: '💪 صعب - سنراجعها', color: '#ef4444' }
+        };
+        
+        const message = messages[difficulty] || messages['medium'];
+        
+        // Create floating message element
+        const messageEl = document.createElement('div');
+        messageEl.innerHTML = message.text;
+        messageEl.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            background: ${message.color};
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            z-index: 10000;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        `;
+        
+        document.body.appendChild(messageEl);
+        
+        // Animate in
+        setTimeout(() => {
+            messageEl.style.opacity = '1';
+            messageEl.style.transform = 'translate(-50%, -50%) scale(1)';
+        }, 10);
+        
+        // Animate out and remove
+        setTimeout(() => {
+            messageEl.style.opacity = '0';
+            messageEl.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            setTimeout(() => {
+                document.body.removeChild(messageEl);
+            }, 300);
+        }, 1500);
+    }
+    
+    // 🎵 MANUAL PRONUNCIATION - Allow users to replay pronunciation
+    playPronunciation() {
+        this.autoPronounceTurkishWord();
+    }
 }
 
-// Register the NEW flashcard mode using correct method signature
-if (window.learningModeManager) {
-    // Create instance for global access
-    window.flashcardModeNew = new FlashcardModeEnhanced();
+// Register the NEW flashcard mode with proper error handling
+function registerFlashcardMode() {
+    if (!window.learningModeManager) {
+        console.warn('⚠️ Learning Mode Manager not found, retrying...');
+        return false;
+    }
     
-    // Register using proper method signature: (modeId, modeClass, config)
-    window.learningModeManager.registerMode('flashcard', FlashcardModeEnhanced, {
-        name: 'البطاقات التعليمية',
-        icon: '📱',
-        description: 'تعلم الكلمات باستخدام البطاقات التفاعلية',
-        containerId: 'flashcard-mode-container',
-        dependencies: [],
-        enabled: true,  // Explicitly enable
-        version: '3.0.0'
-    });
-    console.log('✅ NEW Enhanced Flashcard Mode registered successfully as flashcard');
-} else {
-    console.warn('⚠️ Learning Mode Manager not found, will retry...');
+    try {
+        // Create instance for global access
+        window.flashcardModeNew = new FlashcardModeEnhanced();
+        
+        // Register using proper method signature
+        const config = {
+            name: 'البطاقات التعليمية',
+            icon: '📱',
+            description: 'تعلم الكلمات باستخدام البطاقات التفاعلية',
+            containerId: 'flashcard-mode-container',
+            dependencies: [],
+            enabled: true,
+            version: '3.0.0'
+        };
+        
+        console.log('🔧 Registering flashcard mode with config:', config);
+        window.learningModeManager.registerMode('flashcard', FlashcardModeEnhanced, config);
+        
+        // Verify registration
+        const registered = window.learningModeManager.modes.get('flashcard');
+        console.log('🔍 Registration result:', {
+            exists: !!registered,
+            enabled: registered?.enabled,
+            name: registered?.name
+        });
+        
+        if (registered && registered.enabled) {
+            console.log('✅ NEW Enhanced Flashcard Mode registered successfully');
+            return true;
+        } else {
+            console.error('❌ Flashcard mode registration failed - mode disabled');
+            return false;
+        }
+    } catch (error) {
+        console.error('❌ Error registering flashcard mode:', error);
+        return false;
+    }
+}
+
+// Attempt registration
+if (!registerFlashcardMode()) {
+    // Retry after delay if initial registration fails
     setTimeout(() => {
-        if (window.learningModeManager) {
-            window.flashcardModeNew = new FlashcardModeEnhanced();
-            window.learningModeManager.registerMode('flashcard', FlashcardModeEnhanced, {
-                name: 'البطاقات التعليمية',
-                icon: '📱', 
-                description: 'تعلم الكلمات باستخدام البطاقات التفاعلية',
-                containerId: 'flashcard-mode-container',
-                dependencies: [],
-                enabled: true,  // Explicitly enable
-                version: '3.0.0'
-            });
-            console.log('✅ NEW Enhanced Flashcard Mode registered successfully as flashcard (delayed)');
+        if (!registerFlashcardMode()) {
+            console.error('❌ Failed to register flashcard mode after retry');
         }
     }, 1000);
 }

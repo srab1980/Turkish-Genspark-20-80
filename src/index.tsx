@@ -1294,48 +1294,10 @@ app.get('/', (c) => {
                     }
                 }, 1000);
                 
-                // Force load new flashcard mode and analytics
-                setTimeout(function() {
-                    console.log('🔧 Loading new systems...');
-                    
-                    // Force load new flashcard mode
-                    const newFlashcardScript = document.createElement('script');
-                    newFlashcardScript.src = '/static/modes/flashcard-mode-new.js?v=' + Date.now();
-                    newFlashcardScript.onload = function() {
-                        console.log('✅ New flashcard mode loaded');
-                    };
-                    document.head.appendChild(newFlashcardScript);
-                    
-                    // Force load simple analytics
-                    const analyticsScript = document.createElement('script');
-                    analyticsScript.src = '/static/analytics-simple.js?v=' + Date.now();
-                    analyticsScript.onload = function() {
-                        console.log('✅ Simple analytics loaded');
-                    };
-                    document.head.appendChild(analyticsScript);
-                    
-                }, 1000);
+                // Systems already loaded in HTML, no need for dynamic loading
                 
-                // Force override the flashcard mode after everything loads
-                setTimeout(function() {
-                    if (window.learningModeManager && window.FlashcardModeNew) {
-                        console.log('🔧 Forcing flashcard mode override...');
-                        
-                        // Create and register new flashcard mode
-                        window.flashcardModeNew = new window.FlashcardModeNew();
-                        
-                        // Store as current flashcard mode for completion screen access
-                        window.currentFlashcardMode = window.flashcardModeNew;
-                        
-                        // Override the old flashcard mode
-                        window.learningModeManager.modes.set('flashcard', window.flashcardModeNew);
-                        
-                        console.log('✅ Flashcard mode overridden with new version');
-                    } else {
-                        console.log('⚠️ Retry flashcard override in 2s...');
-                        setTimeout(arguments.callee, 2000);
-                    }
-                }, 3000);
+                // Flashcard mode override removed - proper registration happens in flashcard-mode-new.js
+                console.log('✅ Flashcard mode registration delegated to modular system');
                 
                 // SECTION CHANGE LISTENER - Update when switching to profile
                 document.addEventListener('click', function(e) {
@@ -2913,8 +2875,6 @@ app.get('/', (c) => {
         <!-- Legacy Learning Systems (for compatibility) -->
         <script src="/static/learning-system.js"></script>
         <script src="/static/conversation-system.js"></script>
-        <script src="/static/realtime-analytics.js?v=20250903-1"></script>
-        <script src="/static/analytics-dashboard.js?v=20250903-1"></script>
         <script src="/static/analytics-simple.js?v=20250903-NEW"></script>
         <script src="/static/gamification-system.js"></script>
         <script src="/static/visual-ux-system.js"></script>
@@ -2944,7 +2904,6 @@ app.get('/', (c) => {
         <script src="/static/learning-mode-manager.js"></script>
         
         <!-- Learning Mode Containers -->
-        <script src="/static/modes/flashcard-mode.js?v=20250904-DISABLED"></script>
         <script src="/static/modes/flashcard-mode-new.js?v=20250904-ENABLED"></script>
         <script src="/static/modes/quiz-mode.js"></script>
         <script src="/static/modes/review-mode.js"></script>
