@@ -957,18 +957,37 @@ class FlashcardModeEnhanced extends LearningModeBase {
     }
 }
 
-// Register the NEW flashcard mode
+// Register the NEW flashcard mode using correct method signature
 if (window.learningModeManager) {
+    // Create instance for global access
     window.flashcardModeNew = new FlashcardModeEnhanced();
-    window.learningModeManager.registerMode(window.flashcardModeNew);
-    console.log('✅ NEW Flashcard Mode registered successfully');
+    
+    // Register using proper method signature: (modeId, modeClass, config)
+    window.learningModeManager.registerMode('flashcard', FlashcardModeEnhanced, {
+        name: 'البطاقات التعليمية',
+        icon: '📱',
+        description: 'تعلم الكلمات باستخدام البطاقات التفاعلية',
+        containerId: 'flashcard-mode-container',
+        dependencies: [],
+        enabled: true,  // Explicitly enable
+        version: '3.0.0'
+    });
+    console.log('✅ NEW Enhanced Flashcard Mode registered successfully as flashcard');
 } else {
     console.warn('⚠️ Learning Mode Manager not found, will retry...');
     setTimeout(() => {
         if (window.learningModeManager) {
             window.flashcardModeNew = new FlashcardModeEnhanced();
-            window.learningModeManager.registerMode(window.flashcardModeNew);
-            console.log('✅ NEW Flashcard Mode registered successfully (delayed)');
+            window.learningModeManager.registerMode('flashcard', FlashcardModeEnhanced, {
+                name: 'البطاقات التعليمية',
+                icon: '📱', 
+                description: 'تعلم الكلمات باستخدام البطاقات التفاعلية',
+                containerId: 'flashcard-mode-container',
+                dependencies: [],
+                enabled: true,  // Explicitly enable
+                version: '3.0.0'
+            });
+            console.log('✅ NEW Enhanced Flashcard Mode registered successfully as flashcard (delayed)');
         }
     }, 1000);
 }

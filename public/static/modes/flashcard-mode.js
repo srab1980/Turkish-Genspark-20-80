@@ -1332,20 +1332,21 @@ class FlashcardMode extends LearningModeBase {
 }
 
 // Register flashcard mode with the manager when loaded
-document.addEventListener('DOMContentLoaded', () => {
-    if (window.learningModeManager) {
-        window.learningModeManager.registerMode('flashcard', FlashcardMode, {
-            name: 'البطاقات التعليمية',
-            icon: '📱',
-            description: 'تعلم الكلمات باستخدام البطاقات التفاعلية',
-            containerId: 'flashcard-mode-container',
-            dependencies: [],
-            version: '2.0.0'
-        });
+// OLD FLASHCARD MODE REGISTRATION DISABLED - Using FlashcardModeEnhanced instead
+// document.addEventListener('DOMContentLoaded', () => {
+//     if (window.learningModeManager) {
+//         window.learningModeManager.registerMode('flashcard', FlashcardMode, {
+//             name: 'البطاقات التعليمية',
+//             icon: '📱',
+//             description: 'تعلم الكلمات باستخدام البطاقات التفاعلية',
+//             containerId: 'flashcard-mode-container',
+//             dependencies: [],
+//             version: '2.0.0'
+//         });
         
-        console.log('📱 Flashcard Mode registered successfully');
-    }
-});
+//         console.log('📱 Flashcard Mode registered successfully');
+//     }
+// });
 
 // Export for direct use
 window.FlashcardMode = FlashcardMode;
