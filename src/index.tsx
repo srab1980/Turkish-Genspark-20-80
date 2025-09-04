@@ -1550,9 +1550,17 @@ app.get('/', (c) => {
                     
                     console.log('✅ TARGETED analytics system ready with real numbers!');
                     
-                    // START NEW SESSION FUNCTION - Enhanced with complete UI flow handling
+                    // START NEW SESSION FUNCTION - Enhanced with session ID management
                     window.startNewFlashcardSession = async function(options = {}) {
-                        console.log('🚀 Starting new flashcard session...', options);
+                        console.log('🚀 Starting new flashcard session with options:', options);
+                        
+                        // Enhanced options with session ID support
+                        const {
+                            categoryId = 'greetings',
+                            sessionNumber = 1,
+                            sessionId = null,
+                            wordCount = 10
+                        } = options;
                         
                         // STEP 1: Ensure we're in the learning section
                         console.log('📍 STEP 1: Navigating to learning section...');
@@ -1597,7 +1605,7 @@ app.get('/', (c) => {
                             // Check structure of first few categories
                             categories.slice(0, 5).forEach(catId => {
                                 const catData = window.enhancedVocabularyData[catId];
-                                console.log(`  Category '${catId}' structure:`, {
+                                console.log('  Category \'' + catId + '\' structure:', {
                                     type: typeof catData,
                                     isNull: catData === null,
                                     isArray: Array.isArray(catData),
@@ -1613,13 +1621,13 @@ app.get('/', (c) => {
                             testCategories.forEach(cat => {
                                 const data = window.enhancedVocabularyData[cat];
                                 if (data) {
-                                    console.log(`  ✅ Found '${cat}':`, {
+                                    console.log('  ✅ Found \'' + cat + '\':', {
                                         hasWords: !!data.words,
                                         wordsCount: data.words ? data.words.length : 0,
                                         sampleWord: data.words && data.words[0] ? data.words[0].turkish || data.words[0] : 'N/A'
                                     });
                                 } else {
-                                    console.log(`  ❌ Missing '${cat}'`);
+                                    console.log('  ❌ Missing \'' + cat + '\'');
                                 }
                             });
                         } else {
@@ -1660,11 +1668,11 @@ app.get('/', (c) => {
                                 attempts++;
                                 
                                 if (window.enhancedVocabularyData && Object.keys(window.enhancedVocabularyData).length > 0) {
-                                    console.log(`✅ Vocabulary data loaded after ${attempts * 500}ms`);
+                                    console.log('✅ Vocabulary data loaded after ' + (attempts * 500) + 'ms');
                                     // Retry the function now that data is available
                                     return window.startNewFlashcardSession(options);
                                 } else if (attempts < maxAttempts) {
-                                    console.log(`⏳ Attempt ${attempts}/${maxAttempts} - still waiting...`);
+                                    console.log('⏳ Attempt ' + attempts + '/' + maxAttempts + ' - still waiting...');
                                     setTimeout(waitForData, 500);
                                     return;
                                 } else {
@@ -1786,7 +1794,7 @@ app.get('/', (c) => {
                                     const container = document.getElementById('flashcard-mode-container');
                                     const learningContent = document.getElementById('learning-content');
                                     
-                                    console.log(`🔍 Container verification attempt ${attempt}/${maxAttempts}:`, {
+                                    console.log('🔍 Container verification attempt ' + attempt + '/' + maxAttempts + ':', {
                                         flashcardContainer: {
                                             exists: !!container,
                                             display: container ? container.style.display : 'N/A',
@@ -1827,7 +1835,7 @@ app.get('/', (c) => {
                                     // Retry if not successful and attempts remaining
                                     if (attempt < maxAttempts) {
                                         const delay = attempt * 300; // Progressive delay
-                                        console.log(`🔄 Retrying container verification in ${delay}ms...`);
+                                        console.log('🔄 Retrying container verification in ' + delay + 'ms...');
                                         setTimeout(() => verifyContainerVisibility(attempt + 1, maxAttempts), delay);
                                     } else {
                                         console.log('❌ Container visibility verification failed after all attempts');
@@ -1881,13 +1889,59 @@ app.get('/', (c) => {
                                     categoryId = categories[Math.floor(Math.random() * categories.length)];
                                 }
                                 
-                                // Get actual category data for proper structure
+                                // Enhanced session management with proper session IDs
+                                console.log('🎯 Enhanced session creation with ID support...');
                                 const categoryData = window.enhancedVocabularyData[categoryId];
                                 if (categoryData && categoryData.words) {
-                                    const selectedWords = categoryData.words.slice(0, options.wordCount || 10);
+                                    // Create sessions if not using specific sessionId
+                                    let sessions = [];
+                                    let currentSessionData = null;
+                                    
+                                    // Use session manager to create sessions with proper IDs
+                                    if (window.vocabularySessions && window.vocabularySessions.createSessionsFromWords) {
+                                        sessions = window.vocabularySessions.createSessionsFromWords(categoryData.words, categoryId);
+                                        console.log('📚 Created ' + sessions.length + ' sessions for ' + categoryId);
+                                    }
+                                    
+                                    // Determine which session to use
+                                    if (sessionId) {
+                                        // Use specific session ID
+                                        currentSessionData = sessions.find(s => s.id === sessionId);
+                                        console.log('🎯 Using specific sessionId:', sessionId);
+                                    } else if (sessionNumber > 0) {
+                                        // Use specific session number
+                                        currentSessionData = sessions[sessionNumber - 1];
+                                        console.log('🎯 Using sessionNumber:', sessionNumber);
+                                    } else {
+                                        // Find next unfinished session
+                                        const savedProgress = localStorage.getItem('turkishLearningProgress');
+                                        let completedSessions = [];
+                                        if (savedProgress) {
+                                            const progress = JSON.parse(savedProgress);
+                                            completedSessions = progress.categoryProgress?.[categoryId]?.completedSessions || [];
+                                        }
+                                        
+                                        // Find first uncompleted session
+                                        currentSessionData = sessions.find(s => !completedSessions.includes(s.id)) || sessions[0];
+                                        console.log('🔍 Auto-selected next session:', currentSessionData?.id);
+                                    }
+                                    
+                                    // Fallback to first session or simple word slice
+                                    if (!currentSessionData) {
+                                        const selectedWords = categoryData.words.slice((sessionNumber - 1) * wordCount, sessionNumber * wordCount);
+                                        const generatedSessionId = categoryId + '_session_' + sessionNumber;
+                                        
+                                        currentSessionData = {
+                                            id: generatedSessionId,
+                                            sessionNumber: sessionNumber,
+                                            words: selectedWords,
+                                            categoryId: categoryId
+                                        };
+                                        console.log('📋 Generated fallback session:', generatedSessionId);
+                                    }
                                     
                                     const learningData = {
-                                        words: selectedWords,
+                                        words: currentSessionData.words,
                                         category: {
                                             id: categoryId,
                                             name: categoryId.charAt(0).toUpperCase() + categoryId.slice(1),
@@ -1895,7 +1949,15 @@ app.get('/', (c) => {
                                         },
                                         categoryId: categoryId,
                                         difficulty: options.difficulty || 'A1',
-                                        wordCount: selectedWords.length
+                                        wordCount: currentSessionData.words.length,
+                                        sessionInfo: {
+                                            sessionId: currentSessionData.id,
+                                            sessionNumber: currentSessionData.sessionNumber || sessionNumber,
+                                            totalSessions: sessions.length || Math.ceil(categoryData.words.length / wordCount),
+                                            categoryId: categoryId,
+                                            wordsInSession: currentSessionData.words.length
+                                        },
+                                        session: currentSessionData
                                     };
                                     
                                     window.startLearningSession(learningData, 'flashcard');
@@ -3217,7 +3279,7 @@ app.get('/', (c) => {
                             icon: this.getCategoryIcon(category.id)
                         }));
                     }
-                    console.log(\`📂 Loaded \${this.categories.length} categories for filters\`);
+                    console.log('📂 Loaded ' + this.categories.length + ' categories for filters');
                 }
                 
                 getCategoryIcon(categoryId) {
@@ -3388,8 +3450,8 @@ app.get('/', (c) => {
                 }
                 
                 handleCategorySelection(categoryId) {
-                    const checkbox = document.getElementById(\`cat-\${categoryId}\`);
-                    const item = document.querySelector(\`[data-category="\${categoryId}"]\`);
+                    const checkbox = document.getElementById('cat-' + categoryId);
+                    const item = document.querySelector('[data-category="' + categoryId + '"]');
                     
                     if(checkbox.checked) {
                         this.selectedCategories.delete(categoryId);
@@ -3430,8 +3492,8 @@ app.get('/', (c) => {
                 }
                 
                 handleProficiencySelection(levelId) {
-                    const checkbox = document.getElementById(\`level-\${levelId}\`);
-                    const item = document.querySelector(\`[data-level="\${levelId}"]\`);
+                    const checkbox = document.getElementById('level-' + levelId);
+                    const item = document.querySelector('[data-level="' + levelId + '"]');
                     
                     if(checkbox.checked) {
                         this.selectedProficiencyLevels.delete(levelId);
@@ -3488,7 +3550,7 @@ app.get('/', (c) => {
                         [allWords[i], allWords[j]] = [allWords[j], allWords[i]];
                     }
                     
-                    console.log(\`📚 Collected \${allWords.length} words for levels: \${selectedLevels.join(', ')}\`);
+                    console.log('📚 Collected ' + allWords.length + ' words for levels: ' + selectedLevels.join(', '));
                     return allWords;
                 }
 
@@ -3556,10 +3618,10 @@ app.get('/', (c) => {
                             return;
                         }
                         
-                        sessionIdentifier = \`proficiency_\${selectedLevels.join('_')}\`;
+                        sessionIdentifier = 'proficiency_' + selectedLevels.join('_');
                         
                         learningData = {
-                            category: \`مستوى \${selectedLevels.join(' + ')}\`,
+                            category: 'مستوى ' + selectedLevels.join(' + '),
                             words: collectedWords,
                             sessionInfo: null,
                             session: null,
@@ -3619,7 +3681,7 @@ app.get('/', (c) => {
                                         totalSessions: sessions.length
                                     };
                                     
-                                    console.log(\`🎯 Starting session \${learningData.sessionInfo.sessionNumber}/\${learningData.sessionInfo.totalSessions} for \${sessionIdentifier}\`);
+                                    console.log('🎯 Starting session ' + learningData.sessionInfo.sessionNumber + '/' + learningData.sessionInfo.totalSessions + ' for ' + sessionIdentifier);
                                 } catch (error) {
                                     console.warn('⚠️ Session manager error, using full word set:', error);
                                 }

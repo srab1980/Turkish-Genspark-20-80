@@ -1098,7 +1098,7 @@ class FlashcardMode extends LearningModeBase {
     }
     
     /**
-     * Start next session in the same category
+     * Start next session in the same category with proper session ID management
      */
     async startNextSession() {
         const sessionInfo = this.data.sessionInfo;
@@ -1111,24 +1111,40 @@ class FlashcardMode extends LearningModeBase {
         // Mark current session as completed
         this.markSessionCompleted(sessionInfo);
         
-        // Show loading state
-        this.container.innerHTML = `
-            <div class="loading-next-session">
-                <div class="loading-content">
-                    <i class="fas fa-spinner fa-spin text-4xl text-blue-500 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">جارٍ تحضير الجلسة التالية...</h3>
-                    <p class="text-gray-600">الجلسة ${sessionInfo.sessionNumber + 1} من ${sessionInfo.totalSessions}</p>
-                </div>
-            </div>
-        `;
+        // Calculate next session ID and number
+        const nextSessionNumber = sessionInfo.sessionNumber + 1;
+        const nextSessionId = sessionInfo.categoryId + '_session_' + nextSessionNumber;
         
-        // Wait a moment for visual feedback
+        // Show enhanced loading state
+        this.container.innerHTML = '<div class="loading-next-session"><div class="loading-content"><i class="fas fa-spinner fa-spin text-4xl text-blue-500 mb-4"></i><h3 class="text-xl font-bold mb-2">جارٍ تحضير الجلسة التالية...</h3><p class="text-gray-600">الجلسة ' + nextSessionNumber + ' من ' + sessionInfo.totalSessions + '</p><p class="text-sm text-blue-600 mt-2">معرف الجلسة: ' + nextSessionId + '</p></div></div>';
+        
+        // Wait for visual feedback
         await new Promise(resolve => setTimeout(resolve, 1500));
         
-        // Restart the learning flow for the same category
-        // This will automatically pick up the next session
+        // Use enhanced session function with specific session details
+        if (window.startNewFlashcardSession) {
+            console.log('🎯 Starting next session with ID:', nextSessionId);
+            
+            try {
+                const result = await window.startNewFlashcardSession({
+                    categoryId: sessionInfo.categoryId,
+                    sessionNumber: nextSessionNumber,
+                    sessionId: nextSessionId,
+                    wordCount: 10
+                });
+                
+                if (result !== false) {
+                    console.log('✅ Next session started successfully with ID:', nextSessionId);
+                    return;
+                }
+            } catch (error) {
+                console.error('❌ Enhanced next session failed:', error);
+            }
+        }
+        
+        // Fallback to legacy method
         if (window.TurkishLearningApp && window.TurkishLearningApp.startLearning) {
-            console.log('🎯 Starting next session for category:', this.data.category);
+            console.log('🔄 Falling back to legacy method for category:', this.data.categoryId);
             
             // Set the category in the UI
             const categorySelect = document.getElementById('category-select');
