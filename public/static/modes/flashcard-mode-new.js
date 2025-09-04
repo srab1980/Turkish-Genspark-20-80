@@ -3,7 +3,8 @@
  * Created to fix persistent caching and visibility issues
  */
 
-class FlashcardModeNew extends LearningModeBase {
+// Use a unique class name to avoid conflicts
+class FlashcardModeEnhanced extends LearningModeBase {
     constructor() {
         super('flashcard', 'البطاقات التعليمية', '📱', 'تعلم الكلمات باستخدام البطاقات التفاعلية');
         
@@ -958,18 +959,21 @@ class FlashcardModeNew extends LearningModeBase {
 
 // Register the NEW flashcard mode
 if (window.learningModeManager) {
-    window.flashcardModeNew = new FlashcardModeNew();
+    window.flashcardModeNew = new FlashcardModeEnhanced();
     window.learningModeManager.registerMode(window.flashcardModeNew);
     console.log('✅ NEW Flashcard Mode registered successfully');
 } else {
     console.warn('⚠️ Learning Mode Manager not found, will retry...');
     setTimeout(() => {
         if (window.learningModeManager) {
-            window.flashcardModeNew = new FlashcardModeNew();
+            window.flashcardModeNew = new FlashcardModeEnhanced();
             window.learningModeManager.registerMode(window.flashcardModeNew);
             console.log('✅ NEW Flashcard Mode registered successfully (delayed)');
         }
     }, 1000);
 }
+
+// Store the class globally for backward compatibility
+window.FlashcardModeNew = FlashcardModeEnhanced;
 
 console.log('🎯 NEW Enhanced Flashcard Mode loaded successfully!');

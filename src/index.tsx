@@ -2945,7 +2945,7 @@ app.get('/', (c) => {
         
         <!-- Learning Mode Containers -->
         <script src="/static/modes/flashcard-mode.js?v=20250903-063400"></script>
-        <script src="/static/modes/flashcard-mode-new.js?v=20250903-NEW"></script>
+        <script src="/static/modes/flashcard-mode-new.js?v=20250904-CLEAN"></script>
         <script src="/static/modes/quiz-mode.js"></script>
         <script src="/static/modes/review-mode.js"></script>
         <script src="/static/modes/conversation-mode.js"></script>
