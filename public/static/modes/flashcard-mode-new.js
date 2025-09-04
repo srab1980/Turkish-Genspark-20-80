@@ -708,7 +708,60 @@ class FlashcardModeNew extends LearningModeBase {
                         margin-top: 2.5rem;
                         direction: rtl;
                     ">
-                        <button onclick="window.flashcardModeNew && window.flashcardModeNew.restart()" style="
+                        <button onclick="
+                            console.log('🚀 New Session button clicked');
+                            if (window.flashcardModeNew && typeof window.flashcardModeNew.startNextSession === 'function') {
+                                console.log('✅ Calling startNextSession...');
+                                window.flashcardModeNew.startNextSession();
+                            } else {
+                                console.log('❌ flashcardModeNew not available, trying fallback...');
+                                if (window.currentFlashcardMode && typeof window.currentFlashcardMode.startNextSession === 'function') {
+                                    console.log('✅ Using currentFlashcardMode...');
+                                    window.currentFlashcardMode.startNextSession();
+                                } else if (window.startNewFlashcardSession) {
+                                    console.log('✅ Using startNewFlashcardSession fallback...');
+                                    window.startNewFlashcardSession({categoryId:'family',sessionNumber:2,wordCount:10});
+                                } else {
+                                    console.log('❌ No session functions available');
+                                }
+                            }
+                        " style="
+                            background: linear-gradient(135deg, #10b981, #059669);
+                            color: white;
+                            border: none;
+                            padding: 1rem 2rem;
+                            border-radius: 12px;
+                            font-size: 1rem;
+                            font-weight: 700;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+                            min-width: 160px;
+                            margin: 0.5rem;
+                        " onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.boxShadow='0 12px 35px rgba(16, 185, 129, 0.4)'" 
+                           onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(16, 185, 129, 0.3)'">
+                            <i class="fas fa-plus-circle" style="margin-left: 0.5rem;"></i>
+                            جلسة جديدة
+                        </button>
+
+                        <button onclick="
+                            console.log('🔄 Restart Session button clicked');
+                            if (window.flashcardModeNew && typeof window.flashcardModeNew.restart === 'function') {
+                                console.log('✅ Calling restart...');
+                                window.flashcardModeNew.restart();
+                            } else {
+                                console.log('❌ flashcardModeNew not available, trying fallback...');
+                                if (window.currentFlashcardMode && typeof window.currentFlashcardMode.restart === 'function') {
+                                    console.log('✅ Using currentFlashcardMode...');
+                                    window.currentFlashcardMode.restart();
+                                } else if (window.startNewFlashcardSession) {
+                                    console.log('✅ Using startNewFlashcardSession fallback...');
+                                    window.startNewFlashcardSession({categoryId:'family',sessionNumber:1,wordCount:10});
+                                } else {
+                                    console.log('❌ No restart functions available');
+                                }
+                            }
+                        " style="
                             background: linear-gradient(135deg, #4f46e5, #7c3aed);
                             color: white;
                             border: none;
