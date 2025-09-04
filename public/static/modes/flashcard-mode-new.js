@@ -21,12 +21,31 @@ class FlashcardModeNew extends LearningModeBase {
             timeSpent: 0
         };
         
+        // Store this instance as current flashcard mode for global access
+        window.currentFlashcardMode = this;
+        
         console.log('🎯 NEW Flashcard Mode initialized');
     }
     
     async start(options = {}) {
         try {
             console.log('🎯 Starting NEW flashcard mode with options:', options);
+            
+            // Store session information for next session progression
+            this.data = options;
+            if (options.sessionInfo) {
+                this.data.sessionInfo = options.sessionInfo;
+            } else {
+                // Create basic session info if not provided
+                this.data.sessionInfo = {
+                    sessionId: options.sessionId || (options.categoryId + '_session_' + (options.sessionNumber || 1)),
+                    categoryId: options.categoryId || options.category || 'family',
+                    sessionNumber: options.sessionNumber || 1,
+                    totalSessions: options.totalSessions || 10 // Default estimate
+                };
+            }
+            
+            console.log('📊 Session info stored:', this.data.sessionInfo);
             
             // Get words for the session
             this.words = await this.getWordsForSession(options);
@@ -52,7 +71,7 @@ class FlashcardModeNew extends LearningModeBase {
             
             // Track session start
             this.trackEvent('session_started', {
-                category: options.category,
+                category: options.category || options.categoryId,
                 wordCount: this.words.length,
                 mode: 'flashcard'
             });
@@ -802,6 +821,85 @@ class FlashcardModeNew extends LearningModeBase {
         if (confirm('هل أنت متأكد من إنهاء الجلسة؟')) {
             this.completeSession();
         }
+    }
+    
+    /**
+     * Start next session in the same category with proper session ID management
+     */
+    async startNextSession() {
+        console.log('🎯 Starting next session...');
+        
+        // Get current session information from data
+        const sessionInfo = this.data && this.data.sessionInfo;
+        
+        if (!sessionInfo) {
+            console.log('❌ No session info available, falling back to new session');
+            // Fallback to starting a new session
+            if (window.startNewFlashcardSession) {
+                return window.startNewFlashcardSession({
+                    categoryId: 'family',
+                    sessionNumber: 1,
+                    wordCount: 10
+                });
+            }
+            return;
+        }
+        
+        if (sessionInfo.sessionNumber >= sessionInfo.totalSessions) {
+            console.log('❌ No next session available');
+            return;
+        }
+        
+        // Calculate next session ID and number
+        const nextSessionNumber = sessionInfo.sessionNumber + 1;
+        const nextSessionId = sessionInfo.categoryId + '_session_' + nextSessionNumber;
+        
+        // Show loading state
+        if (this.container) {
+            this.container.innerHTML = `
+                <div class="loading-next-session" style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 400px;
+                    text-align: center;
+                ">
+                    <div class="loading-content">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #4f46e5; margin-bottom: 1rem;"></i>
+                        <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;">جارٍ تحضير الجلسة التالية...</h3>
+                        <p style="color: #64748b;">الجلسة ${nextSessionNumber} من ${sessionInfo.totalSessions}</p>
+                        <p style="font-size: 0.9rem; color: #4f46e5; margin-top: 0.5rem;">معرف الجلسة: ${nextSessionId}</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Wait for visual feedback
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Use enhanced session function with specific session details
+        if (window.startNewFlashcardSession) {
+            console.log('🎯 Starting next session with ID:', nextSessionId);
+            
+            try {
+                const result = await window.startNewFlashcardSession({
+                    categoryId: sessionInfo.categoryId,
+                    sessionNumber: nextSessionNumber,
+                    sessionId: nextSessionId,
+                    wordCount: 10
+                });
+                
+                if (result !== false) {
+                    console.log('✅ Next session started successfully with ID:', nextSessionId);
+                    return;
+                }
+            } catch (error) {
+                console.error('❌ Enhanced next session failed:', error);
+            }
+        }
+        
+        console.log('❌ Failed to start next session');
     }
 }
 
