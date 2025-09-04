@@ -1170,7 +1170,7 @@ app.get('/', (c) => {
                                             margin-top: 2.5rem;
                                             direction: rtl;
                                         ">
-                                            <button onclick="if(window.startNewFlashcardSession){window.startNewFlashcardSession({categoryId:'family',sessionNumber:1,wordCount:10}).catch(e=>console.log('Session error:',e))}else{window.showSection('learn')}" style="
+                                            <button onclick="document.querySelectorAll('.completion-screen').forEach(s=>s.style.display='none'); window.showSection('learn'); setTimeout(()=>{const card=document.querySelector('.category-card[data-category=\"family\"]'); if(card) card.click();}, 1000);" style="
                                                 background: linear-gradient(135deg, #10b981, #059669);
                                                 color: white;
                                                 border: none;
@@ -1189,7 +1189,7 @@ app.get('/', (c) => {
                                                 جلسة جديدة
                                             </button>
                                             
-                                            <button onclick="if(window.startNewFlashcardSession){window.startNewFlashcardSession({categoryId:'family',sessionNumber:1,wordCount:10}).catch(e=>console.log('Restart error:',e))}else{window.showSection('learn')}" style="
+                                            <button onclick="document.querySelectorAll('.completion-screen').forEach(s=>s.style.display='none'); window.showSection('learn'); setTimeout(()=>{const card=document.querySelector('.category-card[data-category=\"family\"]'); if(card) card.click();}, 1000);" style="
                                                 background: linear-gradient(135deg, #4f46e5, #7c3aed);
                                                 color: white;
                                                 border: none;
@@ -1492,6 +1492,62 @@ app.get('/', (c) => {
                             return window.startNewFlashcardSession({categoryId: 'family', sessionNumber: 1});
                         }
                     };
+                    
+                    // IMMEDIATE TEST - Debug session issue
+                    setTimeout(() => {
+                        console.log('🧪 IMMEDIATE TEST: Testing session creation...');
+                        if (window.enhancedVocabularyData) {
+                            const categories = Object.keys(window.enhancedVocabularyData);
+                            console.log('✅ Categories available:', categories.slice(0, 5));
+                            
+                            // Test family category specifically
+                            const familyData = window.enhancedVocabularyData.family;
+                            if (familyData && familyData.words && familyData.words.length > 0) {
+                                console.log('✅ Family category has', familyData.words.length, 'words');
+                                console.log('✅ Sample words:', familyData.words.slice(0, 3).map(w => w.turkish + ' = ' + w.arabic).join(', '));
+                                
+                                // Test the function directly
+                                console.log('🚀 IMMEDIATE TEST: Calling startNewFlashcardSession...');
+                                if (window.startNewFlashcardSession) {
+                                    window.startNewFlashcardSession({
+                                        categoryId: 'family',
+                                        sessionNumber: 1,
+                                        wordCount: 3
+                                    }).then(result => {
+                                        console.log('✅ IMMEDIATE TEST SUCCESS:', result);
+                                    }).catch(error => {
+                                        console.error('❌ IMMEDIATE TEST ERROR:', error.message);
+                                    });
+                                }
+                            }
+                        }
+                    }, 8000);
+                    
+                    // Add test button to homepage for debugging
+                    setTimeout(() => {
+                        const heroSection = document.querySelector('.hero-section, .main-content, #app');
+                        if (heroSection) {
+                            const testButton = document.createElement('button');
+                            testButton.innerHTML = '🧪 Test Family Session';
+                            testButton.style.cssText = 'position:fixed;top:10px;right:10px;z-index:9999;background:#10b981;color:white;padding:10px;border:none;border-radius:5px;cursor:pointer;font-size:14px;';
+                            testButton.onclick = () => {
+                                console.log('🧪 TEST: Clicking family category...');
+                                window.showSection('learn');
+                                setTimeout(() => {
+                                    const familyCard = document.querySelector('.category-card[data-category="family"]');
+                                    if (familyCard) {
+                                        console.log('✅ TEST: Found family card, clicking...');
+                                        familyCard.click();
+                                    } else {
+                                        console.log('❌ TEST: Family card not found');
+                                        console.log('Available cards:', Array.from(document.querySelectorAll('.category-card')).map(c => c.getAttribute('data-category')));
+                                    }
+                                }, 1000);
+                            };
+                            heroSection.appendChild(testButton);
+                            console.log('✅ Added test button to page');
+                        }
+                    }, 5000);
                     
                     // START NEW SESSION FUNCTION - Simplified with session ID management
                     window.startNewFlashcardSession = async function(options = {}) {
