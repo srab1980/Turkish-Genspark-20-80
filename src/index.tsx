@@ -1289,8 +1289,8 @@ app.get('/', (c) => {
                         
                         console.log('✅ Flashcard completion screen overridden successfully');
                     } else {
-                        console.log('⚠️ FlashcardMode not found, retrying...');
-                        setTimeout(arguments.callee, 500);
+                        console.log('⚠️ FlashcardMode not found - using new modular system');
+                        // No retry needed - modular system handles this
                     }
                 }, 1000);
                 

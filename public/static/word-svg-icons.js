@@ -62,11 +62,36 @@ class WordSVGIcons {
      * WORD-SPECIFIC ICON MATCHING - Direct word-to-icon mapping
      */
     getSpecificWordIcon(turkishWord) {
-        // Comprehensive word-specific mapping
+        // Comprehensive word-specific mapping with error handling
+        try {
+            const wordIconMap = this.createSafeWordIconMap();
+            return wordIconMap[turkishWord] || null;
+        } catch (error) {
+            console.warn(`⚠️ Error in getSpecificWordIcon for '${turkishWord}':`, error.message);
+            return this.createDefaultIcon();
+        }
+    }
+    
+    // Safe icon creation wrapper
+    safeIconCall(iconFunction, fallback = '📝') {
+        try {
+            if (typeof iconFunction === 'function') {
+                return iconFunction.call(this);
+            } else {
+                throw new Error('Not a function');
+            }
+        } catch (error) {
+            console.warn(`⚠️ Missing icon function, using fallback: ${fallback}`);
+            return this.createDefaultIcon ? this.createDefaultIcon() : fallback;
+        }
+    }
+    
+    createSafeWordIconMap() {
+        // Comprehensive word-specific mapping with safe calls
         const wordIconMap = {
             // Greetings & Politeness
-            'merhaba': this.createHelloHandIcon(),
-            'selam': this.createHelloHandIcon(),
+            'merhaba': this.safeIconCall(this.createHelloHandIcon),
+            'selam': this.safeIconCall(this.createHelloHandIcon),
             'günaydın': this.createMorningSunIcon(),
             'iyi sabahlar': this.createMorningSunIcon(),
             'iyi akşamlar': this.createEveningMoonIcon(),
@@ -123,9 +148,9 @@ class WordSVGIcons {
             'lira': this.createMoneyIcon(),
             'satın almak': this.createCartIcon(),
             'almak': this.createCartIcon(),
-            'mağaza': this.createStoreIcon(),
-            'market': this.createStoreIcon(),
-            'süpermarket': this.createStoreIcon(),
+            'mağaza': this.safeIconCall(this.createStoreIcon, this.createCartIcon()),
+            'market': this.safeIconCall(this.createStoreIcon, this.createCartIcon()),
+            'süpermarket': this.safeIconCall(this.createStoreIcon, this.createCartIcon()),
             'alışveriş': this.createCartIcon(),
             'kart': this.createCreditCardIcon(),
             'kredi kartı': this.createCreditCardIcon(),
@@ -694,6 +719,127 @@ class WordSVGIcons {
             <circle cx="12" cy="12" r="10"/>
             <line x1="8" y1="12" x2="16" y2="12"/>
             <line x1="12" y1="8" x2="12" y2="16"/>
+        </svg>`;
+    }
+    
+    // MISSING ICON FUNCTIONS - Add the most commonly used missing functions
+    
+    createStoreIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/>
+            <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            <path d="M3 7h18l-1 2H4l-1-2z"/>
+        </svg>`;
+    }
+    
+    createHelloHandIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 13l3 3 7-7"/>
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        </svg>`;
+    }
+    
+    createCreditCardIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+        </svg>`;
+    }
+    
+    createCashIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>`;
+    }
+    
+    createExpensiveIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            <circle cx="18" cy="6" r="3" stroke="red"/>
+        </svg>`;
+    }
+    
+    createCheapIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            <circle cx="6" cy="18" r="2" stroke="green"/>
+        </svg>`;
+    }
+    
+    createLocationIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+        </svg>`;
+    }
+    
+    createRightArrowIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12,5 19,12 12,19"/>
+        </svg>`;
+    }
+    
+    createLeftArrowIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12,19 5,12 12,5"/>
+        </svg>`;
+    }
+    
+    createUpArrowIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5,12 12,5 19,12"/>
+        </svg>`;
+    }
+    
+    createDownArrowIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <polyline points="19,12 12,19 5,12"/>
+        </svg>`;
+    }
+    
+    createNearIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <circle cx="12" cy="12" r="7" opacity="0.5"/>
+        </svg>`;
+    }
+    
+    createFarIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="2"/>
+            <circle cx="12" cy="12" r="10" opacity="0.3"/>
+        </svg>`;
+    }
+    
+    createMapIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="3,6 9,3 15,6 21,3 21,18 15,21 9,18 3,21"/>
+            <line x1="9" y1="3" x2="9" y2="18"/>
+            <line x1="15" y1="6" x2="15" y2="21"/>
+        </svg>`;
+    }
+    
+    createAddressIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+        </svg>`;
+    }
+    
+    createStreetIcon() {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 12h20"/>
+            <path d="M6 8v8"/>
+            <path d="M10 8v8"/>
+            <path d="M14 8v8"/>
+            <path d="M18 8v8"/>
         </svg>`;
     }
     
