@@ -1234,17 +1234,17 @@ app.get('/', (c) => {
                                             <button onclick="(async function() {
                                                 console.log('🔄 Restart Session Button clicked - using enhanced flow...');
                                                 
-                                                // Method 1: Try current flashcard mode instance restart
-                                                if (window.flashcardModeNew && typeof window.flashcardModeNew.restart === 'function') {
-                                                    console.log('🎯 Trying flashcardModeNew restart...');
-                                                    try {
-                                                        window.flashcardModeNew.restart();
-                                                        console.log('✅ FlashcardModeNew restart succeeded');
-                                                        return;
-                                                    } catch (e) {
-                                                        console.log('❌ FlashcardModeNew restart failed:', e.message);
-                                                    }
-                                                }
+                                                // Disabled - using original flashcard mode
+                                                // if (window.flashcardModeNew && typeof window.flashcardModeNew.restart === 'function') {
+                                                //     console.log('🎯 Trying flashcardModeNew restart...');
+                                                //     try {
+                                                //         window.flashcardModeNew.restart();
+                                                //         console.log('✅ FlashcardModeNew restart succeeded');
+                                                //         return;
+                                                //     } catch (e) {
+                                                //         console.log('❌ FlashcardModeNew restart failed:', e.message);
+                                                //     }
+                                                // }
                                                 
                                                 // Method 2: Try legacy flashcard mode restart
                                                 if (window.flashcardMode && typeof window.flashcardMode.restart === 'function') {
@@ -1379,13 +1379,13 @@ app.get('/', (c) => {
                 setTimeout(function() {
                     console.log('🔧 Loading new systems...');
                     
-                    // Force load new flashcard mode
-                    const newFlashcardScript = document.createElement('script');
-                    newFlashcardScript.src = '/static/modes/flashcard-mode-new.js?v=' + Date.now();
-                    newFlashcardScript.onload = function() {
-                        console.log('✅ New flashcard mode loaded');
-                    };
-                    document.head.appendChild(newFlashcardScript);
+                    // Disabled - using original flashcard mode
+                    // const newFlashcardScript = document.createElement('script');
+                    // newFlashcardScript.src = '/static/modes/flashcard-mode-new.js?v=' + Date.now();
+                    // newFlashcardScript.onload = function() {
+                    //     console.log('✅ New flashcard mode loaded');
+                    // };
+                    // document.head.appendChild(newFlashcardScript);
                     
                     // Force load simple analytics
                     const analyticsScript = document.createElement('script');
@@ -1397,23 +1397,23 @@ app.get('/', (c) => {
                     
                 }, 1000);
                 
-                // Force override the flashcard mode after everything loads
-                setTimeout(function() {
-                    if (window.learningModeManager && window.FlashcardModeNew) {
-                        console.log('🔧 Forcing flashcard mode override...');
-                        
-                        // Create and register new flashcard mode
-                        window.flashcardModeNew = new window.FlashcardModeNew();
-                        
-                        // Override the old flashcard mode
-                        window.learningModeManager.modes.set('flashcard', window.flashcardModeNew);
-                        
-                        console.log('✅ Flashcard mode overridden with new version');
-                    } else {
-                        console.log('⚠️ Retry flashcard override in 2s...');
-                        setTimeout(arguments.callee, 2000);
-                    }
-                }, 3000);
+                // Disabled - using original flashcard mode
+                // setTimeout(function() {
+                //     if (window.learningModeManager && window.FlashcardModeNew) {
+                //         console.log('🔧 Forcing flashcard mode override...');
+                //         
+                //         // Create and register new flashcard mode
+                //         window.flashcardModeNew = new window.FlashcardModeNew();
+                //         
+                //         // Override the old flashcard mode
+                //         window.learningModeManager.modes.set('flashcard', window.flashcardModeNew);
+                //         
+                //         console.log('✅ Flashcard mode overridden with new version');
+                //     } else {
+                //         console.log('⚠️ Retry flashcard override in 2s...');
+                //         setTimeout(arguments.callee, 2000);
+                //     }
+                // }, 3000);
                 
                 // SECTION CHANGE LISTENER - Update when switching to profile
                 document.addEventListener('click', function(e) {
@@ -3209,8 +3209,11 @@ app.get('/', (c) => {
         <script src="/static/learning-mode-manager.js"></script>
         
         <!-- Learning Mode Containers -->
-        <script src="/static/modes/flashcard-mode.js?v=20250903-063400"></script>
+        <!-- Original flashcard mode only -->
+        <script src="/static/modes/flashcard-mode.js"></script>
+        <!-- Disabled new flashcard mode
         <script src="/static/modes/flashcard-mode-new.js?v=20250903-NEW"></script>
+        -->
         <script src="/static/modes/quiz-mode.js"></script>
         <script src="/static/modes/review-mode.js"></script>
         <script src="/static/modes/conversation-mode.js"></script>
