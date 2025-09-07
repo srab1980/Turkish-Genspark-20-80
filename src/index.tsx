@@ -2224,19 +2224,16 @@ app.get('/', (c) => {
                                 }
                             }
                             
-                            // Start the learning session
-                            if (window.startLearningSession) {
-                                window.startLearningSession(learningData, mode);
-                                
-                                // Show the learning content
-                                const learningContent = document.getElementById('learning-content');
-                                if (learningContent) {
-                                    learningContent.classList.remove('hidden');
-                                    learningContent.classList.add('active');
-                                    learningContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Use the modern learning mode manager
+                            if (window.learningModeManager) {
+                                window.learningModeManager.startMode(mode, learningData);
+                                console.log('✨ Modular learning session started:', filters);
+                            } else {
+                                // Fallback to old system if manager is not available
+                                if (window.startLearningSession) {
+                                    window.startLearningSession(learningData, mode);
                                 }
-                                
-                                console.log('✨ Session-based learning started with dual filters:', filters);
+                                console.error("Learning Mode Manager not found, fell back to legacy system.");
                             }
                         }, 300);
                     }
