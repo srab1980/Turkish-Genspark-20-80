@@ -18,13 +18,8 @@ const TurkishLearningApp = {
     
     // Setup all event listeners
     setupEventListeners() {
-        // Navigation events - Force refresh navigation bindings
+        // Navigation events
         this.bindNavigationEvents();
-        
-        // Re-bind navigation events periodically to handle dynamic content
-        setInterval(() => {
-            this.bindNavigationEvents();
-        }, 2000);
         
         // Featured mode cards click handlers
         this.setupFeaturedModeHandlers();
