@@ -392,8 +392,8 @@ class LearningModeManager {
         }
         
         // If category is provided without session, get all words from category
-        if (data.category && window.enhancedVocabularyData) {
-            const categoryData = window.enhancedVocabularyData[data.category];
+        if (data.category && window.enhancedVocabularyDatabase) {
+            const categoryData = window.enhancedVocabularyDatabase.data.find(c => c.id === data.category);
             const categoryWords = categoryData?.words || [];
             return {
                 ...data,
