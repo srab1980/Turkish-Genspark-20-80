@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
-import { serveStatic } from 'hono/cloudflare-workers'
+import { serveStatic } from '@hono/node-server/serve-static'
 
 const app = new Hono()
 
@@ -11,7 +11,18 @@ app.use('/api/*', cors())
 app.use('/static/*', serveStatic({ root: './public' }))
 
 // Enhanced Turkish learning data - Extended vocabulary with conversation practice
-const vocabulary = {
+interface Word {
+    id: number;
+    turkish: string;
+    arabic: string;
+    english: string;
+    pronunciation: string;
+    example: string;
+    exampleArabic: string;
+    icon: string;
+    emoji: string;
+}
+const vocabulary: Record<string, Word[]> = {
   greetings: [
     { id: 1, turkish: "Merhaba", arabic: "مرحبا", english: "Hello", pronunciation: "mer-ha-BA", 
       example: "Merhaba, nasılsınız?", exampleArabic: "مرحبا، كيف حالك؟",
@@ -178,37 +189,37 @@ const vocabulary = {
 app.get('/api/categories', (c) => {
   // New categories from Excel file with 31 comprehensive categories
   const enhancedCategories = [
-    { id: 'adjective', name: 'Adjective', nameArabic: 'الصفات', wordCount: 77, sessionCount: 8, icon: '📝' },
-    { id: 'animal', name: 'Animal', nameArabic: 'الحيوانات', wordCount: 54, sessionCount: 6, icon: '🐾' },
-    { id: 'body', name: 'Body', nameArabic: 'أجزاء الجسم', wordCount: 78, sessionCount: 8, icon: '👤' },
-    { id: 'clothes', name: 'Clothes', nameArabic: 'الملابس', wordCount: 20, sessionCount: 2, icon: '👕' },
-    { id: 'color', name: 'Color', nameArabic: 'الألوان', wordCount: 18, sessionCount: 2, icon: '🎨' },
-    { id: 'direction', name: 'Direction', nameArabic: 'الاتجاهات', wordCount: 3, sessionCount: 1, icon: '🧭' },
-    { id: 'emotion', name: 'Emotion', nameArabic: 'المشاعر', wordCount: 14, sessionCount: 2, icon: '😊' },
-    { id: 'family', name: 'Family', nameArabic: 'العائلة', wordCount: 73, sessionCount: 8, icon: '👨‍👩‍👧‍👦' },
-    { id: 'finance', name: 'Finance', nameArabic: 'المالية', wordCount: 22, sessionCount: 3, icon: '💰' },
-    { id: 'food', name: 'Food', nameArabic: 'الطعام', wordCount: 113, sessionCount: 12, icon: '🍽️' },
-    { id: 'general', name: 'General', nameArabic: 'عام', wordCount: 9, sessionCount: 1, icon: '📚' },
-    { id: 'health', name: 'Health', nameArabic: 'الصحة', wordCount: 38, sessionCount: 4, icon: '🏥' },
-    { id: 'house', name: 'House', nameArabic: 'المنزل', wordCount: 76, sessionCount: 8, icon: '🏠' },
-    { id: 'instrument', name: 'Instrument', nameArabic: 'الآلات', wordCount: 7, sessionCount: 1, icon: '🎻' },
-    { id: 'measurement', name: 'Measurement', nameArabic: 'القياس', wordCount: 24, sessionCount: 3, icon: '📏' },
-    { id: 'music', name: 'Music', nameArabic: 'الموسيقى', wordCount: 12, sessionCount: 2, icon: '🎵' },
-    { id: 'nature', name: 'Nature', nameArabic: 'الطبيعة', wordCount: 37, sessionCount: 4, icon: '🌿' },
-    { id: 'number', name: 'Number', nameArabic: 'الأرقام', wordCount: 20, sessionCount: 2, icon: '🔢' },
-    { id: 'place', name: 'Place', nameArabic: 'الأماكن', wordCount: 37, sessionCount: 4, icon: '📍' },
-    { id: 'plant', name: 'Plant', nameArabic: 'النباتات', wordCount: 6, sessionCount: 1, icon: '🌱' },
-    { id: 'pronoun', name: 'Pronoun', nameArabic: 'الضمائر', wordCount: 3, sessionCount: 1, icon: '👆' },
-    { id: 'religion', name: 'Religion', nameArabic: 'الدين', wordCount: 5, sessionCount: 1, icon: '🕌' },
-    { id: 'school', name: 'School', nameArabic: 'المدرسة', wordCount: 55, sessionCount: 6, icon: '🎓' },
-    { id: 'science', name: 'Science', nameArabic: 'العلوم', wordCount: 66, sessionCount: 7, icon: '🔬' },
-    { id: 'sport', name: 'Sport', nameArabic: 'الرياضة', wordCount: 16, sessionCount: 2, icon: '⚽' },
-    { id: 'technology', name: 'Technology', nameArabic: 'التكنولوجيا', wordCount: 36, sessionCount: 4, icon: '📱' },
-    { id: 'time', name: 'Time', nameArabic: 'الوقت', wordCount: 54, sessionCount: 6, icon: '⏰' },
-    { id: 'travel', name: 'Travel', nameArabic: 'السفر', wordCount: 46, sessionCount: 5, icon: '✈️' },
-    { id: 'verb', name: 'Verb', nameArabic: 'الأفعال', wordCount: 43, sessionCount: 5, icon: '🎯' },
-    { id: 'weather', name: 'Weather', nameArabic: 'الطقس', wordCount: 13, sessionCount: 2, icon: '🌤️' },
-    { id: 'work', name: 'Work', nameArabic: 'العمل', wordCount: 51, sessionCount: 6, icon: '💼' }
+    { id: 'adjective', name: 'Adjective', nameArabic: 'الصفات', wordCount: "77", sessionCount: 8, icon: '📝' },
+    { id: 'animal', name: 'Animal', nameArabic: 'الحيوانات', wordCount: "54", sessionCount: 6, icon: '🐾' },
+    { id: 'body', name: 'Body', nameArabic: 'أجزاء الجسم', wordCount: "78", sessionCount: 8, icon: '👤' },
+    { id: 'clothes', name: 'Clothes', nameArabic: 'الملابس', wordCount: "20", sessionCount: 2, icon: '👕' },
+    { id: 'color', name: 'Color', nameArabic: 'الألوان', wordCount: "18", sessionCount: 2, icon: '🎨' },
+    { id: 'direction', name: 'Direction', nameArabic: 'الاتجاهات', wordCount: "3", sessionCount: 1, icon: '🧭' },
+    { id: 'emotion', name: 'Emotion', nameArabic: 'المشاعر', wordCount: "14", sessionCount: 2, icon: '😊' },
+    { id: 'family', name: 'Family', nameArabic: 'العائلة', wordCount: "73", sessionCount: 8, icon: '👨‍👩‍👧‍👦' },
+    { id: 'finance', name: 'Finance', nameArabic: 'المالية', wordCount: "22", sessionCount: 3, icon: '💰' },
+    { id: 'food', name: 'Food', nameArabic: 'الطعام', wordCount: "113", sessionCount: 12, icon: '🍽️' },
+    { id: 'general', name: 'General', nameArabic: 'عام', wordCount: "9", sessionCount: 1, icon: '📚' },
+    { id: 'health', name: 'Health', nameArabic: 'الصحة', wordCount: "38", sessionCount: 4, icon: '🏥' },
+    { id: 'house', name: 'House', nameArabic: 'المنزل', wordCount: "76", sessionCount: 8, icon: '🏠' },
+    { id: 'instrument', name: 'Instrument', nameArabic: 'الآلات', wordCount: "7", sessionCount: 1, icon: '🎻' },
+    { id: 'measurement', name: 'Measurement', nameArabic: 'القياس', wordCount: "24", sessionCount: 3, icon: '📏' },
+    { id: 'music', name: 'Music', nameArabic: 'الموسيقى', wordCount: "12", sessionCount: 2, icon: '🎵' },
+    { id: 'nature', name: 'Nature', nameArabic: 'الطبيعة', wordCount: "37", sessionCount: 4, icon: '🌿' },
+    { id: 'number', name: 'Number', nameArabic: 'الأرقام', wordCount: "20", sessionCount: 2, icon: '🔢' },
+    { id: 'place', name: 'Place', nameArabic: 'الأماكن', wordCount: "37", sessionCount: 4, icon: '📍' },
+    { id: 'plant', name: 'Plant', nameArabic: 'النباتات', wordCount: "6", sessionCount: 1, icon: '🌱' },
+    { id: 'pronoun', name: 'Pronoun', nameArabic: 'الضمائر', wordCount: "3", sessionCount: 1, icon: '👆' },
+    { id: 'religion', name: 'Religion', nameArabic: 'الدين', wordCount: "5", sessionCount: 1, icon: '🕌' },
+    { id: 'school', name: 'School', nameArabic: 'المدرسة', wordCount: "55", sessionCount: 6, icon: '🎓' },
+    { id: 'science', name: 'Science', nameArabic: 'العلوم', wordCount: "66", sessionCount: 7, icon: '🔬' },
+    { id: 'sport', name: 'Sport', nameArabic: 'الرياضة', wordCount: "16", sessionCount: 2, icon: '⚽' },
+    { id: 'technology', name: 'Technology', nameArabic: 'التكنولوجيا', wordCount: "36", sessionCount: 4, icon: '📱' },
+    { id: 'time', name: 'Time', nameArabic: 'الوقت', wordCount: "54", sessionCount: 6, icon: '⏰' },
+    { id: 'travel', name: 'Travel', nameArabic: 'السفر', wordCount: "46", sessionCount: 5, icon: '✈️' },
+    { id: 'verb', name: 'Verb', nameArabic: 'الأفعال', wordCount: "43", sessionCount: 5, icon: '🎯' },
+    { id: 'weather', name: 'Weather', nameArabic: 'الطقس', wordCount: "13", sessionCount: 2, icon: '🌤️' },
+    { id: 'work', name: 'Work', nameArabic: 'العمل', wordCount: "51", sessionCount: 6, icon: '💼' }
   ];
   
   return c.json({ categories: enhancedCategories, totalSessions: 127 });
@@ -320,7 +331,7 @@ app.post('/api/user/progress', async (c) => {
 // Get phrases by category
 app.get('/api/phrases/:category', (c) => {
   const category = c.req.param('category');
-  const phrases = {
+  const phrases: Record<string, any> = {
     daily: {
       title: "Daily Phrases",
       titleArabic: "العبارات اليومية",
@@ -391,7 +402,7 @@ app.get('/api/phrases', (c) => {
 app.get('/api/conversations/:type', (c) => {
   const type = c.req.param('type');
   
-  const conversations = {
+  const conversations: Record<string, any> = {
     hotel: {
       title: "Hotel Check-in",
       titleArabic: "تسجيل الدخول في الفندق",
@@ -531,7 +542,7 @@ app.get('/api/daily-tip', (c) => {
   ];
   
   const today = new Date();
-  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+  const dayOfYear = Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
   const tipIndex = dayOfYear % tips.length;
   
   return c.json({ tip: tips[tipIndex], date: today.toISOString().split('T')[0] });
@@ -542,7 +553,7 @@ app.get('/api/enhanced-word/:id', (c) => {
   const wordId = parseInt(c.req.param('id'));
   
   // Enhanced vocabulary with additional features
-  const enhancedWords = {
+  const enhancedWords: Record<number, any> = {
     1: {
       id: 1, turkish: "Merhaba", arabic: "مرحبا", english: "Hello", 
       pronunciation: "mer-ha-BA", difficulty: "beginner",
@@ -630,7 +641,7 @@ app.get('/api/content/difficulty/:level', (c) => {
   const filteredCategories = Object.keys(vocabulary).map(key => ({
     id: key,
     name: key.charAt(0).toUpperCase() + key.slice(1),
-    wordCount: vocabulary[key].length, // In real app, filter by difficulty
+    wordCount: (vocabulary[key] || []).length.toString(), // In real app, filter by difficulty
     difficulty: level,
     icon: getCategoryIcon(key)
   }));
@@ -638,12 +649,12 @@ app.get('/api/content/difficulty/:level', (c) => {
   return c.json({ 
     categories: filteredCategories,
     difficulty: level,
-    total: filteredCategories.reduce((sum, cat) => sum + cat.wordCount, 0)
+    total: filteredCategories.reduce((sum, cat) => sum + parseInt(cat.wordCount, 10), 0)
   });
 });
 
 function getCategoryIcon(category: string): string {
-  const icons = {
+  const icons: Record<string, string> = {
     greetings: "👋",
     travel: "✈️",
     food: "🍽️",
