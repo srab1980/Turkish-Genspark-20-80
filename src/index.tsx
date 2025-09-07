@@ -1750,6 +1750,7 @@ app.get('/', (c) => {
         <script src="/static/modes/quiz-mode.js"></script>
         <script src="/static/modes/review-mode.js"></script>
         <script src="/static/modes/conversation-mode.js"></script>
+        <script src="/static/modes/examine-mode.js"></script>
         <script src="/static/modes/phrase-mode.js"></script>
         
         <!-- Session Management System -->

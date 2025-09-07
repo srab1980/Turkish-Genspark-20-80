@@ -61,18 +61,8 @@ class ConversationMode extends LearningModeBase {
      * Load conversations from API or fallback data
      */
     async loadConversations() {
-        try {
-            if (typeof axios !== 'undefined') {
-                const response = await axios.get('/api/conversations');
-                this.conversations = response.data.conversations || [];
-            } else {
-                // Fallback to built-in conversations
-                this.conversations = this.getBuiltInConversations();
-            }
-        } catch (error) {
-            console.warn('Failed to load conversations from API, using fallback data');
-            this.conversations = this.getBuiltInConversations();
-        }
+        // Always use the built-in conversations for now.
+        this.conversations = this.getBuiltInConversations();
     }
     
     /**
