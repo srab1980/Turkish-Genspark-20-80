@@ -62,8 +62,8 @@ class ExamineMode extends LearningModeBase {
     }
 }
 
-// Register examine mode with the manager when loaded
-document.addEventListener('DOMContentLoaded', () => {
+// Function to register the mode safely
+function registerExamineMode() {
     if (window.learningModeManager) {
         window.learningModeManager.registerMode('examine', ExamineMode, {
             name: 'Examine Mode',
@@ -74,7 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
             version: '1.0.0'
         });
         console.log('🔍 Examine Mode registered successfully');
+    } else {
+        // If the manager is not ready, try again in 100ms
+        setTimeout(registerExamineMode, 100);
     }
-});
+}
+
+// Start the registration process
+registerExamineMode();
 
 window.ExamineMode = ExamineMode;
