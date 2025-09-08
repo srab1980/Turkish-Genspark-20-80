@@ -3559,6 +3559,16 @@ app.get('/', (c) => {
 
                 applyFilters() {
                     const mode = Array.from(this.selectedModes)[0] || 'flashcard';
+
+                    // Handle conversation mode separately
+                    if (mode === 'conversation') {
+                        this.closeMenu();
+                        if (window.TurkishLearningApp) {
+                            window.TurkishLearningApp.showSection('conversation');
+                        }
+                        return;
+                    }
+
                     let filters, validationMessage, learningData, sessionIdentifier;
                     
                     if (this.filterType === 'categories') {
