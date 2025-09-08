@@ -684,6 +684,7 @@ app.get('/', (c) => {
         <link href="/static/flashcard-mode.css" rel="stylesheet">
         <link href="/static/quiz-mode.css" rel="stylesheet">
         <link href="/static/phrase-mode.css" rel="stylesheet">
+        <link href="/static/modes/review-mode.css" rel="stylesheet">
         <style>
             /* Side Menu Filters CSS */
             .side-menu {
