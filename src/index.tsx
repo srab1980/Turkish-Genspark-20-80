@@ -2699,6 +2699,17 @@ app.get('/', (c) => {
                             </div>
                         </div>
                         
+                        <div class="featured-mode-card" data-mode="examine">
+                            <div class="mode-icon">🧐</div>
+                            <h4 class="mode-title">الاختبار</h4>
+                            <p class="mode-description">اختبر معرفتك بالكلمات مع بطاقات.</p>
+                            <div class="mode-features">
+                                <span class="feature-tag">🎮 تحدي</span>
+                                <span class="feature-tag">📊 نتائج</span>
+                                <span class="feature-tag">⏱️ سرعة</span>
+                            </div>
+                        </div>
+
                         <div class="featured-mode-card" data-mode="quiz">
                             <div class="mode-icon">🎯</div>
                             <h4 class="mode-title">الاختبار التفاعلي</h4>
@@ -3214,6 +3225,7 @@ app.get('/', (c) => {
         <!-- Disabled new flashcard mode
         <script src="/static/modes/flashcard-mode-new.js?v=20250903-NEW"></script>
         -->
+        <script src="/static/modes/examine-mode.js"></script>
         <script src="/static/modes/quiz-mode.js"></script>
         <script src="/static/modes/review-mode.js"></script>
         <script src="/static/modes/conversation-mode.js"></script>
