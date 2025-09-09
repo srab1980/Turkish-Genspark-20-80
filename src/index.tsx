@@ -682,7 +682,6 @@ app.get('/', (c) => {
         <link href="/static/visual-ux-enhancements.css" rel="stylesheet">
         <link href="/static/enhanced-content-styles.css" rel="stylesheet">
         <link href="/static/flashcard-mode.css" rel="stylesheet">
-        <link href="/static/quiz-mode.css" rel="stylesheet">
         <link href="/static/phrase-mode.css" rel="stylesheet">
         <style>
             /* Side Menu Filters CSS */
@@ -732,84 +731,6 @@ app.get('/', (c) => {
                 opacity: 0; visibility: hidden; transition: all 0.3s ease;
             }
             .side-menu-overlay.active { opacity: 1; visibility: visible; }
-            
-            /* Preview Window Modal Styles */
-            .preview-modal {
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000;
-                display: flex; align-items: center; justify-content: center; padding: 1rem;
-            }
-            .preview-modal-overlay {
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);
-            }
-            .preview-modal-content {
-                position: relative; width: 90%; max-width: 1000px; height: 85vh; max-height: 800px;
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
-                border-radius: 20px; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-                backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.3);
-                display: flex; flex-direction: column; overflow: hidden;
-            }
-            .preview-modal-header {
-                padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white; display: flex; justify-content: space-between; align-items: center;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
-            .preview-title {
-                margin: 0; font-size: 1.25rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;
-            }
-            .preview-close-btn {
-                background: rgba(255, 255, 255, 0.2); border: none; color: white;
-                width: 2.5rem; height: 2.5rem; border-radius: 50%; cursor: pointer;
-                display: flex; align-items: center; justify-content: center; font-size: 1rem;
-                transition: all 0.2s ease;
-            }
-            .preview-close-btn:hover { background: rgba(255, 255, 255, 0.3); transform: scale(1.05); }
-            .preview-modal-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-            .preview-controls {
-                padding: 1rem; background: rgba(248, 250, 252, 0.8);
-                border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-                display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
-            }
-            .preview-select {
-                padding: 0.5rem 1rem; border: 1px solid #d1d5db; border-radius: 8px;
-                background: white; font-size: 0.875rem; min-width: 150px;
-                transition: all 0.2s ease;
-            }
-            .preview-select:focus {
-                outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-            }
-            .preview-start-btn {
-                padding: 0.5rem 1rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-                color: white; border: none; border-radius: 8px; cursor: pointer;
-                display: flex; align-items: center; gap: 0.5rem; font-weight: 600;
-                transition: all 0.2s ease;
-            }
-            .preview-start-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4); }
-            .preview-canvas {
-                flex: 1; padding: 1rem; overflow-y: auto; background: #fafbfc;
-            }
-            .preview-placeholder {
-                height: 100%; display: flex; flex-direction: column; align-items: center;
-                justify-content: center; text-align: center; color: #64748b;
-            }
-            .preview-icon {
-                font-size: 4rem; color: #94a3b8; margin-bottom: 1rem;
-            }
-            .preview-placeholder h4 {
-                margin: 0 0 0.5rem 0; font-size: 1.25rem; color: #374151;
-            }
-            .preview-placeholder p {
-                margin: 0; font-size: 0.875rem; color: #6b7280;
-            }
-            .nav-link.preview-btn {
-                background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
-                color: white !important; border-radius: 8px !important;
-                transition: all 0.2s ease !important;
-            }
-            .nav-link.preview-btn:hover {
-                transform: translateY(-1px) !important; 
-                box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4) !important;
-            }
             @media (max-width: 768px) {
                 .side-menu { width: 100%; max-width: 400px; }
                 .side-menu-toggle { top: 0.75rem; right: 0.75rem; width: 2.5rem; height: 2.5rem; }
@@ -1627,212 +1548,6 @@ app.get('/', (c) => {
                     }, 1500);
                     
                     console.log('✅ TARGETED analytics system ready with real numbers!');
-                    
-                    // PREVIEW WINDOW FUNCTIONS
-                    window.openPreviewWindow = function() {
-                        console.log('🔍 Opening preview window...');
-                        const modal = document.getElementById('preview-modal');
-                        if (modal) {
-                            modal.style.display = 'flex';
-                            document.body.style.overflow = 'hidden';
-                            console.log('✅ Preview window opened');
-                        }
-                    };
-                    
-                    window.closePreviewWindow = function() {
-                        console.log('🔍 Closing preview window...');
-                        const modal = document.getElementById('preview-modal');
-                        if (modal) {
-                            modal.style.display = 'none';
-                            document.body.style.overflow = 'auto';
-                            
-                            // Clear preview canvas
-                            const canvas = document.getElementById('preview-canvas');
-                            if (canvas) {
-                                canvas.innerHTML = \`
-                                    <div class="preview-placeholder">
-                                        <i class="fas fa-play-circle preview-icon"></i>
-                                        <h4>مرحباً بك في معاينة التعلم التفاعلي</h4>
-                                        <p>اختر فئة ونوع التعلم لبدء المعاينة</p>
-                                    </div>
-                                \`;
-                            }
-                            console.log('✅ Preview window closed and reset');
-                        }
-                    };
-                    
-                    window.startPreviewSession = function() {
-                        console.log('🎯 Starting preview session...');
-                        
-                        const categorySelect = document.getElementById('preview-category');
-                        const modeSelect = document.getElementById('preview-mode');
-                        const canvas = document.getElementById('preview-canvas');
-                        
-                        if (!categorySelect || !modeSelect || !canvas) {
-                            console.error('❌ Preview elements not found');
-                            return;
-                        }
-                        
-                        const categoryId = categorySelect.value;
-                        const mode = modeSelect.value;
-                        
-                        console.log('📊 Preview settings:', { categoryId, mode });
-                        
-                        // Get sample words for the selected category
-                        let sampleWords = [];
-                        if (window.vocabulary && window.vocabulary[categoryId]) {
-                            sampleWords = window.vocabulary[categoryId].slice(0, 3); // Show 3 sample words
-                        }
-                        
-                        // Generate preview content based on mode
-                        let previewContent = '';
-                        
-                        if (mode === 'flashcard') {
-                            previewContent = \`
-                                <div class="preview-mode-title">
-                                    <h3><i class="fas fa-graduation-cap"></i> معاينة البطاقات التعليمية</h3>
-                                    <p>فئة: \${getCategoryNameArabic(categoryId)}</p>
-                                </div>
-                                <div class="preview-flashcards">
-                                    \${sampleWords.map((word, index) => \`
-                                        <div class="preview-flashcard" style="margin-bottom: 1rem; padding: 1rem; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-                                            <div class="flashcard-front" style="text-align: center;">
-                                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">\${word.emoji}</div>
-                                                <div style="font-size: 1.5rem; font-weight: bold; color: #1e40af; margin-bottom: 0.5rem;">\${word.turkish}</div>
-                                                <div style="color: #64748b; font-style: italic;">[\${word.pronunciation}]</div>
-                                                <div style="margin-top: 1rem;">
-                                                    <button class="tts-btn" style="background: #8b5cf6; color: white; border: none; padding: 0.5rem; border-radius: 50%; cursor: pointer;">
-                                                        <i class="fas fa-volume-up"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;">
-                                                <div style="font-weight: bold; color: #059669;">\${word.arabic}</div>
-                                                <div style="color: #64748b;">\${word.english}</div>
-                                                <div style="margin-top: 0.5rem; font-size: 0.875rem;">
-                                                    <strong>مثال:</strong> \${word.example}
-                                                    <br><span style="color: #059669;">\${word.exampleArabic}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    \`).join('')}
-                                </div>
-                                <div class="preview-actions" style="margin-top: 1rem; text-align: center;">
-                                    <button onclick="window.startActualSession('\${categoryId}', 'flashcard')" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
-                                        <i class="fas fa-play"></i> ابدأ جلسة حقيقية
-                                    </button>
-                                </div>
-                            \`;
-                        } else if (mode === 'quiz') {
-                            previewContent = \`
-                                <div class="preview-mode-title">
-                                    <h3><i class="fas fa-question-circle"></i> معاينة الاختبارات التفاعلية</h3>
-                                    <p>فئة: \${getCategoryNameArabic(categoryId)}</p>
-                                </div>
-                                <div class="preview-quiz">
-                                    \${sampleWords.slice(0, 1).map(word => \`
-                                        <div class="preview-quiz-card" style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-                                            <div class="quiz-question" style="text-align: center; margin-bottom: 1.5rem;">
-                                                <h4 style="margin: 0 0 0.5rem 0; color: #1e40af;">ما معنى هذه الكلمة؟</h4>
-                                                <div style="font-size: 2rem; margin: 1rem 0;">\${word.emoji}</div>
-                                                <div style="font-size: 1.5rem; font-weight: bold; color: #7c3aed;">\${word.turkish}</div>
-                                                <div style="color: #64748b; font-style: italic;">[\${word.pronunciation}]</div>
-                                            </div>
-                                            <div class="quiz-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                                                <button class="quiz-option correct" style="padding: 0.75rem; background: #f0f9ff; border: 2px solid #0ea5e9; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.2s;">
-                                                    \${word.arabic}
-                                                </button>
-                                                <button class="quiz-option" style="padding: 0.75rem; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.2s;">
-                                                    خيار وهمي 1
-                                                </button>
-                                                <button class="quiz-option" style="padding: 0.75rem; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.2s;">
-                                                    خيار وهمي 2
-                                                </button>
-                                                <button class="quiz-option" style="padding: 0.75rem; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.2s;">
-                                                    خيار وهمي 3
-                                                </button>
-                                            </div>
-                                        </div>
-                                    \`).join('')}
-                                </div>
-                                <div class="preview-actions" style="margin-top: 1rem; text-align: center;">
-                                    <button onclick="window.startActualSession('\${categoryId}', 'quiz')" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
-                                        <i class="fas fa-play"></i> ابدأ اختبار حقيقي
-                                    </button>
-                                </div>
-                            \`;
-                        } else if (mode === 'conversation') {
-                            previewContent = \`
-                                <div class="preview-mode-title">
-                                    <h3><i class="fas fa-comments"></i> معاينة المحادثات التفاعلية</h3>
-                                    <p>فئة: \${getCategoryNameArabic(categoryId)}</p>
-                                </div>
-                                <div class="preview-conversation">
-                                    <div class="conversation-preview" style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-                                        <h4 style="margin: 0 0 1rem 0; color: #7c3aed;">محادثة تجريبية</h4>
-                                        <div class="conversation-messages" style="space-y: 1rem;">
-                                            <div class="message bot" style="display: flex; justify-content: flex-start; margin-bottom: 1rem;">
-                                                <div style="background: #f3f4f6; padding: 0.75rem 1rem; border-radius: 18px 18px 18px 4px; max-width: 70%;">
-                                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">🤖 المساعد:</div>
-                                                    \${sampleWords[0]?.turkish} - \${sampleWords[0]?.arabic}
-                                                </div>
-                                            </div>
-                                            <div class="message user" style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
-                                                <div style="background: #8b5cf6; color: white; padding: 0.75rem 1rem; border-radius: 18px 18px 4px 18px; max-width: 70%;">
-                                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">👤 أنت:</div>
-                                                    أريد أن أتعلم هذه الكلمة
-                                                </div>
-                                            </div>
-                                            <div class="message bot" style="display: flex; justify-content: flex-start; margin-bottom: 1rem;">
-                                                <div style="background: #f3f4f6; padding: 0.75rem 1rem; border-radius: 18px 18px 18px 4px; max-width: 70%;">
-                                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">🤖 المساعد:</div>
-                                                    ممتاز! إليك مثال: \${sampleWords[0]?.example}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="preview-actions" style="margin-top: 1rem; text-align: center;">
-                                    <button onclick="window.startActualSession('\${categoryId}', 'conversation')" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
-                                        <i class="fas fa-play"></i> ابدأ محادثة حقيقية
-                                    </button>
-                                </div>
-                            \`;
-                        }
-                        
-                        canvas.innerHTML = previewContent;
-                        console.log('✅ Preview session started for', categoryId, mode);
-                    };
-                    
-                    window.startActualSession = function(categoryId, mode) {
-                        console.log('🚀 Starting actual session:', categoryId, mode);
-                        window.closePreviewWindow();
-                        
-                        // Navigate to appropriate section and start session
-                        if (mode === 'flashcard') {
-                            window.startQuickLearn && window.startQuickLearn(categoryId);
-                        } else if (mode === 'quiz') {
-                            window.showSection && window.showSection('learn');
-                            // Start quiz mode logic here
-                        } else if (mode === 'conversation') {
-                            window.showSection && window.showSection('conversation');
-                        }
-                    };
-                    
-                    // Helper function to get category names in Arabic
-                    function getCategoryNameArabic(categoryId) {
-                        const categoryNames = {
-                            'greetings': 'التحيات',
-                            'travel': 'السفر',
-                            'food': 'الطعام',
-                            'shopping': 'التسوق',
-                            'directions': 'الاتجاهات',
-                            'emergency': 'الطوارئ',
-                            'time': 'الوقت',
-                            'numbers': 'الأرقام'
-                        };
-                        return categoryNames[categoryId] || categoryId;
-                    }
                     
                     // START NEW SESSION FUNCTION - Enhanced with session ID management
                     window.startNewFlashcardSession = async function(options = {}) {
@@ -2828,10 +2543,6 @@ app.get('/', (c) => {
                         <i class="fas fa-user-circle"></i>
                         الملف الشخصي
                     </button>
-                    <button class="nav-link preview-btn" onclick="window.openPreviewWindow()">
-                        <i class="fas fa-eye"></i>
-                        معاينة
-                    </button>
                 </div>
                 
                 <button class="mobile-menu-btn hidden">
@@ -2860,10 +2571,6 @@ app.get('/', (c) => {
                 <button class="mobile-nav-link" data-section="profile">
                     <i class="fas fa-user-circle"></i>
                     <span>الملف الشخصي</span>
-                </button>
-                <button class="mobile-nav-link" onclick="window.openPreviewWindow()">
-                    <i class="fas fa-eye"></i>
-                    <span>معاينة</span>
                 </button>
                 
                 <!-- Mobile Category Quick Access -->
@@ -2896,52 +2603,6 @@ app.get('/', (c) => {
                 </button>
             </div>
         </nav>
-
-        <!-- Preview Window Modal -->
-        <div id="preview-modal" class="preview-modal" style="display: none;">
-            <div class="preview-modal-overlay" onclick="window.closePreviewWindow()"></div>
-            <div class="preview-modal-content">
-                <div class="preview-modal-header">
-                    <h3 class="preview-title">
-                        <i class="fas fa-eye"></i>
-                        معاينة التعلم التفاعلي
-                    </h3>
-                    <button class="preview-close-btn" onclick="window.closePreviewWindow()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="preview-modal-body">
-                    <div class="preview-controls">
-                        <select id="preview-category" class="preview-select">
-                            <option value="greetings">👋 التحيات</option>
-                            <option value="travel">✈️ السفر</option>
-                            <option value="food">🍽️ الطعام</option>
-                            <option value="shopping">🛒 التسوق</option>
-                            <option value="directions">🧭 الاتجاهات</option>
-                            <option value="emergency">🚨 الطوارئ</option>
-                            <option value="time">⏰ الوقت</option>
-                            <option value="numbers">🔢 الأرقام</option>
-                        </select>
-                        <select id="preview-mode" class="preview-select">
-                            <option value="flashcard">البطاقات التعليمية</option>
-                            <option value="quiz">الاختبارات التفاعلية</option>
-                            <option value="conversation">المحادثات التفاعلية</option>
-                        </select>
-                        <button class="preview-start-btn" onclick="window.startPreviewSession()">
-                            <i class="fas fa-play"></i>
-                            بدء المعاينة
-                        </button>
-                    </div>
-                    <div class="preview-canvas" id="preview-canvas">
-                        <div class="preview-placeholder">
-                            <i class="fas fa-play-circle preview-icon"></i>
-                            <h4>مرحباً بك في معاينة التعلم التفاعلي</h4>
-                            <p>اختر فئة ونوع التعلم لبدء المعاينة</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Main Content -->
         <!-- Navigation Debug Panel (Hidden by default) -->
@@ -3037,16 +2698,6 @@ app.get('/', (c) => {
                             </div>
                         </div>
                         
-                        <div class="featured-mode-card" data-mode="quiz">
-                            <div class="mode-icon">🎯</div>
-                            <h4 class="mode-title">الاختبار التفاعلي</h4>
-                            <p class="mode-description">اختبر معرفتك بالكلمات مع خيارات متعددة</p>
-                            <div class="mode-features">
-                                <span class="feature-tag">🎮 تحدي</span>
-                                <span class="feature-tag">📊 نتائج</span>
-                                <span class="feature-tag">⏱️ سرعة</span>
-                            </div>
-                        </div>
                         
                         <div class="featured-mode-card" data-mode="phrase">
                             <div class="mode-icon">📝</div>
@@ -3552,7 +3203,6 @@ app.get('/', (c) => {
         <!-- Disabled new flashcard mode
         <script src="/static/modes/flashcard-mode-new.js?v=20250903-NEW"></script>
         -->
-        <script src="/static/modes/quiz-mode.js"></script>
         <script src="/static/modes/review-mode.js"></script>
         <script src="/static/modes/conversation-mode.js"></script>
         <script src="/static/modes/phrase-mode.js"></script>
@@ -3587,7 +3237,6 @@ app.get('/', (c) => {
                     
                     this.learningModes = [
                         { id: 'flashcard', name: 'البطاقات التعليمية', description: 'تعلم الكلمات باستخدام البطاقات التفاعلية', icon: '📱' },
-                        { id: 'quiz', name: 'الاختبارات التفاعلية', description: 'اختبر معرفتك بالكلمات التركية', icon: '🎯' },
                         { id: 'phrase', name: 'العبارات والتعابير', description: 'تعلم العبارات التركية الشائعة والمفيدة', icon: '📝' },
                         { id: 'conversation', name: 'المحادثات التفاعلية', description: 'تدرب على المحادثات التركية الحقيقية', icon: '💬' },
                         { id: 'review', name: 'المراجعة المتباعدة', description: 'راجع الكلمات بنظام التكرار المتباعد الذكي', icon: '🔄' }
@@ -3897,16 +3546,6 @@ app.get('/', (c) => {
 
                 applyFilters() {
                     const mode = Array.from(this.selectedModes)[0] || 'flashcard';
-
-                    // Handle conversation mode separately
-                    if (mode === 'conversation') {
-                        this.closeMenu();
-                        if (window.TurkishLearningApp) {
-                            window.TurkishLearningApp.showSection('conversation');
-                        }
-                        return;
-                    }
-
                     let filters, validationMessage, learningData, sessionIdentifier;
                     
                     if (this.filterType === 'categories') {

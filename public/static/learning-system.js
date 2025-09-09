@@ -50,7 +50,7 @@ LearningSession.prototype = {
             </div>
             
             <div class="learning-mode-container">
-                ${this.mode === 'flashcard' ? this.renderFlashcard() : this.renderQuiz()}
+                ${this.renderFlashcard()}
             </div>
             
 
@@ -165,67 +165,7 @@ LearningSession.prototype = {
         `;
     },
     
-    renderQuiz: function() {
-        const currentWord = this.words[this.currentIndex];
-        if (!currentWord) return '<div>لا توجد كلمات متاحة</div>';
-        
-        // Generate wrong options
-        const wrongOptions = this.generateWrongOptions(currentWord);
-        const allOptions = [...wrongOptions, currentWord.arabic];
-        
-        // Shuffle options
-        for (let i = allOptions.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [allOptions[i], allOptions[j]] = [allOptions[j], allOptions[i]];
-        }
-        
-        return `
-            <div class="quiz-container">
-                <div class="quiz-question">
-                    <div class="quiz-word">${currentWord.turkish}</div>
-                    <div class="quiz-pronunciation">[${currentWord.pronunciation}]</div>
-                    <div class="quiz-instruction">اختر الترجمة الصحيحة:</div>
-                </div>
-                
-                <div class="quiz-options">
-                    ${allOptions.map((option, index) => `
-                        <button class="quiz-option" data-option="${option}" data-correct="${option === currentWord.arabic}">
-                            ${option}
-                        </button>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-    },
     
-    generateWrongOptions: function(correctWord) {
-        // Get random words from other categories/words
-        const allWords = [];
-        Object.values(window.vocabularyData || {}).forEach(categoryWords => {
-            if (Array.isArray(categoryWords)) {
-                allWords.push(...categoryWords);
-            }
-        });
-        
-        // Filter out the correct answer and get 3 random wrong answers
-        const wrongWords = allWords.filter(word => 
-            word.id !== correctWord.id && word.arabic !== correctWord.arabic
-        );
-        
-        const wrongOptions = [];
-        while (wrongOptions.length < 3 && wrongWords.length > 0) {
-            const randomIndex = Math.floor(Math.random() * wrongWords.length);
-            const randomWord = wrongWords.splice(randomIndex, 1)[0];
-            wrongOptions.push(randomWord.arabic);
-        }
-        
-        // Fill with fallback options if needed
-        while (wrongOptions.length < 3) {
-            wrongOptions.push(`خيار ${wrongOptions.length + 1}`);
-        }
-        
-        return wrongOptions;
-    },
     
 
 
@@ -311,14 +251,6 @@ LearningSession.prototype = {
                     return;
                 }
                 
-                // Handle quiz option clicks
-                const quizOption = event.target.closest('.quiz-option');
-                if (quizOption) {
-                    event.preventDefault();
-                    console.log('Quiz option clicked via delegation');
-                    this.selectQuizOption(quizOption);
-                    return;
-                }
             };
             
             container.addEventListener('click', newHandler.bind(this));
@@ -384,66 +316,6 @@ LearningSession.prototype = {
         }, 1000);
     },
     
-    selectQuizOption: function(selectedBtn) {
-        // Prevent multiple simultaneous responses
-        if (this.isAdvancing) {
-            console.log('Already advancing, ignoring duplicate quiz response');
-            return;
-        }
-        
-        this.isAdvancing = true;
-        const isCorrect = selectedBtn.getAttribute('data-correct') === 'true';
-        const currentWord = this.words[this.currentIndex];
-        
-        console.log('Recording quiz response:', isCorrect, 'for word:', currentWord.turkish);
-        
-        // Disable all options
-        document.querySelectorAll('.quiz-option').forEach(btn => {
-            btn.disabled = true;
-            if (btn.getAttribute('data-correct') === 'true') {
-                btn.classList.add('correct');
-            } else if (btn === selectedBtn && !isCorrect) {
-                btn.classList.add('incorrect');
-            }
-        });
-        
-        // Record response
-        this.responses.push({
-            wordId: currentWord.id,
-            word: currentWord.turkish,
-            selectedAnswer: selectedBtn.getAttribute('data-option'),
-            correctAnswer: currentWord.arabic,
-            isCorrect: isCorrect,
-            timestamp: Date.now(),
-            mode: 'quiz'
-        });
-        
-        // Update stats
-        if (isCorrect) {
-            this.correctAnswers++;
-        }
-        this.totalAnswered++;
-        
-        // Update user progress
-        this.updateUserProgress();
-        
-        // Update review system - send incorrect answers to review
-        if (window.reviewSystem && !isCorrect) {
-            window.reviewSystem.updateWordReview(currentWord.id, false);
-        }
-        
-        // Show next button or complete button
-        setTimeout(() => {
-            if (this.currentIndex < this.words.length - 1) {
-                console.log('Advancing to next quiz word from index:', this.currentIndex, 'to:', this.currentIndex + 1);
-                this.nextWord();
-            } else {
-                console.log('Quiz session complete, showing completion screen');
-                this.completeSession();
-            }
-            this.isAdvancing = false;
-        }, 2000);
-    },
     
     showFeedback: function(difficulty) {
         const colors = {

@@ -74,7 +74,6 @@ class ModularIntegration {
             // Map legacy mode names to new mode IDs
             const modeMap = {
                 flashcard: 'flashcard',
-                quiz: 'quiz',
                 conversation: 'conversation',
                 phrase: 'phrase'
             };
