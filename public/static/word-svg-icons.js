@@ -636,6 +636,15 @@ class WordSVGIcons {
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>`;
     }
+
+    createStoreIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="4" y="6" width="16" height="14" rx="2" fill="#F39C12" stroke="#E67E22"/>
+            <rect x="6" y="10" width="12" height="10" fill="#FFFFFF" stroke="#E67E22"/>
+            <rect x="8" y="4" width="8" height="2" fill="#E67E22" stroke="#C0392B"/>
+            <text x="12" y="16" text-anchor="middle" font-size="4" fill="#E67E22" font-weight="bold">SHOP</text>
+        </svg>`;
+    }
     
     createClockIcon() {
         return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
