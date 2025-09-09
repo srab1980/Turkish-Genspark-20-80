@@ -95,7 +95,7 @@ class QuizMode extends LearningModeBase {
         }
         
         // Auto-pronounce question if enabled
-        if (this.settings.enableTTS && window.turkishTTS && window.turkishTTS.settings.autoPlay) {
+        if (this.settings.enableTTS && window.turkishTTS) {
             this.pronounceCurrentWord();
         }
     }
