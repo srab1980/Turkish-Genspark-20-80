@@ -418,8 +418,16 @@ class LearningModeBase {
         this.emit('analyticsEvent', eventData);
         
         // Emit global event for real-time analytics system
+        // Refactored to be more explicit and avoid potential spread issues.
+        const detailPayload = {
+            event: eventName,
+            mode: this.constructor.name,
+            timestamp: eventData.timestamp,
+            data: data // Nest the rest of the data in a 'data' property
+        };
+
         const globalEvent = new CustomEvent('learningModeEvent', {
-            detail: { event: eventName, mode: this.constructor.name, ...eventData }
+            detail: detailPayload
         });
         document.dispatchEvent(globalEvent);
         

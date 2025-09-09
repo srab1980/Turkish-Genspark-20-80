@@ -148,14 +148,15 @@ class RealTimeAnalytics {
     }
     
     handleModeEvent(eventData) {
-        const { event, mode, timestamp, ...data } = eventData;
+        // Refactored to match the new explicit event structure from LearningModeBase
+        const { event, mode, timestamp, data } = eventData;
         
         // Record the event
         this.sessionData.events.push({
             event,
             mode,
             timestamp: timestamp || Date.now(),
-            data
+            data: data || {}
         });
         
         // Update metrics based on event type
