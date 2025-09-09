@@ -32,6 +32,12 @@ class SideMenuFilters {
                 icon: '📝'
             },
             {
+                id: 'examine',
+                name: 'Examine Mode',
+                description: 'Examine and study vocabulary in detail.',
+                icon: '🔍'
+            },
+            {
                 id: 'conversation',
                 name: 'المحادثات التفاعلية',
                 description: 'تدرب على المحادثات التركية الحقيقية',
