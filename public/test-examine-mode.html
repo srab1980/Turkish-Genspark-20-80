@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examine Mode Test</title>
+    <link href="/static/styles-modern.css" rel="stylesheet">
+    <link href="/static/flashcard-mode.css" rel="stylesheet">
+    <link href="/static/quiz-mode.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Examine Mode Test</h1>
+    <div id="examine-mode-container" style="margin: 20px; border: 1px solid #ccc; padding: 20px;"></div>
+    <div id="test-results"></div>
+
+    <script src="/static/learning-mode-base.js"></script>
+    <script src="/static/review-system.js"></script>
+    <script src="/static/enhanced-vocabulary-with-sessions.js"></script>
+    <script src="/static/modes/examine-mode.js"></script>
+
+    <script>
+        const testResults = document.getElementById('test-results');
+
+        function assert(condition, message) {
+            const result = document.createElement('div');
+            result.style.color = condition ? 'green' : 'red';
+            result.textContent = (condition ? '✅ PASS: ' : '❌ FAIL: ') + message;
+            testResults.appendChild(result);
+        }
+
+        async function runTests() {
+            // Test 1: ExamineMode class is available
+            assert(typeof ExamineMode !== 'undefined', 'ExamineMode class should be defined.');
+
+            // Test 2: ExamineMode can be instantiated
+            const container = document.getElementById('examine-mode-container');
+            const examineMode = new ExamineMode({ container });
+            assert(examineMode instanceof ExamineMode, 'ExamineMode should be instantiable.');
+
+            // Test 3: Initialize with data
+            const sampleWords = [
+                { id: 1, turkish: "Merhaba", arabic: "مرحبا", english: "Hello", pronunciation: "mer-ha-BA", emoji: "👋" },
+                { id: 2, turkish: "Günaydın", arabic: "صباح الخير", english: "Good morning", pronunciation: "gün-ay-DIN", emoji: "☀️" },
+                { id: 3, turkish: "İyi akşamlar", arabic: "مساء الخير", english: "Good evening", pronunciation: "i-yi ak-sham-LAR", emoji: "🌙" },
+                { id: 4, turkish: "Hoşça kalın", arabic: "وداعا", english: "Goodbye", pronunciation: "hosh-CHA ka-LIN", emoji: "👋" },
+            ];
+            await examineMode.init({ words: sampleWords, category: 'greetings' });
+            assert(examineMode.words.length === 4, 'ExamineMode should have 4 words.');
+
+            // Test 4: Render the UI
+            examineMode.render();
+            const flashcardFront = container.querySelector('.flashcard-front');
+            const flashcardBack = container.querySelector('.flashcard-back');
+            assert(flashcardFront !== null, 'Flashcard front should be rendered.');
+            assert(flashcardBack !== null, 'Flashcard back should be rendered.');
+            assert(container.querySelector('.flashcard-turkish').textContent === 'Merhaba', 'First word should be rendered.');
+
+            // Test 5: Flip the card
+            examineMode.flipCard();
+            assert(examineMode.isFlipped === true, 'isFlipped should be true after flipping.');
+            const flashcard = container.querySelector('.flashcard');
+            assert(flashcard.classList.contains('flipped'), 'Flashcard should have "flipped" class.');
+
+            // Test 6: Select an option
+            const originalUpdateWordReview = window.reviewSystem.updateWordReview;
+            let reviewSystemCall = null;
+            window.reviewSystem.updateWordReview = (wordId, isCorrect) => {
+                reviewSystemCall = { wordId, isCorrect };
+            };
+
+            const correctOption = container.querySelector('button[data-correct="true"]');
+            examineMode.selectOption(correctOption);
+            assert(examineMode.isAnswered === true, 'isAnswered should be true after selecting an option.');
+            assert(reviewSystemCall.isCorrect === true, 'reviewSystem.updateWordReview should be called with isCorrect=true for correct answer.');
+
+            // Reset for next test
+            reviewSystemCall = null;
+            examineMode.isAnswered = false;
+
+            const incorrectOption = container.querySelector('button[data-correct="false"]');
+            examineMode.selectOption(incorrectOption);
+            assert(reviewSystemCall.isCorrect === false, 'reviewSystem.updateWordReview should be called with isCorrect=false for incorrect answer.');
+
+            // Restore original function
+            window.reviewSystem.updateWordReview = originalUpdateWordReview;
+        }
+
+        runTests();
+    </script>
+</body>
+</html>
