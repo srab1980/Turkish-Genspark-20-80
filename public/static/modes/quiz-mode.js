@@ -96,7 +96,23 @@ class QuizMode extends LearningModeBase {
         
         // Auto-pronounce question if enabled
         if (this.settings.enableTTS && window.turkishTTS) {
-            this.pronounceCurrentWord();
+            const playAudio = () => {
+                // Ensure the voice is loaded before trying to speak
+                if (window.turkishTTS.turkishVoice) {
+                    this.pronounceCurrentWord();
+                } else {
+                    // If the voice is not ready, wait for the 'tts-ready' event
+                    window.addEventListener('tts-ready', () => this.pronounceCurrentWord(), { once: true });
+                }
+            };
+
+            // Check if TTS is already ready
+            if (window.turkishTTS.isSupported && window.turkishTTS.turkishVoice) {
+                playAudio();
+            } else {
+                // Wait for the tts-ready event
+                window.addEventListener('tts-ready', playAudio, { once: true });
+            }
         }
     }
     
