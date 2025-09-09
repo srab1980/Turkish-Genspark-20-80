@@ -137,7 +137,6 @@ const TurkishLearningApp = {
             // Show success message
             const modeNames = {
                 flashcard: 'البطاقات التعليمية',
-                quiz: 'الاختبار التفاعلي',
                 phrase: 'العبارات والتعابير',
                 conversation: 'المحادثات التفاعلية',
                 review: 'المراجعة المتباعدة'

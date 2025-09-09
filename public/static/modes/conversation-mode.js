@@ -262,7 +262,7 @@ class ConversationMode extends LearningModeBase {
                     <div class="conversation-meta">
                         <span class="dialogue-count">
                             <i class="fas fa-comments"></i>
-                            ${(conversation.dialogues || []).length} جملة
+                            ${conversation.dialogues.length} جملة
                         </span>
                         <span class="category-tag">
                             ${this.getCategoryIcon(conversation.category)}

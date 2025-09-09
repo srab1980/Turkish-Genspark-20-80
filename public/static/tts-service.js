@@ -65,6 +65,9 @@ class TurkishTTSService {
         if (this.turkishVoice && window.updateTTSStatus) {
             window.updateTTSStatus(true);
         }
+
+        // Dispatch a ready event
+        window.dispatchEvent(new CustomEvent('tts-ready'));
     }
     
     // Speak Turkish text with appropriate settings
