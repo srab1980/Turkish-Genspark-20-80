@@ -138,23 +138,6 @@
             </div>
         </div>
         
-        <div class="test-controls">
-            <button class="test-btn" onclick="simulateCorrectAnswer()">
-                <i class="fas fa-check"></i> محاكاة إجابة صحيحة
-            </button>
-            <button class="test-btn" onclick="simulateWrongAnswer()">
-                <i class="fas fa-times"></i> محاكاة إجابة خاطئة
-            </button>
-            <button class="test-btn" onclick="simulateLevelUp()">
-                <i class="fas fa-crown"></i> محاكاة رفع مستوى
-            </button>
-            <button class="test-btn" onclick="simulateStreak()">
-                <i class="fas fa-fire"></i> محاكاة متتالية
-            </button>
-            <button class="test-btn" onclick="simulateSession()">
-                <i class="fas fa-play"></i> محاكاة جلسة كاملة
-            </button>
-        </div>
         
         <div class="analytics-section">
             <h2 class="section-title">
@@ -193,100 +176,6 @@
     <script src="/static/analytics-dashboard.js"></script>
     
     <script>
-        // Test simulation functions
-        function simulateCorrectAnswer() {
-            const event = new CustomEvent('learningModeEvent', {
-                detail: {
-                    event: 'question_answered',
-                    mode: 'QuizMode',
-                    data: {
-                        isCorrect: true,
-                        wordId: 'word_' + Math.random().toString(36).substr(2, 9),
-                        timeToAnswer: Math.floor(Math.random() * 10000) + 2000
-                    }
-                }
-            });
-            document.dispatchEvent(event);
-            
-            // Also trigger progress update
-            const progressEvent = new CustomEvent('progressUpdated', {
-                detail: {
-                    mode: 'QuizMode',
-                    progress: {
-                        isCorrect: true,
-                        accuracy: 0.85,
-                        wordId: 'word_' + Math.random().toString(36).substr(2, 9)
-                    }
-                }
-            });
-            document.dispatchEvent(progressEvent);
-        }
-        
-        function simulateWrongAnswer() {
-            const event = new CustomEvent('learningModeEvent', {
-                detail: {
-                    event: 'question_answered',
-                    mode: 'QuizMode',
-                    data: {
-                        isCorrect: false,
-                        wordId: 'word_' + Math.random().toString(36).substr(2, 9),
-                        timeToAnswer: Math.floor(Math.random() * 15000) + 5000
-                    }
-                }
-            });
-            document.dispatchEvent(event);
-        }
-        
-        function simulateLevelUp() {
-            const event = new CustomEvent('levelUp', {
-                detail: {
-                    newLevel: Math.floor(Math.random() * 10) + 2,
-                    totalXP: Math.floor(Math.random() * 1000) + 200
-                }
-            });
-            document.dispatchEvent(event);
-        }
-        
-        function simulateStreak() {
-            // Simulate daily goal reached
-            const event = new CustomEvent('dailyGoalReached', {
-                detail: {
-                    goal: 20,
-                    progress: 25
-                }
-            });
-            document.dispatchEvent(event);
-        }
-        
-        function simulateSession() {
-            // Simulate complete session
-            const sessionEvent = new CustomEvent('learningModeEvent', {
-                detail: {
-                    event: 'session_completed',
-                    mode: 'FlashcardMode',
-                    data: {
-                        accuracy: Math.floor(Math.random() * 40) + 60,
-                        correct: Math.floor(Math.random() * 8) + 5,
-                        totalQuestions: 10,
-                        timeSpent: Math.floor(Math.random() * 300) + 120
-                    }
-                }
-            });
-            document.dispatchEvent(sessionEvent);
-            
-            // Simulate milestone
-            setTimeout(() => {
-                const milestoneEvent = new CustomEvent('milestoneReached', {
-                    detail: {
-                        id: 'test_milestone',
-                        message: 'عشر جلسات مكتملة! 🎉',
-                        threshold: 10
-                    }
-                });
-                document.dispatchEvent(milestoneEvent);
-            }, 1000);
-        }
-        
         // Initialize dashboard when page loads
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🧪 Real-time Analytics Test Page Loaded');

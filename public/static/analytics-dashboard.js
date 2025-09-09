@@ -271,12 +271,7 @@ class AnalyticsDashboard {
         
         while (currentDate <= endDate) {
             const dateStr = currentDate.toISOString().split('T')[0];
-            const count = learningHistory[dateStr] || Math.floor(Math.random() * 15); // Simulate data
-            
-            // Store simulated data for future use
-            if (!learningHistory[dateStr] && Math.random() < 0.3) {
-                learningHistory[dateStr] = count;
-            }
+            const count = learningHistory[dateStr] || 0; // Don't simulate data
             
             data.push({
                 date: dateStr,
@@ -287,8 +282,6 @@ class AnalyticsDashboard {
             currentDate.setDate(currentDate.getDate() + 1);
         }
         
-        // Save updated history
-        localStorage.setItem('learningHistory', JSON.stringify(learningHistory));
         return data;
     }
     
@@ -523,23 +516,8 @@ class AnalyticsDashboard {
             return { labels, accuracy };
         }
         
-        // Fallback to generated data
-        const days = 30;
-        const labels = [];
-        const accuracy = [];
-        
-        for (let i = days; i >= 0; i--) {
-            const date = new Date();
-            date.setDate(date.getDate() - i);
-            labels.push(date.toLocaleDateString('ar-SA', { month: 'short', day: 'numeric' }));
-            
-            // Simulate improving accuracy over time with some variation
-            const baseAccuracy = 60 + (days - i) * 0.8;
-            const variation = (Math.random() - 0.5) * 10;
-            accuracy.push(Math.min(100, Math.max(0, baseAccuracy + variation)));
-        }
-        
-        return { labels, accuracy };
+        // Fallback to empty data
+        return { labels: [], accuracy: [] };
     }
     
     // Category Mastery Radar Chart
@@ -616,8 +594,8 @@ class AnalyticsDashboard {
             if (progress && progress.wordsLearned) {
                 return Math.min(100, (progress.wordsLearned / 6) * 100); // 6 words per category
             }
-            // Simulate some progress
-            return Math.floor(Math.random() * 80) + 20;
+            // Return 0 if no progress
+            return 0;
         });
     }
     
@@ -695,16 +673,8 @@ class AnalyticsDashboard {
             return { labels, newWords, reviewWords };
         }
         
-        // Fallback to generated data
-        const sessions = ['الجلسة 1', 'الجلسة 2', 'الجلسة 3', 'الجلسة 4', 'الجلسة 5', 'الجلسة 6', 'الجلسة 7'];
-        const newWords = sessions.map(() => Math.floor(Math.random() * 8) + 2);
-        const reviewWords = sessions.map(() => Math.floor(Math.random() * 6) + 1);
-        
-        return {
-            labels: sessions,
-            newWords,
-            reviewWords
-        };
+        // Fallback to empty data
+        return { labels: [], newWords: [], reviewWords: [] };
     }
     
     updateRealTimeElements() {
@@ -805,7 +775,7 @@ class AnalyticsDashboard {
                 if (progress && progress.wordsLearned) {
                     return Math.min(100, (progress.wordsLearned / 10) * 100); // Assuming 10 words per category
                 }
-                return Math.floor(Math.random() * 80) + 20; // Fallback
+                return 0; // Fallback
             });
         }
         
