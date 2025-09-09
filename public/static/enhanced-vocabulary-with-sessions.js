@@ -2282,19 +2282,6 @@ const enhancedVocabularyData = {
         "icon": "🐾"
       },
       {
-        "id": 87,
-        "turkish": "damla",
-        "arabic": "قطرة",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "A2",
-        "vowelHarmony": "I-type (back)",
-        "turkishSentence": "Göz damlası",
-        "arabicSentence": "قطرة العين",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
         "id": 109,
         "turkish": "domuz",
         "arabic": "خنزير",
@@ -2317,19 +2304,6 @@ const enhancedVocabularyData = {
         "vowelHarmony": "I-type",
         "turkishSentence": "Küçük fare",
         "arabicSentence": "فأر صغير",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
-        "id": 128,
-        "turkish": "film",
-        "arabic": "فيلم",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "A2",
-        "vowelHarmony": "E-type (front)",
-        "turkishSentence": "Film çok güzeldi.",
-        "arabicSentence": "الفيلم كان جميلاً جداً",
         "emoji": "🐾",
         "icon": "🐾"
       },
@@ -2399,19 +2373,6 @@ const enhancedVocabularyData = {
         "icon": "🐾"
       },
       {
-        "id": 127,
-        "turkish": "kesmek",
-        "arabic": "بالقطع",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "A2",
-        "vowelHarmony": "E-type (front)",
-        "turkishSentence": "Bağlantı kesildi.",
-        "arabicSentence": "انقطع الاتصال.",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
         "id": 98,
         "turkish": "kurbağa",
         "arabic": "ضفدع",
@@ -2460,19 +2421,6 @@ const enhancedVocabularyData = {
         "vowelHarmony": "I-type",
         "turkishSentence": "Beyaz tavşan",
         "arabicSentence": "أرنب أبيض",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
-        "id": 82,
-        "turkish": "villa",
-        "arabic": "فيلا",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "A2",
-        "vowelHarmony": "I-type (back)",
-        "turkishSentence": "Villada tatil yapıyoruz.",
-        "arabicSentence": "نقضي إجازة في الفيلا.",
         "emoji": "🐾",
         "icon": "🐾"
       },
@@ -2538,19 +2486,6 @@ const enhancedVocabularyData = {
         "vowelHarmony": "I-type",
         "turkishSentence": "Gece baykuşu",
         "arabicSentence": "بومة الليل",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
-        "id": 113,
-        "turkish": "diploma",
-        "arabic": "دبلوم",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "B1",
-        "vowelHarmony": "I-type (back)",
-        "turkishSentence": "Diplomamı aldım.",
-        "arabicSentence": "حصلت على دبلومي.",
         "emoji": "🐾",
         "icon": "🐾"
       },
@@ -2633,19 +2568,6 @@ const enhancedVocabularyData = {
         "icon": "🐾"
       },
       {
-        "id": 80,
-        "turkish": "nokta",
-        "arabic": "نقطة",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "B1",
-        "vowelHarmony": "I-type (back)",
-        "turkishSentence": "Haritada nokta işaretledim.",
-        "arabicSentence": "وضعت علامة نقطة على الخريطة",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
         "id": 95,
         "turkish": "örümcek",
         "arabic": "عنكبوت",
@@ -2659,32 +2581,6 @@ const enhancedVocabularyData = {
         "icon": "🐾"
       },
       {
-        "id": 130,
-        "turkish": "pekmez",
-        "arabic": "دبس",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "B1",
-        "vowelHarmony": "E-type (front)",
-        "turkishSentence": "Pekmez çok tatli.",
-        "arabicSentence": "الدبس حلو جداً.",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
-        "id": 79,
-        "turkish": "römork",
-        "arabic": "مقطورة",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "B1",
-        "vowelHarmony": "E-type (front)",
-        "turkishSentence": "Römork çekiyor.",
-        "arabicSentence": "يجر المقطورة.",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
         "id": 116,
         "turkish": "sıçan",
         "arabic": "جرذ",
@@ -2694,19 +2590,6 @@ const enhancedVocabularyData = {
         "vowelHarmony": "I-type",
         "turkishSentence": "Gri sıçan",
         "arabicSentence": "جرذ رمادي",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
-        "id": 97,
-        "turkish": "sivri",
-        "arabic": "مدبب",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "B1",
-        "vowelHarmony": "E-type (front)",
-        "turkishSentence": "Sivri uç",
-        "arabicSentence": "طرف مدبب",
         "emoji": "🐾",
         "icon": "🐾"
       },
@@ -2759,58 +2642,6 @@ const enhancedVocabularyData = {
         "vowelHarmony": "I-type",
         "turkishSentence": "Akıllı yunus",
         "arabicSentence": "دلفين ذكي",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
-        "id": 124,
-        "turkish": "doğramak",
-        "arabic": "يقطع",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "B2",
-        "vowelHarmony": "I-type (back)",
-        "turkishSentence": "Soğan doğruyorum.",
-        "arabicSentence": "أقطع البصل",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
-        "id": 100,
-        "turkish": "elips",
-        "arabic": "قطع ناقص",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "B2",
-        "vowelHarmony": "E-type",
-        "turkishSentence": "Elips şekli",
-        "arabicSentence": "شكل قطع ناقص",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
-        "id": 88,
-        "turkish": "çap",
-        "arabic": "قطر",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "C1",
-        "vowelHarmony": "I-type (back)",
-        "turkishSentence": "Dairenin çapı 10 cm.",
-        "arabicSentence": "قطر الدائرة 10 سم.",
-        "emoji": "🐾",
-        "icon": "🐾"
-      },
-      {
-        "id": 131,
-        "turkish": "tomografi",
-        "arabic": "تصوير مقطعي",
-        "english": "word",
-        "category": "animal",
-        "difficultyLevel": "C1",
-        "vowelHarmony": "I-type (back)",
-        "turkishSentence": "Tomografi çekimi",
-        "arabicSentence": "التصوير المقطعي",
         "emoji": "🐾",
         "icon": "🐾"
       }
@@ -3003,19 +2834,6 @@ const enhancedVocabularyData = {
             "icon": "🐾"
           },
           {
-            "id": 87,
-            "turkish": "damla",
-            "arabic": "قطرة",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "A2",
-            "vowelHarmony": "I-type (back)",
-            "turkishSentence": "Göz damlası",
-            "arabicSentence": "قطرة العين",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
             "id": 109,
             "turkish": "domuz",
             "arabic": "خنزير",
@@ -3038,19 +2856,6 @@ const enhancedVocabularyData = {
             "vowelHarmony": "I-type",
             "turkishSentence": "Küçük fare",
             "arabicSentence": "فأر صغير",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
-            "id": 128,
-            "turkish": "film",
-            "arabic": "فيلم",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "A2",
-            "vowelHarmony": "E-type (front)",
-            "turkishSentence": "Film çok güzeldi.",
-            "arabicSentence": "الفيلم كان جميلاً جداً",
             "emoji": "🐾",
             "icon": "🐾"
           },
@@ -3092,18 +2897,7 @@ const enhancedVocabularyData = {
             "arabicSentence": "نمر مخطط",
             "emoji": "🐾",
             "icon": "🐾"
-          }
-        ],
-        "wordCount": 10,
-        "completed": false,
-        "accuracy": 0,
-        "timeSpent": 0
-      },
-      {
-        "id": "animal_session_3",
-        "categoryId": "animal",
-        "sessionNumber": 3,
-        "words": [
+          },
           {
             "id": 123,
             "turkish": "kaz",
@@ -3129,20 +2923,18 @@ const enhancedVocabularyData = {
             "arabicSentence": "فراشة ملونة",
             "emoji": "🐾",
             "icon": "🐾"
-          },
-          {
-            "id": 127,
-            "turkish": "kesmek",
-            "arabic": "بالقطع",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "A2",
-            "vowelHarmony": "E-type (front)",
-            "turkishSentence": "Bağlantı kesildi.",
-            "arabicSentence": "انقطع الاتصال.",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
+          }
+        ],
+        "wordCount": 10,
+        "completed": false,
+        "accuracy": 0,
+        "timeSpent": 0
+      },
+      {
+        "id": "animal_session_3",
+        "categoryId": "animal",
+        "sessionNumber": 3,
+        "words": [
           {
             "id": 98,
             "turkish": "kurbağa",
@@ -3196,19 +2988,6 @@ const enhancedVocabularyData = {
             "icon": "🐾"
           },
           {
-            "id": 82,
-            "turkish": "villa",
-            "arabic": "فيلا",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "A2",
-            "vowelHarmony": "I-type (back)",
-            "turkishSentence": "Villada tatil yapıyoruz.",
-            "arabicSentence": "نقضي إجازة في الفيلا.",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
             "id": 118,
             "turkish": "yılan",
             "arabic": "ثعبان",
@@ -3233,18 +3012,7 @@ const enhancedVocabularyData = {
             "arabicSentence": "زرافة طويلة",
             "emoji": "🐾",
             "icon": "🐾"
-          }
-        ],
-        "wordCount": 10,
-        "completed": false,
-        "accuracy": 0,
-        "timeSpent": 0
-      },
-      {
-        "id": "animal_session_4",
-        "categoryId": "animal",
-        "sessionNumber": 4,
-        "words": [
+          },
           {
             "id": 96,
             "turkish": "at arabası",
@@ -3285,19 +3053,6 @@ const enhancedVocabularyData = {
             "icon": "🐾"
           },
           {
-            "id": 113,
-            "turkish": "diploma",
-            "arabic": "دبلوم",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "B1",
-            "vowelHarmony": "I-type (back)",
-            "turkishSentence": "Diplomamı aldım.",
-            "arabicSentence": "حصلت على دبلومي.",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
             "id": 101,
             "turkish": "kaplumbağa",
             "arabic": "سلحفاة",
@@ -3309,7 +3064,18 @@ const enhancedVocabularyData = {
             "arabicSentence": "سلحفاة بطيئة",
             "emoji": "🐾",
             "icon": "🐾"
-          },
+          }
+        ],
+        "wordCount": 10,
+        "completed": false,
+        "accuracy": 0,
+        "timeSpent": 0
+      },
+      {
+        "id": "animal_session_4",
+        "categoryId": "animal",
+        "sessionNumber": 4,
+        "words": [
           {
             "id": 83,
             "turkish": "kartal",
@@ -3374,30 +3140,6 @@ const enhancedVocabularyData = {
             "arabicSentence": "ذئب بري",
             "emoji": "🐾",
             "icon": "🐾"
-          }
-        ],
-        "wordCount": 10,
-        "completed": false,
-        "accuracy": 0,
-        "timeSpent": 0
-      },
-      {
-        "id": "animal_session_5",
-        "categoryId": "animal",
-        "sessionNumber": 5,
-        "words": [
-          {
-            "id": 80,
-            "turkish": "nokta",
-            "arabic": "نقطة",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "B1",
-            "vowelHarmony": "I-type (back)",
-            "turkishSentence": "Haritada nokta işaretledim.",
-            "arabicSentence": "وضعت علامة نقطة على الخريطة",
-            "emoji": "🐾",
-            "icon": "🐾"
           },
           {
             "id": 95,
@@ -3413,32 +3155,6 @@ const enhancedVocabularyData = {
             "icon": "🐾"
           },
           {
-            "id": 130,
-            "turkish": "pekmez",
-            "arabic": "دبس",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "B1",
-            "vowelHarmony": "E-type (front)",
-            "turkishSentence": "Pekmez çok tatli.",
-            "arabicSentence": "الدبس حلو جداً.",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
-            "id": 79,
-            "turkish": "römork",
-            "arabic": "مقطورة",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "B1",
-            "vowelHarmony": "E-type (front)",
-            "turkishSentence": "Römork çekiyor.",
-            "arabicSentence": "يجر المقطورة.",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
             "id": 116,
             "turkish": "sıçan",
             "arabic": "جرذ",
@@ -3448,19 +3164,6 @@ const enhancedVocabularyData = {
             "vowelHarmony": "I-type",
             "turkishSentence": "Gri sıçan",
             "arabicSentence": "جرذ رمادي",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
-            "id": 97,
-            "turkish": "sivri",
-            "arabic": "مدبب",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "B1",
-            "vowelHarmony": "E-type (front)",
-            "turkishSentence": "Sivri uç",
-            "arabicSentence": "طرف مدبب",
             "emoji": "🐾",
             "icon": "🐾"
           },
@@ -3502,7 +3205,18 @@ const enhancedVocabularyData = {
             "arabicSentence": "ثعلب ماكر",
             "emoji": "🐾",
             "icon": "🐾"
-          },
+          }
+        ],
+        "wordCount": 10,
+        "completed": false,
+        "accuracy": 0,
+        "timeSpent": 0
+      },
+      {
+        "id": "animal_session_5",
+        "categoryId": "animal",
+        "sessionNumber": 5,
+        "words": [
           {
             "id": 107,
             "turkish": "yunus",
@@ -3517,77 +3231,14 @@ const enhancedVocabularyData = {
             "icon": "🐾"
           }
         ],
-        "wordCount": 10,
-        "completed": false,
-        "accuracy": 0,
-        "timeSpent": 0
-      },
-      {
-        "id": "animal_session_6",
-        "categoryId": "animal",
-        "sessionNumber": 6,
-        "words": [
-          {
-            "id": 124,
-            "turkish": "doğramak",
-            "arabic": "يقطع",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "B2",
-            "vowelHarmony": "I-type (back)",
-            "turkishSentence": "Soğan doğruyorum.",
-            "arabicSentence": "أقطع البصل",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
-            "id": 100,
-            "turkish": "elips",
-            "arabic": "قطع ناقص",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "B2",
-            "vowelHarmony": "E-type",
-            "turkishSentence": "Elips şekli",
-            "arabicSentence": "شكل قطع ناقص",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
-            "id": 88,
-            "turkish": "çap",
-            "arabic": "قطر",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "C1",
-            "vowelHarmony": "I-type (back)",
-            "turkishSentence": "Dairenin çapı 10 cm.",
-            "arabicSentence": "قطر الدائرة 10 سم.",
-            "emoji": "🐾",
-            "icon": "🐾"
-          },
-          {
-            "id": 131,
-            "turkish": "tomografi",
-            "arabic": "تصوير مقطعي",
-            "english": "word",
-            "category": "animal",
-            "difficultyLevel": "C1",
-            "vowelHarmony": "I-type (back)",
-            "turkishSentence": "Tomografi çekimi",
-            "arabicSentence": "التصوير المقطعي",
-            "emoji": "🐾",
-            "icon": "🐾"
-          }
-        ],
-        "wordCount": 4,
+        "wordCount": 1,
         "completed": false,
         "accuracy": 0,
         "timeSpent": 0
       }
     ],
-    "sessionCount": 6,
-    "totalWords": 54
+    "sessionCount": 5,
+    "totalWords": 41
   },
   "body": {
     "id": "body",
@@ -12968,263 +12619,6 @@ const enhancedVocabularyData = {
     ],
     "sessionCount": 12,
     "totalWords": 113
-  },
-  "general": {
-    "id": "general",
-    "name": "General",
-    "nameArabic": "عام",
-    "words": [
-      {
-        "id": 473,
-        "turkish": "aldi",
-        "arabic": "مفردة تركية",
-        "english": "word",
-        "category": "general",
-        "difficultyLevel": "A1",
-        "vowelHarmony": "Mixed/Exception",
-        "turkishSentence": "aldi çok güzel.",
-        "arabicSentence": "جميل جداً",
-        "emoji": "📚",
-        "icon": "📚"
-      },
-      {
-        "id": 474,
-        "turkish": "alte",
-        "arabic": "مفردة تركية",
-        "english": "word",
-        "category": "general",
-        "difficultyLevel": "A1",
-        "vowelHarmony": "Mixed/Exception",
-        "turkishSentence": "alte çok güzel.",
-        "arabicSentence": "جميل جداً",
-        "emoji": "📚",
-        "icon": "📚"
-      },
-      {
-        "id": 481,
-        "turkish": "çıkı",
-        "arabic": "مفردة تركية",
-        "english": "word",
-        "category": "general",
-        "difficultyLevel": "A1",
-        "vowelHarmony": "E-type (back)",
-        "turkishSentence": "Babam çıkı veriyor.",
-        "arabicSentence": "أبي محتوى الجملة بالعربية",
-        "emoji": "📚",
-        "icon": "📚"
-      },
-      {
-        "id": 478,
-        "turkish": "etır",
-        "arabic": "مفردة تركية",
-        "english": "word",
-        "category": "general",
-        "difficultyLevel": "A1",
-        "vowelHarmony": "Mixed/Exception",
-        "turkishSentence": "Babam etır veriyor.",
-        "arabicSentence": "أبي محتوى الجملة بالعربية",
-        "emoji": "📚",
-        "icon": "📚"
-      },
-      {
-        "id": 475,
-        "turkish": "etti",
-        "arabic": "مفردة تركية",
-        "english": "word",
-        "category": "general",
-        "difficultyLevel": "A1",
-        "vowelHarmony": "E-type (front)",
-        "turkishSentence": "Babam etti veriyor.",
-        "arabicSentence": "أبي محتوى الجملة بالعربية",
-        "emoji": "📚",
-        "icon": "📚"
-      },
-      {
-        "id": 476,
-        "turkish": "evüm",
-        "arabic": "مفردة تركية",
-        "english": "word",
-        "category": "general",
-        "difficultyLevel": "A1",
-        "vowelHarmony": "E-type (front)",
-        "turkishSentence": "Babam evüm veriyor.",
-        "arabicSentence": "أبي محتوى الجملة بالعربية",
-        "emoji": "📚",
-        "icon": "📚"
-      },
-      {
-        "id": 477,
-        "turkish": "il",
-        "arabic": "مفردة تركية",
-        "english": "word",
-        "category": "general",
-        "difficultyLevel": "A1",
-        "vowelHarmony": "E-type (front)",
-        "turkishSentence": "Babam il veriyor.",
-        "arabicSentence": "أبي محتوى الجملة بالعربية",
-        "emoji": "📚",
-        "icon": "📚"
-      },
-      {
-        "id": 480,
-        "turkish": "olüm",
-        "arabic": "مفردة تركية",
-        "english": "word",
-        "category": "general",
-        "difficultyLevel": "A1",
-        "vowelHarmony": "Mixed/Exception",
-        "turkishSentence": "Babam olüm veriyor.",
-        "arabicSentence": "أبي محتوى الجملة بالعربية",
-        "emoji": "📚",
-        "icon": "📚"
-      },
-      {
-        "id": 479,
-        "turkish": "sulu",
-        "arabic": "مفردة تركية",
-        "english": "word",
-        "category": "general",
-        "difficultyLevel": "A1",
-        "vowelHarmony": "E-type (back)",
-        "turkishSentence": "Babam sulu veriyor.",
-        "arabicSentence": "أبي محتوى الجملة بالعربية",
-        "emoji": "📚",
-        "icon": "📚"
-      }
-    ],
-    "icon": "📚",
-    "sessions": [
-      {
-        "id": "general_session_1",
-        "categoryId": "general",
-        "sessionNumber": 1,
-        "words": [
-          {
-            "id": 473,
-            "turkish": "aldi",
-            "arabic": "مفردة تركية",
-            "english": "word",
-            "category": "general",
-            "difficultyLevel": "A1",
-            "vowelHarmony": "Mixed/Exception",
-            "turkishSentence": "aldi çok güzel.",
-            "arabicSentence": "جميل جداً",
-            "emoji": "📚",
-            "icon": "📚"
-          },
-          {
-            "id": 474,
-            "turkish": "alte",
-            "arabic": "مفردة تركية",
-            "english": "word",
-            "category": "general",
-            "difficultyLevel": "A1",
-            "vowelHarmony": "Mixed/Exception",
-            "turkishSentence": "alte çok güzel.",
-            "arabicSentence": "جميل جداً",
-            "emoji": "📚",
-            "icon": "📚"
-          },
-          {
-            "id": 481,
-            "turkish": "çıkı",
-            "arabic": "مفردة تركية",
-            "english": "word",
-            "category": "general",
-            "difficultyLevel": "A1",
-            "vowelHarmony": "E-type (back)",
-            "turkishSentence": "Babam çıkı veriyor.",
-            "arabicSentence": "أبي محتوى الجملة بالعربية",
-            "emoji": "📚",
-            "icon": "📚"
-          },
-          {
-            "id": 478,
-            "turkish": "etır",
-            "arabic": "مفردة تركية",
-            "english": "word",
-            "category": "general",
-            "difficultyLevel": "A1",
-            "vowelHarmony": "Mixed/Exception",
-            "turkishSentence": "Babam etır veriyor.",
-            "arabicSentence": "أبي محتوى الجملة بالعربية",
-            "emoji": "📚",
-            "icon": "📚"
-          },
-          {
-            "id": 475,
-            "turkish": "etti",
-            "arabic": "مفردة تركية",
-            "english": "word",
-            "category": "general",
-            "difficultyLevel": "A1",
-            "vowelHarmony": "E-type (front)",
-            "turkishSentence": "Babam etti veriyor.",
-            "arabicSentence": "أبي محتوى الجملة بالعربية",
-            "emoji": "📚",
-            "icon": "📚"
-          },
-          {
-            "id": 476,
-            "turkish": "evüm",
-            "arabic": "مفردة تركية",
-            "english": "word",
-            "category": "general",
-            "difficultyLevel": "A1",
-            "vowelHarmony": "E-type (front)",
-            "turkishSentence": "Babam evüm veriyor.",
-            "arabicSentence": "أبي محتوى الجملة بالعربية",
-            "emoji": "📚",
-            "icon": "📚"
-          },
-          {
-            "id": 477,
-            "turkish": "il",
-            "arabic": "مفردة تركية",
-            "english": "word",
-            "category": "general",
-            "difficultyLevel": "A1",
-            "vowelHarmony": "E-type (front)",
-            "turkishSentence": "Babam il veriyor.",
-            "arabicSentence": "أبي محتوى الجملة بالعربية",
-            "emoji": "📚",
-            "icon": "📚"
-          },
-          {
-            "id": 480,
-            "turkish": "olüm",
-            "arabic": "مفردة تركية",
-            "english": "word",
-            "category": "general",
-            "difficultyLevel": "A1",
-            "vowelHarmony": "Mixed/Exception",
-            "turkishSentence": "Babam olüm veriyor.",
-            "arabicSentence": "أبي محتوى الجملة بالعربية",
-            "emoji": "📚",
-            "icon": "📚"
-          },
-          {
-            "id": 479,
-            "turkish": "sulu",
-            "arabic": "مفردة تركية",
-            "english": "word",
-            "category": "general",
-            "difficultyLevel": "A1",
-            "vowelHarmony": "E-type (back)",
-            "turkishSentence": "Babam sulu veriyor.",
-            "arabicSentence": "أبي محتوى الجملة بالعربية",
-            "emoji": "📚",
-            "icon": "📚"
-          }
-        ],
-        "wordCount": 9,
-        "completed": false,
-        "accuracy": 0,
-        "timeSpent": 0
-      }
-    ],
-    "sessionCount": 1,
-    "totalWords": 9
   },
   "health": {
     "id": "health",

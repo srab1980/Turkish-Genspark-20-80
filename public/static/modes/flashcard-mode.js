@@ -716,54 +716,27 @@ class FlashcardMode extends LearningModeBase {
             performanceBg = '#ef444415';
         }
         
-        // Create session progress display
-        let sessionProgressHTML = '';
-        if (sessionInfo) {
-            sessionProgressHTML = `
-                <div style="
-                    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-                    color: white;
-                    padding: 1.5rem;
-                    border-radius: 16px;
-                    margin: 1.5rem 0;
-                    text-align: center;
-                    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                ">
-                    <p style="font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem 0;">
-                        تم إكمال الجلسة ${sessionInfo.sessionNumber} من ${sessionInfo.totalSessions}
-                    </p>
-                    ${hasNextSession ? 
-                        `<p style="font-size: 1rem; margin: 0; opacity: 0.9;">الجلسة التالية متاحة الآن! 🚀</p>` : 
-                        `<p style="font-size: 1.1rem; font-weight: 600; margin: 0;">🎉 تم إكمال جميع الجلسات في هذه الفئة!</p>`
-                    }
-                </div>
-            `;
-        }
-        
         // Create next session button if available
         let nextSessionButton = '';
         if (hasNextSession) {
             nextSessionButton = `
-                <button class="btn-action btn-success" data-action="next-session" style="
-                    background: linear-gradient(135deg, #10b981, #059669) !important;
-                    color: white !important;
-                    border: none !important;
-                    padding: 1rem 2rem !important;
-                    border-radius: 12px !important;
-                    font-size: 1rem !important;
-                    font-weight: 700 !important;
+                <button data-action="next-session" style="
+                    background: linear-gradient(135deg, #10b981, #059669);
+                    color: white;
+                    border: none;
+                    padding: 1rem 2rem;
+                    border-radius: 12px;
+                    font-size: 1rem;
+                    font-weight: 700;
                     cursor: pointer;
                     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3) !important;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                    min-width: 200px;
+                    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+                    min-width: 160px;
                     margin: 0.5rem;
                 " onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.boxShadow='0 12px 35px rgba(16, 185, 129, 0.4)'" 
                    onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(16, 185, 129, 0.3)'">
-                    <i class="fas fa-arrow-left" style="margin-left: 0.5rem;"></i>
-                    بدء الجلسة التالية (${sessionInfo.sessionNumber + 1}/${sessionInfo.totalSessions})
+                    <i class="fas fa-plus-circle" style="margin-left: 0.5rem;"></i>
+                    الجلسة التالية
                 </button>
             `;
         }
@@ -829,11 +802,9 @@ class FlashcardMode extends LearningModeBase {
                     <p style="
                         font-size: 1.2rem;
                         color: #64748b;
-                        margin-bottom: 1rem;
+                        margin-bottom: 2rem;
                         font-weight: 600;
-                    ">فئة: ${this.getCategoryName()}</p>
-                    
-                    ${sessionProgressHTML}
+                    ">لقد أكملت جلسة تعلم رائعة!</p>
                     
                     <!-- Performance Badge -->
                     <div style="
@@ -882,7 +853,7 @@ class FlashcardMode extends LearningModeBase {
                                 font-weight: 800;
                                 color: #10b981;
                                 margin-bottom: 0.25rem;
-                            ">${stats.totalWords}</div>
+                            ">${stats.totalWords || 10}</div>
                             <div style="
                                 font-size: 0.9rem;
                                 color: #64748b;
@@ -902,7 +873,7 @@ class FlashcardMode extends LearningModeBase {
                                 font-weight: 800;
                                 color: #4f46e5;
                                 margin-bottom: 0.25rem;
-                            ">${stats.completed}</div>
+                            ">${stats.completed || stats.totalWords || 10}</div>
                             <div style="
                                 font-size: 0.9rem;
                                 color: #64748b;
@@ -942,7 +913,7 @@ class FlashcardMode extends LearningModeBase {
                                 font-weight: 800;
                                 color: #06b6d4;
                                 margin-bottom: 0.25rem;
-                            ">${stats.timeSpent}</div>
+                            ">${stats.timeSpent || 5}</div>
                             <div style="
                                 font-size: 0.9rem;
                                 color: #64748b;
@@ -972,31 +943,13 @@ class FlashcardMode extends LearningModeBase {
                             font-weight: 700;
                             cursor: pointer;
                             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+                            box-shadow: 0 8px 25px rgba(79, 70, 229,.3);
                             min-width: 140px;
                             margin: 0.5rem;
                         " onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.boxShadow='0 12px 35px rgba(79, 70, 229, 0.4)'" 
                            onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 25px rgba(79, 70, 229, 0.3)'">
                             <i class="fas fa-redo" style="margin-left: 0.5rem;"></i>
                             إعادة الجلسة
-                        </button>
-                        
-                        <button data-action="review" style="
-                            background: #f8fafc;
-                            color: #475569;
-                            border: 2px solid #e2e8f0;
-                            padding: 1rem 2rem;
-                            border-radius: 12px;
-                            font-size: 1rem;
-                            font-weight: 700;
-                            cursor: pointer;
-                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                            min-width: 140px;
-                            margin: 0.5rem;
-                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='#cbd5e1'; this.style.background='#f1f5f9'" 
-                           onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#e2e8f0'; this.style.background='#f8fafc'">
-                            <i class="fas fa-repeat" style="margin-left: 0.5rem;"></i>
-                            بدء المراجعة
                         </button>
                         
                         <button data-action="home" style="
@@ -1102,61 +1055,59 @@ class FlashcardMode extends LearningModeBase {
      */
     async startNextSession() {
         const sessionInfo = this.data.sessionInfo;
-        
+
         if (!sessionInfo || sessionInfo.sessionNumber >= sessionInfo.totalSessions) {
             console.log('❌ No next session available');
+            this.showNotification('لقد أكملت جميع الجلسات في هذه الفئة!', 'success');
             return;
         }
-        
-        // Mark current session as completed
-        this.markSessionCompleted(sessionInfo);
-        
-        // Calculate next session ID and number
+
         const nextSessionNumber = sessionInfo.sessionNumber + 1;
-        const nextSessionId = sessionInfo.categoryId + '_session_' + nextSessionNumber;
-        
-        // Show enhanced loading state
-        this.container.innerHTML = '<div class="loading-next-session"><div class="loading-content"><i class="fas fa-spinner fa-spin text-4xl text-blue-500 mb-4"></i><h3 class="text-xl font-bold mb-2">جارٍ تحضير الجلسة التالية...</h3><p class="text-gray-600">الجلسة ' + nextSessionNumber + ' من ' + sessionInfo.totalSessions + '</p><p class="text-sm text-blue-600 mt-2">معرف الجلسة: ' + nextSessionId + '</p></div></div>';
-        
-        // Wait for visual feedback
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Use enhanced session function with specific session details
-        if (window.startNewFlashcardSession) {
-            console.log('🎯 Starting next session with ID:', nextSessionId);
-            
-            try {
-                const result = await window.startNewFlashcardSession({
-                    categoryId: sessionInfo.categoryId,
-                    sessionNumber: nextSessionNumber,
-                    sessionId: nextSessionId,
-                    wordCount: 10
-                });
-                
-                if (result !== false) {
-                    console.log('✅ Next session started successfully with ID:', nextSessionId);
-                    return;
-                }
-            } catch (error) {
-                console.error('❌ Enhanced next session failed:', error);
-            }
+
+        // Show a loading indicator
+        this.clearContainer();
+        this.container.innerHTML = `<div class="loading-next-session"><div class="loading-content"><i class="fas fa-spinner fa-spin text-4xl text-blue-500 mb-4"></i><h3 class="text-xl font-bold mb-2">جارٍ تحضير الجلسة التالية...</h3></div></div>`;
+
+        const categoryId = sessionInfo.categoryId;
+        const categoryData = window.enhancedVocabularyData[categoryId];
+
+        if (!categoryData || !categoryData.sessions || !categoryData.sessions[nextSessionNumber - 1]) {
+            console.error(`Data for next session (Category: ${categoryId}, Session: ${nextSessionNumber}) not found.`);
+            this.showNotification('خطأ في تحميل الجلسة التالية.', 'error');
+            return;
         }
-        
-        // Fallback to legacy method
-        if (window.TurkishLearningApp && window.TurkishLearningApp.startLearning) {
-            console.log('🔄 Falling back to legacy method for category:', this.data.categoryId);
-            
-            // Set the category in the UI
-            const categorySelect = document.getElementById('category-select');
-            const modeSelect = document.getElementById('learning-mode');
-            
-            if (categorySelect && modeSelect) {
-                categorySelect.value = this.data.category;
-                modeSelect.value = 'flashcard';
-                
-                // Trigger the learning flow
-                window.TurkishLearningApp.startLearning();
+
+        const nextSession = categoryData.sessions[nextSessionNumber - 1];
+
+        const learningData = {
+            words: nextSession.words,
+            category: {
+                id: categoryId,
+                name: categoryData.nameArabic || categoryData.name,
+                ...categoryData
+            },
+            categoryId: categoryId,
+            sessionInfo: {
+                sessionId: nextSession.id,
+                sessionNumber: nextSession.sessionNumber,
+                totalSessions: categoryData.sessions.length,
+                categoryId: categoryId,
+                wordsInSession: nextSession.words.length
+            },
+            session: nextSession
+        };
+
+        // Use the learningModeManager to restart the mode with new data
+        if (this.manager) {
+            try {
+                await this.manager.startMode('flashcard', learningData);
+            } catch (error) {
+                console.error('Failed to start next flashcard session via learningModeManager:', error);
+                this.showNotification('خطأ في بدء الجلسة التالية.', 'error');
             }
+        } else {
+            console.error('Learning Mode Manager (this.manager) not available.');
+            this.showNotification('خطأ: مدير نمط التعلم غير متوفر.', 'error');
         }
     }
     
