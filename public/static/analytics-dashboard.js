@@ -100,6 +100,7 @@ class AnalyticsDashboard {
     
     handleLearningEvent(eventData) {
         // Handle specific learning events for real-time feedback
+        // This now correctly accesses the nested 'data' property from the new event structure
         switch (eventData.event) {
             case 'question_answered':
                 this.showLiveAccuracy(eventData.data);
@@ -125,8 +126,8 @@ class AnalyticsDashboard {
         const currentStats = this.getRealTimeStats();
         
         // Update daily progress
-        if (sessionData.wordsCompleted) {
-            currentStats.dailyProgress = (currentStats.dailyProgress || 0) + sessionData.wordsCompleted;
+        if (sessionData.completed) {
+            currentStats.dailyProgress = (currentStats.dailyProgress || 0) + sessionData.completed;
         }
         
         // Update streak if session was successful

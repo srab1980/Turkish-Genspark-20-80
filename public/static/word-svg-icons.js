@@ -1049,6 +1049,13 @@ class WordSVGIcons {
             <text x="12" y="6" text-anchor="middle" font-size="2.5" fill="#FF5722" font-weight="bold">UZAK</text>
         </svg>`;
     }
+
+    createLocationIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" fill="#E74C3C" stroke="#C0392B"/>
+            <circle cx="12" cy="10" r="3" fill="#FFFFFF"/>
+        </svg>`;
+    }
     
     // Additional comprehensive icon methods for complete word-specific coverage
     createMapIcon() {
