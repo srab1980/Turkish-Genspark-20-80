@@ -3211,7 +3211,6 @@ app.get('/', (c) => {
         <!-- Learning Mode Containers -->
         <!-- Original flashcard mode only -->
         <script src="/static/modes/flashcard-mode.js"></script>
-        <script src="/static/modes/flashcard-mode-jules.js"></script>
         <!-- Disabled new flashcard mode
         <script src="/static/modes/flashcard-mode-new.js?v=20250903-NEW"></script>
         -->
@@ -3250,7 +3249,6 @@ app.get('/', (c) => {
                     
                     this.learningModes = [
                         { id: 'flashcard', name: 'البطاقات التعليمية', description: 'تعلم الكلمات باستخدام البطاقات التفاعلية', icon: '📱' },
-                        { id: 'interactive-examination', name: 'Interactive Examination', description: 'A multiple-choice quiz to test your knowledge.', icon: '❓' },
                         { id: 'quiz', name: 'الاختبارات التفاعلية', description: 'اختبر معرفتك بالكلمات التركية', icon: '🎯' },
                         { id: 'phrase', name: 'العبارات والتعابير', description: 'تعلم العبارات التركية الشائعة والمفيدة', icon: '📝' },
                         { id: 'conversation', name: 'المحادثات التفاعلية', description: 'تدرب على المحادثات التركية الحقيقية', icon: '💬' },
