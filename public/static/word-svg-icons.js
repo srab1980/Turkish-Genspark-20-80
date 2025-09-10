@@ -1180,6 +1180,75 @@ class WordSVGIcons {
         </svg>`;
     }
     
+    // Calendar & Time Related Icons
+    createCalendarDayIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="4" y="6" width="16" height="14" rx="2" fill="#FFFFFF" stroke="#E74C3C"/>
+            <rect x="4" y="6" width="16" height="4" rx="2" fill="#E74C3C"/>
+            <text x="12" y="16" text-anchor="middle" font-size="8" fill="#E74C3C" font-weight="bold">15</text>
+            <circle cx="7" cy="4" r="1" fill="#BDC3C7"/>
+            <circle cx="17" cy="4" r="1" fill="#BDC3C7"/>
+            <line x1="7" y1="2" x2="7" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+            <line x1="17" y1="2" x2="17" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+        </svg>`;
+    }
+    
+    createCalendarWeekIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="4" y="6" width="16" height="14" rx="2" fill="#FFFFFF" stroke="#3498DB"/>
+            <rect x="4" y="6" width="16" height="4" rx="2" fill="#3498DB"/>
+            <rect x="6" y="12" width="3" height="2" fill="#3498DB" opacity="0.3"/>
+            <rect x="10" y="12" width="3" height="2" fill="#3498DB" opacity="0.5"/>
+            <rect x="14" y="12" width="3" height="2" fill="#3498DB" opacity="0.7"/>
+            <rect x="6" y="16" width="3" height="2" fill="#3498DB" opacity="0.9"/>
+            <circle cx="7" cy="4" r="1" fill="#BDC3C7"/>
+            <circle cx="17" cy="4" r="1" fill="#BDC3C7"/>
+            <line x1="7" y1="2" x2="7" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+            <line x1="17" y1="2" x2="17" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+        </svg>`;
+    }
+    
+    createCalendarMonthIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="4" y="6" width="16" height="14" rx="2" fill="#FFFFFF" stroke="#9B59B6"/>
+            <rect x="4" y="6" width="16" height="4" rx="2" fill="#9B59B6"/>
+            <text x="12" y="15" text-anchor="middle" font-size="3" fill="#9B59B6" font-weight="bold">JAN</text>
+            <rect x="6" y="17" width="2" height="1" fill="#9B59B6" opacity="0.5"/>
+            <rect x="9" y="17" width="2" height="1" fill="#9B59B6" opacity="0.7"/>
+            <rect x="12" y="17" width="2" height="1" fill="#9B59B6" opacity="0.9"/>
+            <rect x="15" y="17" width="2" height="1" fill="#9B59B6" opacity="0.6"/>
+            <circle cx="7" cy="4" r="1" fill="#BDC3C7"/>
+            <circle cx="17" cy="4" r="1" fill="#BDC3C7"/>
+            <line x1="7" y1="2" x2="7" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+            <line x1="17" y1="2" x2="17" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+        </svg>`;
+    }
+    
+    createCalendarYearIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="4" y="6" width="16" height="14" rx="2" fill="#FFFFFF" stroke="#E67E22"/>
+            <rect x="4" y="6" width="16" height="4" rx="2" fill="#E67E22"/>
+            <text x="12" y="16" text-anchor="middle" font-size="5" fill="#E67E22" font-weight="bold">2024</text>
+            <circle cx="7" cy="4" r="1" fill="#BDC3C7"/>
+            <circle cx="17" cy="4" r="1" fill="#BDC3C7"/>
+            <line x1="7" y1="2" x2="7" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+            <line x1="17" y1="2" x2="17" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+        </svg>`;
+    }
+    
+    createTodayIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="4" y="6" width="16" height="14" rx="2" fill="#FFFFFF" stroke="#27AE60"/>
+            <rect x="4" y="6" width="16" height="4" rx="2" fill="#27AE60"/>
+            <circle cx="12" cy="14" r="4" fill="#27AE60" opacity="0.8"/>
+            <text x="12" y="16" text-anchor="middle" font-size="3" fill="#FFFFFF" font-weight="bold">NOW</text>
+            <circle cx="7" cy="4" r="1" fill="#BDC3C7"/>
+            <circle cx="17" cy="4" r="1" fill="#BDC3C7"/>
+            <line x1="7" y1="2" x2="7" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+            <line x1="17" y1="2" x2="17" y2="6" stroke="#7F8C8D" stroke-width="2"/>
+        </svg>`;
+    }
+    
     // Number icons (2-10)
     createNumberTwoIcon() {
         return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
@@ -1420,6 +1489,186 @@ class WordSVGIcons {
                     <stop offset="100%" style="stop-color:#8a2be2"/>
                 </linearGradient>
             </defs>
+        </svg>`;
+    }
+    
+    // Emergency & Health Related Icons
+    createHelpIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="12" r="10" fill="#E74C3C" stroke="#C0392B"/>
+            <text x="12" y="18" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="bold">!</text>
+            <circle cx="12" cy="8" r="1.5" fill="#FFFFFF"/>
+        </svg>`;
+    }
+    
+    createPoliceIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <path d="M12 2 L15 8 L22 8 L17 12 L19 19 L12 15 L5 19 L7 12 L2 8 L9 8 Z" fill="#2C3E50" stroke="#1A252F"/>
+            <circle cx="12" cy="10" r="2" fill="#FFD700" stroke="#F39C12"/>
+            <text x="12" y="11" text-anchor="middle" font-size="1.5" fill="#2C3E50" font-weight="bold">P</text>
+        </svg>`;
+    }
+    
+    createDoctorIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="8" y="4" width="8" height="16" rx="2" fill="#FFFFFF" stroke="#E74C3C"/>
+            <rect x="10" y="8" width="4" height="1" fill="#E74C3C"/>
+            <rect x="11.5" y="6.5" width="1" height="4" fill="#E74C3C"/>
+            <circle cx="12" cy="14" r="2" fill="#F39C12" stroke="#E67E22"/>
+            <circle cx="10" cy="16" r="0.5" fill="#27AE60"/>
+            <circle cx="14" cy="16" r="0.5" fill="#3498DB"/>
+        </svg>`;
+    }
+    
+    createHospitalIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="6" y="6" width="12" height="14" rx="2" fill="#FFFFFF" stroke="#E74C3C"/>
+            <rect x="10" y="10" width="4" height="1" fill="#E74C3C"/>
+            <rect x="11.5" y="8.5" width="1" height="4" fill="#E74C3C"/>
+            <rect x="8" y="4" width="8" height="2" fill="#E74C3C"/>
+            <rect x="7" y="16" width="2" height="4" fill="#3498DB"/>
+            <rect x="15" y="16" width="2" height="4" fill="#3498DB"/>
+        </svg>`;
+    }
+    
+    createPharmacyIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="4" y="6" width="16" height="14" rx="2" fill="#27AE60" stroke="#1E8449"/>
+            <rect x="10" y="10" width="4" height="1.5" fill="#FFFFFF"/>
+            <rect x="11.25" y="8.75" width="1.5" height="4" fill="#FFFFFF"/>
+            <circle cx="12" cy="14" r="1" fill="#F39C12"/>
+            <text x="12" y="18" text-anchor="middle" font-size="2" fill="#FFFFFF" font-weight="bold">Rx</text>
+        </svg>`;
+    }
+    
+    createAmbulanceIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="4" y="8" width="16" height="8" rx="2" fill="#FFFFFF" stroke="#E74C3C"/>
+            <rect x="6" y="10" width="3" height="1" fill="#E74C3C"/>
+            <rect x="7.5" y="8.5" width="1" height="3" fill="#E74C3C"/>
+            <circle cx="7" cy="18" r="2" fill="#2C3E50"/>
+            <circle cx="17" cy="18" r="2" fill="#2C3E50"/>
+            <rect x="12" y="6" width="4" height="4" fill="#3498DB"/>
+            <path d="M16 6 L20 8 L20 12 L16 10 Z" fill="#2980B9"/>
+        </svg>`;
+    }
+    
+    createSickIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="8" r="4" fill="#F39C12" stroke="#E67E22"/>
+            <circle cx="10" cy="7" r="0.5" fill="#E74C3C"/>
+            <circle cx="14" cy="7" r="0.5" fill="#E74C3C"/>
+            <path d="M9 9 Q12 12, 15 9" fill="none" stroke="#E74C3C" stroke-width="0.8"/>
+            <rect x="10" y="12" width="4" height="8" rx="2" fill="#3498DB" stroke="#2980B9"/>
+            <path d="M8 14 Q12 16, 16 14" fill="none" stroke="#27AE60" stroke-width="0.8" opacity="0.7"/>
+        </svg>`;
+    }
+    
+    createPainIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="12" r="8" fill="#E74C3C" stroke="#C0392B" opacity="0.3"/>
+            <path d="M6 6 L18 18" stroke="#E74C3C" stroke-width="2"/>
+            <path d="M18 6 L6 18" stroke="#E74C3C" stroke-width="2"/>
+            <path d="M12 4 Q8 8, 12 12 Q16 8, 12 4" fill="#F39C12" stroke="#E67E22" opacity="0.7"/>
+        </svg>`;
+    }
+    
+    createHeadacheIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="10" r="5" fill="#F39C12" stroke="#E67E22"/>
+            <path d="M7 10 Q12 6, 17 10" fill="none" stroke="#E74C3C" stroke-width="1.5"/>
+            <path d="M8 8 Q12 5, 16 8" fill="none" stroke="#E74C3C" stroke-width="1" opacity="0.7"/>
+            <circle cx="10" cy="9" r="0.5" fill="#2C3E50"/>
+            <circle cx="14" cy="9" r="0.5" fill="#2C3E50"/>
+            <path d="M10 12 Q12 14, 14 12" fill="none" stroke="#C0392B" stroke-width="0.8"/>
+        </svg>`;
+    }
+    
+    createFeverIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="10" y="8" width="4" height="12" rx="2" fill="#E74C3C" stroke="#C0392B"/>
+            <circle cx="12" cy="18" r="3" fill="#E74C3C" stroke="#C0392B"/>
+            <circle cx="12" cy="18" r="1.5" fill="#FFFFFF"/>
+            <rect x="11.5" y="10" width="1" height="6" fill="#FFFFFF"/>
+            <path d="M8 6 Q10 4, 12 6 Q14 4, 16 6" fill="none" stroke="#F39C12" stroke-width="1" opacity="0.8"/>
+            <path d="M7 4 Q9 2, 11 4 Q13 2, 15 4 Q17 2, 19 4" fill="none" stroke="#E67E22" stroke-width="0.8" opacity="0.6"/>
+        </svg>`;
+    }
+    
+    createMedicineIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="6" y="8" width="12" height="12" rx="3" fill="#FFFFFF" stroke="#E74C3C"/>
+            <circle cx="9" cy="12" r="1" fill="#3498DB"/>
+            <circle cx="12" cy="12" r="1" fill="#E74C3C"/>
+            <circle cx="15" cy="12" r="1" fill="#27AE60"/>
+            <circle cx="9" cy="16" r="1" fill="#F39C12"/>
+            <circle cx="12" cy="16" r="1" fill="#9B59B6"/>
+            <circle cx="15" cy="16" r="1" fill="#E67E22"/>
+            <text x="12" y="6" text-anchor="middle" font-size="2" fill="#2C3E50" font-weight="bold">PILLS</text>
+        </svg>`;
+    }
+    
+    // Nature & Environment Icons
+    createSeaIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="0" y="12" width="24" height="12" fill="#3498DB" opacity="0.8"/>
+            <path d="M0 14 Q6 10, 12 14 Q18 10, 24 14 L24 24 L0 24 Z" fill="#2980B9"/>
+            <path d="M0 16 Q4 12, 8 16 Q12 12, 16 16 Q20 12, 24 16" stroke="#1F618D" stroke-width="2" fill="none"/>
+            <circle cx="18" cy="8" r="3" fill="#FFD700" stroke="#F39C12"/>
+            <path d="M6 6 Q8 4, 10 6 Q12 8, 14 6 Q16 4, 18 6" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.7"/>
+        </svg>`;
+    }
+    
+    createLakeIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <ellipse cx="12" cy="14" rx="10" ry="6" fill="#5DADE2" stroke="#3498DB"/>
+            <ellipse cx="12" cy="13" rx="8" ry="4" fill="#85C1E9" stroke="#5DADE2"/>
+            <path d="M4 14 Q8 12, 12 14 Q16 12, 20 14" stroke="#2980B9" stroke-width="1" fill="none"/>
+            <circle cx="6" cy="8" r="2" fill="#27AE60" stroke="#1E8449"/>
+            <circle cx="18" cy="6" r="2" fill="#27AE60" stroke="#1E8449"/>
+            <circle cx="16" cy="9" r="1.5" fill="#58D68D" stroke="#27AE60"/>
+        </svg>`;
+    }
+    
+    createMountainIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <path d="M2 20 L8 8 L12 12 L16 4 L22 20 Z" fill="#8D6E63" stroke="#5D4037"/>
+            <path d="M2 20 L8 8 L12 12 L16 4 L22 20 Z" fill="url(#mountainGrad)" stroke="#5D4037"/>
+            <path d="M8 8 L10 10 L12 8 L14 10 L16 4" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+            <defs>
+                <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#A1887F"/>
+                    <stop offset="50%" style="stop-color:#8D6E63"/>
+                    <stop offset="100%" style="stop-color:#6D4C41"/>
+                </linearGradient>
+            </defs>
+        </svg>`;
+    }
+    
+    createForestIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="5" y="16" width="2" height="6" fill="#8D6E63"/>
+            <rect x="11" y="15" width="2" height="7" fill="#8D6E63"/>
+            <rect x="17" y="17" width="2" height="5" fill="#8D6E63"/>
+            <path d="M2 16 L6 8 L10 16 Z" fill="#27AE60" stroke="#1E8449"/>
+            <path d="M8 15 L12 6 L16 15 Z" fill="#2ECC71" stroke="#27AE60"/>
+            <path d="M14 17 L18 9 L22 17 Z" fill="#58D68D" stroke="#2ECC71"/>
+            <circle cx="4" cy="14" r="1" fill="#E74C3C"/>
+            <circle cx="14" cy="13" r="1" fill="#F39C12"/>
+            <circle cx="20" cy="15" r="1" fill="#E67E22"/>
+        </svg>`;
+    }
+    
+    createFlowerIcon() {
+        return `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <rect x="11" y="12" width="2" height="8" fill="#27AE60" stroke="#1E8449"/>
+            <ellipse cx="12" cy="8" rx="3" ry="2" fill="#E91E63" stroke="#C2185B" transform="rotate(0 12 8)"/>
+            <ellipse cx="12" cy="8" rx="3" ry="2" fill="#E91E63" stroke="#C2185B" transform="rotate(45 12 8)"/>
+            <ellipse cx="12" cy="8" rx="3" ry="2" fill="#E91E63" stroke="#C2185B" transform="rotate(90 12 8)"/>
+            <ellipse cx="12" cy="8" rx="3" ry="2" fill="#E91E63" stroke="#C2185B" transform="rotate(135 12 8)"/>
+            <circle cx="12" cy="8" r="1.5" fill="#FFD700" stroke="#F39C12"/>
+            <path d="M10 15 Q8 13, 6 15" stroke="#27AE60" stroke-width="2" fill="none"/>
+            <path d="M14 16 Q16 14, 18 16" stroke="#27AE60" stroke-width="2" fill="none"/>
         </svg>`;
     }
 }

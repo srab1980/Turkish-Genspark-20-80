@@ -669,6 +669,77 @@ class FlashcardMode extends LearningModeBase {
             sessionInfo: this.data.sessionInfo // Include session information
         };
         
+        // 🔄 REAL-TIME DASHBOARD INTEGRATION
+        try {
+            // Calculate session statistics for dashboard
+            const duration = Date.now() - this.startTime;
+            
+            // Determine new words learned (words viewed and responded correctly)
+            const newWordsLearned = this.responses.filter(response => {
+                const word = this.words.find(w => w.id === response.wordId);
+                return response.isCorrect && word && !this.hasWordBeenLearnedBefore(word);
+            }).length;
+            
+            // Create comprehensive session data for dashboard
+            const dashboardSessionData = {
+                mode: 'flashcard',
+                category: this.data.category,
+                wordsCompleted: this.responses.length,
+                correctAnswers: this.responses.filter(r => r.isCorrect).length,
+                accuracy: accuracy,
+                duration: duration,
+                newWordsLearned: newWordsLearned,
+                bonusXP: this.calculateBonusXP(accuracy),
+                responses: this.responses,
+                timestamp: Date.now()
+            };
+            
+            console.log('📊 Flashcard session completed - Dashboard data:', dashboardSessionData);
+            
+            // Emit session completion event for dashboard
+            const completionEvent = new CustomEvent('sessionCompleted', {
+                detail: dashboardSessionData
+            });
+            document.dispatchEvent(completionEvent);
+            
+            // Update real-time dashboard if available
+            if (window.dashboardRealTime) {
+                window.dashboardRealTime.updateProgress(dashboardSessionData);
+            }
+            
+            // Track individual responses for dashboard
+            this.responses.forEach(response => {
+                // Track answer submission for accuracy calculation
+                const answerEvent = new CustomEvent('answerSubmitted', {
+                    detail: {
+                        isCorrect: response.isCorrect,
+                        mode: 'flashcard',
+                        category: this.data.category
+                    }
+                });
+                document.dispatchEvent(answerEvent);
+                
+                // Track word learning for correct responses
+                if (response.isCorrect) {
+                    const word = this.words.find(w => w.id === response.wordId);
+                    if (word) {
+                        const wordEvent = new CustomEvent('wordLearned', {
+                            detail: {
+                                word: word,
+                                mode: 'flashcard',
+                                category: this.data.category,
+                                isNew: !this.hasWordBeenLearnedBefore(word)
+                            }
+                        });
+                        document.dispatchEvent(wordEvent);
+                    }
+                }
+            });
+            
+        } catch (error) {
+            console.error('⚠️ Error updating dashboard from flashcard:', error);
+        }
+        
         // Show completion screen
         this.showCompletionScreen(sessionStats);
         
@@ -1276,6 +1347,29 @@ class FlashcardMode extends LearningModeBase {
                 </ul>
             </div>
         `;
+    }
+    
+    /**
+     * Check if a word has been learned before (for tracking new words)
+     */
+    hasWordBeenLearnedBefore(word) {
+        try {
+            const wordProgress = JSON.parse(localStorage.getItem('wordProgress') || '{}');
+            return wordProgress[word.id] && wordProgress[word.id].correct > 0;
+        } catch (error) {
+            return false;
+        }
+    }
+    
+    /**
+     * Calculate bonus XP based on accuracy
+     */
+    calculateBonusXP(accuracy) {
+        if (accuracy >= 95) return 50;  // Perfect score bonus
+        if (accuracy >= 90) return 30;  // Excellent bonus
+        if (accuracy >= 80) return 20;  // Good bonus
+        if (accuracy >= 70) return 10;  // Decent bonus
+        return 0;  // No bonus
     }
 }
 
