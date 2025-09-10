@@ -324,10 +324,15 @@
 
 .usage-example, .common-response {
     background: rgba(255, 255, 255, 0.7);
-    padding: 12px;
+    padding: 16px 20px;
     border-radius: 8px;
     margin-bottom: 8px;
     border-left: 3px solid #667eea;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
 }
 
 .example-situation {
@@ -338,18 +343,22 @@
 }
 
 .example-turkish, .response-turkish {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #374151;
     margin-bottom: 3px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    line-height: 1.4;
+    word-wrap: break-word;
 }
 
 .example-arabic, .response-arabic {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: #6b7280;
     direction: rtl;
+    line-height: 1.4;
+    margin-top: 4px;
 }
 
 .example-tts-btn, .response-tts-btn {
@@ -613,63 +622,7 @@
     transform: translateY(-1px);
 }
 
-/* Filter Controls */
-.phrase-filters {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e5e7eb;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
 
-.filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    min-width: 150px;
-}
-
-.filter-label {
-    font-weight: 500;
-    color: #4b5563;
-    font-size: 0.9rem;
-}
-
-.filter-select {
-    padding: 8px 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    background: white;
-    cursor: pointer;
-}
-
-.filter-actions {
-    margin-left: auto;
-}
-
-.filter-btn {
-    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.3s ease;
-}
-
-.filter-btn:hover {
-    background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
-}
 
 /* No Phrases Available */
 .no-phrases-available {

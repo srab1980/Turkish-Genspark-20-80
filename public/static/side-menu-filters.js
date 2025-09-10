@@ -92,12 +92,33 @@ class SideMenuFilters {
         try {
             // Wait for vocabulary database to be available
             let retries = 0;
-            while (!window.enhancedVocabularyDatabase && retries < 50) {
+            while (!window.enhancedVocabularyData && !window.enhancedVocabularyDatabase && retries < 50) {
                 await new Promise(resolve => setTimeout(resolve, 100));
                 retries++;
             }
             
-            if (window.enhancedVocabularyDatabase && window.enhancedVocabularyDatabase.data) {
+            // First try enhancedVocabularyData (main data source)
+            if (window.enhancedVocabularyData) {
+                const vocabData = window.enhancedVocabularyData;
+                const categoryIds = Object.keys(vocabData);
+                
+                this.categories = categoryIds.map(categoryId => {
+                    const categoryData = vocabData[categoryId];
+                    const wordCount = categoryData.words ? categoryData.words.length : 0;
+                    
+                    return {
+                        id: categoryId,
+                        name: categoryData.nameArabic || categoryData.name || categoryId,
+                        wordCount: wordCount,
+                        sessionCount: Math.ceil(wordCount / 10),
+                        icon: this.getCategoryIcon(categoryId)
+                    };
+                });
+                
+                console.log(`📂 Loaded ${this.categories.length} categories from enhancedVocabularyData`);
+            }
+            // Fallback to enhancedVocabularyDatabase if available
+            else if (window.enhancedVocabularyDatabase && window.enhancedVocabularyDatabase.data) {
                 this.categories = window.enhancedVocabularyDatabase.data.map(category => ({
                     id: category.id,
                     name: category.nameArabic || category.name,
@@ -105,15 +126,19 @@ class SideMenuFilters {
                     sessionCount: category.sessionCount || Math.ceil((category.words ? category.words.length : 0) / 10),
                     icon: this.getCategoryIcon(category.id)
                 }));
+                
+                console.log(`📂 Loaded ${this.categories.length} categories from enhancedVocabularyDatabase`);
             } else {
-                // Fallback data
+                // Fallback data - use common Turkish learning categories
                 this.categories = [
+                    { id: 'greetings', name: 'التحيات', wordCount: 10, sessionCount: 1, icon: '👋' },
+                    { id: 'food', name: 'الطعام', wordCount: 15, sessionCount: 2, icon: '🍽️' },
+                    { id: 'family', name: 'العائلة', wordCount: 12, sessionCount: 2, icon: '👨‍👩‍👧‍👦' },
                     { id: 'adjective', name: 'الصفات', wordCount: 77, sessionCount: 8, icon: '📝' },
-                    { id: 'animal', name: 'الحيوانات', wordCount: 54, sessionCount: 6, icon: '🐾' },
-                    { id: 'body', name: 'أجزاء الجسم', wordCount: 78, sessionCount: 8, icon: '👤' },
-                    { id: 'clothes', name: 'الملابس', wordCount: 20, sessionCount: 2, icon: '👕' },
-                    { id: 'color', name: 'الألوان', wordCount: 18, sessionCount: 2, icon: '🎨' }
+                    { id: 'animal', name: 'الحيوانات', wordCount: 54, sessionCount: 6, icon: '🐾' }
                 ];
+                
+                console.log('📂 Using fallback categories - vocabulary data not yet loaded');
             }
             
             console.log(`📂 Loaded ${this.categories.length} categories for filters`);
@@ -279,7 +304,7 @@ class SideMenuFilters {
      * Render learning modes
      */
     renderLearningModes() {
-        return this.learningModes.map(mode => `
+        const modes = this.learningModes.map(mode => `
             <div class="mode-option ${this.selectedModes.has(mode.id) ? 'selected' : ''}" data-mode="${mode.id}">
                 <input type="radio" name="learning-mode" class="mode-radio" id="mode-${mode.id}" ${this.selectedModes.has(mode.id) ? 'checked' : ''}>
                 <div class="mode-content">
@@ -291,6 +316,16 @@ class SideMenuFilters {
                 </div>
             </div>
         `).join('');
+        
+        // Add helpful tip
+        const tip = `
+            <div class="mode-tip" style="background: #f0f9ff; border: 1px solid #0284c7; border-radius: 0.5rem; padding: 0.75rem; margin-top: 0.75rem; font-size: 0.75rem; color: #0369a1;">
+                <i class="fas fa-lightbulb" style="margin-left: 0.5rem;"></i>
+                نصيحة: اختر نمط التعلم وسيتم اختيار فئة تلقائياً وبدء التعلم فوراً!
+            </div>
+        `;
+        
+        return modes + tip;
     }
     
     /**
@@ -357,9 +392,17 @@ class SideMenuFilters {
         // Learning mode selection
         const modeOptions = document.querySelectorAll('.mode-option');
         modeOptions.forEach(option => {
-            option.addEventListener('click', () => {
+            option.addEventListener('click', (e) => {
                 const modeId = option.dataset.mode;
+                
+                // Handle mode selection
                 this.handleModeSelection(modeId);
+                
+                // Alternative: If user wants immediate start, hold Ctrl while clicking
+                if (e.ctrlKey || e.shiftKey) {
+                    console.log('🚀 Immediate start requested!');
+                    this.quickStart(modeId);
+                }
             });
         });
         
@@ -482,6 +525,9 @@ class SideMenuFilters {
         }
         
         console.log('📂 Categories selected:', Array.from(this.selectedCategories));
+        
+        // Auto-start if we have everything needed
+        this.checkAndAutoStart();
     }
     
     /**
@@ -503,6 +549,109 @@ class SideMenuFilters {
         });
         
         console.log('🎯 Learning mode selected:', modeId);
+        
+        // Auto-start if we have everything needed
+        this.checkAndAutoStart();
+    }
+    
+    /**
+     * Check if we have everything needed and auto-start learning
+     */
+    checkAndAutoStart() {
+        const hasMode = this.selectedModes.size > 0;
+        const hasCategory = this.selectedCategories.size > 0;
+        
+        console.log('🔍 Auto-start check:', { hasMode, hasCategory, selectedModes: Array.from(this.selectedModes) });
+        
+        if (hasMode && !hasCategory) {
+            // Auto-select a default category for quick start
+            console.log('🎯 Mode selected but no category - auto-selecting default category');
+            this.autoSelectDefaultCategory();
+        }
+        
+        if (hasMode && this.selectedCategories.size > 0) {
+            // We have both mode and category, show auto-start notification
+            const selectedMode = Array.from(this.selectedModes)[0];
+            const selectedCategory = Array.from(this.selectedCategories)[0];
+            
+            console.log(`🚀 Ready to start learning! Mode: ${selectedMode}, Category: ${selectedCategory}`);
+            
+            // Show notification about auto-start
+            this.showNotification(`🎯 تم الاستعداد! سيبدأ ${this.getModeDisplayName(selectedMode)} خلال ثانيتين...`, 'success');
+            
+            // Auto-start after a short delay
+            setTimeout(() => {
+                try {
+                    this.applyFilters();
+                } catch (error) {
+                    console.error('❌ Auto-start failed:', error);
+                    this.showNotification('فشل في البدء التلقائي - جرب يدوياً', 'error');
+                }
+            }, 2000);
+        }
+    }
+    
+    /**
+     * Auto-select a default category for quick start
+     */
+    autoSelectDefaultCategory() {
+        if (this.categories.length > 0) {
+            // Select the first available category
+            const defaultCategory = this.categories[0];
+            this.selectedCategories.add(defaultCategory.id);
+            
+            // Update UI
+            const categoryItem = document.querySelector(`[data-category="${defaultCategory.id}"]`);
+            if (categoryItem) {
+                categoryItem.classList.add('selected');
+                const checkbox = categoryItem.querySelector('.category-checkbox');
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            }
+            
+            console.log('🎯 Auto-selected default category:', defaultCategory.name);
+            this.showNotification(`تم اختيار فئة "${defaultCategory.name}" تلقائياً`, 'info');
+        }
+    }
+    
+    /**
+     * Quick start learning with a specific mode
+     */
+    quickStart(modeId) {
+        console.log(`🚀 Quick starting ${modeId} mode...`);
+        
+        // Ensure mode is selected
+        this.selectedModes.clear();
+        this.selectedModes.add(modeId);
+        
+        // Auto-select first category if none selected
+        if (this.selectedCategories.size === 0 && this.categories.length > 0) {
+            this.autoSelectDefaultCategory();
+        }
+        
+        // Start immediately
+        if (this.selectedCategories.size > 0) {
+            this.showNotification(`🎯 بدء ${this.getModeDisplayName(modeId)} فوراً!`, 'success');
+            this.applyFilters();
+        } else {
+            this.showNotification('يرجى اختيار فئة واحدة على الأقل', 'warning');
+        }
+    }
+    
+    /**
+     * Get display name for mode
+     */
+    getModeDisplayName(modeId) {
+        const modeNames = {
+            'flashcard': 'البطاقات التعليمية',
+            'quiz': 'الاختبارات التفاعلية',
+            'phrase': 'العبارات والتعابير',
+            'conversation': 'المحادثات التفاعلية',
+            'review': 'المراجعة المتباعدة',
+            'examine': 'نمط الفحص'
+        };
+        return modeNames[modeId] || modeId;
     }
     
     /**
@@ -596,38 +745,196 @@ class SideMenuFilters {
      * Start learning session with applied filters
      */
     startLearningSession(filters) {
+        console.log('🚀 Starting learning session with filters:', filters);
+        
         // Integrate with existing learning system
         if (window.learningModeManager && filters.categories.length > 0) {
             const primaryCategory = filters.categories[0];
             
-            // Get category data
-            const categoryData = this.categories.find(cat => cat.id === primaryCategory);
+            // Get category data from available sources
+            let categoryData = null;
+            
+            // First try enhancedVocabularyData
+            if (window.enhancedVocabularyData && window.enhancedVocabularyData[primaryCategory]) {
+                categoryData = window.enhancedVocabularyData[primaryCategory];
+                console.log(`📂 Using enhancedVocabularyData for category: ${primaryCategory}`);
+            }
+            // Fallback to side menu category info
+            else {
+                const menuCategory = this.categories.find(cat => cat.id === primaryCategory);
+                if (menuCategory) {
+                    // Create mock data structure for testing
+                    categoryData = {
+                        id: primaryCategory,
+                        name: menuCategory.name,
+                        words: this.generateMockWords(primaryCategory, 5) // Generate 5 sample words
+                    };
+                    console.log(`📂 Using mock data for category: ${primaryCategory}`);
+                }
+            }
+            
             if (categoryData) {
-                // Use the learning mode manager to start session
-                window.learningModeManager.startMode(filters.mode, {
+                // Prepare data for learning mode manager
+                const learningData = {
                     category: primaryCategory,
+                    words: categoryData.words || [],
                     categories: filters.categories,
-                    difficulties: filters.difficulties
-                });
+                    difficulties: filters.difficulties,
+                    mode: filters.mode
+                };
+                
+                console.log(`🎯 Starting ${filters.mode} mode with ${learningData.words.length} words`);
+                
+                // Use the learning mode manager to start session
+                window.learningModeManager.startMode(filters.mode, learningData)
+                    .then(result => {
+                        console.log('✅ Learning session started successfully:', result);
+                    })
+                    .catch(error => {
+                        console.error('❌ Failed to start learning session:', error);
+                        this.showNotification('خطأ في بدء جلسة التعلم', 'error');
+                    });
                 
                 // Navigate to learn section
                 if (window.showSection) {
                     window.showSection('learn');
+                } else if (window.app && window.app.showSection) {
+                    window.app.showSection('learn');
                 }
+            } else {
+                console.warn('❌ No category data found for:', primaryCategory);
+                this.showNotification('لم يتم العثور على بيانات الفئة', 'error');
             }
         } else {
-            console.warn('Learning mode manager not available or no categories selected');
+            console.warn('❌ Learning mode manager not available or no categories selected');
+            this.showNotification('نظام التعلم غير متوفر', 'error');
         }
+    }
+    
+    /**
+     * Generate mock words for testing
+     */
+    generateMockWords(categoryId, count = 5) {
+        const mockWords = {
+            greetings: [
+                { id: 1, turkish: 'Merhaba', arabic: 'مرحبا', english: 'Hello', category: 'greetings' },
+                { id: 2, turkish: 'Günaydin', arabic: 'صباح الخير', english: 'Good morning', category: 'greetings' },
+                { id: 3, turkish: 'İyi akşamlar', arabic: 'مساء الخير', english: 'Good evening', category: 'greetings' },
+                { id: 4, turkish: 'Nasılsın', arabic: 'كيف حالك', english: 'How are you', category: 'greetings' },
+                { id: 5, turkish: 'Teşekkürler', arabic: 'شكرا', english: 'Thank you', category: 'greetings' }
+            ],
+            food: [
+                { id: 6, turkish: 'Ekmek', arabic: 'خبز', english: 'Bread', category: 'food' },
+                { id: 7, turkish: 'Su', arabic: 'ماء', english: 'Water', category: 'food' },
+                { id: 8, turkish: 'Çay', arabic: 'شاي', english: 'Tea', category: 'food' },
+                { id: 9, turkish: 'Kahve', arabic: 'قهوة', english: 'Coffee', category: 'food' },
+                { id: 10, turkish: 'Meyve', arabic: 'فاكهة', english: 'Fruit', category: 'food' }
+            ],
+            family: [
+                { id: 11, turkish: 'Anne', arabic: 'أم', english: 'Mother', category: 'family' },
+                { id: 12, turkish: 'Baba', arabic: 'أب', english: 'Father', category: 'family' },
+                { id: 13, turkish: 'Kardeş', arabic: 'أخ/أخت', english: 'Sibling', category: 'family' },
+                { id: 14, turkish: 'Çocuk', arabic: 'طفل', english: 'Child', category: 'family' },
+                { id: 15, turkish: 'Aile', arabic: 'عائلة', english: 'Family', category: 'family' }
+            ]
+        };
+        
+        const categoryWords = mockWords[categoryId] || mockWords.greetings;
+        return categoryWords.slice(0, count);
     }
     
     /**
      * Show notification
      */
     showNotification(message, type = 'info') {
+        // Try to use the app's notification system first
         if (window.visualUXSystem && window.visualUXSystem.showNotification) {
             window.visualUXSystem.showNotification(message, type);
+        } else if (window.app && window.app.showSuccess && type === 'success') {
+            window.app.showSuccess(message);
+        } else if (window.app && window.app.showError && type === 'error') {
+            window.app.showError(message);
         } else {
-            console.log(`📢 ${type.toUpperCase()}: ${message}`);
+            // Fallback: Create our own notification
+            this.createNotification(message, type);
+        }
+        
+        console.log(`📢 ${type.toUpperCase()}: ${message}`);
+    }
+    
+    /**
+     * Create custom notification
+     */
+    createNotification(message, type) {
+        const colors = {
+            success: { bg: '#10b981', border: '#059669' },
+            error: { bg: '#ef4444', border: '#dc2626' },
+            warning: { bg: '#f59e0b', border: '#d97706' },
+            info: { bg: '#3b82f6', border: '#2563eb' }
+        };
+        
+        const color = colors[type] || colors.info;
+        
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: ${color.bg};
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            border: 2px solid ${color.border};
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            font-weight: 500;
+            font-size: 0.875rem;
+            max-width: 350px;
+            animation: slideInRight 0.3s ease-out;
+            direction: rtl;
+        `;
+        
+        notification.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas ${
+                    type === 'success' ? 'fa-check-circle' :
+                    type === 'error' ? 'fa-exclamation-circle' :
+                    type === 'warning' ? 'fa-exclamation-triangle' :
+                    'fa-info-circle'
+                }"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto-remove after 4 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.style.animation = 'slideOutRight 0.3s ease-in';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }
+        }, 4000);
+        
+        // Add CSS animations if not already present
+        if (!document.querySelector('#notification-animations')) {
+            const style = document.createElement('style');
+            style.id = 'notification-animations';
+            style.textContent = `
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOutRight {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
         }
     }
     

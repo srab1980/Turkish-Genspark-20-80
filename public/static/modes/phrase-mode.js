@@ -327,8 +327,6 @@ class PhraseMode extends LearningModeBase {
         
         // Create main phrase interface
         const phraseInterface = this.createElement('div', ['phrase-mode-interface'], {}, `
-            ${this.renderPhraseHeader()}
-            ${this.renderFilters()}
             ${this.renderProgressSection()}
             <div class="phrase-container-wrapper">
                 ${this.renderPhraseCard()}
@@ -347,65 +345,9 @@ class PhraseMode extends LearningModeBase {
         }
     }
     
-    /**
-     * Render phrase header
-     */
-    renderPhraseHeader() {
-        return `
-            <div class="phrase-header">
-                <div class="phrase-title">
-                    <i class="fas fa-comment-dots"></i>
-                    <h2>العبارات والتعابير الشائعة</h2>
-                </div>
-                <div class="phrase-description">
-                    <p>تعلم العبارات التركية المفيدة للحياة اليومية</p>
-                </div>
-            </div>
-        `;
-    }
+
     
-    /**
-     * Render filter controls
-     */
-    renderFilters() {
-        const categories = [...new Set(this.phrases.map(p => p.category))];
-        const difficulties = ['beginner', 'intermediate', 'advanced'];
-        
-        return `
-            <div class="phrase-filters">
-                <div class="filter-group">
-                    <label class="filter-label">الفئة:</label>
-                    <select class="filter-select" data-filter="category">
-                        <option value="all">جميع الفئات</option>
-                        ${categories.map(cat => `
-                            <option value="${cat}" ${this.selectedCategory === cat ? 'selected' : ''}>
-                                ${this.getCategoryName(cat)}
-                            </option>
-                        `).join('')}
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label class="filter-label">المستوى:</label>
-                    <select class="filter-select" data-filter="difficulty">
-                        <option value="all">جميع المستويات</option>
-                        ${difficulties.map(diff => `
-                            <option value="${diff}" ${this.settings.difficultyFilter === diff ? 'selected' : ''}>
-                                ${this.getDifficultyName(diff)}
-                            </option>
-                        `).join('')}
-                    </select>
-                </div>
-                
-                <div class="filter-actions">
-                    <button class="filter-btn" data-action="reset-filters">
-                        <i class="fas fa-undo"></i>
-                        إعادة تعيين
-                    </button>
-                </div>
-            </div>
-        `;
-    }
+
     
     /**
      * Render progress section
@@ -461,17 +403,7 @@ class PhraseMode extends LearningModeBase {
                     
                     <!-- Back Side -->
                     <div class="phrase-back">
-                        <div class="phrase-translation-section">
-                            <div class="phrase-arabic">${currentPhrase.arabic}</div>
-                            <div class="phrase-english">${currentPhrase.english}</div>
-                        </div>
-                        
-                        ${currentPhrase.usage ? `
-                            <div class="phrase-usage-section">
-                                <h4>الاستخدام:</h4>
-                                <p>${currentPhrase.usage}</p>
-                            </div>
-                        ` : ''}
+
                         
                         ${this.settings.showUsageExamples && currentPhrase.examples ? `
                             <div class="phrase-examples-section">
@@ -569,13 +501,9 @@ class PhraseMode extends LearningModeBase {
                 </div>
                 <h3 class="no-phrases-title">لا توجد عبارات متاحة</h3>
                 <p class="no-phrases-description">
-                    لا توجد عبارات تتطابق مع المرشحات المحددة
+                    لا توجد عبارات متاحة
                 </p>
                 <div class="no-phrases-actions">
-                    <button class="btn-action btn-primary" data-action="reset-filters">
-                        <i class="fas fa-undo"></i>
-                        إعادة تعيين المرشحات
-                    </button>
                     <button class="btn-action btn-secondary" data-action="home">
                         <i class="fas fa-home"></i>
                         العودة للرئيسية
@@ -607,13 +535,7 @@ class PhraseMode extends LearningModeBase {
             }
         });
         
-        // Filter change events
-        this.container.addEventListener('change', (event) => {
-            const filter = event.target.getAttribute('data-filter');
-            if (filter) {
-                this.handleFilterChange(filter, event.target.value);
-            }
-        });
+
     }
     
     /**
@@ -648,9 +570,6 @@ class PhraseMode extends LearningModeBase {
             case 'mark-difficult':
                 this.markPhraseStatus('difficult');
                 break;
-            case 'reset-filters':
-                this.resetFilters();
-                break;
             case 'home':
                 this.goHome();
                 break;
@@ -669,25 +588,7 @@ class PhraseMode extends LearningModeBase {
         this.flipCard();
     }
     
-    /**
-     * Handle filter changes
-     */
-    handleFilterChange(filterType, value) {
-        switch (filterType) {
-            case 'category':
-                this.selectedCategory = value;
-                break;
-            case 'difficulty':
-                this.settings.difficultyFilter = value;
-                break;
-        }
-        
-        // Re-apply filters and re-render
-        this.applyFilters();
-        this.render();
-        
-        this.trackEvent('filter_changed', { filterType, value });
-    }
+
     
     /**
      * Flip the phrase card
@@ -814,20 +715,7 @@ class PhraseMode extends LearningModeBase {
         });
     }
     
-    /**
-     * Reset all filters
-     */
-    resetFilters() {
-        this.selectedCategory = 'all';
-        this.settings.difficultyFilter = 'all';
-        
-        // Reload original phrases
-        this.loadPhrases().then(() => {
-            this.applyFilters();
-            this.render();
-            this.trackEvent('filters_reset');
-        });
-    }
+
     
     /**
      * Pronounce current phrase

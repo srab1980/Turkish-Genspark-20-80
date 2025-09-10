@@ -636,12 +636,89 @@ class QuizMode extends LearningModeBase {
             incorrect: this.state.incorrect,
             accuracy: Math.round(accuracy),
             timeSpent: Math.round((Date.now() - this.startTime) / 1000 / 60),
-            responses: this.responses
+            responses: this.responses,
+            sessionInfo: this.data.sessionInfo // Include session information
         };
         
         // Clear any active timer
         if (this.timerInterval) {
             clearInterval(this.timerInterval);
+        }
+        
+        // Mark session as completed BEFORE showing completion screen
+        if (this.data.sessionInfo) {
+            this.markSessionCompleted(this.data.sessionInfo);
+        }
+        
+        // 🔄 REAL-TIME DASHBOARD INTEGRATION
+        try {
+            // Calculate session statistics for dashboard
+            const duration = Date.now() - this.startTime;
+            
+            // Determine new words learned (words answered correctly for first time)
+            const newWordsLearned = this.responses.filter(response => {
+                const word = this.words.find(w => w.id === response.wordId);
+                return response.isCorrect && word && !this.hasWordBeenLearnedBefore(word);
+            }).length;
+            
+            // Create comprehensive session data for dashboard
+            const dashboardSessionData = {
+                mode: 'quiz',
+                category: this.data.category,
+                wordsCompleted: this.responses.length,
+                correctAnswers: this.state.correct,
+                accuracy: accuracy,
+                duration: duration,
+                newWordsLearned: newWordsLearned,
+                bonusXP: this.calculateBonusXP(accuracy),
+                responses: this.responses,
+                timestamp: Date.now()
+            };
+            
+            console.log('📊 Quiz session completed - Dashboard data:', dashboardSessionData);
+            
+            // Emit session completion event for dashboard
+            const completionEvent = new CustomEvent('sessionCompleted', {
+                detail: dashboardSessionData
+            });
+            document.dispatchEvent(completionEvent);
+            
+            // Update real-time dashboard if available
+            if (window.dashboardRealTime) {
+                window.dashboardRealTime.updateProgress(dashboardSessionData);
+            }
+            
+            // Track individual word learning events for accuracy
+            this.responses.forEach(response => {
+                // Track answer submission for accuracy calculation
+                const answerEvent = new CustomEvent('answerSubmitted', {
+                    detail: {
+                        isCorrect: response.isCorrect,
+                        mode: 'quiz',
+                        category: this.data.category
+                    }
+                });
+                document.dispatchEvent(answerEvent);
+                
+                // Track word learning for correct answers
+                if (response.isCorrect) {
+                    const word = this.words.find(w => w.id === response.wordId);
+                    if (word) {
+                        const wordEvent = new CustomEvent('wordLearned', {
+                            detail: {
+                                word: word,
+                                mode: 'quiz',
+                                category: this.data.category,
+                                isNew: !this.hasWordBeenLearnedBefore(word)
+                            }
+                        });
+                        document.dispatchEvent(wordEvent);
+                    }
+                }
+            });
+            
+        } catch (error) {
+            console.error('⚠️ Error updating dashboard:', error);
         }
         
         // Show completion screen
@@ -660,6 +737,10 @@ class QuizMode extends LearningModeBase {
     showCompletionScreen(stats) {
         const grade = this.calculateGrade(stats.accuracy);
         
+        // Check if there are more sessions available
+        const sessionInfo = stats.sessionInfo;
+        const hasNextSession = sessionInfo && sessionInfo.sessionNumber < sessionInfo.totalSessions;
+        
         const completionHTML = `
             <div class="quiz-completion">
                 <div class="completion-header">
@@ -669,6 +750,7 @@ class QuizMode extends LearningModeBase {
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800 mb-2">${grade.message}</h2>
                     <p class="text-gray-600">اختبار فئة: ${this.getCategoryName()}</p>
+                    ${sessionInfo ? `<p class="text-gray-500">الجلسة ${sessionInfo.sessionNumber} من ${sessionInfo.totalSessions}</p>` : ''}
                 </div>
                 
                 <div class="completion-stats">
@@ -691,9 +773,20 @@ class QuizMode extends LearningModeBase {
                 </div>
                 
                 <div class="completion-actions">
-                    <button class="btn-action btn-primary" data-action="restart">
+                    ${hasNextSession ? `
+                        <button class="btn-action btn-primary" data-action="new-session">
+                            <i class="fas fa-forward"></i>
+                            الجلسة التالية
+                        </button>
+                    ` : `
+                        <button class="btn-action btn-primary" data-action="new-session">
+                            <i class="fas fa-play"></i>
+                            جلسة جديدة
+                        </button>
+                    `}
+                    <button class="btn-action btn-secondary" data-action="restart">
                         <i class="fas fa-redo"></i>
-                        إعادة الاختبار
+                        إعادة نفس الاختبار
                     </button>
                     <button class="btn-action btn-secondary" data-action="review-mistakes">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -719,6 +812,9 @@ class QuizMode extends LearningModeBase {
             const action = event.target.closest('[data-action]')?.getAttribute('data-action');
             
             switch (action) {
+                case 'new-session':
+                    this.startNewSession();
+                    break;
                 case 'restart':
                     this.restart();
                     break;
@@ -752,6 +848,210 @@ class QuizMode extends LearningModeBase {
         }
     }
     
+    /**
+     * Start a new quiz session with fresh words
+     */
+    async startNewSession() {
+        try {
+            // Track the event
+            this.trackEvent('new_session_started', {
+                previousAccuracy: this.state.accuracy,
+                category: this.data.category
+            });
+            
+            // Mark current session as completed first
+            if (this.data.sessionInfo) {
+                this.markSessionCompleted(this.data.sessionInfo);
+            }
+            
+            // Check if we have session information for progression
+            const sessionInfo = this.data.sessionInfo;
+            if (!sessionInfo) {
+                console.log('⚠️ No session info available, starting fresh quiz...');
+                this.startFreshQuiz();
+                return;
+            }
+            
+            // Check if there are more sessions in this category
+            if (sessionInfo.sessionNumber >= sessionInfo.totalSessions) {
+                // No more sessions in this category
+                this.showCategoryCompletionScreen();
+                return;
+            }
+            
+            // Get next session using the same approach as flashcard mode
+            const nextSessionNumber = sessionInfo.sessionNumber + 1;
+            const categoryId = sessionInfo.categoryId;
+            const categoryData = window.enhancedVocabularyData[categoryId];
+            
+            if (!categoryData || !categoryData.sessions || !categoryData.sessions[nextSessionNumber - 1]) {
+                console.error(`❌ Data for next session (Category: ${categoryId}, Session: ${nextSessionNumber}) not found.`);
+                this.showNotification('خطأ في تحميل الجلسة التالية', 'error');
+                return;
+            }
+            
+            const nextSession = categoryData.sessions[nextSessionNumber - 1];
+            console.log(`🎯 Found next session: ${nextSession.id} (Session ${nextSession.sessionNumber})`);
+            
+            // Prepare learning data using the same format as flashcard mode
+            const learningData = {
+                words: nextSession.words,
+                category: {
+                    id: categoryId,
+                    name: categoryData.nameArabic || categoryData.name,
+                    ...categoryData
+                },
+                categoryId: categoryId,
+                sessionInfo: {
+                    sessionId: nextSession.id,
+                    sessionNumber: nextSession.sessionNumber,
+                    totalSessions: categoryData.sessions.length,
+                    categoryId: categoryId,
+                    wordsInSession: nextSession.words.length
+                },
+                session: nextSession
+            };
+            
+            // Start with the next session using learning mode manager
+            if (this.manager) {
+                await this.manager.startMode('quiz', learningData);
+                return;
+            } else {
+                console.error('❌ Learning Mode Manager not available');
+                this.showNotification('خطأ: مدير نمط التعلم غير متوفر', 'error');
+            }
+            
+            // Fallback: Get fresh words from the full category data
+            this.startFreshQuiz();
+            
+        } catch (error) {
+            console.error('❌ Error starting new session:', error);
+            this.showNotification('خطأ في بدء جلسة جديدة', 'error');
+            
+            // Fallback to restart
+            this.restart();
+        }
+    }
+    
+    /**
+     * Show category completion celebration screen
+     */
+    showCategoryCompletionScreen() {
+        this.showNotification('🎉 تهانينا! لقد أكملت جميع جلسات هذه الفئة!', 'success');
+        
+        const completionHTML = `
+            <div class="category-completion-screen">
+                <div class="completion-celebration">
+                    <div class="trophy-icon">🏆</div>
+                    <h2>تهانينا! فئة مكتملة</h2>
+                    <p>لقد أكملت بنجاح جميع جلسات فئة ${this.getCategoryName()}</p>
+                </div>
+                
+                <div class="completion-actions">
+                    <button class="btn-primary" onclick="this.goHome()">
+                        <i class="fas fa-home"></i>
+                        العودة للرئيسية
+                    </button>
+                    <button class="btn-secondary" onclick="this.chooseDifferentCategory()">
+                        <i class="fas fa-list"></i>
+                        اختيار فئة أخرى
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        this.clearContainer();
+        this.container.innerHTML = completionHTML;
+    }
+    
+    /**
+     * Start a fresh quiz with random words from category
+     */
+    startFreshQuiz() {
+        try {
+            if (window.enhancedVocabularyData && this.data.category) {
+                const categoryData = window.enhancedVocabularyData[this.data.category];
+                
+                if (categoryData && categoryData.words && categoryData.words.length > 0) {
+                    // Get all words from category
+                    const allCategoryWords = [...categoryData.words];
+                    
+                    // Shuffle the full word list
+                    this.shuffleArray(allCategoryWords);
+                    
+                    // Select a random subset (same size as current session or 10 words)
+                    const sessionSize = Math.min(this.words.length || 10, allCategoryWords.length);
+                    const newWords = allCategoryWords.slice(0, sessionSize);
+                    
+                    // Update quiz with new words
+                    this.words = newWords;
+                    this.resetSessionData();
+                    this.render();
+                    
+                    this.showNotification(`تم بدء جلسة جديدة مع ${newWords.length} كلمة جديدة من فئة ${this.getCategoryName()}! 🎆`, 'success');
+                    return;
+                }
+            }
+            
+            // Final fallback: restart with shuffled existing words
+            this.resetSessionData();
+            this.shuffleWords();
+            this.render();
+            
+            this.showNotification('تم بدء جلسة جديدة! 🎆', 'success');
+            
+        } catch (error) {
+            console.error('❌ Error starting fresh quiz:', error);
+            this.showNotification('خطأ في بدء جلسة جديدة', 'error');
+            
+            // Fallback to restart
+            this.restart();
+        }
+    }
+    
+    /**
+     * Utility method to shuffle any array
+     */
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    
+    /**
+     * Reset session data for new session
+     */
+    resetSessionData() {
+        this.currentIndex = 0;
+        this.responses = [];
+        this.selectedAnswer = null;
+        this.isAnswered = false;
+        this.startTime = Date.now();
+        
+        // Reset state with updated word count
+        this.updateState({
+            totalWords: this.words.length,
+            currentIndex: 0,
+            correct: 0,
+            incorrect: 0,
+            accuracy: 0
+        });
+        
+        // Clear any existing timer
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+        }
+        
+        // Reset timer if time limit is enabled
+        if (this.settings.timeLimit) {
+            this.timeRemaining = this.settings.timeLimit * 60;
+            this.startTimer();
+        }
+    }
+
     /**
      * Restart quiz session
      */
@@ -933,6 +1233,40 @@ class QuizMode extends LearningModeBase {
     }
     
     /**
+     * Mark session as completed and save progress
+     */
+    markSessionCompleted(sessionInfo) {
+        try {
+            // Get existing progress
+            let progress = JSON.parse(localStorage.getItem('turkishLearningProgress') || '{}');
+            
+            // Initialize structure if needed
+            if (!progress.categoryProgress) {
+                progress.categoryProgress = {};
+            }
+            if (!progress.categoryProgress[sessionInfo.categoryId]) {
+                progress.categoryProgress[sessionInfo.categoryId] = {
+                    completedSessions: [],
+                    currentSession: null
+                };
+            }
+            
+            // Mark session as completed
+            const completedSessions = progress.categoryProgress[sessionInfo.categoryId].completedSessions;
+            if (!completedSessions.includes(sessionInfo.sessionId)) {
+                completedSessions.push(sessionInfo.sessionId);
+            }
+            
+            localStorage.setItem('turkishLearningProgress', JSON.stringify(progress));
+            
+            console.log(`✅ Session ${sessionInfo.sessionNumber} marked as completed for ${sessionInfo.categoryId}`);
+            
+        } catch (error) {
+            console.error('❌ Error marking session as completed:', error);
+        }
+    }
+    
+    /**
      * Get help content for quiz mode
      */
     getHelpContent() {
@@ -962,24 +1296,122 @@ class QuizMode extends LearningModeBase {
     }
     
     /**
-     * Get SVG icon for the current word
+     * Check if a word has been learned before (for tracking new words)
+     */
+    hasWordBeenLearnedBefore(word) {
+        try {
+            const wordProgress = JSON.parse(localStorage.getItem('wordProgress') || '{}');
+            return wordProgress[word.id] && wordProgress[word.id].correct > 0;
+        } catch (error) {
+            return false;
+        }
+    }
+    
+    /**
+     * Calculate bonus XP based on accuracy
+     */
+    calculateBonusXP(accuracy) {
+        if (accuracy >= 95) return 50;  // Perfect score bonus
+        if (accuracy >= 90) return 30;  // Excellent bonus
+        if (accuracy >= 80) return 20;  // Good bonus
+        if (accuracy >= 70) return 10;  // Decent bonus
+        return 0;  // No bonus
+    }
+    
+    /**
+     * Get SVG icon for the current word - Enhanced with better loading detection
      */
     getWordIcon(word) {
-        if (window.wordSVGIcons) {
-            return window.wordSVGIcons.getIconForWord(word);
+        console.log('🎨 Getting icon for quiz word:', word.turkish, '- ID:', word.id);
+        
+        // Enhanced check for WordSVGIcons availability
+        const checkWordSVGIcons = () => {
+            return window.wordSVGIcons && 
+                   typeof window.wordSVGIcons.getIconForWord === 'function' &&
+                   window.WordSVGIcons;
+        };
+        
+        // If not available, try to initialize
+        if (!checkWordSVGIcons() && window.WordSVGIcons) {
+            console.log('🔧 Initializing wordSVGIcons for quiz mode...');
+            try {
+                window.wordSVGIcons = new window.WordSVGIcons();
+                console.log('✅ wordSVGIcons initialized successfully for quiz');
+            } catch (error) {
+                console.warn('❌ Failed to initialize wordSVGIcons:', error);
+            }
         }
         
-        // Fallback to emoji if SVG icons are not available
+        // PRIORITY 1: Use word-specific SVG icons
+        if (checkWordSVGIcons()) {
+            try {
+                const svgIcon = window.wordSVGIcons.getIconForWord(word);
+                if (svgIcon && svgIcon.trim()) {
+                    console.log('✅ Using word-specific SVG icon for quiz:', word.turkish);
+                    return `<div class="quiz-word-icon-svg" style="width: 64px; height: 64px; color: #4F46E5; display: flex; align-items: center; justify-content: center;">${svgIcon}</div>`;
+                } else {
+                    console.log('⚠️ No word-specific SVG icon found for quiz:', word.turkish);
+                }
+            } catch (error) {
+                console.warn('❌ Error getting word-specific icon for quiz', word.turkish, ':', error);
+            }
+        } else {
+            console.log('❌ wordSVGIcons system not available for quiz mode');
+            console.log('Debug - window.wordSVGIcons:', !!window.wordSVGIcons);
+            console.log('Debug - window.WordSVGIcons:', !!window.WordSVGIcons);
+        }
+        
+        // PRIORITY 2: Try to get word-specific icons from enhanced vocabulary data
+        if (window.enhancedVocabularyData && this.data.category) {
+            try {
+                const categoryData = Object.values(window.enhancedVocabularyData)
+                    .find(cat => cat.id === this.data.category || cat.name === this.data.category);
+                
+                if (categoryData && categoryData.words) {
+                    const wordData = categoryData.words.find(w => w.id === word.id || w.turkish === word.turkish);
+                    if (wordData && wordData.emoji) {
+                        console.log('✅ Using emoji from enhanced vocabulary for quiz:', word.turkish, '-', wordData.emoji);
+                        return `<div class="quiz-word-emoji" style="font-size: 48px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;">${wordData.emoji}</div>`;
+                    }
+                }
+            } catch (error) {
+                console.warn('❌ Error getting emoji from enhanced vocabulary:', error);
+            }
+        }
+        
+        // PRIORITY 3: Fallback to word's own emoji if available
         if (word.emoji) {
-            return `<div class="word-emoji">${word.emoji}</div>`;
+            console.log('✅ Using word emoji for quiz:', word.turkish, '-', word.emoji);
+            return `<div class="quiz-word-emoji" style="font-size: 48px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;">${word.emoji}</div>`;
         }
         
-        // Default fallback icon
-        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <line x1="12" y1="17" x2="12.01" y2="17"/>
-        </svg>`;
+        // PRIORITY 4: Category-based generic icons
+        const categoryIcons = {
+            'greetings': '👋',
+            'travel': '✈️', 
+            'food': '🍽️',
+            'shopping': '🛒',
+            'directions': '🧭',
+            'emergency': '🚨',
+            'time': '⏰',
+            'numbers': '🔢'
+        };
+        
+        const categoryIcon = categoryIcons[this.data.category];
+        if (categoryIcon) {
+            console.log('✅ Using category icon for quiz:', word.turkish, '-', categoryIcon);
+            return `<div class="quiz-category-emoji" style="font-size: 48px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;">${categoryIcon}</div>`;
+        }
+        
+        // PRIORITY 5: Default fallback icon with enhanced styling
+        console.log('⚠️ Using default fallback icon for quiz:', word.turkish);
+        return `<div class="quiz-default-icon" style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 48px; height: 48px; color: #6B7280;">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+        </div>`;
     }
 }
 
