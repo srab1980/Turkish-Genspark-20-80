@@ -107,6 +107,7 @@ class GamificationSystem {
         this.setupWeeklyLeaderboard();
         this.generateAchievementChains();
         this.setupUnlockableThemes();
+        this.setupAchievementBadges();
         this.updateStreakBonus();
         this.checkThemeUnlocks();
     }
@@ -252,54 +253,98 @@ class GamificationSystem {
     }
     
     calculateUserRank(userScore) {
-        // Simulate competitive ranking based on score
-        const competitors = this.generateCompetitorScores();
-        const allScores = [...competitors, userScore].sort((a, b) => b - a);
-        return allScores.indexOf(userScore) + 1;
+        // Motivational ranking system: Users get ranks 1-10 based on their score
+        // Higher scores = better (lower) ranks
+        if (userScore >= 2000) return 1; // Top performer
+        if (userScore >= 1500) return 2;
+        if (userScore >= 1000) return 3;
+        if (userScore >= 750) return 4;
+        if (userScore >= 500) return 5;
+        if (userScore >= 300) return 6;
+        if (userScore >= 150) return 7;
+        if (userScore >= 75) return 8;
+        if (userScore >= 25) return 9;
+        return 10; // Minimum rank for any participation
     }
     
     generateCompetitors() {
         const container = document.getElementById('leaderboard-others');
         if (!container) return;
         
-        const competitors = this.generateCompetitorScores();
         const userScore = this.getWeeklyScore();
+        const userRank = this.calculateUserRank(userScore);
         
-        // Show top 5 competitors around user's rank
+        // Generate realistic competitor data with proper ranking
         const competitorNames = [
             'متعلم مجتهد', 'خبير التركية', 'طالب نشط', 'محب اللغات', 
-            'مسافر تركيا', 'باحث ذكي', 'دارس مثابر', 'متحمس للتعلم'
+            'مسافر تركيا', 'باحث ذكي', 'دارس مثابر', 'متحمس للتعلم',
+            'عاشق اللغات', 'طالب متفوق', 'متعلم نشيط', 'باحث ماهر'
         ];
         
-        const competitorsHTML = competitors.slice(0, 5).map((score, index) => {
-            const rank = index + (userScore > score ? 1 : 2);
-            const randomName = competitorNames[Math.floor(Math.random() * competitorNames.length)];
-            const badges = ['🌟', '🏆', '🎯', '🔥', '⭐', '💎', '🎨', '🚀'];
-            const randomBadge = badges[Math.floor(Math.random() * badges.length)];
+        const badges = ['🏆', '🌟', '🎯', '🔥', '⭐', '💎', '🎨', '🚀', '💪', '🎓'];
+        
+        // Create a realistic leaderboard based on user's position
+        let competitors = [];
+        
+        // Generate competitors with scores relative to user's rank
+        for (let rank = 1; rank <= 10; rank++) {
+            if (rank === userRank) continue; // Skip user's rank
             
-            return `
-                <div class="leaderboard-item">
-                    <div class="rank">#${rank}</div>
-                    <div class="player-info">
-                        <div class="player-name">${randomName}</div>
-                        <div class="player-score">${score} نقطة</div>
-                    </div>
-                    <div class="player-badge">${randomBadge}</div>
+            let score;
+            // Generate scores that make sense for each rank
+            if (rank === 1) score = Math.max(userScore + 100, 2500); // Top player
+            else if (rank === 2) score = Math.max(userScore + 80, 2000);
+            else if (rank === 3) score = Math.max(userScore + 60, 1700);
+            else if (rank === 4) score = Math.max(userScore + 40, 1400);
+            else if (rank === 5) score = Math.max(userScore + 20, 1100);
+            else if (rank === 6) score = Math.max(userScore, 800);
+            else if (rank === 7) score = Math.max(userScore - 20, 600);
+            else if (rank === 8) score = Math.max(userScore - 40, 400);
+            else if (rank === 9) score = Math.max(userScore - 60, 200);
+            else score = Math.max(userScore - 80, 50); // rank 10
+            
+            // Add some randomness but keep logical order
+            const variation = Math.floor(Math.random() * 50) - 25;
+            score = Math.max(0, score + variation);
+            
+            competitors.push({
+                rank,
+                name: competitorNames[Math.floor(Math.random() * competitorNames.length)],
+                score,
+                badge: badges[Math.floor(Math.random() * badges.length)]
+            });
+        }
+        
+        // Sort by rank to ensure proper order
+        competitors.sort((a, b) => a.rank - b.rank);
+        
+        // Show only 5 competitors around user's rank for better UX
+        let displayCompetitors;
+        if (userRank <= 3) {
+            // If user is in top 3, show ranks 1-6 (excluding user)
+            displayCompetitors = competitors.filter(c => c.rank <= 6).slice(0, 5);
+        } else if (userRank >= 8) {
+            // If user is in bottom 3, show ranks 5-10 (excluding user)
+            displayCompetitors = competitors.filter(c => c.rank >= 5).slice(0, 5);
+        } else {
+            // If user is in middle, show 2 above and 2 below
+            displayCompetitors = competitors.filter(c => 
+                c.rank >= userRank - 2 && c.rank <= userRank + 2
+            ).slice(0, 5);
+        }
+        
+        const competitorsHTML = displayCompetitors.map(competitor => `
+            <div class="leaderboard-item">
+                <div class="rank">#${competitor.rank}</div>
+                <div class="player-info">
+                    <div class="player-name">${competitor.name}</div>
+                    <div class="player-score">${competitor.score} نقطة</div>
                 </div>
-            `;
-        }).join('');
+                <div class="player-badge">${competitor.badge}</div>
+            </div>
+        `).join('');
         
         container.innerHTML = competitorsHTML;
-    }
-    
-    generateCompetitorScores() {
-        const userScore = this.getWeeklyScore();
-        const baseScore = Math.max(50, userScore);
-        
-        return Array(10).fill(0).map(() => {
-            const variation = (Math.random() - 0.5) * 200;
-            return Math.max(0, Math.round(baseScore + variation));
-        }).sort((a, b) => b - a);
     }
     
     // Achievement Chains
@@ -465,6 +510,136 @@ class GamificationSystem {
         return 1;
     }
     
+    // Achievement Badges System
+    setupAchievementBadges() {
+        this.updateAchievementBadges();
+        
+        // Listen for real-time updates
+        this.setupAchievementListeners();
+    }
+    
+    setupAchievementListeners() {
+        // Listen for learning events to update achievements in real-time
+        document.addEventListener('wordLearned', () => {
+            setTimeout(() => this.updateAchievementBadges(), 100);
+        });
+        
+        document.addEventListener('sessionCompleted', () => {
+            setTimeout(() => this.updateAchievementBadges(), 100);
+        });
+        
+        document.addEventListener('categoryCompleted', () => {
+            setTimeout(() => this.updateAchievementBadges(), 100);
+        });
+    }
+    
+    updateAchievementBadges() {
+        const totalWordsLearned = this.getTotalWordsLearned();
+        const currentStreak = this.getCurrentStreak();
+        const totalXP = parseInt(localStorage.getItem('userXP') || '0');
+        const hasCompletedCategory = this.hasCompletedCategory();
+        
+        // Enhanced achievement checking with visual feedback
+        this.checkAndUpdateAchievement('first-word', totalWordsLearned >= 1, {
+            title: 'أول كلمة',
+            description: 'تعلم أول كلمة تركية',
+            progress: Math.min(totalWordsLearned, 1),
+            target: 1
+        });
+        
+        this.checkAndUpdateAchievement('streak-7', currentStreak >= 7, {
+            title: 'أسبوع كامل', 
+            description: '7 أيام متتالية من التعلم',
+            progress: Math.min(currentStreak, 7),
+            target: 7
+        });
+        
+        this.checkAndUpdateAchievement('category-complete', hasCompletedCategory, {
+            title: 'إكمال فئة',
+            description: 'إكمال فئة كاملة من المفردات',
+            progress: hasCompletedCategory ? 1 : 0,
+            target: 1
+        });
+        
+        this.checkAndUpdateAchievement('review-master', totalXP >= 500, {
+            title: 'خبير المراجعة',
+            description: 'مراجعة 50 كلمة بنجاح',
+            progress: Math.min(totalXP, 500),
+            target: 500
+        });
+        
+        console.log('🏆 Achievement badges updated with real-time data:', {
+            wordsLearned: totalWordsLearned,
+            streak: currentStreak,
+            xp: totalXP,
+            categoryComplete: hasCompletedCategory
+        });
+    }
+    
+    checkAndUpdateAchievement(achievementId, condition, details) {
+        const badge = document.querySelector(`[data-achievement="${achievementId}"]`);
+        if (!badge) return;
+        
+        const wasUnlocked = badge.classList.contains('unlocked');
+        
+        if (condition) {
+            badge.classList.remove('locked');
+            badge.classList.add('unlocked');
+            
+            // Add progress indicator for visual feedback
+            this.addProgressIndicator(badge, details);
+            
+            // Show unlock notification if newly unlocked
+            if (!wasUnlocked) {
+                this.showAchievementUnlock(achievementId, details.title);
+            }
+        } else {
+            badge.classList.remove('unlocked');
+            badge.classList.add('locked');
+            
+            // Add progress indicator for locked achievements too
+            this.addProgressIndicator(badge, details);
+        }
+    }
+    
+    addProgressIndicator(badge, details) {
+        // Add or update progress bar
+        let progressBar = badge.querySelector('.achievement-progress');
+        if (!progressBar) {
+            progressBar = document.createElement('div');
+            progressBar.className = 'achievement-progress';
+            badge.appendChild(progressBar);
+        }
+        
+        const progressPercent = Math.round((details.progress / details.target) * 100);
+        progressBar.innerHTML = `
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: ${progressPercent}%"></div>
+            </div>
+            <div class="progress-text">${details.progress}/${details.target}</div>
+        `;
+    }
+    
+    showAchievementUnlock(achievementId, title) {
+        this.showNotification(`🏆 إنجاز جديد: ${title}!`, 'success');
+        
+        // Add celebration animation
+        const badge = document.querySelector(`[data-achievement="${achievementId}"]`);
+        if (badge) {
+            badge.style.animation = 'pulse 0.6s ease 3';
+            setTimeout(() => {
+                badge.style.animation = '';
+            }, 1800);
+        }
+    }
+    
+    hasCompletedCategory() {
+        const progress = JSON.parse(localStorage.getItem('turkishLearningProgress') || '{}');
+        return Object.values(progress).some(category => 
+            category && category.wordsLearned >= 6
+        );
+    }
+
     // Utility functions
     getCurrentStreak() {
         return parseInt(localStorage.getItem('currentStreak') || '0');
@@ -536,9 +711,44 @@ class GamificationSystem {
     
     // Public methods for integration
     updateGamification() {
+        console.log('๐ Updating gamification system with new logic...');
         this.setupGamification();
     }
     
+    forceRefreshLeaderboard() {
+        console.log('๐ช Force refreshing leaderboard with proper ranking...');
+        // Clear existing data to force regeneration
+        const leaderboardContainer = document.getElementById('leaderboard-others');
+        if (leaderboardContainer) {
+            leaderboardContainer.innerHTML = '<div style="text-align: center; padding: 1rem; color: #6B7280;">๐ Updating leaderboard...</div>';
+        }
+        
+        // Force regenerate with new logic
+        setTimeout(() => {
+            this.setupWeeklyLeaderboard();
+            console.log('โ Leaderboard refreshed with proper ranking system');
+        }, 500);
+    }
+    
+    // Real-time integration methods
+    recordWordLearned() {
+        // Dispatch custom event for real-time updates
+        document.dispatchEvent(new CustomEvent('wordLearned'));
+        console.log('📚 Word learned event dispatched for real-time updates');
+    }
+    
+    recordSessionCompleted(sessionData) {
+        // Dispatch custom event with session data
+        document.dispatchEvent(new CustomEvent('sessionCompleted', { detail: sessionData }));
+        console.log('✅ Session completed event dispatched for real-time updates');
+    }
+    
+    recordCategoryCompleted(categoryId) {
+        // Dispatch custom event for category completion
+        document.dispatchEvent(new CustomEvent('categoryCompleted', { detail: { categoryId } }));
+        console.log('🎯 Category completed event dispatched for real-time updates');
+    }
+
     addWeeklyScore(points) {
         const currentWeek = this.getCurrentWeekKey();
         const currentScore = parseInt(localStorage.getItem(`weeklyScore_${currentWeek}`) || '0');
@@ -623,6 +833,45 @@ gamificationStyles.textContent = `
         50% { transform: scale(1.05); }
         100% { transform: scale(1); }
     }
+    
+    /* Achievement Progress Indicators */
+    .achievement-progress {
+        margin-top: 12px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .progress-bar-bg {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 6px;
+    }
+    
+    .progress-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #10B981, #059669);
+        border-radius: 3px;
+        transition: width 0.5s ease;
+        min-width: 2px;
+    }
+    
+    .progress-text {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        font-weight: 500;
+    }
+    
+    .achievement-badge.locked .progress-bar-fill {
+        background: linear-gradient(90deg, #6B7280, #4B5563);
+    }
+    
+    .achievement-badge.unlocked .progress-bar-fill {
+        background: linear-gradient(90deg, #FFD700, #FFA500);
+    }
 `;
 document.head.appendChild(gamificationStyles);
 
@@ -649,4 +898,64 @@ window.updateChallengeProgress = function(type, amount = 1) {
     }
 };
 
+// Integration functions for real-time achievement updates
+window.recordWordLearned = function() {
+    if (window.gamificationSystem) {
+        window.gamificationSystem.recordWordLearned();
+    }
+};
+
+window.recordSessionCompleted = function(sessionData) {
+    if (window.gamificationSystem) {
+        window.gamificationSystem.recordSessionCompleted(sessionData);
+    }
+};
+
+window.recordCategoryCompleted = function(categoryId) {
+    if (window.gamificationSystem) {
+        window.gamificationSystem.recordCategoryCompleted(categoryId);
+    }
+};
+
 console.log('Enhanced Gamification System loaded successfully!');
+
+// Test function to demonstrate real-time dynamic data
+window.testGamificationRealTime = function() {
+    console.log('🧪 Testing real-time gamification system...');
+    
+    // Simulate learning progress
+    const currentProgress = JSON.parse(localStorage.getItem('turkishLearningProgress') || '{}');
+    currentProgress.travel = { wordsLearned: 5, totalWords: 6 };
+    currentProgress.greetings = { wordsLearned: 6, totalWords: 6 }; // Complete category
+    localStorage.setItem('turkishLearningProgress', JSON.stringify(currentProgress));
+    
+    // Simulate streak and XP
+    localStorage.setItem('currentStreak', '8');
+    localStorage.setItem('userXP', '600');
+    
+    // Force update all systems
+    if (window.gamificationSystem) {
+        window.gamificationSystem.updateGamification();
+    }
+    
+    console.log('✅ Test complete! Check:');
+    console.log('1. Achievement chains should show progress based on real data');
+    console.log('2. Theme unlocks should check real requirements (8-day streak unlocks Emerald)');
+    console.log('3. Achievement badges should show unlocked status for completed achievements');
+    console.log('4. All progress bars and indicators should reflect real localStorage data');
+};
+
+// Reset function for testing
+window.resetGamificationTest = function() {
+    console.log('🔄 Resetting gamification test data...');
+    localStorage.removeItem('turkishLearningProgress');
+    localStorage.removeItem('currentStreak');
+    localStorage.removeItem('userXP');
+    localStorage.removeItem('bestStreak');
+    
+    if (window.gamificationSystem) {
+        window.gamificationSystem.updateGamification();
+    }
+    
+    console.log('✅ Reset complete! All elements should show initial locked/empty state');
+};

@@ -568,6 +568,20 @@ LearningSession.prototype = {
         window.dispatchEvent(new CustomEvent('progressUpdated', { 
             detail: progress 
         }));
+        
+        // Trigger real-time gamification updates
+        if (window.recordWordLearned) {
+            for (let i = 0; i < this.correctAnswers; i++) {
+                window.recordWordLearned();
+            }
+        }
+        
+        // Check if category completed
+        if (this.correctAnswers >= this.words.length) {
+            if (window.recordCategoryCompleted) {
+                window.recordCategoryCompleted(this.category);
+            }
+        }
     },
     
     // Track learning session for analytics
@@ -693,6 +707,11 @@ LearningSession.prototype = {
         
         // Update overall app progress
         this.updateUserProgress();
+        
+        // Trigger session completion for gamification
+        if (window.recordSessionCompleted) {
+            window.recordSessionCompleted(sessionStats);
+        }
         
         // Show notification
         this.showCompletionNotification(sessionStats);
