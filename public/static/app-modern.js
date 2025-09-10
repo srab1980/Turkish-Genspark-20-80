@@ -839,6 +839,11 @@ const TurkishLearningApp = {
         this.checkAchievement('streak-7', currentStreak >= 7);
         this.checkAchievement('category-complete', this.hasCompletedCategory());
         this.checkAchievement('review-master', totalXP >= 500); // 50 reviews * 10 XP
+        
+        // Trigger real-time gamification updates
+        if (window.updateGamification) {
+            window.updateGamification();
+        }
     },
     
     // Check and unlock specific achievement
