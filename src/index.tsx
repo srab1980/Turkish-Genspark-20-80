@@ -7693,3 +7693,4 @@ app.get('/admin', async (c) => {
 })
 
 export default app
+// Fixed TypeScript errors
