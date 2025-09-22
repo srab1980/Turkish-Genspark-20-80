@@ -4,7 +4,9 @@
 // Generated: 2025-09-02T14:53:13.608Z
 
 // Enhanced vocabulary data organized by difficulty levels and sessions
-const enhancedVocabularyData = {
+// Check if enhancedVocabularyData already exists to avoid duplicate declaration error
+if (typeof window.enhancedVocabularyData === 'undefined') {
+    const enhancedVocabularyData = {
   "adjective": {
     "id": "adjective",
     "name": "Adjective",
@@ -30556,11 +30558,15 @@ class SessionManager {
     }
 }
 
-// Create global instances
-window.enhancedVocabularyData = enhancedVocabularyData;
-window.vocabularySessions = new SessionManager();
-// Create compatibility alias for existing session management
-window.SessionManager = window.vocabularySessions;
+// Create global instances only if they don't already exist
+if (typeof window.enhancedVocabularyData === 'undefined') {
+    window.enhancedVocabularyData = enhancedVocabularyData;
+}
+if (typeof window.vocabularySessions === 'undefined') {
+    window.vocabularySessions = new SessionManager();
+    // Create compatibility alias for existing session management
+    window.SessionManager = window.vocabularySessions;
+}
 
 // Enhanced database metadata
 window.enhancedVocabularyMeta = {
@@ -30576,3 +30582,5 @@ window.enhancedVocabularyMeta = {
 };
 
 console.log('🎯 Enhanced vocabulary database with difficulty-based sessions loaded:', window.enhancedVocabularyMeta);
+}
+

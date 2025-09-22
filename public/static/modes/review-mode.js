@@ -1,154 +1,57 @@
 // 🔄 Review Learning Mode - Containerized
-// Independent spaced repetition review system
+// Spaced repetition review system using the ReviewSystem
 
 class ReviewMode extends LearningModeBase {
     constructor(config = {}) {
         super(config);
         
         // Review-specific properties
-        this.reviewWords = [];
+        this.words = [];
         this.currentIndex = 0;
         this.responses = [];
-        this.reviewType = 'all'; // 'all', 'struggling', 'maintenance', 'mistakes'
+        this.isFlipped = false;
+        this.isAdvancing = false;
         
         // Review settings
         this.settings = {
-            showDifficulty: true,
-            enableTTS: true,
             autoFlip: false,
-            spacedRepetition: true,
+            autoAdvance: false,
             showProgress: true,
+            enableTTS: true,
+            flipOnClick: true,
             ...this.options.settings
         };
         
-        // Spaced repetition intervals (in days)
-        this.intervals = [1, 3, 7, 14, 30, 60, 120];
-        
         console.log('🔄 Review Mode container created');
     }
-    
+
     /**
      * Initialize review mode
      */
     async init() {
         try {
-            // Determine review type and words
-            this.reviewType = this.data.type || 'all';
+            // Validate required data
+            this.validateData(['words']);
             
-            if (this.data.words) {
-                // Use provided words (e.g., from mistakes review)
-                this.reviewWords = this.prepareReviewWords(this.data.words);
-            } else {
-                // Load words from review system
-                this.reviewWords = await this.loadReviewWords();
-            }
-            
-            if (this.reviewWords.length === 0) {
-                throw new Error('No words available for review');
-            }
-            
-            // Sort by priority (struggling first, then by due date)
-            this.sortWordsByPriority();
+            // Setup review data
+            this.words = [...this.data.words];
             
             // Initialize state
             this.updateState({
-                totalWords: this.reviewWords.length,
+                totalWords: this.words.length,
                 currentIndex: 0,
-                reviewed: 0,
-                correct: 0,
+                completed: 0,
                 accuracy: 0
             });
             
-            console.log(`🔄 Review mode initialized with ${this.reviewWords.length} words for review type: ${this.reviewType}`);
+            console.log(`🔄 Review mode initialized with ${this.words.length} words`);
             
         } catch (error) {
             console.error('❌ Failed to initialize review mode:', error);
             throw error;
         }
     }
-    
-    /**
-     * Load words for review from review system
-     */
-    async loadReviewWords() {
-        if (!window.reviewSystem) {
-            throw new Error('Review system not available');
-        }
-        
-        const reviewWords = window.reviewSystem.getWordsForReview(this.reviewType);
-        
-        if (reviewWords.length === 0) {
-            throw new Error('No words due for review');
-        }
-        
-        // Get vocabulary data to combine with review data
-        const vocabularyWords = [];
-        Object.values(window.vocabularyData || {}).forEach(categoryWords => {
-            if (Array.isArray(categoryWords)) {
-                vocabularyWords.push(...categoryWords);
-            }
-        });
-        
-        // Combine review data with vocabulary data
-        return reviewWords.map(reviewWord => {
-            const vocabWord = vocabularyWords.find(word => word.id === reviewWord.id);
-            return vocabWord ? { ...vocabWord, reviewData: reviewWord } : null;
-        }).filter(Boolean);
-    }
-    
-    /**
-     * Prepare review words from provided array
-     */
-    prepareReviewWords(words) {
-        return words.map(word => ({
-            ...word,
-            reviewData: this.getOrCreateReviewData(word.id)
-        }));
-    }
-    
-    /**
-     * Get or create review data for a word
-     */
-    getOrCreateReviewData(wordId) {
-        if (window.reviewSystem && window.reviewSystem.reviewData[wordId]) {
-            return window.reviewSystem.reviewData[wordId];
-        }
-        
-        // Create minimal review data
-        return {
-            id: wordId,
-            difficulty: 'learning',
-            easeFactor: 2.5,
-            interval: 0,
-            repetitions: 0,
-            nextReview: Date.now(),
-            lastReview: Date.now(),
-            streak: 0,
-            totalReviews: 0,
-            correctReviews: 0,
-            createdAt: Date.now()
-        };
-    }
-    
-    /**
-     * Sort words by review priority
-     */
-    sortWordsByPriority() {
-        const priorityOrder = { 'struggling': 0, 'learning': 1, 'maintenance': 2, 'mastered': 3 };
-        
-        this.reviewWords.sort((a, b) => {
-            const aPriority = priorityOrder[a.reviewData.difficulty] || 99;
-            const bPriority = priorityOrder[b.reviewData.difficulty] || 99;
-            
-            if (aPriority !== bPriority) {
-                return aPriority - bPriority;
-            }
-            
-            // If same priority, sort by next review date (earlier first)
-            return a.reviewData.nextReview - b.reviewData.nextReview;
-        });
-    }
-    
+
     /**
      * Render review interface
      */
@@ -159,67 +62,53 @@ class ReviewMode extends LearningModeBase {
         
         this.clearContainer();
         
-        if (this.reviewWords.length === 0) {
-            this.renderNoWordsMessage();
-            return;
-        }
-        
-        // Create main review interface
+        // Create main review interface with two-column layout
         const reviewInterface = this.createElement('div', ['review-mode-interface'], {}, `
-            ${this.renderReviewHeader()}
-            ${this.settings.showProgress ? this.renderProgressSection() : ''}
-            <div class="review-container-wrapper">
-                ${this.renderReviewCard()}
+            ${this.settings.showProgress ? this.renderProgressBar() : ''}
+            <div class="review-main-layout">
+                <!-- Left Column: Vertical Difficulty Buttons -->
+                <div class="review-difficulty-column">
+                    ${this.renderDifficultyButtons()}
+                </div>
+                
+                <!-- Right Column: Review Card with Navigation -->
+                <div class="review-content-column">
+                    <div class="review-container-wrapper">
+                        ${this.renderReviewCard()}
+                    </div>
+                    ${this.renderControls()}
+                </div>
             </div>
-            ${this.renderReviewControls()}
         `);
         
         this.appendToContainer(reviewInterface);
         
         // Setup review-specific event listeners
         this.setupReviewEvents();
-        
-        // Auto-pronounce if enabled
-        if (this.settings.enableTTS && window.turkishTTS && window.turkishTTS.settings.autoPlay) {
-            this.pronounceCurrentWord();
-        }
     }
-    
+
     /**
-     * Render review header
+     * Render progress bar
      */
-    renderReviewHeader() {
-        const typeNames = {
-            all: 'مراجعة شاملة',
-            struggling: 'مراجعة الكلمات الصعبة',
-            maintenance: 'مراجعة دورية',
-            mistakes: 'مراجعة الأخطاء'
-        };
-        
-        return `
-            <div class="review-header">
-                <div class="review-title">
-                    <i class="fas fa-repeat"></i>
-                    <h2>${typeNames[this.reviewType] || 'مراجعة'}</h2>
-                </div>
-                <div class="review-stats-summary">
-                    <span class="total-count">${this.reviewWords.length} كلمة للمراجعة</span>
-                </div>
-            </div>
-        `;
-    }
-    
-    /**
-     * Render progress section
-     */
-    renderProgressSection() {
+    renderProgressBar() {
         const progress = this.state.totalWords > 0 ? (this.currentIndex / this.state.totalWords) * 100 : 0;
+        
+        // Check if session information is available
+        const sessionInfo = this.data.sessionInfo;
+        
+        let progressText = `الكلمة ${this.currentIndex + 1} من ${this.state.totalWords}`;
+        let sessionText = this.getCategoryName();
+        
+        if (sessionInfo) {
+            progressText = `الكلمة ${this.currentIndex + 1} من ${sessionInfo.wordsInSession}`;
+            sessionText = `الجلسة ${sessionInfo.sessionNumber} من ${sessionInfo.totalSessions} • ${this.getCategoryName()}`;
+        }
         
         return `
             <div class="review-progress-section">
                 <div class="review-progress-info">
-                    <span class="progress-text">الكلمة ${this.currentIndex + 1} من ${this.state.totalWords}</span>
-                    <span class="accuracy-text">الدقة: ${Math.round(this.state.accuracy)}%</span>
+                    <span class="progress-text">${progressText}</span>
+                    <span class="category-text">${sessionText}</span>
                 </div>
                 <div class="review-progress-bar">
                     <div class="review-progress-fill" style="width: ${progress}%"></div>
@@ -227,771 +116,358 @@ class ReviewMode extends LearningModeBase {
             </div>
         `;
     }
-    
+
     /**
-     * Render review card
+     * Render individual review card
      */
     renderReviewCard() {
         const currentWord = this.getCurrentWord();
         if (!currentWord) {
-            return '<div class="no-words-message">لا توجد كلمات للمراجعة</div>';
+            return '<div class="no-words-message">لا توجد كلمات متاحة للمراجعة</div>';
         }
         
-        const reviewData = currentWord.reviewData;
-        const hasExample = currentWord.example && currentWord.exampleArabic;
-        const emoji = currentWord.emoji || '📚';
+        const wordToDisplay = currentWord.turkish;
+        const arabicTranslation = currentWord.arabic;
         
-        // Calculate next review date
-        const nextReviewDate = new Date(reviewData.nextReview).toLocaleDateString('ar-SA');
-        const daysSinceLastReview = Math.floor((Date.now() - reviewData.lastReview) / (1000 * 60 * 60 * 24));
+        const hasExample = currentWord.turkishSentence && currentWord.arabicSentence;
+        const icon = currentWord.icon || 'fas fa-redo';
+        const emoji = currentWord.emoji || '🔁';
         
         return `
-            <div class="review-card-container">
-                <div class="review-card" id="review-card">
-                    <!-- Review Info Panel -->
-                    ${this.settings.showDifficulty ? `
-                        <div class="review-info-panel">
-                            <div class="difficulty-indicator ${reviewData.difficulty}">
-                                ${this.getDifficultyIcon(reviewData.difficulty)}
-                                <span>${this.getDifficultyName(reviewData.difficulty)}</span>
-                            </div>
-                            <div class="review-stats">
-                                <span class="stat">المراجعات: ${reviewData.totalReviews}</span>
-                                <span class="stat">السلسلة: ${reviewData.streak}</span>
-                                <span class="stat">آخر مراجعة: ${daysSinceLastReview} يوم</span>
-                            </div>
+            <div class="review-container" id="review-container">
+                <!-- Left Navigation Button -->
+                <button class="review-nav-button review-nav-prev ${this.currentIndex === 0 ? 'disabled' : ''}" data-action="previous" title="السابق">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="review-card ${this.isFlipped ? 'flipped' : ''}" id="review-card" data-word-id="${currentWord.id}">
+                    <!-- FRONT: Individual Turkish Word Only -->
+                    <div class="review-front">
+                        <div class="review-icon-container">
+                            <div class="word-icon emoji">${emoji}</div>
                         </div>
-                    ` : ''}
+                        <div class="review-turkish">${wordToDisplay}</div>
+                        ${currentWord.pronunciation && currentWord.pronunciation !== 'undefined' ? 
+                            `<div class="review-pronunciation">[${currentWord.pronunciation}]</div>` :
+                            currentWord.vowelHarmony && currentWord.vowelHarmony !== 'undefined' ? 
+                                `<div class="review-vowel-harmony">${currentWord.vowelHarmony}</div>` :
+                                ''
+                        }
+                        <div class="tts-controls">
+                            <button class="tts-btn tts-word-btn" data-action="speak-word" title="استمع للكلمة">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                        <div class="review-hint">اضغط لرؤية الترجمة</div>
+                    </div>
                     
-                    <!-- Word Card -->
-                    <div class="word-card">
-                        <div class="word-front">
-                            <div class="word-icon-container">
+                    <!-- BACK: Translation + Optional Example -->
+                    <div class="review-back">
+                        <div class="review-back-header">
+                            <div class="review-icon-container">
                                 <div class="word-icon emoji">${emoji}</div>
                             </div>
-                            <div class="word-turkish">${currentWord.turkish}</div>
-                            <div class="word-pronunciation">[${currentWord.pronunciation}]</div>
-                            <div class="tts-controls">
-                                <button class="tts-btn" data-action="speak-word" title="استمع للكلمة">
-                                    <i class="fas fa-volume-up"></i>
-                                </button>
-                            </div>
-                            <div class="review-hint">فكر في المعنى، ثم اضغط "إظهار الإجابة"</div>
+                            <div class="review-turkish">${wordToDisplay}</div>
                         </div>
                         
-                        <div class="word-back" style="display: none;">
-                            <div class="word-back-header">
-                                <div class="word-icon emoji small">${emoji}</div>
-                                <div class="word-arabic">${currentWord.arabic}</div>
+                        <div class="review-translation-section">
+                            <div class="review-arabic">${arabicTranslation}</div>
+                            <div class="review-english">${currentWord.english}</div>
+                        </div>
+                        
+                        ${hasExample ? `
+                            <div class="review-example-section">
+                                <div class="review-turkish-example">${currentWord.turkishSentence}</div>
+                                <div class="review-arabic-example">${currentWord.arabicSentence}</div>
                             </div>
-                            
-                            ${hasExample ? `
-                                <div class="word-example">
-                                    <div class="turkish-example">
-                                        <div class="example-text">${currentWord.example}</div>
-                                        <button class="tts-btn" data-action="speak-sentence" title="استمع للمثال">
-                                            <i class="fas fa-volume-up"></i>
-                                        </button>
-                                    </div>
-                                    <div class="arabic-example">${currentWord.exampleArabic}</div>
-                                </div>
-                            ` : ''}
-                            
-                            <div class="review-performance-question">
-                                <p>كيف كان أداؤك في تذكر هذه الكلمة؟</p>
+                        ` : ''}
+                        
+                        ${currentWord.difficultyLevel ? `
+                            <div class="review-difficulty-badge" data-difficulty="${currentWord.difficultyLevel}">
+                                ${currentWord.difficultyLevel}
                             </div>
+                        ` : ''}
+                        
+                        <div class="review-back-controls">
+                            <button class="tts-btn tts-example-btn" data-action="speak-example" title="استمع للجملة">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Right Navigation Button -->
+                <button class="review-nav-button review-nav-next ${this.currentIndex >= this.words.length - 1 ? 'disabled' : ''}" data-action="next" title="التالي">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
             </div>
         `;
     }
-    
+
     /**
-     * Render review controls
+     * Render control buttons
      */
-    renderReviewControls() {
-        const currentWord = this.getCurrentWord();
-        const isShowingBack = this.isShowingAnswer();
-        
+    renderControls() {
         return `
             <div class="review-controls">
-                ${!isShowingBack ? `
-                    <!-- Show Answer Controls -->
-                    <div class="show-answer-controls">
-                        <button class="review-btn primary" data-action="show-answer">
-                            <i class="fas fa-eye"></i>
-                            إظهار الإجابة
-                        </button>
-                        <button class="review-btn secondary" data-action="hint" title="تلميح">
-                            <i class="fas fa-lightbulb"></i>
-                        </button>
-                    </div>
-                ` : `
-                    <!-- Performance Assessment Controls -->
-                    <div class="performance-controls">
-                        <button class="review-difficulty-btn forgot" data-performance="forgot">
-                            <i class="fas fa-times-circle"></i>
-                            <span>نسيت تماماً</span>
-                            <small>سأراجعها قريباً</small>
-                        </button>
-                        <button class="review-difficulty-btn partial" data-performance="partial">
-                            <i class="fas fa-minus-circle"></i>
-                            <span>تذكرت جزئياً</span>
-                            <small>أحتاج مراجعة</small>
-                        </button>
-                        <button class="review-difficulty-btn remembered" data-performance="remembered">
-                            <i class="fas fa-check-circle"></i>
-                            <span>تذكرت جيداً</span>
-                            <small>المراجعة القادمة بعد فترة</small>
-                        </button>
-                        <button class="review-difficulty-btn easy" data-performance="easy">
-                            <i class="fas fa-star"></i>
-                            <span>سهل جداً</span>
-                            <small>أتقنتها تماماً</small>
-                        </button>
-                    </div>
-                `}
+                <div class="review-response-buttons">
+                    <button class="btn-difficulty btn-hard" data-response="incorrect" title="صعبة">
+                        <i class="fas fa-times"></i>
+                        <span>صعبة</span>
+                    </button>
+                    <button class="btn-difficulty btn-medium" data-response="medium" title="متوسطة">
+                        <i class="fas fa-minus"></i>
+                        <span>متوسطة</span>
+                    </button>
+                    <button class="btn-difficulty btn-easy" data-response="correct" title="سهلة">
+                        <i class="fas fa-check"></i>
+                        <span>سهلة</span>
+                    </button>
+                </div>
                 
-                <!-- Navigation Controls -->
-                <div class="review-navigation">
-                    <button class="review-nav-btn" data-action="previous" ${this.currentIndex === 0 ? 'disabled' : ''}>
-                        <i class="fas fa-chevron-left"></i>
-                        السابق
+                <div class="review-action-buttons">
+                    <button class="btn-secondary" data-action="pause" title="إيقاف مؤقت">
+                        <i class="fas fa-pause"></i>
+                        <span>إيقاف مؤقت</span>
                     </button>
-                    <span class="review-counter">${this.currentIndex + 1} / ${this.reviewWords.length}</span>
-                    <button class="review-nav-btn" data-action="skip">
-                        <i class="fas fa-forward"></i>
-                        تخطي
+                    <button class="btn-secondary" data-action="end" title="إنهاء الجلسة">
+                        <i class="fas fa-stop"></i>
+                        <span>إنهاء الجلسة</span>
                     </button>
                 </div>
             </div>
         `;
     }
-    
+
     /**
-     * Render no words message
+     * Render difficulty buttons for rating responses
      */
-    renderNoWordsMessage() {
-        const messages = {
-            all: 'ممتاز! لا توجد كلمات تحتاج للمراجعة حالياً 🎉',
-            struggling: 'رائع! لا توجد كلمات صعبة للمراجعة 👏',
-            maintenance: 'جيد! جميع الكلمات في المستوى المطلوب ✅',
-            mistakes: 'لم ترتكب أي أخطاء للمراجعة! 🏆'
-        };
-        
-        const noWordsHTML = `
-            <div class="no-words-review">
-                <div class="no-words-icon">
-                    <i class="fas fa-trophy text-6xl text-yellow-500"></i>
-                </div>
-                <h3 class="no-words-title">${messages[this.reviewType] || messages.all}</h3>
-                <p class="no-words-description">
-                    ${this.reviewType === 'all' ? 
-                        'تعلم المزيد من الكلمات لتبدأ نظام المراجعة المتباعدة' :
-                        'عد لاحقاً أو جرب نوع مراجعة آخر'
-                    }
-                </p>
-                <div class="no-words-actions">
-                    <button class="btn-action btn-primary" data-action="learn-new">
-                        <i class="fas fa-plus"></i>
-                        تعلم كلمات جديدة
-                    </button>
-                    <button class="btn-action btn-secondary" data-action="home">
-                        <i class="fas fa-home"></i>
-                        العودة للرئيسية
-                    </button>
-                </div>
+    renderDifficultyButtons() {
+        return `
+            <div class="review-difficulty-buttons">
+                <button class="difficulty-btn difficulty-1" data-difficulty="1" title="صعبة جداً">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button class="difficulty-btn difficulty-2" data-difficulty="2" title="صعبة">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button class="difficulty-btn difficulty-3" data-difficulty="3" title="متوسطة">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="difficulty-btn difficulty-4" data-difficulty="4" title="سهلة">
+                    <i class="fas fa-check"></i>
+                </button>
+                <button class="difficulty-btn difficulty-5" data-difficulty="5" title="سهلة جداً">
+                    <i class="fas fa-check"></i>
+                </button>
             </div>
         `;
-        
-        this.container.innerHTML = noWordsHTML;
-        
-        // Setup no words actions
-        this.container.addEventListener('click', (event) => {
-            const action = event.target.closest('[data-action]')?.getAttribute('data-action');
-            
-            switch (action) {
-                case 'learn-new':
-                    this.goToLearning();
-                    break;
-                case 'home':
-                    this.goHome();
-                    break;
-            }
-        });
     }
-    
+
     /**
-     * Setup review-specific event listeners
+     * Setup event listeners for review mode
      */
     setupReviewEvents() {
         if (!this.container) return;
         
-        // Unified event delegation
-        this.container.addEventListener('click', (event) => {
-            event.stopPropagation();
-            
-            const action = event.target.closest('[data-action]')?.getAttribute('data-action');
-            const performance = event.target.closest('[data-performance]')?.getAttribute('data-performance');
+        // Navigation buttons
+        this.container.addEventListener('click', (e) => {
+            const action = e.target.closest('[data-action]')?.dataset.action;
+            const response = e.target.closest('[data-response]')?.dataset.response;
+            const difficulty = e.target.closest('[data-difficulty]')?.dataset.difficulty;
             
             if (action) {
-                this.handleAction(action, event);
-            } else if (performance) {
-                this.recordPerformance(performance);
+                this.handleAction(action);
+            }
+            
+            if (response) {
+                this.recordResponse(response);
+            }
+            
+            if (difficulty) {
+                this.recordDifficulty(parseInt(difficulty));
+            }
+            
+            // Flip card on click
+            if (e.target.closest('#review-card') && this.settings.flipOnClick) {
+                this.flipCard();
             }
         });
     }
-    
+
     /**
-     * Handle action button clicks
+     * Handle action buttons
      */
-    handleAction(action, event) {
+    handleAction(action) {
         switch (action) {
-            case 'show-answer':
-                this.showAnswer();
-                break;
-            case 'hint':
-                this.showHint();
-                break;
             case 'previous':
                 this.previousWord();
                 break;
-            case 'skip':
-                this.skipWord();
+            case 'next':
+                this.nextWord();
                 break;
             case 'speak-word':
                 this.pronounceCurrentWord();
                 break;
-            case 'speak-sentence':
-                this.pronounceCurrentSentence();
+            case 'speak-example':
+                this.pronounceCurrentExample();
+                break;
+            case 'pause':
+                this.pauseSession();
+                break;
+            case 'end':
+                this.endSession();
                 break;
         }
     }
-    
+
     /**
-     * Show answer (flip card)
+     * Record user response for spaced repetition
      */
-    showAnswer() {
-        const wordCard = this.container.querySelector('.word-card');
-        if (!wordCard) return;
-        
-        const frontSide = wordCard.querySelector('.word-front');
-        const backSide = wordCard.querySelector('.word-back');
-        
-        if (frontSide && backSide) {
-            frontSide.style.display = 'none';
-            backSide.style.display = 'block';
-            
-            // Re-render controls to show performance buttons
-            this.updateControls();
-            
-            // Auto-pronounce example if available
-            if (this.settings.enableTTS && window.turkishTTS) {
-                setTimeout(() => {
-                    this.pronounceCurrentSentence();
-                }, 300);
-            }
-            
-            this.trackEvent('answer_shown', { wordId: this.getCurrentWord()?.id });
-        }
-    }
-    
-    /**
-     * Show hint for current word
-     */
-    showHint() {
+    recordResponse(response) {
         const currentWord = this.getCurrentWord();
         if (!currentWord) return;
         
-        const reviewData = currentWord.reviewData;
-        
-        const hintContent = `
-            <div style="text-align: right; line-height: 1.6;">
-                <h4>💡 تلميح</h4>
-                <p><strong>الكلمة:</strong> ${currentWord.turkish}</p>
-                <p><strong>النطق:</strong> [${currentWord.pronunciation}]</p>
-                ${currentWord.example ? `
-                    <p><strong>في جملة:</strong></p>
-                    <p style="font-style: italic; color: #555;">${currentWord.example}</p>
-                ` : ''}
-                <p><strong>مستوى الصعوبة:</strong> ${this.getDifficultyName(reviewData.difficulty)}</p>
-                <p><strong>عدد المراجعات:</strong> ${reviewData.totalReviews}</p>
-                <hr style="margin: 1rem 0;">
-                <p style="color: #666; font-size: 0.9rem;">
-                    💡 فكر في السياق الذي قد تستخدم فيه هذه الكلمة
-                </p>
-            </div>
-        `;
-        
-        this.showModal('تلميح', hintContent);
-        this.trackEvent('hint_requested', { wordId: currentWord.id });
-    }
-    
-    /**
-     * Record performance assessment
-     */
-    recordPerformance(performance) {
-        const currentWord = this.getCurrentWord();
-        if (!currentWord) return;
-        
-        const reviewData = currentWord.reviewData;
-        
-        // Map performance to quality scores (SM-2 algorithm)
-        const performanceMap = {
-            forgot: { quality: 0, isCorrect: false },
-            partial: { quality: 2, isCorrect: false },
-            remembered: { quality: 4, isCorrect: true },
-            easy: { quality: 5, isCorrect: true }
-        };
-        
-        const performanceData = performanceMap[performance];
-        
-        // Record response
-        const response = {
-            wordId: currentWord.id,
-            word: currentWord.turkish,
-            performance: performance,
-            quality: performanceData.quality,
-            isCorrect: performanceData.isCorrect,
-            timestamp: Date.now(),
-            mode: 'review',
-            previousDifficulty: reviewData.difficulty
-        };
-        
-        this.responses.push(response);
+        const isCorrect = response === 'correct';
+        const easeFactor = this.getEaseFactorFromResponse(response);
         
         // Update review system
         if (window.reviewSystem) {
-            const easeFactor = this.calculateEaseFactor(performanceData.quality, reviewData.easeFactor);
-            window.reviewSystem.updateWordReview(currentWord.id, performanceData.isCorrect, easeFactor);
+            window.reviewSystem.updateWordReview(currentWord.id, isCorrect, easeFactor);
         }
         
-        // Update state
-        if (performanceData.isCorrect) {
-            this.updateState({ correct: this.state.correct + 1 });
-        }
-        
-        const totalReviewed = this.state.reviewed + 1;
-        const accuracy = totalReviewed > 0 ? (this.state.correct / totalReviewed) * 100 : 0;
-        this.updateState({ 
-            reviewed: totalReviewed,
-            accuracy: accuracy
-        });
-        
-        // Update metrics
-        this.metrics.interactions++;
-        this.metrics.accuracy = accuracy / 100;
-        
-        // Show performance feedback
-        this.showPerformanceFeedback(performance);
-        
-        // Update progress
-        this.updateProgress({
-            wordId: currentWord.id,
-            performance,
-            accuracy: this.metrics.accuracy
-        });
-        
-        // Auto-advance after delay
-        setTimeout(() => {
-            if (this.currentIndex < this.reviewWords.length - 1) {
-                this.nextWord();
-            } else {
-                this.completeSession();
-            }
-        }, 1500);
-        
-        this.trackEvent('performance_recorded', {
-            wordId: currentWord.id,
-            performance,
-            quality: performanceData.quality
-        });
+        // Move to next word
+        this.nextWord();
     }
-    
+
     /**
-     * Calculate ease factor using SM-2 algorithm
+     * Get ease factor based on user response
      */
-    calculateEaseFactor(quality, currentEaseFactor) {
-        const newEaseFactor = currentEaseFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
-        return Math.max(1.3, newEaseFactor);
-    }
-    
-    /**
-     * Show performance feedback
-     */
-    showPerformanceFeedback(performance) {
-        const feedbackMap = {
-            forgot: { message: 'سنراجعها قريباً 📚', type: 'error' },
-            partial: { message: 'تحسن جيد! 👍', type: 'warning' },
-            remembered: { message: 'ممتاز! 🎉', type: 'success' },
-            easy: { message: 'رائع! أتقنتها تماماً! ⭐', type: 'success' }
-        };
-        
-        const feedback = feedbackMap[performance];
-        if (feedback) {
-            this.showNotification(feedback.message, feedback.type);
+    getEaseFactorFromResponse(response) {
+        switch (response) {
+            case 'incorrect': return 1.3;
+            case 'medium': return 2.0;
+            case 'correct': return 2.5;
+            default: return 2.5;
         }
     }
-    
+
+    /**
+     * Flip the review card
+     */
+    flipCard() {
+        this.isFlipped = !this.isFlipped;
+        const card = this.container?.querySelector('#review-card');
+        if (card) {
+            card.classList.toggle('flipped', this.isFlipped);
+        }
+    }
+
     /**
      * Move to next word
      */
     nextWord() {
-        if (this.currentIndex < this.reviewWords.length - 1) {
+        if (this.currentIndex < this.words.length - 1) {
             this.currentIndex++;
-            this.updateState({ currentIndex: this.currentIndex });
+            this.isFlipped = false;
             this.render();
-            this.trackEvent('word_advanced', { newIndex: this.currentIndex });
+            this.updateProgress();
+            
+            // Auto-pronounce if enabled
+            if (this.settings.enableTTS && window.turkishTTS && window.turkishTTS.settings.autoPlay) {
+                this.pronounceCurrentWord();
+            }
+        } else {
+            // End of session
+            this.endSession();
         }
     }
-    
+
     /**
      * Move to previous word
      */
     previousWord() {
         if (this.currentIndex > 0) {
             this.currentIndex--;
-            this.updateState({ currentIndex: this.currentIndex });
+            this.isFlipped = false;
             this.render();
-            this.trackEvent('word_previous', { newIndex: this.currentIndex });
+            this.updateProgress();
         }
     }
-    
+
     /**
-     * Skip current word
+     * Update progress tracking
      */
-    skipWord() {
-        const currentWord = this.getCurrentWord();
+    updateProgress() {
+        const completed = this.currentIndex;
+        const total = this.words.length;
+        const accuracy = total > 0 ? (this.responses.filter(r => r === 'correct').length / completed) * 100 : 0;
         
-        // Record as skipped
-        this.responses.push({
-            wordId: currentWord.id,
-            word: currentWord.turkish,
-            performance: 'skipped',
-            isCorrect: false,
-            timestamp: Date.now(),
-            mode: 'review'
+        this.updateState({
+            currentIndex: this.currentIndex,
+            completed,
+            accuracy
         });
-        
-        this.trackEvent('word_skipped', { wordId: currentWord.id });
-        
-        if (this.currentIndex < this.reviewWords.length - 1) {
-            this.nextWord();
-        } else {
-            this.completeSession();
-        }
     }
-    
-    /**
-     * Update controls based on current state
-     */
-    updateControls() {
-        const controlsContainer = this.container.querySelector('.review-controls');
-        if (controlsContainer) {
-            controlsContainer.innerHTML = this.renderReviewControls().match(/<div class="review-controls">([\s\S]*)<\/div>/)[1];
-        }
-    }
-    
-    /**
-     * Check if currently showing answer
-     */
-    isShowingAnswer() {
-        const backSide = this.container.querySelector('.word-back');
-        return backSide && backSide.style.display !== 'none';
-    }
-    
+
     /**
      * Pronounce current word
      */
-    async pronounceCurrentWord() {
+    pronounceCurrentWord() {
         const currentWord = this.getCurrentWord();
-        if (currentWord && window.speakTurkishWord) {
-            try {
-                await window.speakTurkishWord(currentWord.turkish);
-            } catch (error) {
-                console.log('Word pronunciation failed:', error);
-            }
+        if (currentWord && window.turkishTTS) {
+            window.turkishTTS.speak(currentWord.turkish);
         }
     }
-    
+
     /**
-     * Pronounce current sentence
+     * Pronounce current example
      */
-    async pronounceCurrentSentence() {
+    pronounceCurrentExample() {
         const currentWord = this.getCurrentWord();
-        if (currentWord && currentWord.example && window.speakTurkishSentence) {
-            try {
-                await window.speakTurkishSentence(currentWord.example);
-            } catch (error) {
-                console.log('Sentence pronunciation failed:', error);
-            }
+        if (currentWord && currentWord.turkishSentence && window.turkishTTS) {
+            window.turkishTTS.speak(currentWord.turkishSentence);
         }
     }
-    
-    /**
-     * Complete review session
-     */
-    completeSession() {
-        const sessionStats = {
-            mode: 'review',
-            reviewType: this.reviewType,
-            totalWords: this.reviewWords.length,
-            reviewed: this.responses.length,
-            correct: this.state.correct,
-            accuracy: Math.round(this.state.accuracy),
-            timeSpent: Math.round((Date.now() - this.startTime) / 1000 / 60),
-            responses: this.responses
-        };
-        
-        // Show completion screen
-        this.showCompletionScreen(sessionStats);
-        
-        // Track completion
-        this.trackEvent('session_completed', sessionStats);
-        
-        // Update metrics
-        this.metrics.sessionsCompleted++;
-    }
-    
-    /**
-     * Show session completion screen
-     */
-    showCompletionScreen(stats) {
-        const completionHTML = `
-            <div class="review-completion">
-                <div class="completion-header">
-                    <i class="fas fa-check-circle text-6xl text-green-500 mb-4"></i>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-2">تمت المراجعة بنجاح! 🎉</h2>
-                    <p class="text-gray-600">نوع المراجعة: ${this.getReviewTypeName()}</p>
-                </div>
-                
-                <div class="completion-stats">
-                    <div class="stat-item">
-                        <span class="stat-label">الكلمات المراجعة:</span>
-                        <span class="stat-value">${stats.reviewed}/${stats.totalWords}</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">الإجابات الصحيحة:</span>
-                        <span class="stat-value">${stats.correct}</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">الدقة:</span>
-                        <span class="stat-value">${stats.accuracy}%</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">الوقت المستغرق:</span>
-                        <span class="stat-value">${stats.timeSpent} دقيقة</span>
-                    </div>
-                </div>
-                
-                <div class="completion-actions">
-                    <button class="btn-action btn-primary" data-action="review-again">
-                        <i class="fas fa-redo"></i>
-                        مراجعة أخرى
-                    </button>
-                    <button class="btn-action btn-secondary" data-action="learn-new">
-                        <i class="fas fa-plus"></i>
-                        تعلم كلمات جديدة
-                    </button>
-                    <button class="btn-action btn-secondary" data-action="home">
-                        <i class="fas fa-home"></i>
-                        العودة للرئيسية
-                    </button>
-                </div>
-            </div>
-        `;
-        
-        this.clearContainer();
-        this.container.innerHTML = completionHTML;
-        
-        // Setup completion actions
-        this.container.addEventListener('click', (event) => {
-            const action = event.target.closest('[data-action]')?.getAttribute('data-action');
-            
-            switch (action) {
-                case 'review-again':
-                    this.startAnotherReview();
-                    break;
-                case 'learn-new':
-                    this.goToLearning();
-                    break;
-                case 'home':
-                    this.goHome();
-                    break;
-            }
-        });
-    }
-    
-    /**
-     * Start another review session
-     */
-    startAnotherReview() {
-        if (this.manager) {
-            this.manager.switchMode('review', { type: 'all' });
-        }
-    }
-    
-    /**
-     * Go to learning mode
-     */
-    goToLearning() {
-        if (window.showSection) {
-            window.showSection('learn');
-        }
-    }
-    
-    /**
-     * Go to home
-     */
-    goHome() {
-        if (window.showSection) {
-            window.showSection('dashboard');
-        }
-    }
-    
+
     /**
      * Get current word
      */
     getCurrentWord() {
-        return this.reviewWords[this.currentIndex] || null;
+        return this.words[this.currentIndex];
     }
-    
+
     /**
-     * Get difficulty icon
+     * Get category name
      */
-    getDifficultyIcon(difficulty) {
-        const icons = {
-            struggling: '🔴',
-            learning: '🟡',
-            maintenance: '🟢',
-            mastered: '⭐'
-        };
-        return icons[difficulty] || '❓';
+    getCategoryName() {
+        if (this.data.category) {
+            return this.data.category.nameArabic || this.data.category.name || 'غير مصنف';
+        }
+        return 'غير مصنف';
     }
-    
+
     /**
-     * Get difficulty name in Arabic
+     * Pause the session
      */
-    getDifficultyName(difficulty) {
-        const names = {
-            struggling: 'صعب',
-            learning: 'في التعلم',
-            maintenance: 'صيانة',
-            mastered: 'متقن'
-        };
-        return names[difficulty] || difficulty;
+    pauseSession() {
+        this.emit('sessionPaused', { mode: 'review', state: this.state });
+        console.log('⏸️ Review session paused');
     }
-    
+
     /**
-     * Get review type name in Arabic
+     * End the session
      */
-    getReviewTypeName() {
-        const names = {
-            all: 'مراجعة شاملة',
-            struggling: 'الكلمات الصعبة',
-            maintenance: 'مراجعة دورية',
-            mistakes: 'مراجعة الأخطاء'
-        };
-        return names[this.reviewType] || this.reviewType;
+    endSession() {
+        this.emit('sessionEnded', { mode: 'review', state: this.state, metrics: this.metrics });
+        console.log('⏹️ Review session ended');
     }
-    
+
     /**
-     * Cleanup review mode
+     * Clean up resources
      */
     async cleanup() {
-        // Stop any ongoing TTS
-        if (window.turkishTTS) {
-            window.turkishTTS.stop();
-        }
-        
         console.log('🔄 Review mode cleaned up');
-    }
-    
-    /**
-     * Handle key press events
-     */
-    handleKeyPress(event) {
-        super.handleKeyPress(event);
-        
-        // Review-specific keyboard shortcuts
-        const isShowingAnswer = this.isShowingAnswer();
-        
-        if (!isShowingAnswer) {
-            switch (event.key.toLowerCase()) {
-                case ' ': // Spacebar to show answer
-                    event.preventDefault();
-                    this.showAnswer();
-                    break;
-            }
-        } else {
-            switch (event.key.toLowerCase()) {
-                case '1': // Performance shortcuts
-                    event.preventDefault();
-                    this.recordPerformance('forgot');
-                    break;
-                case '2':
-                    event.preventDefault();
-                    this.recordPerformance('partial');
-                    break;
-                case '3':
-                    event.preventDefault();
-                    this.recordPerformance('remembered');
-                    break;
-                case '4':
-                    event.preventDefault();
-                    this.recordPerformance('easy');
-                    break;
-            }
-        }
-        
-        // General navigation
-        switch (event.key.toLowerCase()) {
-            case 'arrowleft':
-                event.preventDefault();
-                this.previousWord();
-                break;
-            case 'arrowright':
-                event.preventDefault();
-                this.skipWord();
-                break;
-        }
-    }
-    
-    /**
-     * Get help content for review mode
-     */
-    getHelpContent() {
-        return `
-            <div style="text-align: right; line-height: 1.6;">
-                <h4>🔄 نمط المراجعة</h4>
-                <p><strong>المراجعة المتباعدة:</strong></p>
-                <p>نظام ذكي يعرض الكلمات بناءً على صعوبتها وآخر مراجعة لها</p>
-                
-                <p><strong>كيفية الاستخدام:</strong></p>
-                <ul style="list-style-type: disc; margin-right: 20px;">
-                    <li>انظر للكلمة وحاول تذكر معناها</li>
-                    <li>اضغط "إظهار الإجابة" أو مسطرة المسافة</li>
-                    <li>قيّم أداءك بصدق (هذا يؤثر على المراجعات المستقبلية)</li>
-                    <li>استخدم أزرار الصوت لسماع النطق</li>
-                </ul>
-                
-                <p><strong>مستويات الأداء:</strong></p>
-                <ul style="list-style-type: disc; margin-right: 20px;">
-                    <li>🔴 نسيت تماماً: ستظهر قريباً</li>
-                    <li>🟡 تذكرت جزئياً: مراجعة قريبة</li>
-                    <li>🟢 تذكرت جيداً: مراجعة بعد فترة أطول</li>
-                    <li>⭐ سهل جداً: مراجعة بعد فترة طويلة</li>
-                </ul>
-                
-                <p><strong>اختصارات لوحة المفاتيح:</strong></p>
-                <ul style="list-style-type: disc; margin-right: 20px;">
-                    <li>مسطرة المسافة: إظهار الإجابة</li>
-                    <li>1، 2، 3، 4: تقييم الأداء</li>
-                    <li>← →: السابق / تخطي</li>
-                </ul>
-            </div>
-        `;
     }
 }
 
@@ -999,17 +475,15 @@ class ReviewMode extends LearningModeBase {
 document.addEventListener('DOMContentLoaded', () => {
     if (window.learningModeManager) {
         window.learningModeManager.registerMode('review', ReviewMode, {
-            name: 'المراجعة المتباعدة',
+            name: 'Review Mode',
             icon: '🔄',
-            description: 'راجع الكلمات بنظام التكرار المتباعد الذكي',
+            description: 'Spaced repetition review system for long-term retention.',
             containerId: 'review-mode-container',
             dependencies: ['reviewSystem'],
-            version: '2.0.0'
+            version: '1.0.0'
         });
-        
         console.log('🔄 Review Mode registered successfully');
     }
 });
 
-// Export for direct use
 window.ReviewMode = ReviewMode;

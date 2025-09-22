@@ -645,10 +645,30 @@ class GamificationSystem {
         return parseInt(localStorage.getItem('currentStreak') || '0');
     }
     
-    getTotalWordsLearned() {
+    // Safe localStorage data initialization
+    initializeSafeProgress() {
         const progress = JSON.parse(localStorage.getItem('turkishLearningProgress') || '{}');
+        
+        // Clean up any null values
+        const cleanedProgress = {};
+        Object.keys(progress).forEach(categoryId => {
+            if (progress[categoryId] && typeof progress[categoryId] === 'object') {
+                cleanedProgress[categoryId] = {
+                    wordsLearned: progress[categoryId].wordsLearned || 0,
+                    totalWords: progress[categoryId].totalWords || 0,
+                    ...progress[categoryId]
+                };
+            }
+        });
+        
+        localStorage.setItem('turkishLearningProgress', JSON.stringify(cleanedProgress));
+        return cleanedProgress;
+    }
+    
+    getTotalWordsLearned() {
+        const progress = this.initializeSafeProgress();
         return Object.values(progress).reduce((total, category) => {
-            return total + (category.wordsLearned || 0);
+            return total + ((category && category.wordsLearned) || 0);
         }, 0);
     }
     
@@ -758,7 +778,7 @@ class GamificationSystem {
         localStorage.setItem(`weeklyScore_${currentWeek}`, (currentScore + bonusPoints).toString());
         
         if (streakMultiplier > 1) {
-            this.showNotification(`مكافأة السلسلة! +${bonusPoints} نقطة (${streakMultiplier}x)`, 'success');
+            this.showNotification(`\u0645\u0643\u0627\u0641\u0623\u0629 \u0627\u0644\u0633\u0644\u0633\u0644\u0629! +${bonusPoints} \u0646\u0642\u0637\u0629 (${streakMultiplier}x)`, 'success');
         }
         
         return bonusPoints;
@@ -801,7 +821,7 @@ class GamificationSystem {
                 if (progress.current >= challenge.target) {
                     challenge.completed = true;
                     challenge.progress = 100;
-                    this.showNotification(`تحدي مكتمل: ${challenge.title}!`, 'success');
+                    this.showNotification(`\u062A\u062D\u062F\u064A \u0645\u0643\u062A\u0645\u0644: ${challenge.title}!`, 'success');
                     this.addWeeklyScore(challenge.reward);
                     updated = true;
                 }

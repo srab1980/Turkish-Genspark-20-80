@@ -43,9 +43,32 @@ class SimpleAnalytics {
         
         // Update analytics data
         this.data.sessionsCompleted++;
-        this.data.wordsLearned += sessionData.totalWords || 10;
+        
+        // Track UNIQUE words learned instead of session count
+        let uniqueWordsLearnedThisSession = 0;
+        
+        if (sessionData.words && Array.isArray(sessionData.words)) {
+            uniqueWordsLearnedThisSession = this.trackUniqueWords(sessionData.words, sessionData);
+        } else if (sessionData.responses && Array.isArray(sessionData.responses)) {
+            // Extract words from responses
+            const wordsFromResponses = sessionData.responses.map(r => ({ id: r.wordId, turkish: r.word || 'unknown' }));
+            uniqueWordsLearnedThisSession = this.trackUniqueWords(wordsFromResponses, sessionData);
+        } else {
+            console.log('📊 No word data available, using fallback counting');
+            // Fallback: track session but don't add words
+            uniqueWordsLearnedThisSession = 0;
+        }
+        
+        // Get total unique words learned
+        const totalUniqueWords = this.getTotalUniqueWords();
+        this.data.wordsLearned = totalUniqueWords;
+        
         this.data.totalTime += sessionData.timeSpent || 5;
         this.data.lastSessionDate = new Date().toISOString();
+        
+        console.log('📊 Session completed:');
+        console.log('   📚 New unique words this session:', uniqueWordsLearnedThisSession);
+        console.log('   📈 Total unique words learned:', totalUniqueWords);
         
         // Calculate accuracy
         const totalAnswers = (sessionData.correct || 0) + (sessionData.incorrect || 0);
@@ -80,6 +103,78 @@ class SimpleAnalytics {
         } else {
             // First session ever
             this.data.streak = 1;
+        }
+    }
+    
+    /**
+     * Track unique words learned - prevents double counting
+     */
+    trackUniqueWords(words, sessionData) {
+        try {
+            // Get existing unique words
+            let uniqueWords = JSON.parse(localStorage.getItem('unique_words_learned') || '[]');
+            let newWordsCount = 0;
+            
+            words.forEach(word => {
+                if (!word || !word.id) return;
+                
+                // Check if word already learned
+                const existingWord = uniqueWords.find(w => w.id === word.id);
+                
+                if (!existingWord) {
+                    // New word - add to unique words list
+                    uniqueWords.push({
+                        id: word.id,
+                        turkish: word.turkish || word.word || 'Unknown',
+                        arabic: word.arabic,
+                        english: word.english,
+                        learnedDate: new Date().toISOString(),
+                        sessionId: sessionData.sessionId || Date.now()
+                    });
+                    newWordsCount++;
+                    console.log('🎆 New unique word learned:', word.turkish || word.id);
+                } else {
+                    console.log('🔄 Word already learned (not counting):', word.turkish || word.id);
+                }
+            });
+            
+            // Save updated unique words list
+            localStorage.setItem('unique_words_learned', JSON.stringify(uniqueWords));
+            
+            console.log('📈 Unique words tracking:');
+            console.log('   🎆 New words this session:', newWordsCount);
+            console.log('   📚 Total unique words learned:', uniqueWords.length);
+            
+            return newWordsCount;
+            
+        } catch (error) {
+            console.error('Error tracking unique words:', error);
+            return 0;
+        }
+    }
+    
+    /**
+     * Get total count of unique words learned
+     */
+    getTotalUniqueWords() {
+        try {
+            const uniqueWords = JSON.parse(localStorage.getItem('unique_words_learned') || '[]');
+            return uniqueWords.length;
+        } catch (error) {
+            console.error('Error getting unique words count:', error);
+            return 0;
+        }
+    }
+    
+    /**
+     * Check if a word has been learned before
+     */
+    hasWordBeenLearned(wordId) {
+        try {
+            const uniqueWords = JSON.parse(localStorage.getItem('unique_words_learned') || '[]');
+            return uniqueWords.some(w => w.id === wordId);
+        } catch (error) {
+            return false;
         }
     }
     
@@ -195,6 +290,58 @@ class SimpleAnalytics {
         this.saveData();
         this.updateAllDisplays();
         console.log('🔄 Analytics data reset');
+        
+        // Also clear duplicate session tracking
+        localStorage.removeItem('last_processed_session');
+        console.log('🔄 Session tracking cleared');
+    }
+    
+    // Complete reset function for testing unique word tracking
+    resetAllStats() {
+        // Reset analytics data
+        this.data = {
+            wordsLearned: 0,
+            sessionsCompleted: 0,
+            totalTime: 0,
+            streak: 0,
+            accuracy: 0,
+            lastSessionDate: null,
+            categories: {}
+        };
+        this.saveData();
+        
+        // Clear unique words tracking
+        localStorage.removeItem('unique_words_learned');
+        localStorage.removeItem('last_processed_session');
+        
+        // Clear any other analytics keys
+        localStorage.removeItem('simple_analytics_data');
+        
+        // Update displays
+        this.updateAllDisplays();
+        
+        console.log('🔄 ALL STATS RESET - Analytics, unique words, and session tracking cleared');
+        console.log('📊 Ready for fresh unique word tracking test');
+        
+        return {
+            message: 'All statistics reset successfully',
+            uniqueWords: 0,
+            sessionsCompleted: 0,
+            wordsLearned: 0
+        };
+    }
+    
+    // Debug function to check current unique words
+    debugUniqueWords() {
+        const uniqueWords = JSON.parse(localStorage.getItem('unique_words_learned') || '[]');
+        console.log('📊 Current unique words tracked:', uniqueWords.length);
+        console.log('📚 Unique words list:', uniqueWords);
+        console.log('📈 Analytics data:', this.data);
+        return {
+            totalUniqueWords: uniqueWords.length,
+            uniqueWordsList: uniqueWords,
+            analyticsData: this.data
+        };
     }
     
     // Get current data
@@ -236,4 +383,30 @@ setInterval(() => {
     }
 }, 5000);
 
+// Global functions for easy testing
+window.resetAllStats = function() {
+    if (window.simpleAnalytics && window.simpleAnalytics.resetAllStats) {
+        return window.simpleAnalytics.resetAllStats();
+    }
+    console.error('❌ Simple Analytics not available');
+    return null;
+};
+
+window.debugUniqueWords = function() {
+    if (window.simpleAnalytics && window.simpleAnalytics.debugUniqueWords) {
+        return window.simpleAnalytics.debugUniqueWords();
+    }
+    console.error('❌ Simple Analytics not available');
+    return null;
+};
+
+window.forceAnalyticsUpdate = function() {
+    if (window.simpleAnalytics && window.simpleAnalytics.forceUpdate) {
+        window.simpleAnalytics.forceUpdate();
+        return 'Analytics display updated';
+    }
+    return 'Analytics not available';
+};
+
 console.log('📊 Simple Analytics System loaded successfully!');
+console.log('🔧 Global functions available: resetAllStats(), debugUniqueWords(), forceAnalyticsUpdate()');
