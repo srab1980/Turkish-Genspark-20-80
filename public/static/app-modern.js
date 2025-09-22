@@ -14,12 +14,20 @@ const TurkishLearningApp = {
         this.setupEventListeners();
         this.loadData();
         this.updateUserStats();
+        
+        // Setup profile dropdown after a delay to ensure DOM is ready
+        setTimeout(() => {
+            this.setupProfileDropdownEvents();
+        }, 1000);
     },
     
     // Setup all event listeners
     setupEventListeners() {
         // Navigation events
         this.bindNavigationEvents();
+        
+        // Setup profile dropdown events
+        this.setupProfileDropdownEvents();
         
         // Featured mode cards click handlers
         this.setupFeaturedModeHandlers();
@@ -29,9 +37,13 @@ const TurkishLearningApp = {
         const mobileMenu = document.querySelector('.mobile-menu');
         
         if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
+            // Remove existing listeners first
+            const newMobileMenuBtn = mobileMenuBtn.cloneNode(true);
+            mobileMenuBtn.parentNode.replaceChild(newMobileMenuBtn, mobileMenuBtn);
+            
+            newMobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
-                const icon = mobileMenuBtn.querySelector('i');
+                const icon = newMobileMenuBtn.querySelector('i');
                 if (icon) {
                     icon.classList.toggle('fa-bars');
                     icon.classList.toggle('fa-times');
@@ -44,13 +56,21 @@ const TurkishLearningApp = {
         const startLearningBtn = document.getElementById('start-learning');
         
         if (categorySelect) {
-            categorySelect.addEventListener('change', () => {
-                startLearningBtn.disabled = !categorySelect.value;
+            // Remove existing listeners first
+            const newCategorySelect = categorySelect.cloneNode(true);
+            categorySelect.parentNode.replaceChild(newCategorySelect, categorySelect);
+            
+            newCategorySelect.addEventListener('change', () => {
+                startLearningBtn.disabled = !newCategorySelect.value;
             });
         }
         
         if (startLearningBtn) {
-            startLearningBtn.addEventListener('click', () => {
+            // Remove existing listeners first
+            const newStartLearningBtn = startLearningBtn.cloneNode(true);
+            startLearningBtn.parentNode.replaceChild(newStartLearningBtn, startLearningBtn);
+            
+            newStartLearningBtn.addEventListener('click', () => {
                 this.startLearning();
             });
         }
@@ -60,14 +80,32 @@ const TurkishLearningApp = {
         const reviewAllBtn = document.getElementById('review-all');
         
         if (startReviewBtn) {
-            startReviewBtn.addEventListener('click', () => {
-                window.startReview('all');
+            // Remove existing listeners first
+            const newStartReviewBtn = startReviewBtn.cloneNode(true);
+            startReviewBtn.parentNode.replaceChild(newStartReviewBtn, startReviewBtn);
+            
+            newStartReviewBtn.addEventListener('click', () => {
+                // Use the new review mode system
+                if (window.learningModeManager && window.reviewMode) {
+                    window.learningModeManager.startMode('review', {});
+                } else {
+                    window.startReview('all');
+                }
             });
         }
         
         if (reviewAllBtn) {
-            reviewAllBtn.addEventListener('click', () => {
-                window.startReview('all');
+            // Remove existing listeners first
+            const newReviewAllBtn = reviewAllBtn.cloneNode(true);
+            reviewAllBtn.parentNode.replaceChild(newReviewAllBtn, reviewAllBtn);
+            
+            newReviewAllBtn.addEventListener('click', () => {
+                // Use the new review mode system
+                if (window.learningModeManager && window.reviewMode) {
+                    window.learningModeManager.startMode('review', {});
+                } else {
+                    window.startReview('all');
+                }
             });
         }
         
@@ -78,6 +116,38 @@ const TurkishLearningApp = {
         });
         
         console.log('Event listeners setup complete');
+    },
+    
+    // Setup profile dropdown events
+    setupProfileDropdownEvents() {
+        // Handle profile dropdown item clicks
+        const profileDropdownItems = document.querySelectorAll('.nav-dropdown-item[data-section], .mobile-dropdown-item[data-section]');
+        profileDropdownItems.forEach(item => {
+            // Remove any existing event listeners
+            const newItem = item.cloneNode(true);
+            item.parentNode.replaceChild(newItem, item);
+            
+            newItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = newItem.getAttribute('data-section');
+                if (section) {
+                    this.showSection(section);
+                    
+                    // Close dropdowns
+                    const profileDropdownMenu = document.getElementById('profile-dropdown-menu');
+                    const mobileProfileDropdownMenu = document.getElementById('mobile-profile-dropdown-menu');
+                    
+                    if (profileDropdownMenu) profileDropdownMenu.classList.remove('show');
+                    if (mobileProfileDropdownMenu) mobileProfileDropdownMenu.classList.remove('show');
+                    
+                    // Reset arrow
+                    const arrows = document.querySelectorAll('.dropdown-arrow');
+                    arrows.forEach(arrow => {
+                        arrow.style.transform = 'rotate(0deg)';
+                    });
+                }
+            });
+        });
     },
     
     // Setup featured mode card handlers
@@ -145,12 +215,25 @@ const TurkishLearningApp = {
     
     // Dedicated navigation binding function
     bindNavigationEvents() {
+        // Remove existing listeners first to prevent duplicates
         document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
-            // Remove existing listener if any
-            link.removeEventListener('click', this.navigationHandler);
+            const clone = link.cloneNode(true);
+            link.parentNode.replaceChild(clone, link);
+        });
+        
+        // Add fresh listeners
+        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+            link.addEventListener('click', this.navigationHandler.bind(this));
+        });
+        
+        // Also bind profile dropdown items specifically
+        document.querySelectorAll('.nav-dropdown-item[data-section], .mobile-dropdown-item[data-section]').forEach(item => {
+            // Remove existing listeners first
+            const clone = item.cloneNode(true);
+            item.parentNode.replaceChild(clone, item);
             
             // Add fresh listener
-            link.addEventListener('click', this.navigationHandler.bind(this));
+            clone.addEventListener('click', this.navigationHandler.bind(this));
         });
     },
     
@@ -403,12 +486,12 @@ const TurkishLearningApp = {
     // Get category progress percentage
     getCategoryProgress(categoryId) {
         const categoryProgress = this.userProgress[categoryId];
-        if (!categoryProgress) return 0;
+        if (!categoryProgress || typeof categoryProgress !== 'object') return 0;
         
         const totalWords = this.vocabularyData[categoryId]?.length || 0;
         if (totalWords === 0) return 0;
         
-        return Math.round((categoryProgress.wordsLearned / totalWords) * 100);
+        return Math.round(((categoryProgress.wordsLearned || 0) / totalWords) * 100);
     },
     
     // Get localized category name
@@ -466,7 +549,7 @@ const TurkishLearningApp = {
         }
         
         // Update navigation
-        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+        document.querySelectorAll('.nav-link, .mobile-nav-link, .nav-dropdown-item, .mobile-dropdown-item').forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('data-section') === sectionName) {
                 link.classList.add('active');
@@ -755,7 +838,9 @@ const TurkishLearningApp = {
     getTotalWordsLearned() {
         let total = 0;
         Object.values(this.userProgress).forEach(categoryProgress => {
-            total += categoryProgress.wordsLearned || 0;
+            if (categoryProgress && typeof categoryProgress === 'object') {
+                total += categoryProgress.wordsLearned || 0;
+            }
         });
         return total;
     },
@@ -1163,20 +1248,31 @@ window.startReview = function(type = 'all') {
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded, initializing Turkish Learning App...');
-    TurkishLearningApp.init();
     
-    // Initialize session interface after enhanced database loads
+    // Ensure app is initialized after a small delay to allow all resources to load
     setTimeout(() => {
-        if (window.SessionManager && window.sessionManagement) {
-            console.log('🎯 Enhanced session system available');
-            
-            // Setup session event handlers
-            document.addEventListener('startSessionLearning', (event) => {
-                console.log('🎯 Session learning event:', event.detail);
-                TurkishLearningApp.showSection('learn');
-            });
-        }
-    }, 1500);
+        TurkishLearningApp.init();
+        
+        // Initialize session interface after enhanced database loads
+        setTimeout(() => {
+            if (window.SessionManager && window.sessionManagement) {
+                console.log('🎯 Enhanced session system available');
+                
+                // Setup session event handlers
+                document.addEventListener('startSessionLearning', (event) => {
+                    console.log('🎯 Session learning event:', event.detail);
+                    TurkishLearningApp.showSection('learn');
+                });
+            }
+        }, 1500);
+        
+        // Ensure profile dropdown events are bound
+        setTimeout(() => {
+            if (typeof TurkishLearningApp !== 'undefined' && typeof TurkishLearningApp.setupProfileDropdownEvents === 'function') {
+                TurkishLearningApp.setupProfileDropdownEvents();
+            }
+        }, 2000);
+    }, 100);
 });
 
 // Global function to update TTS status

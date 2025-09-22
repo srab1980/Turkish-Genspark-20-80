@@ -1,7 +1,7 @@
 /* Modern Turkish Learning App Styles */
 
 /* Import Arabic and Turkish fonts */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap');
 
 /* CSS Variables for consistent theming */
 :root {
@@ -57,11 +57,14 @@
 }
 
 body {
-  font-family: 'Noto Sans Arabic', 'Inter', system-ui, sans-serif;
+  font-family: 'Noto Sans Arabic', sans-serif !important;
   background: var(--rosetta-yellow);
   min-height: 100vh;
   color: var(--gray-800);
   line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* RTL Support */
@@ -86,6 +89,7 @@ body {
   justify-content: center;
   z-index: 9999;
   transition: opacity 0.5s ease, visibility 0.5s ease;
+  font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 .loading-screen.hidden {
@@ -96,6 +100,7 @@ body {
 .loading-content {
   text-align: center;
   color: white;
+  font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 .loading-spinner {
@@ -112,11 +117,13 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 .loading-subtitle {
   font-size: 1.1rem;
   opacity: 0.9;
+  font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 @keyframes spin {

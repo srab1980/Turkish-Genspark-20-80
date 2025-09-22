@@ -18,7 +18,9 @@ class FlashcardModeNew extends LearningModeBase {
             totalWords: 0,
             completed: 0,
             accuracy: 0,
-            timeSpent: 0
+            timeSpent: 0,
+            sessionId: 'flashcard_' + Date.now(),
+            category: null
         };
         
         console.log('🎯 NEW Flashcard Mode initialized');
@@ -32,6 +34,7 @@ class FlashcardModeNew extends LearningModeBase {
             this.words = await this.getWordsForSession(options);
             this.sessionStats.totalWords = this.words.length;
             this.sessionStats.startTime = Date.now();
+            this.sessionStats.category = options.category;
             
             if (!this.words || this.words.length === 0) {
                 throw new Error('No words available for flashcard session');
@@ -71,7 +74,29 @@ class FlashcardModeNew extends LearningModeBase {
             
             if (categoryData && categoryData.words) {
                 console.log(`📚 Using enhanced vocabulary: ${categoryData.words.length} words from ${categoryData.nameArabic}`);
-                return categoryData.words.slice(0, 10); // Limit to 10 words per session
+                
+                // Get available words (not reviewed recently)
+                let availableWords = categoryData.words;
+                
+                // If spaced repetition system is available, filter out recently reviewed words
+                if (window.spacedRepetitionSystem) {
+                    const wordReviews = window.spacedRepetitionSystem.getWordReviews();
+                    const now = new Date();
+                    
+                    availableWords = categoryData.words.filter(word => {
+                        const review = wordReviews[word.id || word.turkish];
+                        if (!review) return true; // Not reviewed yet
+                        
+                        // Check if word is due for review
+                        const nextReviewDate = new Date(review.nextReview);
+                        return nextReviewDate <= now;
+                    });
+                    
+                    console.log(`📚 Filtered to ${availableWords.length} available words (excluding recently reviewed)`);
+                }
+                
+                // Limit to 10 words per session
+                return availableWords.slice(0, 10);
             }
         }
         
@@ -396,10 +421,28 @@ class FlashcardModeNew extends LearningModeBase {
         const word = this.words[this.currentIndex];
         if (!word) return;
         
+        // Record with spaced repetition system
+        if (window.spacedRepetitionSystem) {
+            // Map flashcard responses to difficulty levels
+            const difficultyMap = {
+                'correct': 'easy',
+                'medium': 'medium', 
+                'incorrect': 'hard'
+            };
+            
+            const mappedDifficulty = difficultyMap[difficulty] || 'medium';
+            window.spacedRepetitionSystem.recordWordDifficulty(
+                word, 
+                mappedDifficulty, 
+                this.sessionStats.sessionId || `flashcard_${Date.now()}`
+            );
+        }
+        
         // Record the response
         this.responses.push({
             word: word,
             response: difficulty,
+            difficulty: difficultyMap[difficulty] || 'medium',
             timestamp: Date.now()
         });
         
@@ -446,6 +489,15 @@ class FlashcardModeNew extends LearningModeBase {
         
         console.log('📊 Session completed with stats:', this.sessionStats);
         
+        // Mark session as completed in spaced repetition system
+        if (window.spacedRepetitionSystem && this.sessionStats.sessionId) {
+            window.spacedRepetitionSystem.markSessionCompleted(
+                this.sessionStats.sessionId,
+                this.sessionStats.category,
+                this.words
+            );
+        }
+        
         // Show NEW completion screen
         this.showNewCompletionScreen(this.sessionStats);
         
@@ -459,7 +511,13 @@ class FlashcardModeNew extends LearningModeBase {
         
         // Dispatch custom event for analytics
         document.dispatchEvent(new CustomEvent('flashcard_session_completed', {
-            detail: this.sessionStats
+            detail: {
+                ...this.sessionStats,
+                words: this.words, // Include actual words for unique tracking
+                responses: this.responses,
+                timestamp: Date.now(),
+                sessionId: this.sessionStats.sessionId || 'flashcard_' + Date.now()
+            }
         }));
     }
     

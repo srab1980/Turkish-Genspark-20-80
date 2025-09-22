@@ -3,7 +3,9 @@
 // Total words: 1194 | Categories: 9
 
 // Enhanced vocabulary data with difficulty levels, vowel harmony, and contextual examples
-const enhancedVocabularyData = {
+// Check if enhancedVocabularyData already exists to avoid duplicate declaration error
+if (typeof window.enhancedVocabularyData === 'undefined') {
+    const enhancedVocabularyData = {
   "greetings": [
     {
       "id": 2,
@@ -16739,6 +16741,7 @@ const enhancedVocabularyData = {
     }
   ]
 };
+} // Close the initial if statement
 
 // Statistics and metadata
 const vocabularyMetadata = {
@@ -16779,12 +16782,21 @@ const vowelHarmonyRules = {
     }
 };
 
-// Export for use by learning modules
+// Export for use by learning modules - only assign if not already defined
 if (typeof window !== 'undefined') {
-    window.enhancedVocabularyData = enhancedVocabularyData;
-    window.vocabularyMetadata = vocabularyMetadata;
-    window.difficultyLevels = difficultyLevels;
-    window.vowelHarmonyRules = vowelHarmonyRules;
+    // Only assign if not already defined to prevent duplicate declaration errors
+    if (typeof window.enhancedVocabularyData === 'undefined') {
+        window.enhancedVocabularyData = enhancedVocabularyData;
+    }
+    if (typeof window.vocabularyMetadata === 'undefined') {
+        window.vocabularyMetadata = vocabularyMetadata;
+    }
+    if (typeof window.difficultyLevels === 'undefined') {
+        window.difficultyLevels = difficultyLevels;
+    }
+    if (typeof window.vowelHarmonyRules === 'undefined') {
+        window.vowelHarmonyRules = vowelHarmonyRules;
+    }
     
     console.log('📚 Enhanced vocabulary database loaded:', vocabularyMetadata);
 } else {

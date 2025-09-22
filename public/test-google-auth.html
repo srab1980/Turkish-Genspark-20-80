@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Auth Test - Turkish Learning App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f7fafc;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+        }
+        .test-section.success {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+        .test-section.error {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .test-section.warning {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+        .test-section.testing {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+        }
+        .btn:hover {
+            background: #2563eb;
+        }
+        .btn.google {
+            background: #4285f4;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+        .status {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .status.success { color: #10b981; }
+        .status.error { color: #ef4444; }
+        .status.warning { color: #f59e0b; }
+        .status.testing { color: #3b82f6; }
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        .guide {
+            background: #eff6ff;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .guide h3 {
+            color: #3b82f6;
+            margin-top: 0;
+        }
+        .guide ol {
+            margin-left: 20px;
+        }
+        .guide li {
+            margin-bottom: 8px;
+        }
+        .port-info {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .port-info strong {
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Google Authentication Test</h1>
+        <p>This page helps you test and configure Google Authentication for the Turkish Learning App.</p>
+
+        <div class="port-info">
+            <strong>📍 Current Development Server:</strong> <code id="current-url">Loading...</code><br>
+            <strong>⚠️ Important:</strong> Make sure your Google Cloud Console OAuth settings include this URL in authorized origins.
+        </div>
+
+        <!-- Environment Variables Test -->
+        <div class="test-section" id="env-test">
+            <h3>1. Environment Variables Check</h3>
+            <button class="btn" onclick="testEnvironmentVariables()">Check Environment Variables</button>
+            <div class="result" id="env-result"></div>
+        </div>
+
+        <!-- Google Auth Service Test -->
+        <div class="test-section" id="auth-service-test">
+            <h3>2. Google Auth Service Test</h3>
+            <button class="btn" onclick="testAuthService()">Test Auth Service</button>
+            <div class="result" id="auth-service-result"></div>
+        </div>
+
+        <!-- Google Scripts Loading Test -->
+        <div class="test-section" id="google-scripts-test">
+            <h3>3. Google Scripts Loading Test</h3>
+            <button class="btn" onclick="testGoogleScripts()">Test Google Scripts</button>
+            <div class="result" id="google-scripts-result"></div>
+        </div>
+
+        <!-- Google Auth Initialization Test -->
+        <div class="test-section" id="google-init-test">
+            <h3>4. Google Auth Initialization Test</h3>
+            <button class="btn" onclick="testGoogleInit()">Test Google Auth Init</button>
+            <div class="result" id="google-init-result"></div>
+        </div>
+
+        <!-- Google Sign-In Test -->
+        <div class="test-section" id="google-signin-test">
+            <h3>5. Google Sign-In Test</h3>
+            <button class="btn google" onclick="testGoogleSignIn()">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Test Google Sign-In
+            </button>
+            <div class="result" id="google-signin-result"></div>
+        </div>
+
+        <!-- Configuration Guide -->
+        <div class="guide">
+            <h3>📋 Google Cloud Console Configuration Guide</h3>
+            <p>If tests fail, you may need to configure your Google Cloud Console settings:</p>
+            <ol>
+                <li>Go to <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a></li>
+                <li>Create a new project or select existing project</li>
+                <li>Enable the <strong>Google+ API</strong> and <strong>Google Identity Services API</strong></li>
+                <li>Go to <strong>APIs & Services</strong> → <strong>Credentials</strong></li>
+                <li>Create <strong>OAuth 2.0 Client ID</strong> credentials</li>
+                <li>Add authorized origins (copy the URL from above):
+                    <ul>
+                        <li><code id="origin-1">http://localhost:5176</code></li>
+                        <li><code>http://127.0.0.1:5176</code></li>
+                        <li><code>http://localhost:5173</code> (backup)</li>
+                        <li><code>http://127.0.0.1:5173</code> (backup)</li>
+                    </ul>
+                </li>
+                <li>Add authorized redirect URIs (same as origins)</li>
+                <li>Save and copy the Client ID to your <code>.env</code> file</li>
+            </ol>
+        </div>
+
+        <!-- Test Results Summary -->
+        <div class="test-section" id="summary">
+            <h3>📊 Test Summary</h3>
+            <div id="summary-content">Run tests to see summary...</div>
+        </div>
+    </div>
+
+    <!-- Load Auth Service -->
+    <script src="/static/auth-service.js"></script>
+    <script src="/static/auth-ui.js"></script>
+
+    <script>
+        let testResults = {};
+
+        // Update current URL info
+        document.getElementById('current-url').textContent = window.location.origin;
+        document.getElementById('origin-1').textContent = window.location.origin;
+
+        async function testEnvironmentVariables() {
+            updateResult('env-test', 'testing', 'Checking environment variables...');
+            
+            try {
+                const response = await fetch('/api/auth/google/config');
+                const config = await response.json();
+                
+                if (config.success && config.clientId) {
+                    if (config.clientId.includes('demo-client-id')) {
+                        updateResult('env-test', 'warning', 'Demo Client ID detected', {
+                            clientId: config.clientId,
+                            message: 'You need to replace the demo Client ID with a real one from Google Cloud Console'
+                        });
+                        testResults.env = 'warning';
+                    } else {
+                        updateResult('env-test', 'success', 'Environment variables configured correctly', {
+                            clientId: config.clientId.substring(0, 20) + '...',
+                            message: 'Google Client ID is properly configured'
+                        });
+                        testResults.env = 'success';
+                    }
+                } else {
+                    updateResult('env-test', 'error', 'Environment variables not configured', {
+                        error: config.message || 'No client ID found'
+                    });
+                    testResults.env = 'error';
+                }
+            } catch (error) {
+                updateResult('env-test', 'error', 'Failed to check environment variables', {
+                    error: error.message
+                });
+                testResults.env = 'error';
+            }
+            
+            updateSummary();
+        }
+
+        async function testAuthService() {
+            updateResult('auth-service-test', 'testing', 'Testing auth service...');
+            
+            try {
+                if (!window.authService) {
+                    throw new Error('Auth service not loaded');
+                }
+                
+                const details = {
+                    loaded: !!window.authService,
+                    initialized: window.authService.isInitialized,
+                    googleAuthReady: window.authService.isGoogleAuthReady,
+                    googleAuthError: window.authService.googleAuthError || 'None',
+                    currentUser: window.authService.getCurrentUser() ? 'Logged in' : 'Not logged in'
+                };
+                
+                if (window.authService.isInitialized) {
+                    updateResult('auth-service-test', 'success', 'Auth service working correctly', details);
+                    testResults.authService = 'success';
+                } else {
+                    updateResult('auth-service-test', 'warning', 'Auth service loading...', details);
+                    testResults.authService = 'warning';
+                }
+            } catch (error) {
+                updateResult('auth-service-test', 'error', 'Auth service failed', {
+                    error: error.message
+                });
+                testResults.authService = 'error';
+            }
+            
+            updateSummary();
+        }
+
+        async function testGoogleScripts() {
+            updateResult('google-scripts-test', 'testing', 'Testing Google scripts...');
+            
+            try {
+                const details = {
+                    googleObject: !!window.google,
+                    googleAccounts: !!(window.google && window.google.accounts),
+                    googleAccountsId: !!(window.google && window.google.accounts && window.google.accounts.id),
+                    scriptTag: !!document.querySelector('script[src="https://accounts.google.com/gsi/client"]')
+                };
+                
+                if (details.googleAccountsId) {
+                    updateResult('google-scripts-test', 'success', 'Google scripts loaded correctly', details);
+                    testResults.googleScripts = 'success';
+                } else {
+                    updateResult('google-scripts-test', 'error', 'Google scripts not loaded properly', details);
+                    testResults.googleScripts = 'error';
+                }
+            } catch (error) {
+                updateResult('google-scripts-test', 'error', 'Failed to check Google scripts', {
+                    error: error.message
+                });
+                testResults.googleScripts = 'error';
+            }
+            
+            updateSummary();
+        }
+
+        async function testGoogleInit() {
+            updateResult('google-init-test', 'testing', 'Testing Google auth initialization...');
+            
+            try {
+                if (!window.authService) {
+                    throw new Error('Auth service not available');
+                }
+                
+                await window.authService.initGoogleAuth();
+                
+                const details = {
+                    isGoogleAuthReady: window.authService.isGoogleAuthReady,
+                    googleClientId: window.authService.googleClientId ? 
+                        window.authService.googleClientId.substring(0, 20) + '...' : 'Not set',
+                    googleAuthError: window.authService.googleAuthError || 'None'
+                };
+                
+                if (window.authService.isGoogleAuthReady) {
+                    updateResult('google-init-test', 'success', 'Google auth initialized successfully', details);
+                    testResults.googleInit = 'success';
+                } else {
+                    updateResult('google-init-test', 'error', 'Google auth initialization failed', details);
+                    testResults.googleInit = 'error';
+                }
+            } catch (error) {
+                updateResult('google-init-test', 'error', 'Google auth initialization error', {
+                    error: error.message
+                });
+                testResults.googleInit = 'error';
+            }
+            
+            updateSummary();
+        }
+
+        async function testGoogleSignIn() {
+            updateResult('google-signin-test', 'testing', 'Testing Google sign-in...');
+            
+            try {
+                if (!window.authService || !window.authService.isGoogleAuthReady) {
+                    throw new Error('Google auth not ready. Run previous tests first.');
+                }
+                
+                // Attempt to trigger Google sign-in
+                await window.authService.signInWithGoogle();
+                
+                updateResult('google-signin-test', 'success', 'Google sign-in prompt triggered', {
+                    message: 'Check for Google sign-in popup or one-tap prompt'
+                });
+                testResults.googleSignIn = 'success';
+            } catch (error) {
+                updateResult('google-signin-test', 'error', 'Google sign-in failed', {
+                    error: error.message
+                });
+                testResults.googleSignIn = 'error';
+            }
+            
+            updateSummary();
+        }
+
+        function updateResult(sectionId, status, message, details = null) {
+            const section = document.getElementById(sectionId);
+            const resultDiv = section.querySelector('.result');
+            
+            section.className = `test-section ${status}`;
+            
+            let html = `<div class="status ${status}">${message}</div>`;
+            
+            if (details) {
+                html += `<pre>${JSON.stringify(details, null, 2)}</pre>`;
+            }
+            
+            resultDiv.innerHTML = html;
+        }
+
+        function updateSummary() {
+            const summaryContent = document.getElementById('summary-content');
+            const total = Object.keys(testResults).length;
+            const passed = Object.values(testResults).filter(r => r === 'success').length;
+            const warnings = Object.values(testResults).filter(r => r === 'warning').length;
+            const failed = Object.values(testResults).filter(r => r === 'error').length;
+            
+            let summaryClass = 'success';
+            if (failed > 0) summaryClass = 'error';
+            else if (warnings > 0) summaryClass = 'warning';
+            
+            document.getElementById('summary').className = `test-section ${summaryClass}`;
+            
+            summaryContent.innerHTML = `
+                <div class="status ${summaryClass}">
+                    Tests Complete: ${passed}/${total} passed, ${warnings} warnings, ${failed} failed
+                </div>
+                <pre>${JSON.stringify(testResults, null, 2)}</pre>
+            `;
+        }
+
+        // Auto-run basic tests on page load
+        window.addEventListener('load', async () => {
+            console.log('🧪 Starting automated tests...');
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for scripts to load
+            await testEnvironmentVariables();
+            await testAuthService();
+            await testGoogleScripts();
+        });
+    </script>
+</body>
+</html>

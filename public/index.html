@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم التركية - Turkish Learning Platform</title>
+    <link rel="stylesheet" href="/static/styles-modern.css">
+    <link rel="stylesheet" href="/static/visual-ux-enhancements.css">
+    <link rel="stylesheet" href="/static/enhanced-content-styles.css">
+    <link rel="stylesheet" href="/static/session-management.css">
+    <link rel="stylesheet" href="/static/flashcard-mode.css">
+    <link rel="stylesheet" href="/static/quiz-mode.css">
+    <link rel="stylesheet" href="/static/phrase-mode.css">
+    <link rel="stylesheet" href="/static/realtime-analytics.css">
+    <link rel="stylesheet" href="/static/auth-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add axios library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Fix Arabic font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Ensure proper Arabic font rendering */
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif !important;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Profile Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dropdown-arrow {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            padding: 0.5rem 0;
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .nav-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        
+        .nav-dropdown-item:hover {
+            background: rgba(67, 97, 238, 0.1);
+            color: #4361ee;
+        }
+        
+        .nav-dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Mobile Dropdown Styles */
+        .mobile-nav-dropdown {
+            position: relative;
+        }
+        
+        .mobile-dropdown-menu {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 0.75rem;
+            margin: 0.5rem 1rem;
+            padding: 0.5rem 0;
+            display: none;
+        }
+        
+        .mobile-dropdown-menu.show {
+            display: block;
+        }
+        
+        .mobile-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: #f3f4f6;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        
+        .mobile-dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Ensure all text elements use proper Arabic fonts */
+        .nav-link, .mobile-nav-link, .nav-logo, .nav-dropdown-toggle {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        
+        /* Fix for loading screen Arabic text */
+        .loading-title, .loading-subtitle {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h2>جارٍ تحميل منصة تعلم التركية...</h2>
+            <p>جاري تحضير المحتوى والبيانات للتعلم</p>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar glass-effect">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-language"></i>
+                    <span>تعلم التركية</span>
+                </div>
+                
+                <div class="nav-menu">
+                    <a href="#" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                    <a href="#" class="nav-link" data-section="learn">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>تعلم</span>
+                    </a>
+                    <a href="#" class="nav-link" data-section="review">
+                        <i class="fas fa-redo"></i>
+                        <span>مراجعة</span>
+                    </a>
+                    <!-- Profile dropdown menu -->
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle" id="profile-dropdown">
+                            <i class="fas fa-user"></i>
+                            <span>الملف الشخصي</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="nav-dropdown-menu" id="profile-dropdown-menu">
+                            <a href="#" class="nav-dropdown-item" data-section="profile">
+                                <i class="fas fa-user-circle"></i>
+                                <span>الملف الشخصي</span>
+                            </a>
+                            <a href="/admin.html" class="nav-dropdown-item" target="_blank">
+                                <i class="fas fa-cog"></i>
+                                <span>لوحة الإدارة</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu">
+                <a href="#" class="mobile-nav-link active" data-section="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="#" class="mobile-nav-link" data-section="learn">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>تعلم</span>
+                </a>
+                <a href="#" class="mobile-nav-link" data-section="review">
+                    <i class="fas fa-redo"></i>
+                    <span>مراجعة</span>
+                </a>
+                <!-- Mobile Profile dropdown menu -->
+                <div class="mobile-nav-dropdown">
+                    <a href="#" class="mobile-nav-link mobile-dropdown-toggle" id="mobile-profile-dropdown">
+                        <i class="fas fa-user"></i>
+                        <span>الملف الشخصي</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <div class="mobile-dropdown-menu" id="mobile-profile-dropdown-menu">
+                        <a href="#" class="mobile-dropdown-item" data-section="profile">
+                            <i class="fas fa-user-circle"></i>
+                            <span>الملف الشخصي</span>
+                        </a>
+                        <a href="/admin.html" class="mobile-dropdown-item" target="_blank">
+                            <i class="fas fa-cog"></i>
+                            <span>لوحة الإدارة</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="dashboard-header">
+                    <h1>مرحباً بك في منصة تعلم التركية</h1>
+                    <p>ابدأ رحلتك في تعلم اللغة التركية اليوم</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card glass-effect">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="user-xp">0</div>
+                            <div class="stat-label">نقاط الخبرة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card glass-effect">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="words-learned">0</div>
+                            <div class="stat-label">كلمات متعلمة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card glass-effect">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="streak-days">0</div>
+                            <div class="stat-label">سلسلة الأيام</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card glass-effect">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="overall-progress">0%</div>
+                            <div class="stat-label">التقدم العام</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-modes">
+                    <h2>اختر نمط التعلم</h2>
+                    <div class="featured-modes-grid">
+                        <div class="featured-mode-card" data-mode="flashcard">
+                            <div class="mode-icon">
+                                <i class="fas fa-address-card"></i>
+                            </div>
+                            <h3>البطاقات التعليمية</h3>
+                            <p>تعلم الكلمات من خلال بطاقات تفاعلية مع النطق والترجمة</p>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="quiz">
+                            <div class="mode-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h3>الاختبار التفاعلي</h3>
+                            <p>اختبر معرفتك من خلال أسئلة متعددة الخيارات</p>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="phrase">
+                            <div class="mode-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>العبارات والتعابير</h3>
+                            <p>تعلم العبارات الشائعة والاستخدام العملي للكلمات</p>
+                        </div>
+                        
+                        <div class="featured-mode-card" data-mode="conversation">
+                            <div class="mode-icon">
+                                <i class="fas fa-comment-dots"></i>
+                            </div>
+                            <h3>المحادثات التفاعلية</h3>
+                            <p>تدرب على المحادثات اليومية في سياقات مختلفة</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="categories-section">
+                    <h2>فئات التعلم</h2>
+                    <div class="categories-grid" id="categories-container">
+                        <!-- Categories will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learn Section -->
+            <section id="learn-section" class="content-section">
+                <div class="section-header">
+                    <h1>تعلم الكلمات الجديدة</h1>
+                    <p>اختر الفئة ونمط التعلم لبدء جلسة التعلم</p>
+                </div>
+                
+                <div class="learning-controls glass-effect">
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label for="category-select">اختر الفئة</label>
+                            <select id="category-select" class="styled-select">
+                                <option value="">اختر فئة...</option>
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="learning-mode">نمط التعلم</label>
+                            <select id="learning-mode" class="styled-select">
+                                <option value="flashcard">البطاقات التعليمية</option>
+                                <option value="quiz">الاختبار التفاعلي</option>
+                                <option value="phrase">العبارات والتعابير</option>
+                                <option value="conversation">المحادثات التفاعلية</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label>&nbsp;</label>
+                            <button id="start-learning" class="btn-primary" disabled>
+                                <i class="fas fa-play"></i> ابدأ جلسة التعلم
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="learning-content" class="learning-content hidden">
+                    <!-- Learning content will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Review Section -->
+            <section id="review-section" class="content-section">
+                <div class="section-header">
+                    <h1>مراجعة الكلمات</h1>
+                    <p>راجع الكلمات التي تعلمتها باستخدام نظام المراجعة المتباعدة</p>
+                </div>
+                
+                <div class="review-controls glass-effect">
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>نظام المراجعة</label>
+                            <div class="review-mode-selector">
+                                <button id="start-review" class="btn-primary">
+                                    <i class="fas fa-redo"></i> مراجعة الكلمات المجدولة
+                                </button>
+                                <button id="review-all" class="btn-secondary">
+                                    <i class="fas fa-list"></i> مراجعة جميع الكلمات
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="review-content" class="review-content hidden">
+                    <!-- Review content will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile-section" class="content-section">
+                <div class="section-header">
+                    <h1>ملفك الشخصي</h1>
+                    <p>تتبع تقدمك وتحقق من الإنجازات</p>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="profile-stats glass-effect">
+                        <h2>إحصائيات التعلم</h2>
+                        <div class="stats-grid-compact">
+                            <div class="stat-item">
+                                <div class="stat-label">المستوى</div>
+                                <div class="stat-value" id="profile-level">المستوى 1</div>
+                            </div>
+                            
+                            <div class="stat-item">
+                                <div class="stat-label">نقاط الخبرة</div>
+                                <div class="stat-value" id="profile-xp-display">0</div>
+                            </div>
+                            
+                            <div class="stat-item">
+                                <div class="stat-label">الكلمات المتعلمّة</div>
+                                <div class="stat-value" id="profile-words-display">0</div>
+                            </div>
+                            
+                            <div class="stat-item">
+                                <div class="stat-label">سلسلة الأيام</div>
+                                <div class="stat-value" id="profile-streak-display">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-achievements glass-effect">
+                        <h2>الإنجازات</h2>
+                        <div class="achievements-grid">
+                            <div class="achievement-badge locked" data-achievement="first-word">
+                                <div class="badge-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="badge-content">
+                                    <h3>كلمتك الأولى</h3>
+                                    <p>تعلم كلمتك الأولى في اللغة التركية</p>
+                                </div>
+                            </div>
+                            
+                            <div class="achievement-badge locked" data-achievement="streak-7">
+                                <div class="badge-icon">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                                <div class="badge-content">
+                                    <h3>سلسلة أسبوعية</h3>
+                                    <p>احتفظ بسلسلة تعلم لمدة 7 أيام متتالية</p>
+                                </div>
+                            </div>
+                            
+                            <div class="achievement-badge locked" data-achievement="category-complete">
+                                <div class="badge-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="badge-content">
+                                    <h3>إتمام الفئة</h3>
+                                    <p>أكمل تعلم جميع الكلمات في فئة واحدة</p>
+                                </div>
+                            </div>
+                            
+                            <div class="achievement-badge locked" data-achievement="review-master">
+                                <div class="badge-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="badge-content">
+                                    <h3>ماستر المراجعة</h3>
+                                    <p>قم بـ 50 مراجعة بنجاح</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-progress glass-effect">
+                        <h2>التقدم في الفئات</h2>
+                        <div id="category-progress">
+                            <!-- Category progress will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="profile-detailed-stats glass-effect">
+                        <h2>إحصائيات مفصلة</h2>
+                        <div class="detailed-stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-label">إجمالي الجلسات</div>
+                                <div class="stat-value" id="total-sessions">0</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-label">إجمالي الوقت</div>
+                                <div class="stat-value" id="total-time">0د</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-label">معدل الدقة</div>
+                                <div class="stat-value" id="accuracy-rate">0%</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-label">أفضل سلسلة</div>
+                                <div class="stat-value" id="best-streak">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Enhanced Vocabulary Database (Excel-based) -->
+    <script src="/static/enhanced-vocabulary-database.js"></script>
+    <script src="/static/enhanced-vocabulary-with-sessions.js"></script>
+    
+    <!-- Core Application -->
+    <script src="/static/app-modern.js"></script>
+    
+    <!-- Learning Mode Systems -->
+    <script src="/static/learning-mode-manager.js"></script>
+    <script src="/static/learning-mode-base.js"></script>
+    <script src="/static/modes/flashcard-mode.js"></script>
+    <script src="/static/modes/quiz-mode.js"></script>
+    <script src="/static/modes/phrase-mode.js"></script>
+    <script src="/static/conversation-system.js"></script>
+    <script src="/static/review-system.js"></script>
+    <script src="/static/modes/review-mode.js"></script>
+    
+    <!-- Supporting Systems -->
+    <script src="/static/spaced-repetition-system.js"></script>
+    <script src="/static/gamification-system.js"></script>
+    <script src="/static/session-management.js"></script>
+    <script src="/static/word-svg-icons.js"></script>
+    <script src="/static/tts-service.js"></script>
+    <script src="/static/visual-ux-system.js"></script>
+    <script src="/static/difficulty-based-session-manager.js"></script>
+    <script src="/static/modular-integration.js"></script>
+    
+    <!-- Authentication -->
+    <script src="/static/auth-service.js"></script>
+    <script src="/static/auth-ui.js"></script>
+    
+    <!-- Analytics -->
+    <script src="/static/realtime-analytics.js"></script>
+    <script src="/static/analytics-dashboard.js"></script>
+    
+    <!-- Initialize App -->
+    <script>
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof TurkishLearningApp !== 'undefined' && typeof TurkishLearningApp.init === 'function') {
+                TurkishLearningApp.init();
+            }
+        });
+        
+        // Global function to navigate to a section
+        window.navigateToSection = function(sectionName) {
+            if (window.TurkishLearningApp && typeof window.TurkishLearningApp.showSection === 'function') {
+                window.TurkishLearningApp.showSection(sectionName);
+            } else {
+                // Fallback navigation
+                document.querySelectorAll('.content-section').forEach(sec => {
+                    sec.classList.remove('active');
+                });
+                const targetSection = document.getElementById(`${sectionName}-section`);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            }
+        };
+        
+        // Profile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait a bit for authService to be fully initialized
+            setTimeout(function() {
+                // Check if user is admin and update dropdown
+                function updateAdminOption() {
+                    try {
+                        const isAdmin = window.authService && 
+                                      typeof window.authService.isAdmin === 'function' && 
+                                      window.authService.isAdmin();
+                        const adminItems = document.querySelectorAll('[href="/admin.html"]');
+                        adminItems.forEach(item => {
+                            item.style.display = isAdmin ? 'flex' : 'none';
+                        });
+                    } catch (error) {
+                        console.error('Error checking admin status:', error);
+                    }
+                }
+                
+                // Initial check
+                updateAdminOption();
+                
+                // Listen for auth changes
+                if (window.authService && typeof window.authService.addAuthListener === 'function') {
+                    window.authService.addAuthListener((event, user) => {
+                        if (event === 'login' || event === 'logout') {
+                            setTimeout(updateAdminOption, 100);
+                        }
+                    });
+                }
+            }, 500);
+            
+            // Desktop dropdown
+            setTimeout(function() {
+                const profileDropdown = document.getElementById('profile-dropdown');
+                const profileDropdownMenu = document.getElementById('profile-dropdown-menu');
+                
+                if (profileDropdown && profileDropdownMenu) {
+                    profileDropdown.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        profileDropdownMenu.classList.toggle('show');
+                        
+                        // Rotate arrow
+                        const arrow = this.querySelector('.dropdown-arrow');
+                        if (arrow) {
+                            arrow.style.transform = profileDropdownMenu.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                        }
+                    });
+                    
+                    // Close dropdown when clicking elsewhere
+                    document.addEventListener('click', function(e) {
+                        if (profileDropdownMenu && !profileDropdownMenu.contains(e.target) && profileDropdown && !profileDropdown.contains(e.target)) {
+                            profileDropdownMenu.classList.remove('show');
+                            const arrow = profileDropdown.querySelector('.dropdown-arrow');
+                            if (arrow) {
+                                arrow.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+                }
+                
+                // Mobile dropdown
+                const mobileProfileDropdown = document.getElementById('mobile-profile-dropdown');
+                const mobileProfileDropdownMenu = document.getElementById('mobile-profile-dropdown-menu');
+                
+                if (mobileProfileDropdown && mobileProfileDropdownMenu) {
+                    mobileProfileDropdown.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        mobileProfileDropdownMenu.classList.toggle('show');
+                        
+                        // Rotate arrow
+                        const arrow = this.querySelector('.dropdown-arrow');
+                        if (arrow) {
+                            arrow.style.transform = mobileProfileDropdownMenu.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                        }
+                    });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

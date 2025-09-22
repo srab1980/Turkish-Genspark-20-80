@@ -375,7 +375,7 @@ class VisualUXSystem {
       }
       
       try {
-        const response = await originalFetch.apply(this, args);
+        const response = await originalFetch.apply(window, args);
         if (containerId) {
           setTimeout(() => this.hideLoadingSkeleton(containerId), 500);
         }
